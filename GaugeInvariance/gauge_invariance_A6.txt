@@ -1,0 +1,2 @@
+A6 gauge invariance
+1 0 0 0 0 0 x0 0 0 0 0 1 

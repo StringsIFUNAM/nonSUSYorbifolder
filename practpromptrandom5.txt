@@ -1,0 +1,182 @@
+ricardo@ricardo-Latitude-3590:~/orbifolderN0practprompt-sept3-c$ ./orbifolder
+
+  ###########################################################################
+  #  The C++ Orbifolder                                                     #
+  #  Version: 1.2                                                           #
+  #  by H.P. Nilles, S. Ramos-Sanchez, P.K.S. Vaudrevange and A. Wingerter  #
+  ###########################################################################
+
+/> load orbifolds(modelZ3_1.txt)
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  Orbifold "Z3_1_1" loaded.
+
+/> create random orbifold from(Z3_1_1) if(inequivalent) #models(25) use(0,0,0,0,0,0,0,0) load when done save to(modelsrand25.txt)
+
+  New child process "PID 4662" from command "create random orbifold from(Z3_1_1) if(inequivalent) #models(25) use(0,0,0,0,0,0,0,0) load when done save to(modelsrand25.txt)".
+
+/>  potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  Models created without problems.
+
+  For orbifold "Z3_1_1" PID 4662 done: "create random orbifold from(Z3_1_1) if(inequivalent) #models(25) use(0,0,0,0,0,0,0,0) load when done save to(modelsrand25.txt)" TIME: 00:05:35
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  25 orbifolds loaded.
+
+  New orbifolds saved to file "modelsrand25.txt".
+
+/> dir
+
+  commands of this directory:
+    load orbifolds(Filename) 
+    create orbifold(OrbifoldLabel) with point group(N,K) 
+  change directory:
+    cd Z3_1_1
+    cd Random1
+    cd Random2
+    cd Random3
+    cd Random4
+    cd Random5
+    cd Random6
+    cd Random7
+    cd Random8
+    cd Random9
+    cd Random10
+    cd Random11
+    cd Random12
+    cd Random13
+    cd Random14
+    cd Random15
+    cd Random16
+    cd Random17
+    cd Random18
+    cd Random19
+    cd Random20
+    cd Random21
+    cd Random22
+    cd Random23
+    cd Random24
+    cd Random25
+
+  general commands:
+    dir                                       show commands; optional: "no subdirectories"
+    help                                      
+    exit                                      exit program
+
+/> exit
+
+  Do you really want to quit? Type "yes" to quit or "no" to continue.
+
+/> yes
+
+  End.
+
+ricardo@ricardo-Latitude-3590:~/orbifolderN0practprompt-sept3-c$ 
+

@@ -1,0 +1,73 @@
+INSTALLATION INSTRUCTIONS 
+=========================
+
+1. Change to the directory where this INSTALL file is located.
+
+2. Run the configure script by typing "./configure" at the command
+line. If the configure script fails to generate a Makefile for your
+system, please refer to the "Trouble Shooting" section below.
+
+3. Typing "make" (in the same directory) compiles the source code
+located in the subdirectories "src/io", "src/linalg",
+"src/groupTheory", "src/orbifolder".
+
+4. Finally, typing "make install" copies the executable named
+"orbifolder" to the current directory.
+
+5. To run the executable, type "./orbifolder".
+
+For more details on installing and running the program, you may also
+refer to "Section 3: Donwload & Installation" of hep-th/1110.xxxx.
+
+TROUBLE SHOOTING 
+================
+
+1. Boost AND GSL not installed?
+-------------------------------
+
+For compiling the code, the libraries Boost and GSL (GNU Scientific
+Library) must be installed on your system. If they are not, the
+configure script will fail.
+
+For Fedora, you can install the required libraries with the package
+management utility:
+
+yum -y install gsl gsl-devel boost boost-devel
+
+For Ubuntu, the command reads:
+
+sudo apt-get libgsl0-dev libboost-math-dev
+
+To install new packages on your computer, you may need system
+administrator privileges.
+
+
+2. Boost and/or GSL have non-standard installation path?
+--------------------------------------------------------
+
+If you are sure that the Boost library (with version number 1.0 or
+higher) is installed on your system, but the configure script still
+cannot find it, then you may need to provide the full installation
+path to the configure script. If your Boost header files (*.hpp) are
+under "<path-to-boost>/include/boost" and your boost libraries (*.so)
+are under "<path-to-boost>/lib/", then
+
+./configure --with-boost=<path-to-boost>
+
+should correctly work on your system. Note that in the command above,
+the angular brackets "<" and ">" are to be omitted and no quotation
+marks are required.
+
+To be concrete, the following line will correctly generate the
+Makefiles on a 32bit system at DESY:
+
+./configure --with-boost=/afs/desy.de/group/theorie/software/ELF32/
+
+If you are compiling on a 64bit machine, the configure options need a
+slight modification:
+
+./configure --with-boost=/afs/desy.de/group/theorie/software/ELF64/
+
+Similar switches can tell the compiler where GSL is located (try
+./configure --help).
+

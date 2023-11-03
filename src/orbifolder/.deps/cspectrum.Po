@@ -1,0 +1,1347 @@
+cspectrum.o: cspectrum.cpp /usr/include/stdc-predef.h \
+ /usr/include/c++/5/iostream \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/c++config.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/os_defines.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/cpu_defines.h \
+ /usr/include/c++/5/ostream /usr/include/c++/5/ios \
+ /usr/include/c++/5/iosfwd /usr/include/c++/5/bits/stringfwd.h \
+ /usr/include/c++/5/bits/memoryfwd.h /usr/include/c++/5/bits/postypes.h \
+ /usr/include/c++/5/cwchar /usr/include/wchar.h /usr/include/stdio.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h /usr/include/xlocale.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/c++/5/exception \
+ /usr/include/c++/5/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/5/bits/char_traits.h \
+ /usr/include/c++/5/bits/stl_algobase.h \
+ /usr/include/c++/5/bits/functexcept.h \
+ /usr/include/c++/5/bits/exception_defines.h \
+ /usr/include/c++/5/bits/cpp_type_traits.h \
+ /usr/include/c++/5/ext/type_traits.h \
+ /usr/include/c++/5/ext/numeric_traits.h \
+ /usr/include/c++/5/bits/stl_pair.h /usr/include/c++/5/bits/move.h \
+ /usr/include/c++/5/bits/concept_check.h \
+ /usr/include/c++/5/bits/stl_iterator_base_types.h \
+ /usr/include/c++/5/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/5/debug/debug.h /usr/include/c++/5/bits/stl_iterator.h \
+ /usr/include/c++/5/bits/ptr_traits.h \
+ /usr/include/c++/5/bits/predefined_ops.h \
+ /usr/include/c++/5/bits/localefwd.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/c++locale.h \
+ /usr/include/c++/5/clocale /usr/include/locale.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/5/cctype \
+ /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
+ /usr/include/c++/5/bits/ios_base.h /usr/include/c++/5/ext/atomicity.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/gthr.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/gthr-default.h \
+ /usr/include/pthread.h /usr/include/sched.h /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/bits/sched.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/timex.h \
+ /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+ /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/atomic_word.h \
+ /usr/include/c++/5/bits/locale_classes.h /usr/include/c++/5/string \
+ /usr/include/c++/5/bits/allocator.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h \
+ /usr/include/c++/5/ext/new_allocator.h /usr/include/c++/5/new \
+ /usr/include/c++/5/bits/ostream_insert.h \
+ /usr/include/c++/5/bits/cxxabi_forced.h \
+ /usr/include/c++/5/bits/stl_function.h \
+ /usr/include/c++/5/backward/binders.h \
+ /usr/include/c++/5/bits/range_access.h \
+ /usr/include/c++/5/bits/basic_string.h \
+ /usr/include/c++/5/ext/alloc_traits.h \
+ /usr/include/c++/5/bits/basic_string.tcc \
+ /usr/include/c++/5/bits/locale_classes.tcc /usr/include/c++/5/stdexcept \
+ /usr/include/c++/5/streambuf /usr/include/c++/5/bits/streambuf.tcc \
+ /usr/include/c++/5/bits/basic_ios.h \
+ /usr/include/c++/5/bits/locale_facets.h /usr/include/c++/5/cwctype \
+ /usr/include/wctype.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/ctype_base.h \
+ /usr/include/c++/5/bits/streambuf_iterator.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/ctype_inline.h \
+ /usr/include/c++/5/bits/locale_facets.tcc \
+ /usr/include/c++/5/bits/basic_ios.tcc \
+ /usr/include/c++/5/bits/ostream.tcc /usr/include/c++/5/istream \
+ /usr/include/c++/5/bits/istream.tcc /usr/include/c++/5/iomanip \
+ /usr/include/c++/5/cstdlib /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+ /usr/include/x86_64-linux-gnu/sys/types.h \
+ /usr/include/x86_64-linux-gnu/sys/select.h \
+ /usr/include/x86_64-linux-gnu/bits/select.h \
+ /usr/include/x86_64-linux-gnu/bits/sigset.h \
+ /usr/include/x86_64-linux-gnu/bits/select2.h \
+ /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/c++/5/iterator \
+ /usr/include/c++/5/bits/stream_iterator.h /usr/include/c++/5/algorithm \
+ /usr/include/c++/5/utility /usr/include/c++/5/bits/stl_relops.h \
+ /usr/include/c++/5/bits/stl_algo.h \
+ /usr/include/c++/5/bits/algorithmfwd.h \
+ /usr/include/c++/5/bits/stl_heap.h /usr/include/c++/5/bits/stl_tempbuf.h \
+ /usr/include/c++/5/bits/stl_construct.h cspectrum.h \
+ /usr/include/c++/5/vector /usr/include/c++/5/bits/stl_uninitialized.h \
+ /usr/include/c++/5/bits/stl_vector.h \
+ /usr/include/c++/5/bits/stl_bvector.h /usr/include/c++/5/bits/vector.tcc \
+ /usr/include/c++/5/list /usr/include/c++/5/bits/stl_list.h \
+ /usr/include/c++/5/bits/list.tcc corbifold.h corbifoldgroup.h \
+ /usr/include/c++/5/fstream /usr/include/c++/5/bits/codecvt.h \
+ /usr/include/c++/5/cstdio /usr/include/libio.h /usr/include/_G_config.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio2.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/5/bits/c++io.h \
+ /usr/include/c++/5/bits/fstream.tcc cspacegroup.h \
+ /usr/include/c++/5/complex /usr/include/c++/5/cmath /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_val.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_valf.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_vall.h \
+ /usr/include/x86_64-linux-gnu/bits/inf.h \
+ /usr/include/x86_64-linux-gnu/bits/nan.h \
+ /usr/include/x86_64-linux-gnu/bits/mathdef.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathinline.h \
+ /usr/include/c++/5/sstream /usr/include/c++/5/bits/sstream.tcc ctwist.h \
+ cvector.h /home/ricardo/boostandgsl/boosth/include/boost/config.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/user.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/detail/select_compiler_config.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/compiler/gcc.hpp \
+ /usr/include/c++/5/cstddef \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/detail/select_stdlib_config.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/stdlib/libstdcpp3.hpp \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd.h \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/detail/select_platform_config.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/platform/linux.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/detail/posix_features.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/detail/suffix.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/helper_macros.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/detail/cxx_composite.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/rational.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/call_traits.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/detail/call_traits.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_arithmetic.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_integral.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/integral_constant.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/detail/workaround.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/config/workaround.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_floating_point.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_enum.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/intrinsics.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/config.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/version.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_pointer.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/assert.hpp \
+ /usr/include/assert.h \
+ /home/ricardo/boostandgsl/boosth/include/boost/integer/common_factor_rt.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/core/enable_if.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/limits.hpp \
+ /usr/include/c++/5/limits /usr/include/c++/5/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/c++/5/functional \
+ /home/ricardo/boostandgsl/boosth/include/boost/static_assert.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/throw_exception.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/exception/exception.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/assert/source_location.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/current_function.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/cstdint.hpp \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h /usr/include/stdint.h \
+ /home/ricardo/boostandgsl/boosth/include/boost/utility/enable_if.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_convertible.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_complete.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/declval.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_rvalue_reference.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_void.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_reference.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_lvalue_reference.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_rvalue_reference.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/remove_reference.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_function.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/is_function_cxx_03.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/is_function_ptr_helper.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/yes_no_type.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_array.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_abstract.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_lvalue_reference.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_reference.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_class.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_same.hpp \
+ cspacegroupelement.h corbifoldgroupelement.h cshiftvector.h \
+ cwilsonline.h cwilsonlines.h cfixedpoint.h coscillator.h cstate.h \
+ chalfstate.h globalfunctions.h \
+ /home/ricardo/boostandgsl/boosth/include/boost/tokenizer.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/token_iterator.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/iterator_adaptor.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/core/use_default.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/iterator_categories.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/detail/config_def.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/eval_if.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/if.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/value_wknd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/static_cast.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/workaround.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/integral.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/msvc.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/eti.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/na_spec.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/lambda_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/void_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/adl_barrier.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/adl.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/intel.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/gcc.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/na.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/bool.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/bool_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/integral_c_tag.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/static_constant.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/na_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/ctps.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/lambda.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/ttp.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/int.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/int_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/nttp_decl.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/nttp.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/integral_wrapper.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/cat.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/config/config.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/lambda_arity_param.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/template_arity_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/arity.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/dtp.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessor/params.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/preprocessor.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/comma_if.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/punctuation/comma_if.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/if.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/iif.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/bool.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/config/limits.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/limits/bool_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/empty.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/punctuation/comma.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repeat.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repetition/repeat.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/debug/error.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/detail/auto_rec.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/detail/limits/auto_rec_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/tuple/eat.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repetition/limits/repeat_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/inc.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/inc.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/limits/inc_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessor/enum.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/limits/arity.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/and.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/bitand.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/identity.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/identity.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/empty.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/add.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/dec.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/limits/dec_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/while.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/fold_left.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/detail/fold_left.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/expr_iif.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/adt.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/detail/is_binary.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/detail/check.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/compl.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/detail/limits/fold_left_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/limits/fold_left_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/fold_right.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/detail/fold_right.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/reverse.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/detail/limits/fold_right_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/detail/while.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/detail/limits/while_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/limits/while_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/bitor.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/tuple/elem.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/expand.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/overload.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/size.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/check_empty.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/has_opt.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/limits/size_64.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/tuple/rem.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/tuple/detail/is_single_return.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/elem.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/limits/elem_64.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/detail/is_maximum_number.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/comparison/equal.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/comparison/not_equal.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/comparison/limits/not_equal_256.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/detail/maximum_number.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/detail/is_minimum_number.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/not.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/sub.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/overload_resolution.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/lambda_support.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/identity.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/placeholders.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/arg.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/arg_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/na_assert.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/assert.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/not.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/nested_type_wknd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/yes_no.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/arrays.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/gpu.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/pp_counter.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/arity_spec.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/arg_typedef.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/use_preprocessed.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/include_preprocessed.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/compiler.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/stringize.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/arg.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/placeholders.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/detail/config_undef.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/iterator_facade.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/interoperable.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/or.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/or.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/iterator_traits.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/detail/facade_iterator_category.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/and.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/and.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_const.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/detail/indirect_traits.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_volatile.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_member_function_pointer.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/is_member_function_pointer_cxx_03.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/remove_cv.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_member_pointer.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/remove_pointer.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/detail/select_type.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/detail/enable_if.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/core/addressof.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_const.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_pointer.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/remove_const.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_pod.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_scalar.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/always.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessor/default_params.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/apply.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/apply_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/apply_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/apply_wrap.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/has_apply.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/has_xxx.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/type_wrapper.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/has_xxx.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/msvc_typename.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/array/elem.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/array/data.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/array/size.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repetition/enum_params.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repetition/enum_trailing_params.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/has_apply.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/msvc_never_true.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/lambda.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/bind.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/bind_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/bind.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/bind_fwd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/next.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/next_prior.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/common_name_wknd.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/protect.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/bind.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/full_lambda.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/quote.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/void.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/has_type.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/bcc.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/quote.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/template_arity.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/iterator/minimum_category.hpp \
+ /home/ricardo/boostandgsl/boosth/include/boost/token_functions.hpp \
+ /usr/include/c++/5/set /usr/include/c++/5/bits/stl_tree.h \
+ /usr/include/c++/5/bits/stl_set.h /usr/include/c++/5/bits/stl_multiset.h \
+ /usr/include/c++/5/cassert chugeint.h ../groupTheory/groupTheory.hpp \
+ ../io/io.hpp /usr/include/c++/5/map /usr/include/c++/5/bits/stl_map.h \
+ /usr/include/c++/5/bits/stl_multimap.h /usr/include/c++/5/numeric \
+ /usr/include/c++/5/bits/stl_numeric.h ../linalg/linalg.hpp csector.h \
+ corbifoldcore.h cmonomial.h canalysemodel.h cgaugeinvariance.h cfield.h \
+ cmassmatrix.h cyukawacouplings.h cprint.h
+
+/usr/include/stdc-predef.h:
+
+/usr/include/c++/5/iostream:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/c++config.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/os_defines.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/cpu_defines.h:
+
+/usr/include/c++/5/ostream:
+
+/usr/include/c++/5/ios:
+
+/usr/include/c++/5/iosfwd:
+
+/usr/include/c++/5/bits/stringfwd.h:
+
+/usr/include/c++/5/bits/memoryfwd.h:
+
+/usr/include/c++/5/bits/postypes.h:
+
+/usr/include/c++/5/cwchar:
+
+/usr/include/wchar.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
+
+/usr/include/c++/5/exception:
+
+/usr/include/c++/5/bits/atomic_lockfree_defines.h:
+
+/usr/include/c++/5/bits/char_traits.h:
+
+/usr/include/c++/5/bits/stl_algobase.h:
+
+/usr/include/c++/5/bits/functexcept.h:
+
+/usr/include/c++/5/bits/exception_defines.h:
+
+/usr/include/c++/5/bits/cpp_type_traits.h:
+
+/usr/include/c++/5/ext/type_traits.h:
+
+/usr/include/c++/5/ext/numeric_traits.h:
+
+/usr/include/c++/5/bits/stl_pair.h:
+
+/usr/include/c++/5/bits/move.h:
+
+/usr/include/c++/5/bits/concept_check.h:
+
+/usr/include/c++/5/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/5/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/5/debug/debug.h:
+
+/usr/include/c++/5/bits/stl_iterator.h:
+
+/usr/include/c++/5/bits/ptr_traits.h:
+
+/usr/include/c++/5/bits/predefined_ops.h:
+
+/usr/include/c++/5/bits/localefwd.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/c++locale.h:
+
+/usr/include/c++/5/clocale:
+
+/usr/include/locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/c++/5/cctype:
+
+/usr/include/ctype.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/usr/include/c++/5/bits/ios_base.h:
+
+/usr/include/c++/5/ext/atomicity.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/gthr.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/gthr-default.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/include/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/atomic_word.h:
+
+/usr/include/c++/5/bits/locale_classes.h:
+
+/usr/include/c++/5/string:
+
+/usr/include/c++/5/bits/allocator.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/c++allocator.h:
+
+/usr/include/c++/5/ext/new_allocator.h:
+
+/usr/include/c++/5/new:
+
+/usr/include/c++/5/bits/ostream_insert.h:
+
+/usr/include/c++/5/bits/cxxabi_forced.h:
+
+/usr/include/c++/5/bits/stl_function.h:
+
+/usr/include/c++/5/backward/binders.h:
+
+/usr/include/c++/5/bits/range_access.h:
+
+/usr/include/c++/5/bits/basic_string.h:
+
+/usr/include/c++/5/ext/alloc_traits.h:
+
+/usr/include/c++/5/bits/basic_string.tcc:
+
+/usr/include/c++/5/bits/locale_classes.tcc:
+
+/usr/include/c++/5/stdexcept:
+
+/usr/include/c++/5/streambuf:
+
+/usr/include/c++/5/bits/streambuf.tcc:
+
+/usr/include/c++/5/bits/basic_ios.h:
+
+/usr/include/c++/5/bits/locale_facets.h:
+
+/usr/include/c++/5/cwctype:
+
+/usr/include/wctype.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/ctype_base.h:
+
+/usr/include/c++/5/bits/streambuf_iterator.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/ctype_inline.h:
+
+/usr/include/c++/5/bits/locale_facets.tcc:
+
+/usr/include/c++/5/bits/basic_ios.tcc:
+
+/usr/include/c++/5/bits/ostream.tcc:
+
+/usr/include/c++/5/istream:
+
+/usr/include/c++/5/bits/istream.tcc:
+
+/usr/include/c++/5/iomanip:
+
+/usr/include/c++/5/cstdlib:
+
+/usr/include/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigset.h:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+/usr/include/x86_64-linux-gnu/sys/sysmacros.h:
+
+/usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+/usr/include/c++/5/iterator:
+
+/usr/include/c++/5/bits/stream_iterator.h:
+
+/usr/include/c++/5/algorithm:
+
+/usr/include/c++/5/utility:
+
+/usr/include/c++/5/bits/stl_relops.h:
+
+/usr/include/c++/5/bits/stl_algo.h:
+
+/usr/include/c++/5/bits/algorithmfwd.h:
+
+/usr/include/c++/5/bits/stl_heap.h:
+
+/usr/include/c++/5/bits/stl_tempbuf.h:
+
+/usr/include/c++/5/bits/stl_construct.h:
+
+cspectrum.h:
+
+/usr/include/c++/5/vector:
+
+/usr/include/c++/5/bits/stl_uninitialized.h:
+
+/usr/include/c++/5/bits/stl_vector.h:
+
+/usr/include/c++/5/bits/stl_bvector.h:
+
+/usr/include/c++/5/bits/vector.tcc:
+
+/usr/include/c++/5/list:
+
+/usr/include/c++/5/bits/stl_list.h:
+
+/usr/include/c++/5/bits/list.tcc:
+
+corbifold.h:
+
+corbifoldgroup.h:
+
+/usr/include/c++/5/fstream:
+
+/usr/include/c++/5/bits/codecvt.h:
+
+/usr/include/c++/5/cstdio:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/basic_file.h:
+
+/usr/include/x86_64-linux-gnu/c++/5/bits/c++io.h:
+
+/usr/include/c++/5/bits/fstream.tcc:
+
+cspacegroup.h:
+
+/usr/include/c++/5/complex:
+
+/usr/include/c++/5/cmath:
+
+/usr/include/math.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_val.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_valf.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_vall.h:
+
+/usr/include/x86_64-linux-gnu/bits/inf.h:
+
+/usr/include/x86_64-linux-gnu/bits/nan.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathdef.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathinline.h:
+
+/usr/include/c++/5/sstream:
+
+/usr/include/c++/5/bits/sstream.tcc:
+
+ctwist.h:
+
+cvector.h:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/user.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/detail/select_compiler_config.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/compiler/gcc.hpp:
+
+/usr/include/c++/5/cstddef:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/detail/select_stdlib_config.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/stdlib/libstdcpp3.hpp:
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/detail/select_platform_config.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/platform/linux.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/detail/posix_features.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/detail/suffix.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/helper_macros.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/detail/cxx_composite.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/rational.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/call_traits.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/detail/call_traits.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_arithmetic.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_integral.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/integral_constant.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/detail/workaround.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/config/workaround.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_floating_point.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_enum.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/intrinsics.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/config.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/version.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_pointer.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/assert.hpp:
+
+/usr/include/assert.h:
+
+/home/ricardo/boostandgsl/boosth/include/boost/integer/common_factor_rt.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/core/enable_if.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/limits.hpp:
+
+/usr/include/c++/5/limits:
+
+/usr/include/c++/5/climits:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/c++/5/functional:
+
+/home/ricardo/boostandgsl/boosth/include/boost/static_assert.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/throw_exception.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/exception/exception.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/assert/source_location.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/current_function.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/cstdint.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/home/ricardo/boostandgsl/boosth/include/boost/utility/enable_if.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_convertible.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_complete.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/declval.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_rvalue_reference.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_void.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_reference.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_lvalue_reference.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_rvalue_reference.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/remove_reference.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_function.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/is_function_cxx_03.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/is_function_ptr_helper.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/yes_no_type.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_array.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_abstract.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_lvalue_reference.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_reference.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_class.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_same.hpp:
+
+cspacegroupelement.h:
+
+corbifoldgroupelement.h:
+
+cshiftvector.h:
+
+cwilsonline.h:
+
+cwilsonlines.h:
+
+cfixedpoint.h:
+
+coscillator.h:
+
+cstate.h:
+
+chalfstate.h:
+
+globalfunctions.h:
+
+/home/ricardo/boostandgsl/boosth/include/boost/tokenizer.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/token_iterator.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/iterator_adaptor.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/core/use_default.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/iterator_categories.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/detail/config_def.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/eval_if.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/if.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/value_wknd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/static_cast.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/workaround.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/integral.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/msvc.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/eti.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/na_spec.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/lambda_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/void_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/adl_barrier.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/adl.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/intel.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/gcc.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/na.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/bool.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/bool_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/integral_c_tag.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/static_constant.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/na_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/ctps.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/lambda.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/ttp.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/int.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/int_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/nttp_decl.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/nttp.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/integral_wrapper.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/cat.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/config/config.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/lambda_arity_param.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/template_arity_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/arity.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/dtp.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessor/params.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/preprocessor.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/comma_if.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/punctuation/comma_if.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/if.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/iif.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/bool.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/config/limits.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/limits/bool_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/empty.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/punctuation/comma.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repeat.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repetition/repeat.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/debug/error.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/detail/auto_rec.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/detail/limits/auto_rec_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/tuple/eat.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repetition/limits/repeat_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/inc.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/inc.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/limits/inc_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessor/enum.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/limits/arity.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/and.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/bitand.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/identity.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/identity.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/empty.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/add.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/dec.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/limits/dec_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/while.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/fold_left.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/detail/fold_left.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/expr_iif.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/adt.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/detail/is_binary.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/detail/check.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/compl.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/detail/limits/fold_left_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/limits/fold_left_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/fold_right.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/detail/fold_right.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/reverse.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/list/detail/limits/fold_right_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/detail/while.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/detail/limits/while_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/control/limits/while_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/bitor.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/tuple/elem.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/expand.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/overload.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/size.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/facilities/check_empty.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/has_opt.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/limits/size_64.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/tuple/rem.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/tuple/detail/is_single_return.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/elem.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/variadic/limits/elem_64.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/detail/is_maximum_number.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/comparison/equal.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/comparison/not_equal.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/comparison/limits/not_equal_256.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/detail/maximum_number.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/detail/is_minimum_number.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/logical/not.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/arithmetic/sub.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/overload_resolution.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/lambda_support.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/identity.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/placeholders.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/arg.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/arg_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/na_assert.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/assert.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/not.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/nested_type_wknd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/yes_no.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/arrays.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/gpu.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/pp_counter.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/arity_spec.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/arg_typedef.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/use_preprocessed.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/include_preprocessed.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/compiler.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/stringize.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/arg.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/placeholders.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/detail/config_undef.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/iterator_facade.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/interoperable.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/or.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/or.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/iterator_traits.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/detail/facade_iterator_category.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/and.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/and.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_const.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/detail/indirect_traits.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_volatile.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_member_function_pointer.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/is_member_function_pointer_cxx_03.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/remove_cv.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_member_pointer.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/remove_pointer.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/detail/select_type.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/detail/enable_if.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/core/addressof.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_const.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/add_pointer.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/remove_const.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_pod.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/type_traits/is_scalar.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/always.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessor/default_params.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/apply.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/apply_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/apply_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/apply_wrap.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/has_apply.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/has_xxx.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/type_wrapper.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/has_xxx.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/msvc_typename.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/array/elem.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/array/data.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/array/size.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repetition/enum_params.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/preprocessor/repetition/enum_trailing_params.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/has_apply.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/msvc_never_true.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/lambda.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/bind.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/bind_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/bind.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/bind_fwd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/next.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/next_prior.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/common_name_wknd.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/protect.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/bind.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/full_lambda.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/quote.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/void.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/has_type.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/config/bcc.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/quote.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/template_arity.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/iterator/minimum_category.hpp:
+
+/home/ricardo/boostandgsl/boosth/include/boost/token_functions.hpp:
+
+/usr/include/c++/5/set:
+
+/usr/include/c++/5/bits/stl_tree.h:
+
+/usr/include/c++/5/bits/stl_set.h:
+
+/usr/include/c++/5/bits/stl_multiset.h:
+
+/usr/include/c++/5/cassert:
+
+chugeint.h:
+
+../groupTheory/groupTheory.hpp:
+
+../io/io.hpp:
+
+/usr/include/c++/5/map:
+
+/usr/include/c++/5/bits/stl_map.h:
+
+/usr/include/c++/5/bits/stl_multimap.h:
+
+/usr/include/c++/5/numeric:
+
+/usr/include/c++/5/bits/stl_numeric.h:
+
+../linalg/linalg.hpp:
+
+csector.h:
+
+corbifoldcore.h:
+
+cmonomial.h:
+
+canalysemodel.h:
+
+cgaugeinvariance.h:
+
+cfield.h:
+
+cmassmatrix.h:
+
+cyukawacouplings.h:
+
+cprint.h:

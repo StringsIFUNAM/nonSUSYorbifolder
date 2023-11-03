@@ -1,0 +1,9 @@
+A2 non gauge invariance
+1 0 x1 0 
+1 0 
+1 0 x1 0 x0 1 
+0 1 
+1 0 x0 1 x0 1 
+0 1 x0 1 
+1 0 x0 1 x0 1 x0 1 
+1 0 x1 0 x1 0 x0 1 

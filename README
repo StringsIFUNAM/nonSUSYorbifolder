@@ -1,0 +1,190 @@
+Basic installation instructions are enclosed in the INSTALL file in the
+same directory.
+
+For quoting the Orbifolder in your publications, please refer to the
+preprint arXiv:1110.5229 [hep-th].
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation (see file COPYING in the same directory).
+
+=======================================================================
+File structure of the source code in the directory "/src":
+
+directory "examples/"
+
+  file:    "samplemain01.cpp"
+  content: the example main-file given in arXiv:1110.5229 [hep-th].
+
+  ========================================
+
+directory "groupTheory/"
+
+  files:   "groupTheory.hpp"
+           "groupTheory.cc"
+  content: classes that manage the group theoretical aspects, i.e.
+    class "dynkin"
+    class "freudenthal"
+    class "cirrep"
+    class "gaugeGroupFactor"
+    class "gaugeGroup"
+    class "weightsystem"
+    class "dynkinDiagram"
+
+  ========================================
+
+directory "io/"
+
+  files:   "io.hpp"
+           "io.cc"
+  content: input functions, output operators<< and one class
+    class "Error"
+
+  ========================================
+
+directory "linalg/"
+
+  files:   "linalg.hpp"
+           "linalg.cc"
+  content: functions and classes that deal with linear algebra, i.e.
+    class "eigenSystem"
+    class "sp_with_shift_is_not_integer_crit"
+    class "sp_with_shift_is_not_zero_crit"
+    class "is_zero_crit"
+    class "is_not_zero_crit"
+    class "weight_wrt_semiordering_is_negative_or_zero_crit"
+    class "smaller_wrt_root_ordering_crit"
+    class "differs_by_lattice_shift_crit"
+    class "differs_by_Spin32_lattice_vector_crit"
+
+  ========================================
+
+directory "orbifolder/"
+
+  files:   "canalysemodel.h"
+           "canalysemodel.cpp"
+  content: class "CAnalyseModel"
+
+  files:   "cfield.h"
+           "cfield.cpp"
+  content: class "CField"
+
+  files:   "cfixedpoint.h"
+           "cfixedpoint.cpp"
+  content: class "CFixedBrane"
+
+  files:   "cgaugeinvariance.h"
+           "cgaugeinvariance.cpp"
+  content: class "CGaugeInvariance"
+           class "CGaugeIndices"
+
+  files:   "chalfstate.h"
+           "chalfstate.cpp"
+  content: class "CMasslessHalfState"
+           class "CHalfState"
+
+  files:   "chugeint.h"
+           "chugeint.cpp"
+  content: class "CHugeInt"
+
+  files:   "cinequivalentspectra.h"
+           "cinequivalentspectra.cpp"
+  content: class "CInequivalentModels"
+
+  files:   "clatticevector.h"
+           "clatticevector.cpp"
+  content: class "CLatticeVector"
+
+  files:   "clinalg.h"
+           "clinalg.cpp"
+  content: class "CLinAlg"
+
+  files:   "cmassmatrix.h"
+           "cmassmatrix.cpp"
+  content: class "CMassMatrix"
+
+  files:   "cmonomial.h"
+           "cmonomial.cpp"
+  content: class "CMonomial"
+
+  files:   "corbifold.h"
+           "corbifold.cpp"
+  content: class "COrbifold"
+
+  files:   "corbifoldcore.h"
+           "corbifoldcore.cpp"
+  content: class "COrbifoldCore"
+
+  files:   "corbifoldgroup.h"
+           "corbifoldgroup.cpp"
+  content: class "COrbifoldGroup"
+
+  files:   "corbifoldgroupelement.h"
+           "corbifoldgroupelement.cpp"
+  content: class "COrbifoldGroupElement"
+
+  files:   "coscillator.h"
+           "coscillator.cpp"
+  content: class "CModedOscillator"
+
+  files:   "cprint.h"
+           "cprint.cpp"
+  content: class "CPrint"
+
+  files:   "cprompt.h"
+           "cprompt.cpp"
+  content: class "CPrompt"
+
+  files:   "crandommodel.h"
+           "crandommodel.cpp"
+  content: class "CRandomModel"
+
+  files:   "csector.h"
+           "csector.cpp"
+  content: class "CSector"
+
+  files:   "cshiftvector.h"
+           "cshiftvector.cpp"
+  content: class "CShiftVector"
+
+  files:   "cspacegroup.h"
+           "cspacegroup.cpp"
+  content: class "CSpaceGroup"
+
+  files:   "cspacegroupelement.h"
+           "cspacegroupelement.cpp"
+  content: class "CSpaceGroupElement"
+           class "CLatticeElement"
+
+  files:   "cspectrum.h"
+           "cspectrum.cpp"
+  content: class "CSpectrum"
+
+  files:   "cstate.h"
+           "cstate.cpp"
+  content: class "CState"
+
+  files:   "ctwist.h"
+           "ctwist.cpp"
+  content: class "CTwistVector"
+
+  files:   "cvector.h"
+           "cvector.cpp"
+  content: class "CVector"
+
+  files:   "cwilsonline.h"
+           "cwilsonline.cpp"
+  content: class "CWilsonLine"
+
+  files:   "cwilsonlines.h"
+           "cwilsonlines.cpp"
+  content: class "CWilsonLines"
+
+  files:   "cyukawacouplings.h"
+           "cyukawacouplings.cpp"
+  content: class "CYukawaCouplings"
+
+  files:   "globalfunctions.h"
+           "globalfunctions.cpp"
+  content: global functions
+

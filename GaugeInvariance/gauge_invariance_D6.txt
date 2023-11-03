@@ -1,0 +1,2 @@
+D6 gauge invariance
+1 0 0 0 0 0 x1 0 0 0 0 0 

@@ -1,0 +1,124 @@
+ricardo@ricardo-Latitude-3590:~/orbifolderN0practprompt-sept7-c$ ./orbifolder
+
+  ###########################################################################
+  #  The C++ Orbifolder                                                     #
+  #  Version: 1.2                                                           #
+  #  by H.P. Nilles, S. Ramos-Sanchez, P.K.S. Vaudrevange and A. Wingerter  #
+  ###########################################################################
+
+/> load orbifolds(modelZ3_1.txt)
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  Orbifold "Z3_1_1" loaded.
+
+/> create random orbifold from(Z3_1_1) save to(modelsSMrand.txt) use(0,0,0,0,0,0,0,0) if(inequivalent SM) load when done #models(2)
+
+  New child process "PID 7280" from command "create random orbifold from(Z3_1_1) save to(modelsSMrand.txt) use(0,0,0,0,0,0,0,0) if(inequivalent SM) load when done #models(2)".
+
+/>  potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  Models created without problems.
+
+  For orbifold "Z3_1_1" PID 7280 done: "create random orbifold from(Z3_1_1) save to(modelsSMrand.txt) use(0,0,0,0,0,0,0,0) if(inequivalent SM) load when done #models(2)" TIME: 00:04:38
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  2 orbifolds loaded.
+
+  New orbifolds saved to file "modelsSMrand.txt".
+
+/> dir
+
+  commands of this directory:
+    load orbifolds(Filename) 
+    create orbifold(OrbifoldLabel) with point group(N,K) 
+  change directory:
+    cd Z3_1_1
+    cd Model_SM1
+    cd Model_SM2
+
+  general commands:
+    dir                                       show commands; optional: "no subdirectories"
+    help                                      
+    exit                                      exit program
+
+/> cd Model_SM1
+/Model_SM1> cd vev-config
+/Model_SM1/vev-config> analyze config
+
+  Analyzing vev-configuration "TestConfig1" ...
+  One vev-configuration identified, labeled "SMConfig1" and selected.
+  Using label #1 of the fields.
+
+  Gauge group in vev-configuration "SMConfig1": SU(3)_C x SU(2)_L and U(1)_Y
+
+    3 (  3,  2)_s  U(1) : ( -1/6)  s_1 - s_3 
+    3 ( -3,  1)_s  U(1) : (  2/3)  s_4 - s_6 
+    3 (  1,  1)_s  U(1) : (   -1)  s_7 - s_9 
+  114 (  1,  1)_s  U(1) : (    0)  s_10 - s_12 s_16 - s_38 s_40 s_42 - s_44 s_46 - s_65 s_67 s_69 - s_71 s_73 - s_92 s_94 s_96 - s_98 
+    3 (  1,  2)_s  U(1) : ( -1/2)  s_13 - s_15 
+    6 (  1,  2)_s  U(1) : (  1/2)  s_39 s_45 s_66 s_72 s_93 s_99 
+    3 ( -3,  1)_s  U(1) : ( -1/3)  s_41 s_68 s_95 
+
+  121 (  1,  1)_f  U(1) : (    0)  f_1 - f_3 f_16 - f_19 f_22 - f_43 f_45 - f_47 f_49 f_51 - f_70 f_72 - f_74 f_76 f_78 - f_97 f_99 - f_101 f_103 f_105 
+    3 (  3,  2)_f  U(1) : ( -1/6)  f_4 - f_6 
+    3 ( -3,  1)_f  U(1) : (  2/3)  f_7 - f_9 
+    3 (  1,  1)_f  U(1) : (   -1)  f_10 - f_12 
+    3 (  3,  1)_f  U(1) : (  1/3)  f_13 - f_15 
+    1 (  3,  2)_f  U(1) : (  5/6)  f_20 
+    1 ( -3,  2)_f  U(1) : ( -5/6)  f_21 
+    6 ( -3,  1)_f  U(1) : ( -1/3)  f_44 f_50 f_71 f_77 f_98 f_104 
+    3 (  1,  2)_f  U(1) : (  1/2)  f_48 f_75 f_102 
+    7 (  3,  1)_f  U(1) : ( -1/6)  f_106 f_142 f_145 f_178 f_181 f_214 f_217 
+   20 (  1,  2)_f  U(1) : (    0)  f_107 f_108 f_110 - f_112 f_137 f_141 f_151 f_154 f_157 f_173 f_177 f_187 f_190 f_193 f_209 f_213 f_223 f_226 f_229 
+    7 ( -3,  1)_f  U(1) : (  1/6)  f_109 f_116 - f_118 f_143 f_179 f_215 
+   45 (  1,  1)_f  U(1) : (  1/2)  f_113 - f_115 f_122 f_124 f_126 f_128 f_130 f_132 f_134 f_138 f_146 - f_149 f_152 f_155 f_158 f_160 f_162 f_164 f_166 f_168 f_170 f_174 f_182 - f_185 f_188 f_191 f_194 f_196 f_198 f_200 f_202 f_204 f_206 f_210 f_218 - f_221 f_224 f_227 
+   45 (  1,  1)_f  U(1) : ( -1/2)  f_119 - f_121 f_123 f_125 f_127 f_129 f_131 f_133 f_135 f_136 f_139 f_140 f_144 f_150 f_153 f_156 f_159 f_161 f_163 f_165 f_167 f_169 f_171 f_172 f_175 f_176 f_180 f_186 f_189 f_192 f_195 f_197 f_199 f_201 f_203 f_205 f_207 f_208 f_211 f_212 f_216 f_222 f_225 f_228 
+
+/Model_SM1/vev-config> print gauge group
+
+  Gauge group in vev-configuration "SMConfig1": [SU(2)] x [SU(2)] x [SU(2)] and SU(3)_C x SU(2)_L and [U(1)_1] x U(1)_2,Y x [U(1)_3] x [U(1)_4] x [U(1)_5] x [U(1)_6] x [U(1)_7] x [U(1)_8] x [U(1)_9] x [U(1)_10]
+
+  (factors in brackets, e.g. [SU(2)], belong to the hidden sector in this vev-configuration)
+
+/Model_SM1/vev-config> cd ..
+/Model_SM1> cd gauge group
+/Model_SM1/gauge group> print U1 generators
+
+  U(1) generators:
+    (   -4,     0,     0,     6,     0,     0,     0,     0),  (    1,    -1,     0,     0,    -2,     1,     1,     0)  
+    (    0,     0,     0,     0,     0,     0,     0,     0),  (  1/6,  -1/2,   1/2,     0,   1/2,   1/6,   1/6,     0)  Y
+    (    6,     0,     0,     4,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)  
+    (    0,     0,     1,     0,     1,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)  
+    (    0,    -1,     0,     0,     0,     1,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)  
+    (    0,     0,     0,     0,     0,     0,    -1,     1),  (    0,     0,     0,     0,     0,     0,     0,     0)  
+    (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,    -1,     0,     0,     0,     1)  
+    (   -4,     0,     0,     6,     0,     0,     0,     0),  (    0,    52,    52,     0,     0,     0,     0,     0)  
+    (   -4,     0,     0,     6,     0,     0,     0,     0),  (    0,    10,   -11,     0,    21,     0,     0,     0)  
+    (    4,     0,     0,    -6,     0,     0,     0,     0),  (   17,     7,    -6,     0,    -4,    17,    17,     0)  
+
+/Model_SM1/gauge group> cd ..
+/Model_SM1> cd ..
+/> exit 
+
+  Do you really want to quit? Type "yes" to quit or "no" to continue.
+
+/> yes
+
+  End.
+
+ricardo@ricardo-Latitude-3590:~/orbifolderN0practprompt-sept7-c$ 
+

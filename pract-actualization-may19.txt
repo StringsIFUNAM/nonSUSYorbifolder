@@ -1,0 +1,276 @@
+ricardo@lanix:~/orbifolderN0practprompt-oct12-c-frommsn-t1$ ./orbifolder
+
+  ###########################################################################
+  #  The C++ Orbifolder                                                     #
+  #  Version: 1.2                                                           #
+  #  by H.P. Nilles, S. Ramos-Sanchez, P.K.S. Vaudrevange and A. Wingerter  #
+  ###########################################################################
+
+/> load orbifolds(modelZ3_1.txt)
+
+  Load orbifolds from file "modelZ3_1.txt". potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  Orbifold "Z3_1_1" loaded.
+
+/> create random orbifold from(Z3_1_1) save to(randSMZ3-may19.txt) use(0,0,0,0,0,0,0,0) if(inequivalent SM) load when done #models(4)
+
+  New child process "PID 26596" from command "create random orbifold from(Z3_1_1) save to(randSMZ3-may19.txt) use(0,0,0,0,0,0,0,0) if(inequivalent SM) load when done #models(4)".
+
+/>  potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  Models created without problems.
+
+  For orbifold "Z3_1_1" PID 26596 done: "create random orbifold from(Z3_1_1) save to(randSMZ3-may19.txt) use(0,0,0,0,0,0,0,0) if(inequivalent SM) load when done #models(4)" TIME: 00:08:31
+
+  Load orbifolds from file "randSMZ3-may19.txt". potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  4 orbifolds loaded.
+
+  New orbifolds saved to file "randSMZ3-may19.txt".
+
+/> dir
+
+  commands of this directory:
+    load orbifolds(Filename)
+    save orbifolds(Filename)
+
+    create orbifold(OrbifoldLabel) with point group(M,N)
+    create random orbifold from(OrbifoldLabel)
+                                              various parameters, see "help create random"
+    rename orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
+    delete orbifold(OrbifoldLabel)
+    delete orbifolds
+
+  change directory:
+    cd Z3_1_1
+    cd Model_SM1
+    cd Model_SM2
+    cd Model_SM3
+    cd Model_SM4
+
+  general commands:
+    dir                                       show commands; optional: "no subdirectories"
+    help                                      optional: "create random"
+    exit                                      exit program
+
+/> cd Model_SM1
+/Model_SM1> cd vev-config
+/Model_SM1/vev-config> analyze config
+
+  Analyzing vev-configuration "TestConfig1" ...
+  One vev-configuration identified, labeled "SMConfig1" and selected.
+  Using label #1 of the fields.
+
+  Gauge group in vev-configuration "SMConfig1": SU(3)_C x SU(2)_L and U(1)_Y
+
+  114 (  1,  1)_s  U(1) : (    0)  s_1 - s_3 s_10 - s_18 s_25 - s_63 s_65 s_66 s_68 s_69 s_71 s_72 s_74 s_75 s_77 s_78 s_80 s_81 s_83 s_84 s_86 s_87 s_89 - s_129 
+    3 (  3,  1)_s  U(1) : ( -2/3)  s_4 - s_6 
+    3 ( -3,  2)_s  U(1) : (  1/6)  s_7 - s_9 
+    3 (  1,  2)_s  U(1) : (  1/2)  s_19 - s_21 
+    3 (  1,  1)_s  U(1) : (    1)  s_22 - s_24 
+    6 (  1,  2)_s  U(1) : ( -1/2)  s_64 s_67 s_70 s_82 s_85 s_88 
+    3 (  3,  1)_s  U(1) : (  1/3)  s_73 s_76 s_79 
+
+    1 ( -3,  2)_f  U(1) : ( -5/6)  f_1 
+  125 (  1,  1)_f  U(1) : (    0)  f_2 - f_9 f_14 - f_16 f_20 - f_34 f_41 - f_73 f_75 f_76 f_78 f_79 f_81 f_82 f_84 f_85 f_87 f_88 f_90 f_91 f_93 f_94 f_96 f_97 f_99 - f_142 
+    1 (  3,  2)_f  U(1) : (  5/6)  f_10 
+    3 ( -3,  1)_f  U(1) : ( -1/3)  f_11 - f_13 
+    3 (  3,  1)_f  U(1) : ( -2/3)  f_17 - f_19 
+    3 ( -3,  2)_f  U(1) : (  1/6)  f_35 - f_37 
+    3 (  1,  1)_f  U(1) : (    1)  f_38 - f_40 
+    6 (  3,  1)_f  U(1) : (  1/3)  f_74 f_77 f_80 f_92 f_95 f_98 
+    3 (  1,  2)_f  U(1) : ( -1/2)  f_83 f_86 f_89 
+    4 (  3,  1)_f  U(1) : ( -1/6)  f_143 f_210 f_213 f_216 
+    4 ( -3,  1)_f  U(1) : (  1/6)  f_144 f_147 - f_149 
+   40 (  1,  1)_f  U(1) : ( -1/2)  f_145 f_161 f_164 f_167 f_170 f_173 f_176 f_179 f_182 f_185 - f_187 f_190 f_191 f_194 f_195 f_198 f_199 f_202 f_203 f_206 f_207 f_220 f_224 f_228 f_232 f_236 f_240 f_243 - f_254 
+   40 (  1,  1)_f  U(1) : (  1/2)  f_146 f_153 - f_155 f_159 f_162 f_165 f_168 f_171 f_174 f_177 f_180 f_183 f_188 f_189 f_192 f_193 f_196 f_197 f_200 f_201 f_204 f_205 f_208 f_209 f_211 f_214 f_217 f_221 f_222 f_225 f_226 f_229 f_230 f_233 f_234 f_237 f_238 f_241 f_242 
+   24 (  1,  2)_f  U(1) : (    0)  f_150 - f_152 f_156 - f_158 f_160 f_163 f_166 f_169 f_172 f_175 f_178 f_181 f_184 f_212 f_215 f_218 f_219 f_223 f_227 f_231 f_235 f_239 
+
+/Model_SM1/vev-config> print gauge group
+
+  Gauge group in vev-configuration "SMConfig1": SU(3)_C x SU(2)_L and [SU(2)] and [U(1)_1] x U(1)_2,Y x [U(1)_3] x [U(1)_4] x [U(1)_5] x [U(1)_6] x [U(1)_7] x [U(1)_8] x [U(1)_9] x [U(1)_10] x [U(1)_11] x [U(1)_12]
+
+  (factors in brackets, e.g. [SU(2)], belong to the hidden sector in this vev-configuration)
+
+/Model_SM1/vev-config> cd ..
+/Model_SM1> exit
+
+  Do you really want to quit? Type "yes" to quit or "no" to continue.
+
+/Model_SM1> yes
+
+  End.
+
+ricardo@lanix:~/orbifolderN0practprompt-oct12-c-frommsn-t1$ ls
+aclocal.m4      COPYING          model4902.txt      modelSMz8II2.txt   modelZ4_3.txt                 practpromptrandom1.txt         randSMZ3-may19.txt
+AUTHORS         GaugeInvariance  model6-z6I2.txt    modelsrand25.txt   modelz4xz4p.txt               practpromptrandom2.txt         README
+autom4te.cache  Geometry         model7635.txt      modelsrand3.txt    modelz8II2p.txt               practpromptrandom3.txt         src
+ChangeLog       INSTALL          model92-z8II2.txt  modelsrand4.txt    modsz2xz4_2_4-g2a-2H.txt      practpromptrandom4.txt
+Config          libtool          model95-Z3.txt     modelsrandSM.txt   orbifolder                    practpromptrandom5.txt
+config.log      m4               modelrand1.txt     modelsSMrand1.txt  practprompt1.txt              practpromptrandom6.txt
+config.status   Makefile         Models             modelsSMrand.txt   practprompt2.txt              randmodelsZ3-8-5ineq-m19.txt
+configure       Makefile.am      models2H.txt       modelZ3_1.txt      practprompt3.txt              randmodelsZ3-m19.txt
+configure.ac    Makefile.in      modelSM5115.txt    modelz3p.txt       practprompt-model-sept15.txt  randSMZ3-6-4inequiv-may19.txt
+ricardo@lanix:~/orbifolderN0practprompt-oct12-c-frommsn-t1$ ./orbifolder
+
+  ###########################################################################
+  #  The C++ Orbifolder                                                     #
+  #  Version: 1.2                                                           #
+  #  by H.P. Nilles, S. Ramos-Sanchez, P.K.S. Vaudrevange and A. Wingerter  #
+  ###########################################################################
+
+/> load orbifolds(randSMZ3-6-4inequiv-may19.txt) inequivalent
+
+  Load inequivalent orbifolds from file "randSMZ3-6-4inequiv-may19.txt". potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  4 orbifolds loaded.
+
+/> dir
+
+  commands of this directory:
+    load orbifolds(Filename)
+    save orbifolds(Filename)
+
+    create orbifold(OrbifoldLabel) with point group(M,N)
+    create random orbifold from(OrbifoldLabel)
+                                              various parameters, see "help create random"
+    rename orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
+    delete orbifold(OrbifoldLabel)
+    delete orbifolds
+
+  change directory:
+    cd Model_SM1
+    cd Model_SM2
+    cd Model_SM3
+    cd Model_SM4
+
+  general commands:
+    dir                                       show commands; optional: "no subdirectories"
+    help                                      optional: "create random"
+    exit                                      exit program
+
+/> exit 
+
+  Do you really want to quit? Type "yes" to quit or "no" to continue.
+
+/> yes
+
+  End.
+
+ricardo@lanix:~/orbifolderN0practprompt-oct12-c-frommsn-t1$ ./orbifolder
+
+  ###########################################################################
+  #  The C++ Orbifolder                                                     #
+  #  Version: 1.2                                                           #
+  #  by H.P. Nilles, S. Ramos-Sanchez, P.K.S. Vaudrevange and A. Wingerter  #
+  ###########################################################################
+
+/> load orbifolds(randSMZ3-6-4inequiv-may19.txt)             
+
+  Load orbifolds from file "randSMZ3-6-4inequiv-may19.txt". potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+ potential tachyons in sector (1, 0, 0) with weight q_i = (0.00 0.00 0.00 0.00 )
+ possible tacyonic Excitation N = 0.00
+ and mass M_R^2 = -0.50
+
+
+  6 orbifolds loaded.
+
+/> dir
+
+  commands of this directory:
+    load orbifolds(Filename)
+    save orbifolds(Filename)
+
+    create orbifold(OrbifoldLabel) with point group(M,N)
+    create random orbifold from(OrbifoldLabel)
+                                              various parameters, see "help create random"
+    rename orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
+    delete orbifold(OrbifoldLabel)
+    delete orbifolds
+
+  change directory:
+    cd Model_SM1
+    cd Model_SM2
+    cd Model_SM3
+    cd Model_SM4
+    cd Model_SM5
+    cd Model_SM6
+
+  general commands:
+    dir                                       show commands; optional: "no subdirectories"
+    help                                      optional: "create random"
+    exit                                      exit program
+
+/> exit
+
+  Do you really want to quit? Type "yes" to quit or "no" to continue.
+
+/> yes
+
+  End.
+
+ricardo@lanix:~/orbifolderN0practprompt-oct12-c-frommsn-t1$ 
+
