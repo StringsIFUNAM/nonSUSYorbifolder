@@ -330,7 +330,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
       // just replace this
 
       char* user_input;
-      user_input = readline("");
+      user_input = readline("/> ");
       command = user_input;
       add_history(user_input);
 
@@ -6681,7 +6681,7 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
 {
   if (this->current_folder[0] == -1)
   {
-    output = "/> ";
+    output = ""; // Remove prompt symbol
     return true;
   }
   else
