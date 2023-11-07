@@ -13,6 +13,13 @@
 #include "clinalg.h"
 #include "clatticevector.h"
 
+
+
+
+
+
+
+
 #define CHECKERROR true
 
 using std::cout;
@@ -306,6 +313,20 @@ rational<int> D2Rat(const double x)
 
   return rational<int>(((int)roundf(10000*x)),10000);
 }
+
+
+/* ##########################################################################
+######   NewPrompt                                                     ######
+######   Added the ability to navigate in the prompt                   ######
+######   Version: 06.11.2023                                           ######
+########################################################################## */
+
+//
+
+
+
+
+
 
 
 

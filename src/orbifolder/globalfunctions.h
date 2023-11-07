@@ -76,6 +76,9 @@ bool                   global_ConvertVectorOfString2VectorOfUnsigned(const vecto
 vector<unsigned>       global_GetIndices(const vector<string> &FieldLabels, unsigned use_Labels, const vector<CField> &Fields);
 vector<unsigned>       global_GetIndicesOnlyFieldWithNumber(const vector<string> &FieldLabels, unsigned use_Labels, const vector<CField> &Fields);
 
+//add new prompt
+
+
 istream&               GetSaveLine(istream &in, string &result);
 
 bool                   IsSinglet(const RepVector &Dimensions);
