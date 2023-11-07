@@ -12,6 +12,10 @@
 #include <sys/stat.h>
 #include <vector>
 
+#include <readline/readline.h>
+#include <readline/history.h>
+
+
 extern unsigned SELFDUALLATTICE;
 
 using std::vector;
@@ -197,6 +201,8 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
   string tmp_string1 = "";
   string command     = "";
 
+
+
   if (this->online_mode)
   {
     ifilename = "program.txt";
@@ -321,9 +327,22 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
       use_cin = true;
 
-      // just replace this 
-      GetSaveLine(cin, command);
-      //command = enriques_prompt()
+      // just replace this
+
+      char* user_input;
+      user_input = readline("");
+      command = user_input;
+      add_history(user_input);
+
+      free(user_input);
+      /*
+      while (() != nullptr) {
+
+      }
+      */
+      //GetSaveLine(cin, command);
+
+
       // just replace this
       
       cin.clear();
