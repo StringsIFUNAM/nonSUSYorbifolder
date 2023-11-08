@@ -6691,27 +6691,27 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
     {
       case 0:
       {
-        output += "> ";
+        output += ""; // Fix double prompt
         return true;
       }
       case 1:
       {
-        output += "/model> ";
+        output += "/model";
         return true;
       }
       case 2:
       {
-        output += "/gauge group> ";
+        output += "/gauge group";
         return true;
       }
       case 3:
       {
-        output += "/spectrum> ";
+        output += "/spectrum";
         return true;
       }
       case 4:
       {
-        output += "/couplings> ";
+        output += "/couplings";
         return true;
       }
       case 5:
@@ -6721,12 +6721,12 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
         {
           case 0:
           {
-            output += "> ";
+            output += " ";
             return true;
           }
           case 1:
           {
-            output += "/labels> ";
+            output += "/labels";
             return true;
           }
         }
