@@ -318,21 +318,31 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
         }
         return true;
       }
-
-      if (!this->keep_output_to_file)
+      // It's comment, for elimine double prompt
+      /*if (!this->keep_output_to_file)
       {
         this->PrintCurrentDirectory(tmp_string1);
         (*this->Print.out) << tmp_string1 << flush;
-      }
+      }*/
 
       use_cin = true;
 
       // just replace this
 
       char* user_input;
-      user_input = readline("/> ");
-      command = user_input;
-      add_history(user_input);
+
+      string my_folder;
+
+      string my_prompt = "/> ";
+
+      if (PrintCurrentDirectory(my_folder)){
+
+        user_input = readline((my_folder+my_prompt).c_str());
+        command = user_input;
+        add_history(user_input);
+      }
+
+
 
       free(user_input);
       /*
@@ -6687,6 +6697,7 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
   else
   {
     output = "/" + this->Orbifolds[this->OrbifoldIndex].OrbifoldGroup.Label;
+    //output = "";
     switch (this->current_folder[1])
     {
       case 0:
@@ -6735,6 +6746,10 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
   }
   return false;
 }
+
+
+
+
 
 
 
