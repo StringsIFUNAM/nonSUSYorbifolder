@@ -1,3 +1,32 @@
-**.o
+# Ignorar archivos y directorios generados por el compilador
+*.o
+*.out
+*.exe
 **.Po
 *.Po
+
+# Ignorar archivos generados durante la compilación
+build/
+bin/
+
+# Ignorar archivos de configuración específicos del sistema
+*.suo
+*.user
+*.sln.docstates
+
+# Ignorar archivos de respaldo y temporales
+*~
+*.swp
+**.log
+*.log
+
+# Ignorar archivos de salida del sistema de construcción CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# Ignorar archivos de salida de compilación y enlazado
+Makefile
+Makefile.in
+CMakeLists.txt.user
