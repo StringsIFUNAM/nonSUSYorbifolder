@@ -4354,6 +4354,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "  parameters:\n";
             (*this->Print.out) << "    \"of sectors\"                            group table by sectors\n";
             (*this->Print.out) << "    \"of fixed points\"                       group table by fixed points\n";
+            (*this->Print.out)  << "    \"of sector T(m,n,k)\"                      print sector T(m,n,k) only\n";  //added, nov27
+            (*this->Print.out)  << "    \"of fixed point(label)\"                   print fixed point \"label\" only\n";  //added, nov27
+            (*this->Print.out) << "    \"of fixed point(m,n,k,n1,n2,n3,n4,n5,n6)\" print specified fixed point only\n";   //added, nov27
             (*this->Print.out) << "    \"no U1s\"                                omit the U(1) charges\n";
             (*this->Print.out) << "    \"with labels\"                           print the field labels\n\n" << flush;
           }
@@ -4372,7 +4375,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    print(fields)                             optional: \"with internal information\"\n";
             (*this->Print.out) << "    print all states\n";
             (*this->Print.out) << "    print summary                             various parameters, see \"help print summary\"\n";
-            (*this->Print.out) << "    print list of charges(fields)\n";
+            (*this->Print.out) << "    print list of charges(fields)             optional: \"label of list(Label)\"\n"; 
+            (*this->Print.out) << "    tex table(fields)                         optional: print labels(i,j,..)\n\n";  //added, nov27
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir (or help)                             show commands\n";
             (*this->Print.out) << "                                              optional: \"short cuts\", \"print summary\"\n";                                                       
