@@ -4437,13 +4437,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "\n  print summary\n";
             (*this->Print.out) << "    print a summary table of massless fields\n\n";
             (*this->Print.out) << "  parameters:\n";
-            (*this->Print.out) << "    \"of sectors\"                            group table by sectors\n";
-            (*this->Print.out) << "    \"of fixed points\"                       group table by fixed points\n";
+            (*this->Print.out) << "    \"of sectors\"                              group table by sectors\n";
+            (*this->Print.out) << "    \"of fixed points\"                         group table by fixed points\n";
             (*this->Print.out)  << "    \"of sector T(m,n,k)\"                      print sector T(m,n,k) only\n";  //added, nov27
             (*this->Print.out)  << "    \"of fixed point(label)\"                   print fixed point \"label\" only\n";  //added, nov27
             (*this->Print.out) << "    \"of fixed point(m,n,k,n1,n2,n3,n4,n5,n6)\" print specified fixed point only\n";   //added, nov27
-            (*this->Print.out) << "    \"no U1s\"                                omit the U(1) charges\n";
-            (*this->Print.out) << "    \"with labels\"                           print the field labels\n\n" << flush;
+            (*this->Print.out) << "    \"no U1s\"                                  omit the U(1) charges\n";
+            (*this->Print.out) << "    \"with labels\"                             print the field labels\n\n" << flush;
           }
           else
           if (this->FindParameterType1(parameter_string1, "short cuts"))
