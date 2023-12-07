@@ -5162,13 +5162,18 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 	const CVector NullVector4(4);
 	CVector q_momentum_p(4);
 	CVector q_momentum_m(4);
-	// end: define some constants and variables
+	
+	CVector q_momentum_pf(4); //added, nov27
+	CVector q_momentum_mf(4); //added, nov27
+		// end: define some constants and variables
+
+    const vector<CSector> &Sectors = Orbifold.GetSectors();  //added, nov 27
 
 	std::ostringstream oheadline;
 
 	// begin: create some standard strings
 	// R charge
-	if (PrintRCharges)
+	/*if (PrintRCharges)
 	{
 		tabular_parameter += "c|";
 		empty_line_string += "& ";
@@ -5176,7 +5181,7 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 		for (i = 1; i < ds; ++i)
 			oheadline << ", R_" << (i+1);
 		oheadline << "$ ";
-	}
+	}*/
 
 	// U(1) charges
 	for (i = 0; i < p1; ++i)
@@ -5231,6 +5236,17 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 				q_momentum_m = NullVector4;
 				q_momentum_p[j] = +1;
 				q_momentum_m[j] = -1;
+				
+				q_momentum_pf = NullVector4;  //added, nov27
+				q_momentum_mf = NullVector4;  //added, nov27
+				
+				if(j==1)                      //added, nov27
+				{                             //added, nov27
+				q_momentum_pf[j-1] = 2.0;      //added, nov27
+				q_momentum_pf[j] = 2.0;         //added, nov27
+				q_momentum_pf[j+1] = 2.0;       //added, nov27
+				q_momentum_pf[j+2] = 2.0;		//added, nov27
+			    }                                //added, nov27
 
 				// first check whether this fixed point contains fields
 				// that are elements of FieldIndices
@@ -5249,9 +5265,13 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 
 						if (find(FieldIndices.begin(), FieldIndices.end(), FieldIndex) != FieldIndices.end())
 						{
-							const CVector &q_Vector = Field.q_sh;
+							
+							//const CVector &q_Vector = Field.q_sh;
+							const CVector &q_Vector = Field.GetRMWeight(0, Sectors);  //added, nov27
+                            q_momentum_mf = q_Vector + q_momentum_pf;   //added, nov27
 
-							if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m))
+							//if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m))
+							if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m) || (q_momentum_mf[1]==2.5) || (q_momentum_mf[1]==1.5))
 							{
 								untwisted_sector_empty = false;
 								fixedbrane_empty = false;
@@ -5271,9 +5291,12 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 
 						if (Field.SGElement.NoTwist())
 						{
-							const CVector &q_Vector = Field.q_sh;
+							//const CVector &q_Vector = Field.q_sh;
+							const CVector &q_Vector = Field.GetRMWeight(0, Sectors);  //added, nov27
+                            q_momentum_mf = q_Vector + q_momentum_pf;   //added, nov27
 
-							if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m))
+							//if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m))
+							if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m) || (q_momentum_mf[1]==2.5) || (q_momentum_mf[1]==1.5))
 							{
 								const RepVector &Dimensions = Field.Dimensions;
 
@@ -5282,7 +5305,7 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 								(*this->out) << "$ ";
 
 								// begin: print R charges
-								if (PrintRCharges)
+								/*if (PrintRCharges)
 								{
 									(*this->out) << "& $";
 
@@ -5293,7 +5316,7 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 											(*this->out) << " ";
 									}
 									(*this->out) << "$ ";
-								}
+								}*/
 								// end: print R charges
 
 								// begin: print U(1) charges
@@ -5371,7 +5394,7 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 						first_printed_sector = false;
 
 					// begin: print localization (m, n, k; n_alpha)
-					const CSpaceGroupElement &Label = FixedBrane.GetSGElement();
+					/*const CSpaceGroupElement &Label = FixedBrane.GetSGElement();
 					(*this->out) << "$T_{(" << Label.Get_m() << ", " << Label.Get_n() << ", " << Label.Get_k() << ")}^{(";
 
 					if (is_integer(localTwist[1]))
@@ -5389,8 +5412,43 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 					else
 						(*this->out) << Label.Get_n(4) << ", " << Label.Get_n(5);
 
-					(*this->out) << ")}$ ";
+					(*this->out) << ")}$ ";*/
 					// end: print localization (k, l; n_alpha)
+
+
+					// begin: print localization (m, n, k; n_alpha)   //added, nov27
+					const CSpaceGroupElement &Label = FixedBrane.GetSGElement();
+					(*this->out) << "$T_{(" << Label.Get_m() << ", " << Label.Get_n() << ", " << Label.Get_k() << ")}^{(";
+
+					if (is_integer(localTwist[1]))
+						(*this->out) << "*, *, ";
+					else
+                        {
+						 this->PrintRational(Label.Get_n(0),false);
+                         (*this->out) << ", ";
+                         this->PrintRational(Label.Get_n(1),false);
+                         (*this->out) << ", ";
+                        }
+					if (is_integer(localTwist[2]))
+						(*this->out) << "*, *, ";
+					else
+                        {
+						 this->PrintRational(Label.Get_n(2),false);
+                         (*this->out) << ", ";
+                         this->PrintRational(Label.Get_n(3),false);
+                         (*this->out) << ", ";
+                        }
+					if (is_integer(localTwist[3]))
+						(*this->out) << "*, *";
+					else
+                        {
+						 this->PrintRational(Label.Get_n(4),false);
+                         (*this->out) << ", ";
+                         this->PrintRational(Label.Get_n(5),false);
+                        }
+					(*this->out) << ")}$ ";                            
+					// end: print localization (k, l; n_alpha)    //added, nov27
+                    
 
 					for (k = 0; k < f2; ++k)
 					{
@@ -5405,7 +5463,7 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 							(*this->out) << "$ ";
 
 							// begin: print R charges
-							if (PrintRCharges)
+							/*if (PrintRCharges)
 							{
 								(*this->out) << "& $";
 
@@ -5416,7 +5474,7 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 										(*this->out) << " ";
 								}
 								(*this->out) << "$ ";
-							}
+							}*/
 							// end: print R charges
 
 							// begin: print U(1) charges
