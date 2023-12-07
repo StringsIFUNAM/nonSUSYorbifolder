@@ -5238,14 +5238,14 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 				q_momentum_m[j] = -1;
 				
 				q_momentum_pf = NullVector4;  //added, nov27
-				q_momentum_mf = NullVector4;  //added, nov27
+				q_momentum_mf = NullVector4;  
 				
-				if(j==1)                      //added, nov27
-				{                             //added, nov27
-				q_momentum_pf[j-1] = 2.0;      //added, nov27
-				q_momentum_pf[j] = 2.0;         //added, nov27
-				q_momentum_pf[j+1] = 2.0;       //added, nov27
-				q_momentum_pf[j+2] = 2.0;		//added, nov27
+				if(j==1)                      
+				{                             
+				q_momentum_pf[j-1] = 2.0;      
+				q_momentum_pf[j] = 2.0;        
+				q_momentum_pf[j+1] = 2.0;       
+				q_momentum_pf[j+2] = 2.0;		
 			    }                                //added, nov27
 
 				// first check whether this fixed point contains fields
@@ -5393,59 +5393,25 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 					if (first_printed_sector)
 						first_printed_sector = false;
 
-					// begin: print localization (m, n, k; n_alpha)
-					/*const CSpaceGroupElement &Label = FixedBrane.GetSGElement();
-					(*this->out) << "$T_{(" << Label.Get_m() << ", " << Label.Get_n() << ", " << Label.Get_k() << ")}^{(";
-
-					if (is_integer(localTwist[1]))
-						(*this->out) << "*, *, ";
-					else
-						(*this->out) << Label.Get_n(0) << ", " << Label.Get_n(1) << ", ";
-
-					if (is_integer(localTwist[2]))
-						(*this->out) << "*, *, ";
-					else
-						(*this->out) << Label.Get_n(2) << ", " << Label.Get_n(3) << ", ";
-
-					if (is_integer(localTwist[3]))
-						(*this->out) << "*, *";
-					else
-						(*this->out) << Label.Get_n(4) << ", " << Label.Get_n(5);
-
-					(*this->out) << ")}$ ";*/
-					// end: print localization (k, l; n_alpha)
-
 
 					// begin: print localization (m, n, k; n_alpha)   //added, nov27
 					const CSpaceGroupElement &Label = FixedBrane.GetSGElement();
 					(*this->out) << "$T_{(" << Label.Get_m() << ", " << Label.Get_n() << ", " << Label.Get_k() << ")}^{(";
-
-					if (is_integer(localTwist[1]))
-						(*this->out) << "*, *, ";
-					else
-                        {
+		
 						 this->PrintRational(Label.Get_n(0),false);
                          (*this->out) << ", ";
                          this->PrintRational(Label.Get_n(1),false);
                          (*this->out) << ", ";
-                        }
-					if (is_integer(localTwist[2]))
-						(*this->out) << "*, *, ";
-					else
-                        {
+              
 						 this->PrintRational(Label.Get_n(2),false);
                          (*this->out) << ", ";
                          this->PrintRational(Label.Get_n(3),false);
                          (*this->out) << ", ";
-                        }
-					if (is_integer(localTwist[3]))
-						(*this->out) << "*, *";
-					else
-                        {
+             
 						 this->PrintRational(Label.Get_n(4),false);
                          (*this->out) << ", ";
                          this->PrintRational(Label.Get_n(5),false);
-                        }
+                   
 					(*this->out) << ")}$ ";                            
 					// end: print localization (k, l; n_alpha)    //added, nov27
                     
