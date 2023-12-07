@@ -64,6 +64,7 @@ struct PromptVariables
 class CPrompt{
 public:
 // member functions
+
   CPrompt();
   CPrompt(const COrbifold &Orbifold);
   CPrompt(const string &Filename);
@@ -94,6 +95,7 @@ public:
   bool              MessageXNotKnown(const vector<string> &NamesOfSetsOfX, const string &X, const string &X_Label, unsigned &index) const;
     
   bool              PrintCurrentDirectory(string &output) const;
+  string            StringCurrentDirectory(string &output) const;
   void              PrintCommandsConditions() const;
   void              PrintCommandsMonomials() const;
   void              PrintCommandsProcesses() const;
@@ -118,6 +120,10 @@ public:
   bool              ApplyConditions(const vector<SCondition> &Conditions, vector<unsigned> &FieldIndices) const;
   bool              ApplyConditions(vector<string> &Commands, unsigned &exec_command);
   bool              FindConditionsAndFilterFieldIndices(string &input_string, vector<unsigned> &FieldIndices) const;
+
+
+
+
 
 // member variables
   CPrint                   Print;
@@ -151,6 +157,7 @@ private:
                                             // current_folder[2] gives the further subdirectory of "vev-config" 
                                             //   0 for no subdirectory
                                             //   1 for "labels"
+
 };
 
 #endif

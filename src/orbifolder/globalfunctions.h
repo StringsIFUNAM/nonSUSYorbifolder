@@ -115,4 +115,5 @@ bool NextNumber(vector<unsigned> &Number, const vector<unsigned> &MaxDigits, con
 
 bool Find_Basis_Of_Orthogonal_Space(const vector<doubleVector> &OriginalSpace, const SelfDualLattice &GaugeLattice, unsigned d, vector<doubleVector> &OrthogonalSpace);
 
+
 #endif
