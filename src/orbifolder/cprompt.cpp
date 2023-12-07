@@ -12,6 +12,9 @@
 #include <sys/stat.h>
 #include <vector>
 
+
+#include <iostream>
+#include <cstring>
 #include <readline/readline.h>
 #include <readline/history.h>
 
@@ -21,6 +24,71 @@ extern unsigned SELFDUALLATTICE;
 using std::vector;
 using std::cout;
 using std::endl;
+
+
+
+
+const char* command_names[] = {
+    "create",
+    "orbifold(",
+    "with point group(",
+    "cd ",
+    "load orbifold(",
+    "save",
+    "random orbifold from(",
+    "if(",
+    "rename orbifold(",
+    "to",
+    "use(",
+    "#models(",
+    "print",
+    "dir",
+    "cd ",
+    "help",
+    "available space groups",
+    "use space group(",
+    "set",
+    "shift",
+    "standard embedding",
+    "V(",
+    "WL W(",
+    nullptr
+};
+
+char** command_name_completion(const char*, int, int);
+char* command_name_generator(const char*, int);
+
+char** command_name_completion(const char* text, int start, int end) {
+    rl_attempted_completion_over = 1;
+    return rl_completion_matches(text, command_name_generator);
+}
+
+char* command_name_generator(const char* text, int state) {
+    static int list_index, len;
+    const char* name;
+
+    if (!state) {
+        list_index = 0;
+        len = strlen(text);
+    }
+
+    while ((name = command_names[list_index++])) {
+        rl_completion_append_character = '\0';
+        if (strncmp(name, text, len) == 0) {
+            return strdup(name);
+        }
+    }
+
+    return nullptr;
+}
+
+
+
+
+
+
+
+
 
 
 /* ########################################################################################
@@ -53,6 +121,8 @@ CPrompt::CPrompt()
   this->online_mode         = false;
   this->print_output        = true;
   this->wait_for_processes  = false;
+  
+   
 }
 
 
@@ -102,6 +172,7 @@ CPrompt::CPrompt(const COrbifold &Orbifold)
   this->online_mode         = false;
   this->print_output        = true;
   this->wait_for_processes  = false;
+
 }
 
 
@@ -137,6 +208,9 @@ CPrompt::CPrompt(const string &Filename)
   this->print_output        = true;
   this->wait_for_processes  = false;
 
+
+
+
   (*this->Print.out) << "\n";
   this->LoadOrbifolds(Filename, false, 0);
 }
@@ -161,7 +235,6 @@ CPrompt::CPrompt(const string &Filename)
 CPrompt::~CPrompt()
 {
 }
-
 
 
 /* ########################################################################################
@@ -229,6 +302,14 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
   size_t old_number_of_commands = 0;
   bool output_file_open = false;
   bool use_cin          = false;
+
+
+
+
+
+
+
+
 
   while (true)
   {
@@ -335,8 +416,12 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
       string my_prompt = "/> ";
 
+      rl_attempted_completion_function = command_name_completion;
+      const char* rl_completer_word_break_characters = " ";
       if (PrintCurrentDirectory(my_folder)){
+        //CPrompt::command_name_completion
 
+        const char* rl_completer_word_break_characters = " ";
         user_input = readline((my_folder+my_prompt).c_str());
         command = user_input;
         add_history(user_input);

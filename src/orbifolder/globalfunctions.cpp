@@ -1416,3 +1416,13 @@ bool operator==(const FPCoordinates &FP1, const FPCoordinates &FP2)
   }
   return true;
 }
+
+
+
+
+
+
+
+
+
+

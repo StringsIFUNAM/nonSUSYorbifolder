@@ -3,9 +3,27 @@
 
 #include "cprompt.h"
 
+
+
+// Mis inclusiones
+#include <iostream>
+#include <cstring>
+#include <readline/readline.h>
+
+
+
+
+
 using namespace std;
 
 unsigned SELFDUALLATTICE;
+
+
+
+
+
+
+
 
 int main(int argc, char *argv[])
 {
@@ -213,6 +231,9 @@ int main(int argc, char *argv[])
   cout << "  #  Version: 1.2                                                           #\n";
   cout << "  #  by H.P. Nilles, S. Ramos-Sanchez, P.K.S. Vaudrevange and A. Wingerter  #\n";
   cout << "  ###########################################################################\n" << endl;
+
+
+
 
   if (argc == 1)
   {
