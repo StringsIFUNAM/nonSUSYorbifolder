@@ -18,6 +18,8 @@ using namespace std;
 
 unsigned SELFDUALLATTICE;
 
+vector<int>              current_folder_global;
+
 
 
 

@@ -20,40 +20,209 @@
 
 
 extern unsigned SELFDUALLATTICE;
+extern vector<int> current_folder_global;;
 
 using std::vector;
 using std::cout;
 using std::endl;
 
-
-
-
-const char* command_names[] = {
+const char* command_names_main[] = {
     "create",
     "orbifold(",
     "with point group(",
-    "cd ",
-    "load orbifold(",
-    "save",
+    "cd",
     "random orbifold from(",
     "if(",
-    "rename orbifold(",
-    "to",
+    "generations",
+    "inequivalent",
+    "save",
+    "orbifolds",
     "use(",
     "#models(",
-    "print",
+    "delete orbifold",
     "dir",
-    "cd ",
+    "load orbifolds(",
+    "rename orbifold(",
+    "to(",
     "help",
+    "print info",
+    "load when done",
+    "do not check anomalies",
+    "compare #couplings of order(",
+    nullptr
+};
+
+const char* command_names_orbifold_model[] = {
+    "dir",
+    "help",
+    "cd",
+    "print",
+    "orbifold label",
+    "heterotic string type",
     "available space groups",
+    "point group",
+    "space group",
+    "twist",
+    "#SUSY",
+    "Wilson lines"
     "use space group(",
     "set",
     "shift",
     "standard embedding",
-    "V(",
     "WL W(",
     nullptr
 };
+
+const char* command_names_orbifold[] = {
+    "m",
+    "gg",  
+    "s",
+    "v",
+    "l",
+    "cd",
+    "model",
+    "gauge group",
+    "spectrum",
+    "vev-config",
+    "vev-config/labels",
+    "dir",
+    "help",
+    "print",
+    nullptr
+};
+
+const char* command_names_orbifold_gauge[] = {
+    "dir",
+    "help",
+    "cd",
+    "print",
+    "set",
+    "U1(",
+    "B-L",
+    "print",
+    "gauge group",
+    "beta coefficients",
+    "simple root(",
+    "simple roots",
+    "FI term",
+    "anomaly info",
+    "B-L generator",
+    "U1",
+    "generator(",
+    "generators",
+    nullptr
+};
+
+
+const char* command_names_orbifold_spectrum[] = {
+    "dir",
+    "help",
+    "cd",
+    "print",
+    "all states",
+    "summary",
+    "print(",
+    "list of charges(",
+    "tex table(",
+    nullptr
+};
+
+
+const char* command_names_orbifold_couplings[] = {
+    "dir",
+    nullptr
+};
+
+
+const char* command_names_orbifold_vev_main[] = {
+    "dir",
+    "help",
+    "cd",
+    "use config(",
+    "create config(",
+    "rename config(",
+    "to(",
+    "delete config(",
+    "print",
+    "configs",
+    "gauge group",
+    "analize config",
+    "labels",
+    nullptr
+};
+
+
+const char* command_names_orbifold_vev_labels[] = {
+    "dir",
+    "help",
+    "cd",
+    "change label(",
+    "to(",
+    "create labels",
+    "assing label(",
+    "to fixed point(",
+    "print labels",
+    "use label(",
+    "load labels(",
+    "save labels(",
+    nullptr
+};
+
+
+const char** getCommandNames(vector<int>&current_folder_global) {
+    if (current_folder_global[0]==-1)
+    {
+      return command_names_main;
+    }
+    else
+    {
+    switch (current_folder_global[1]) {
+        case 0:
+        {
+            return command_names_orbifold;
+        }
+        case 1:
+        {
+            return command_names_orbifold_model;
+        }
+        case 2:
+        {
+            return command_names_orbifold_gauge;
+        }
+        case 3: 
+        {
+            return command_names_orbifold_spectrum;
+        }
+        case 4:
+        {
+            return command_names_orbifold_couplings;
+        }
+        case 5:
+        {
+            switch (current_folder_global[2])
+            {
+              case 0:
+              {
+                return command_names_orbifold_vev_main;
+              }
+              case 1:
+              {
+                return command_names_orbifold_vev_labels;
+              }
+            }
+
+        
+        }
+        default:
+            return nullptr;
+    }
+    }
+}
+
+
+
+
+
 
 char** command_name_completion(const char*, int, int);
 char* command_name_generator(const char*, int);
@@ -71,6 +240,8 @@ char* command_name_generator(const char* text, int state) {
         list_index = 0;
         len = strlen(text);
     }
+
+    const char** command_names = getCommandNames(current_folder_global);
 
     while ((name = command_names[list_index++])) {
         rl_completion_append_character = '\0';
@@ -416,8 +587,11 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
       string my_prompt = "/> ";
 
+      current_folder_global = current_folder;
+
       rl_attempted_completion_function = command_name_completion;
       const char* rl_completer_word_break_characters = " ";
+
       if (PrintCurrentDirectory(my_folder)){
         //CPrompt::command_name_completion
 
