@@ -20,7 +20,7 @@
 
 
 extern unsigned SELFDUALLATTICE;
-extern vector<int> current_folder_global;;
+extern vector<int> current_folder_global;
 
 using std::vector;
 using std::cout;
@@ -45,10 +45,9 @@ const char* command_names_main[] = {
     "rename orbifold(",
     "to(",
     "help",
-    "print info",
+    //"print info",
     "load when done",
-    "do not check anomalies",
-    "compare #couplings of order(",
+    //"do not check anomalies",
     nullptr
 };
 
@@ -64,7 +63,7 @@ const char* command_names_orbifold_model[] = {
     "space group",
     "twist",
     "#SUSY",
-    "Wilson lines"
+    "Wilson lines",
     "use space group(",
     "set",
     "shift",
@@ -98,15 +97,15 @@ const char* command_names_orbifold_gauge[] = {
     "print",
     "set",
     "U1(",
-    "B-L",
+    //"B-L",
     "print",
     "gauge group",
     "beta coefficients",
     "simple root(",
     "simple roots",
-    "FI term",
+    //"FI term",
     "anomaly info",
-    "B-L generator",
+    //"B-L generator",
     "U1",
     "generator(",
     "generators",
@@ -124,6 +123,12 @@ const char* command_names_orbifold_spectrum[] = {
     "print(",
     "list of charges(",
     "tex table(",
+    "of sectors",
+    "of fixed points",
+    "of sector T(",                     
+    "of fixed point(",               
+    "no U1s",                               
+    "with labels",
     nullptr
 };
 
@@ -146,8 +151,15 @@ const char* command_names_orbifold_vev_main[] = {
     "print",
     "configs",
     "gauge group",
-    "analize config",
+    "analyze config",
     "labels",
+    "select observable sector:",
+    "gauge group(",
+    "full gauge group",
+    "no gauge groups",
+    "U1s(",
+    "all U1s",
+    "no U1s",
     nullptr
 };
 
@@ -159,7 +171,7 @@ const char* command_names_orbifold_vev_labels[] = {
     "change label(",
     "to(",
     "create labels",
-    "assing label(",
+    "assign label(",
     "to fixed point(",
     "print labels",
     "use label(",
@@ -4141,7 +4153,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             }
             if (s1 != 0)
             {
-              (*this->Print.out) << "    print FI term\n";
               (*this->Print.out) << "    print anomaly info\n";
             }
             if (s1 != 0)
