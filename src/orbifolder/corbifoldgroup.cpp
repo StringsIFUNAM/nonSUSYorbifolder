@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iostream> 
 #include <cstdlib>
 
 #include "corbifoldgroup.h"
@@ -2310,8 +2310,7 @@ void COrbifoldGroup::PrintToFile(std::ostream &out) const
 
 	CPrint Print(Tstandard, &out);
 	out << "begin model\n";
-//	out << "Label:Z2Wx" << this->Label << "\n";
-	out << "Label:" << this->Label << "\n"; //sept 6
+	out << "Label:" << this->Label << "\n"; 
 	out << "SpaceGroup:" << this->SpaceGroup.GeometryFilename << "\n";
 
 	if (Lattice == E8xE8)
@@ -2529,8 +2528,7 @@ CShiftVector &COrbifoldGroup::AccessShift(const unsigned &i)
 	this->ModularInvariance_CheckStatus = NotChecked;
 	this->OrbifoldGroup_CheckStatus     = NotChecked;
 
-//	if (i > 1) //orig in N0 pack
-	if (i > 2)  // see
+	if (i > 2)  
 	{
 		cout << "\n  Warning in CShiftVector &COrbifoldGroup::AccessShift(...) : Index i out of range. Set i = 0." << endl;
 		return this->Shifts[0];
