@@ -1333,22 +1333,9 @@ void CPrint::PrintListOfCharges(const COrbifold &Orbifold, const SConfig &VEVCon
 			this->PrintRational(tmp_Vector, Lattice);
 			(*this->out) << this->separator << " ";
 
-//			this->PrintRational(tmp_Field.q_sh, Lattice); //orig
-			this->PrintRational(tmp_Field.GetRMWeight(0,Orbifold.GetSectors()), SO8); //added sept23
+			this->PrintRational(tmp_Field.GetRMWeight(0,Orbifold.GetSectors()), SO8); 
 			(*this->out) << this->separator << " ";
 
-/*			if (print_Rcharges)  //sept23
-			{
-				(*this->out) << this->vector_open;
-				for (k = 0; k < ds2; ++k)
-				{
-					this->PrintRational(tmp_Field.GetDiscreteCharge(DiscreteRSymmetries[k]));
-					if (k < ds2-1)
-						(*this->out) << this->separator;
-				}
-				(*this->out) << this->vector_close << this->separator << " ";
-			}
-*/
 			if (print_localization)
 			{
 				(*this->out) << this->vector_open;
@@ -3855,43 +3842,19 @@ bool CPrint::PrintStates(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 		// end: print (gauge and acc.) charges
 
 		(*this->out) << "\n";
-
-//		(*this->out) << "  left-moving p_sh    : ";
         (*this->out) << "  left-moving p_sh    : ";		
-//		this->PrintRational(tmp_Field.GetLMWeight(0, Sectors), Lattice, false);
 		(*this->out) << "\n";
 
-//**** begin1: july 7, 2020
-
-/*       size_t t3 = 0;
-       t3 = tmp_Field.GetNumberOfLMWeights();
-       for (int k = 0; k < t3; ++k)
-       {
-         (*this->out) << "  left-moving p_sh " << k+1 << "  : ";
-         this->PrintRational(tmp_Field.GetLMWeight(k, Sectors), Lattice, false);
+        size_t t3 = 0;
+        t3 = tmp_Field.GetNumberOfLMWeights();
+        for (int k = 0; k < t3; ++k)
+        {
+          this->PrintRational(tmp_Field.GetLMWeight(k, Sectors), Lattice, false);
          (*this->out) << "\n";
-       }
-*/
-//**** end1: july 7, 2020
-
-
-
-//**** begin2: july 7, 2020
-
-       size_t t3 = 0;
-       t3 = tmp_Field.GetNumberOfLMWeights();
-       for (int k = 0; k < t3; ++k)
-       {
-         this->PrintRational(tmp_Field.GetLMWeight(k, Sectors), Lattice, false);
+        }
         (*this->out) << "\n";
-       }
-      (*this->out) << "\n";
-//**** end2: july 7, 2020
-
-
 		(*this->out) << "  right-moving q_sh   : ";
-//		this->PrintRational(tmp_Field.q_sh, SO8, false);  //orig
-		this->PrintRational(tmp_Field.GetRMWeight(0, Sectors), SO8, false); // try july6,2020, ok
+		this->PrintRational(tmp_Field.GetRMWeight(0, Sectors), SO8, false); 
 		(*this->out) << "\n";
 
 		// begin: print oscillators
@@ -3910,42 +3873,6 @@ bool CPrint::PrintStates(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 		}		
 		// end: print oscillators
 
-		// begin: print R charges
-/* //begin1:july25,2020, para quitar el aborted core message and exit en z6I2
-		if (Print_DiscreteRSymmetries)
-		{
-			(*this->out) << "  R charges           : " << this->vector_open;
-			t2 = DiscreteRSymmetries.size();
-			for (j = 0; j < t2; ++j)
-			{
-				this->PrintRational(tmp_Field.GetDiscreteCharge(DiscreteRSymmetries[j]), false);
-				if (j+1 < t2)
-					(*this->out) << this->separator;
-			}
-			(*this->out) << this->vector_close << "\n";
-		}
-*/ //end1:july25,2020
-		// end: print R charges
-
-		// begin: print modular weights
-/*		if (Print_ModularSymmetries)        //we comment , june22,2020 , para quitar el aborted core message and exit en z2xz4(2,4)model7635,4902
-		{
-			if ((tmp_Field.Multiplet == LeftChiral) || (tmp_Field.Multiplet == RightChiral) || (tmp_Field.Multiplet == Hyper) || (tmp_Field.Multiplet == Halfhyper))
-				(*this->out) << "  modular weights     : " << this->vector_open;
-			else
-				(*this->out) << "  contribution to       \n  A_{mod-grav-grav}   : " << this->vector_open;
-
-			t2 = ModularSymmetries.size();
-			for (j = 0; j < t2; ++j)
-			{
-				this->PrintRational(tmp_Field.GetModularWeight(ModularSymmetries[j], Sectors), false);
-				if (j+1 < t2)
-					(*this->out) << this->separator;
-			}
-			(*this->out) << this->vector_close << "\n";
-		}
-		// end: print modular weights
-*/
 		(*this->out) << "\n";
 
 		(*this->out) << "  vev                 : " << tmp_Field.VEVs.GetLength() << "\n";
@@ -3979,41 +3906,6 @@ bool CPrint::PrintStates(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 	(*this->out) << endl;
 	return true;
 }
-
-
-
-/* ########################################################################################
-######   PrintSummaryOfVEVConfig(const SConfig &VEVConfig, ...) const                ######
-######                                                                               ######
-######   Version: 20.04.2011                                                         ######
-######   Check-Level: 1                                                              ######
-######                                                                               ######
-###########################################################################################
-######   input:                                                                      ######
-######   1) VEVConfig    : contains the fields to be printed                         ######
-######   2) Multiplet    : print only those fields of "VEVConfig" of this SUSY type  ######
-######   3) print_Labels : print the field labels?                                   ######
-######   output:                                                                     ######
-######   -                                                                           ######
-######################################################################################## */
-/*void CPrint::PrintSummaryOfVEVConfig(const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels) const
-{
-	this->PrintGaugeGroup(VEVConfig);
-
-	const vector<CField> &Fields = VEVConfig.Fields;
-	const size_t f1 = Fields.size();
-
-	const bool UseAnySUSYKind = (Multiplet == AnyKind);
-
-	vector<unsigned> FieldIndices;
-	for (unsigned i = 0; i < f1; ++i)
-	{
-		if ((Fields[i].Multiplet == Multiplet) || UseAnySUSYKind)
-			FieldIndices.push_back(i);
-	}
-	this->PrintSpectrum(FieldIndices, VEVConfig, print_Labels);
-}
-*/
 
 
 /* ########################################################################################		//hacking here!!!
@@ -4053,7 +3945,6 @@ void CPrint::PrintSummaryOfVEVConfig(const SConfig &VEVConfig, const vector<SUSY
 
 
 
-
 /* ########################################################################################
 ######   PrintSummary(const CSector &Sector, const SConfig &VEVConfig, ...) const    ######
 ######                                                                               ######
@@ -4069,29 +3960,6 @@ void CPrint::PrintSummaryOfVEVConfig(const SConfig &VEVConfig, const vector<SUSY
 ######   output:                                                                     ######
 ######   return value    : printed succesfully?                                      ######
 ######################################################################################## */
-/*bool CPrint::PrintSummary(const CSector &Sector, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels) const 
-{
-	if ((Sector.Get_m() == 0) && (Sector.Get_n() == 0) && (Sector.Get_k() == 0))
-		(*this->out) << "  " << this->cbegin << "U";
-	else
-		(*this->out) << "  " << this->cbegin << "T(" << Sector.Get_m() << "," << Sector.Get_n() << "," << Sector.Get_k() << ")";
-	(*this->out) << " Sector:" << this->cend;
-
-	vector<unsigned> FieldIndices;
-	Sector.GetFieldIndices(VEVConfig.Fields, Multiplet, FieldIndices);
-
-	if (FieldIndices.size() == 0)
-	{
-		(*this->out) << "  " << this->cbegin << " empty" << this->cend << "\n";
-		return true;
-	}
-	(*this->out) << "\n";
-
-	this->PrintSpectrum(FieldIndices, VEVConfig, print_Labels);
-
-	return true;
-}*/
-
 bool CPrint::PrintSummary(const CSector &Sector, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels) const 
 {
 	if ((Sector.Get_m() == 0) && (Sector.Get_n() == 0) && (Sector.Get_k() == 0))
@@ -4132,51 +4000,6 @@ bool CPrint::PrintSummary(const CSector &Sector, const SConfig &VEVConfig, const
 ######   output:                                                                     ######
 ######   return value     : printed succesfully?                                     ######
 ######################################################################################## */
-/*bool CPrint::PrintSummary(const CFixedBrane &FixedBrane, const COrbifoldGroup &OrbifoldGroup, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels) const
-{
-
-	const COrbifoldGroupElement &constr_Element = OrbifoldGroup.GetElement(FixedBrane.Getconstructing_Element());
-
-	const CSpaceGroupElement &Element = constr_Element.SGElement;
-	(*this->out) << "  -------------------------------------------------------------------------------------------------------------\n";
-	(*this->out) << "  sector:      (m,n, k)  = (" << Element.Get_m() << ", " << Element.Get_n() << ", " << Element.Get_k() << ")\n";
-	(*this->out) << "  fixed point:  ";
-
-	if (FixedBrane.GetFixedBraneLabel() != "")
-		(*this->out) << FixedBrane.GetFixedBraneLabel() << "\n                ";
-
-	(*this->out) << "n_a   = (";
-	this->PrintRational(Element.Get_n(0));
-	(*this->out) << ", ";
-	this->PrintRational(Element.Get_n(1));
-	(*this->out) << ", ";
-	this->PrintRational(Element.Get_n(2));
-	(*this->out) << ", ";
-	this->PrintRational(Element.Get_n(3));
-	(*this->out) << ", ";
-	this->PrintRational(Element.Get_n(4));
-	(*this->out) << ", ";
-	this->PrintRational(Element.Get_n(5));
-	(*this->out) << ")\n";
-	(*this->out) << "  -------------------------------------------------------------------------------------------------------------\n";
-	(*this->out) << "  V" << this->underscore << "loc = ";
-	this->PrintRational(constr_Element.Shift, constr_Element.Shift.GetLattice());
-	(*this->out) << this->endofset << "\n";
-	(*this->out) << "  -------------------------------------------------------------------------------------------------------------\n";
-
-	vector<unsigned> FieldIndices;
-	FixedBrane.GetFieldIndices(VEVConfig.Fields, Multiplet, FieldIndices);
-
-	if (FieldIndices.size() == 0)
-		(*this->out) << "  " << this->cbegin << " empty" << this->cend << "\n";
-	else
-		this->PrintSpectrum(FieldIndices, VEVConfig, print_Labels);
-
-	(*this->out) << "  -------------------------------------------------------------------------------------------------------------\n";
-
-	return true;
-}
-*/
 bool CPrint::PrintSummary(const CFixedBrane &FixedBrane, const COrbifoldGroup &OrbifoldGroup, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels) const
 {
 
@@ -4222,40 +4045,7 @@ bool CPrint::PrintSummary(const CFixedBrane &FixedBrane, const COrbifoldGroup &O
 	return true;
 }
 
-/* ########################################################################################
-######   PrintSummaryOfSectors(const COrbifold &Orbifold, ...) const                 ######
-######                                                                               ######
-######   Version: 10.10.2011                                                         ######
-######   Check-Level: 1                                                              ######
-######                                                                               ######
-###########################################################################################
-######   input:                                                                      ######
-######   1) Orbifold      : the orbifold of the vev-config "VEVConfig"               ######
-######   2) VEVConfig     : contains the fields                                      ######
-######   3) Multiplet     : print only those fields of SUSY type "Multiplet"         ######
-######   4) print_Labels  : print the field labels?                                  ######
-######   output:                                                                     ######
-######   return value     : printed succesfully?                                     ######
-######################################################################################## */
-/*bool CPrint::PrintSummaryOfSectors(const COrbifold &Orbifold, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels) const
-{
-	// print the gauge group
-	this->PrintGaugeGroup(VEVConfig);
 
-	// print the sectors
-	const size_t s1 = Orbifold.GetNumberOfSectors();
-	for (unsigned i = 0; i < s1; ++i)
-	{
-		if (!this->PrintSummary(Orbifold.GetSector(i), VEVConfig, Multiplet, print_Labels))
-			return false;
-		(*this->out) << endl;
-	}
-
-	return true;
-}
-*/
-
-// begin sept20
 
 /* ########################################################################################
 ######   PrintSummaryOfSectors(const COrbifold &Orbifold, ...) const                 ######
@@ -4281,20 +4071,18 @@ bool CPrint::PrintSummaryOfSectors(const COrbifold &Orbifold, const SConfig &VEV
 	const size_t s1 = Orbifold.GetNumberOfSectors();
 	for (unsigned i = 0; i < s1; ++i)
 	{
-       for (int j=0; j<Multiplet.size(); j++)   //sept20
-	   {//dp 
-//		if (!this->PrintSummary(Orbifold.GetSector(i), VEVConfig, Multiplet, print_Labels))   
+       for (int j=0; j<Multiplet.size(); j++)   
+	   {
 		if (!this->PrintSummary(Orbifold.GetSector(i), VEVConfig, Multiplet[j], print_Labels))
 			return false;
 		(*this->out) << endl;
-	   }//dp
+	   }
 	}
 
 	return true;
 }
 
    
-// end sept 20
 
 /* ########################################################################################
 ######   PrintCouplings(const SConfig &VEVConfig, ...) const                         ######
@@ -4745,51 +4533,6 @@ void CPrint::PrintTwist(const CTwistVector &TwistVector) const
 }
 
 
-
-/* ########################################################################################
-######   PrintSummaryOfFixedBranes(const COrbifold &Orbifold, ...) const             ######
-######                                                                               ######
-######   Version: 19.08.2011                                                         ######
-######   Check-Level: 1                                                              ######
-######                                                                               ######
-###########################################################################################
-######   input:                                                                      ######
-######   1) Orbifold      : the orbifold of the vev-config "VEVConfig"               ######
-######   2) VEVConfig     : contains the fields                                      ######
-######   3) Multiplet     : print only those fields of SUSY type "Multiplet"         ######
-######   4) print_Labels  : print the field labels?                                  ######
-######   output:                                                                     ######
-######   return value     : printed succesfully?                                     ######
-######################################################################################## */
-/*void CPrint::PrintSummaryOfFixedBranes(const COrbifold &Orbifold, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels) const
-{
-	// print the gauge group
-	this->PrintGaugeGroup(VEVConfig);
-
-	vector<unsigned> FieldIndices;
-
-	unsigned j = 0;
-	size_t s2 = 0;
-
-	// run through the sectors
-	const size_t s1 = Orbifold.GetNumberOfSectors();
-	for (unsigned i = 0; i < s1; ++i)
-	{
-		const CSector &Sector = Orbifold.GetSector(i);
-
-		s2 = Sector.GetNumberOfFixedBranes();
-		// run through the fixed points of the current sector
-		for (j = 0; j < s2; ++j)
-		{
-			this->PrintSummary(Sector.GetFixedBrane(j), Orbifold.OrbifoldGroup, VEVConfig, Multiplet, print_Labels);
-			(*this->out) << endl;
-		}
-	}
-}
-*/
-
-
-//sept21
 /* ########################################################################################
 ######   PrintSummaryOfFixedBranes(const COrbifold &Orbifold, ...) const             ######
 ######                                                                               ######
@@ -4819,21 +4562,18 @@ void CPrint::PrintSummaryOfFixedBranes(const COrbifold &Orbifold, const SConfig 
 	const size_t s1 = Orbifold.GetNumberOfSectors();
 	for (unsigned i = 0; i < s1; ++i)
 	{
-      for (int k=0; k<Multiplet.size(); k++)   //sept21
-	  {//dp 
-       
+      for (int k=0; k<Multiplet.size(); k++)   
+	  {   
 		const CSector &Sector = Orbifold.GetSector(i);
-
 		s2 = Sector.GetNumberOfFixedBranes();
 		// run through the fixed points of the current sector
 		for (j = 0; j < s2; ++j)
 		{
 			this->PrintSummary(Sector.GetFixedBrane(j), Orbifold.OrbifoldGroup, VEVConfig, Multiplet[k], print_Labels);
-//			this->PrintSummary(Sector.GetFixedBrane(j), Orbifold.OrbifoldGroup, VEVConfig, Multiplet, print_Labels);
 			(*this->out) << endl;
 		}
 
-      }//dp
+      }
 	}
 }
 
@@ -5161,28 +4901,15 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 
 	const CVector NullVector4(4);
 	CVector q_momentum_p(4);
-	CVector q_momentum_m(4);
-	
-	CVector q_momentum_pf(4); //added, nov27
-	CVector q_momentum_mf(4); //added, nov27
-		// end: define some constants and variables
+	CVector q_momentum_m(4);	
+	CVector q_momentum_pf(4); 
+	CVector q_momentum_mf(4); 
+	// end: define some constants and variables
 
-    const vector<CSector> &Sectors = Orbifold.GetSectors();  //added, nov 27
-
+    const vector<CSector> &Sectors = Orbifold.GetSectors();  
 	std::ostringstream oheadline;
 
 	// begin: create some standard strings
-	// R charge
-	/*if (PrintRCharges)
-	{
-		tabular_parameter += "c|";
-		empty_line_string += "& ";
-		oheadline << "& $R_1";
-		for (i = 1; i < ds; ++i)
-			oheadline << ", R_" << (i+1);
-		oheadline << "$ ";
-	}*/
-
 	// U(1) charges
 	for (i = 0; i < p1; ++i)
 	{
@@ -5236,17 +4963,15 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 				q_momentum_m = NullVector4;
 				q_momentum_p[j] = +1;
 				q_momentum_m[j] = -1;
-				
-				q_momentum_pf = NullVector4;  //added, nov27
-				q_momentum_mf = NullVector4;  
-				
+				q_momentum_pf = NullVector4;  
+				q_momentum_mf = NullVector4;  		
 				if(j==1)                      
 				{                             
 				q_momentum_pf[j-1] = 2.0;      
 				q_momentum_pf[j] = 2.0;        
 				q_momentum_pf[j+1] = 2.0;       
 				q_momentum_pf[j+2] = 2.0;		
-			    }                                //added, nov27
+			    }                                
 
 				// first check whether this fixed point contains fields
 				// that are elements of FieldIndices
@@ -5265,12 +4990,8 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 
 						if (find(FieldIndices.begin(), FieldIndices.end(), FieldIndex) != FieldIndices.end())
 						{
-							
-							//const CVector &q_Vector = Field.q_sh;
-							const CVector &q_Vector = Field.GetRMWeight(0, Sectors);  //added, nov27
-                            q_momentum_mf = q_Vector + q_momentum_pf;   //added, nov27
-
-							//if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m))
+							const CVector &q_Vector = Field.GetRMWeight(0, Sectors);  
+                            q_momentum_mf = q_Vector + q_momentum_pf;   
 							if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m) || (q_momentum_mf[1]==2.5) || (q_momentum_mf[1]==1.5))
 							{
 								untwisted_sector_empty = false;
@@ -5291,11 +5012,11 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 
 						if (Field.SGElement.NoTwist())
 						{
-							//const CVector &q_Vector = Field.q_sh;
-							const CVector &q_Vector = Field.GetRMWeight(0, Sectors);  //added, nov27
-                            q_momentum_mf = q_Vector + q_momentum_pf;   //added, nov27
+							
+							const CVector &q_Vector = Field.GetRMWeight(0, Sectors);  
+                            q_momentum_mf = q_Vector + q_momentum_pf;   
 
-							//if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m))
+							
 							if ((q_Vector == q_momentum_p) || (q_Vector == q_momentum_m) || (q_momentum_mf[1]==2.5) || (q_momentum_mf[1]==1.5))
 							{
 								const RepVector &Dimensions = Field.Dimensions;
@@ -5303,21 +5024,6 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 								(*this->out) << " & $";
 								this->PrintRep(Dimensions, VEVConfig.SymmetryGroup);
 								(*this->out) << "$ ";
-
-								// begin: print R charges
-								/*if (PrintRCharges)
-								{
-									(*this->out) << "& $";
-
-									for (n = 0; n < ds; ++n)
-									{
-										this->PrintRational(Field.GetDiscreteCharge(DiscreteRSymmetries[n]));
-										if (n < ds-1)
-											(*this->out) << " ";
-									}
-									(*this->out) << "$ ";
-								}*/
-								// end: print R charges
 
 								// begin: print U(1) charges
 								for (o = 0; o < p1; ++o)
@@ -5393,8 +5099,7 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 					if (first_printed_sector)
 						first_printed_sector = false;
 
-
-					// begin: print localization (m, n, k; n_alpha)   //added, nov27
+					// begin: print localization (m, n, k; n_alpha)   
 					const CSpaceGroupElement &Label = FixedBrane.GetSGElement();
 					(*this->out) << "$T_{(" << Label.Get_m() << ", " << Label.Get_n() << ", " << Label.Get_k() << ")}^{(";
 		
@@ -5413,9 +5118,8 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
                          this->PrintRational(Label.Get_n(5),false);
                    
 					(*this->out) << ")}$ ";                            
-					// end: print localization (k, l; n_alpha)    //added, nov27
+					// end: print localization (k, l; n_alpha)    
                     
-
 					for (k = 0; k < f2; ++k)
 					{
 						const CField &Field = Fields[FieldIndices[k]];
@@ -5427,21 +5131,6 @@ bool CPrint::TexSpectrum(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 							(*this->out) << " & $";
 							this->PrintRep(Dimensions, VEVConfig.SymmetryGroup);
 							(*this->out) << "$ ";
-
-							// begin: print R charges
-							/*if (PrintRCharges)
-							{
-								(*this->out) << "& $";
-
-								for (n = 0; n < ds; ++n)
-								{
-									this->PrintRational(Field.GetDiscreteCharge(DiscreteRSymmetries[n]));
-									if (n < ds-1)
-										(*this->out) << " ";
-								}
-								(*this->out) << "$ ";
-							}*/
-							// end: print R charges
 
 							// begin: print U(1) charges
 							for (n = 0; n < p1; ++n)
