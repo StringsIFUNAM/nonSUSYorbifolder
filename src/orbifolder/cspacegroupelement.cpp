@@ -662,7 +662,7 @@ rational<int> CSpaceGroupElement::operator*(const rationalVector &ChargeOperator
     return 0;
   }
 
-  return ((int(this->n) * ChargeOperator[0]) + (int(this->k) * ChargeOperator[1]) + (this->LatticeElement * ChargeOperator)); //return ((this->n * ChargeOperator[0]) + (this->k * ChargeOperator[1]) + (this->LatticeElement * ChargeOperator));
+  return ((int(this->n) * ChargeOperator[0]) + (int(this->k) * ChargeOperator[1]) + (this->LatticeElement * ChargeOperator));  
 }
 
 
