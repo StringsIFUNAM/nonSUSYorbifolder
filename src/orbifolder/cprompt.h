@@ -102,15 +102,11 @@ public:
   void              PrintCommandsSets() const;
   void              PrintFor(unsigned number_of_Type, const string &Type, const string &Var) const;
     
-  bool              FindSpaceGroupsInDirectory(const unsigned &M, const unsigned &N, const string &directory);//orig N1
-  //bool              FindSpaceGroupsInDirectory(const unsigned &N, const unsigned &K, const string &directory); //added J22
-
+  bool              FindSpaceGroupsInDirectory(const unsigned &M, const unsigned &N, const string &directory);
   bool              SplitVEVConfigLabel(string &VEVConfigLabel, unsigned &VEVConfigNumber) const;
-//  void              ExtractLabels(const SUSYMultiplet &Multiplet, string input, vector<string> &FieldLabels);  //original
-  void              ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string input, vector<string> &FieldLabels);  //added June20,2020
+  void              ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string input, vector<string> &FieldLabels);  
 
   
-
   vector<unsigned>  GetIndicesOnlyFieldWithNumber(const vector<string> &FieldLabels) const;
   vector<unsigned>  GetIndices(const vector<string> &FieldLabels) const;
   bool              GetLocalization(const string &Localization, CSpaceGroupElement &result) const;
@@ -120,10 +116,6 @@ public:
   bool              ApplyConditions(const vector<SCondition> &Conditions, vector<unsigned> &FieldIndices) const;
   bool              ApplyConditions(vector<string> &Commands, unsigned &exec_command);
   bool              FindConditionsAndFilterFieldIndices(string &input_string, vector<unsigned> &FieldIndices) const;
-
-
-
-
 
 // member variables
   CPrint                   Print;
