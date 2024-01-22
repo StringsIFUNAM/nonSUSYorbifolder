@@ -11,7 +11,7 @@ using std::endl;
 using std::exit;
 
 template <class T> CLinAlg<T>::CLinAlg()
- : One(T(1),T(1)), Zero(T(0),T(1)) //: One(1,1), Zero(0,1)
+ : One(T(1),T(1)), Zero(T(0),T(1)) 
 {
 }
 
@@ -534,8 +534,8 @@ template <class T> bool CLinAlg<T>::FindPositiveIntegerKernel(const vector<vecto
 
   //cout << "Cone is spanned by " << q1 << " vectors." << endl;
 
-  rational<T> max(T(1)); //rational<T> max(1);
-  rational<T> sp(T(0)); //rational<T> sp(0);
+  rational<T> max(T(1)); 
+  rational<T> sp(T(0)); 
   bool all_zero = true;
 
   // run through the basis vectors of the cone
@@ -676,7 +676,7 @@ template <class T> bool CLinAlg<T>::GetParticularSolution(const vector<vector<ra
   {
     if (row < Ab.size())
     {
-      if (Ab[row][i] == T(1))  //if (Ab[row][i] == 1)
+      if (Ab[row][i] == T(1))  
       {
         ParticularSolution[i] = Ab[row][s2];
         ++row;
@@ -690,10 +690,10 @@ template <class T> bool CLinAlg<T>::GetParticularSolution(const vector<vector<ra
 
   // begin: check A x = b
   vector<rational<T> > Ax;
-  rational<T> tmp(T(0)); //rational<T> tmp(0);
+  rational<T> tmp(T(0)); 
   for (i = 0 ; i < s1; ++i)
   {
-    tmp = this->Zero; //tmp = rational<T>(0);
+    tmp = this->Zero; 
     for (j = 0 ; j < s2; ++j)
       tmp += A[i][j] * ParticularSolution[j];
 
@@ -814,8 +814,8 @@ template <class T> bool CLinAlg<T>::ReducedRowEchelonForm(vector<vector<rational
   unsigned i = 0;
   unsigned j = 0;
 
-  rational<T> Entry = this->Zero; //rational<T> Entry(0,1);
-  rational<T> tmp   = this->Zero; //rational<T> tmp(0,1);
+  rational<T> Entry = this->Zero; 
+  rational<T> tmp   = this->Zero; 
 
   unsigned lead = 0;
 
@@ -908,11 +908,11 @@ template <class T> bool CLinAlg<T>::FindOrdersOfWilsonLines(const vector<vector<
   unsigned i = 0;
   unsigned j = 0;
 
-  rational<T> Entry = this->Zero; //rational<T> Entry(0,1);
-  rational<T> tmp   = this->Zero;  //rational<T> tmp(0,1);
+  rational<T> Entry = this->Zero; 
+  rational<T> tmp   = this->Zero;  
 
   unsigned lead = 0;
-  rational<T> min(T(9999),T(1)); //rational<T> min(9999,1);
+  rational<T> min(T(9999),T(1)); 
   int line_of_min = -1;
   bool go_on = true;
   
@@ -920,7 +920,7 @@ template <class T> bool CLinAlg<T>::FindOrdersOfWilsonLines(const vector<vector<
   for (unsigned row = 0; row < s1; ++row)
   {
     line_of_min = -1;
-    min = rational<T>(T(9999),T(1)); //min = rational<T>(9999,1);
+    min = rational<T>(T(9999),T(1)); 
 
     i = row;
     // begin: search for a row with the smallest non-zero entry at the lead position
@@ -929,7 +929,7 @@ template <class T> bool CLinAlg<T>::FindOrdersOfWilsonLines(const vector<vector<
     {
       if (output[i][lead] != this->Zero)
       {
-        if (output[i][lead] < this->Zero) //if (output[i][lead] < 0)
+        if (output[i][lead] < this->Zero) 
         {
           for (j = 0; j < s2; ++j)
             output[i][j] *= -this->One;
@@ -1049,8 +1049,8 @@ template <class T> bool CLinAlg<T>::SimplifyInequality(vector<vector<rational<T>
   unsigned i = 0;
   unsigned j = 0;
 
-  rational<T> Entry = this->Zero; //rational<T> Entry(0,1);
-  rational<T> tmp   = this->Zero; //rational<T> tmp(0,1);
+  rational<T> Entry = this->Zero; 
+  rational<T> tmp   = this->Zero; 
 
   unsigned row = 0;
   unsigned lead = 0;
@@ -1441,7 +1441,7 @@ template <class T> void CLinAlg<T>::SolveSystemOfLinearInequalities(const vector
 
   vector<vector<rational<T> > > AllBasisOfH_i;
 
-  rational<T> sp(T(0)); //rational<T> sp(0);
+  rational<T> sp(T(0)); 
   bool check_again = false;
   bool use_vector  = true;
 
@@ -1549,7 +1549,7 @@ template <class T> void CLinAlg<T>::SolveSystemOfLinearInequalities(const vector
             {
               check_again = true;
               for (m = 0; m < s2; ++m)
-                Basisvector[m] *= T(-1); //Basisvector[m] *= (-1);
+                Basisvector[m] *= T(-1); 
             }
           }
           use_vector = true;
@@ -1629,7 +1629,7 @@ template <class T> void CLinAlg<T>::SolveSystemOfLinearInequalities(const vector
         {
           check_again = true;
           for (m = 0; m < s2; ++m)
-            BasisVectorH_i[m] *= T(-1); //BasisVectorH_i[m] *= (-1);
+            BasisVectorH_i[m] *= T(-1); 
         }
       }
       use_vector = true;
