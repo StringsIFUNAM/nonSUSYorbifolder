@@ -71,7 +71,7 @@ public:
   const unsigned                               &GetOrderZM() const {return this->SpaceGroup.GetM();};
   const unsigned                               &GetOrderZN() const {return this->SpaceGroup.GetN();};
   
-  const unsigned                               &GetOrderZK() const {return this->SpaceGroup.GetK();};  //I added on June23 night for ZMxZNxZK
+  const unsigned                               &GetOrderZK() const {return this->SpaceGroup.GetK();};  
   
   
   const CSpaceGroup                            &GetSpaceGroup() const;
