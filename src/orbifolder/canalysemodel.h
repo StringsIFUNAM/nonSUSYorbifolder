@@ -48,7 +48,6 @@ public:
   bool AnalyseModel(const COrbifold &Orbifold, const SConfig &OriginalVEVConfig, bool &SM, bool &PS, bool &SU5, vector<SConfig> &AllVEVConfigs, CPrint &Print, unsigned NumberOfGenerations = 3, bool SM_PrintSU5SimpleRoots = false) const;
   
   bool ComputeN2BetaFunctionCoefficient(const COrbifold *Orbifold, const SConfig &VEVConfig, const CGaugeIndices &GaugeIndices, vector<bool> &N2_Sector_Exists, vector<vector<rational<int> > > &BetaFunctionCoefficients) const;
-//  int  ComputeBetaFunctionCoefficient(const CGaugeIndices &GaugeIndices, const SConfig &VEVConfig, const unsigned factor) const;
   rational<int> ComputeBetaFunctionCoefficient(const CGaugeIndices &GaugeIndices, const SConfig &VEVConfig, const unsigned factor) const;
 
   bool GroupAFromB(const gaugeGroupFactor<double> &ggfA, const gaugeGroupFactor<double> &ggfB) const;
@@ -57,8 +56,7 @@ public:
   bool FindPositionOfGaugeGroup(const PhenoScheme &Scheme, const SConfig &OriginalVEVConfig, vector<SConfig> &GoodVEVConfigs) const;
   bool AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConfig) const;
 
-//  bool Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print, const SUSYMultiplet &Multiplet = LeftChiral, bool info = true) const;
-  bool Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print, const vector<SUSYMultiplet>  &Multiplet, bool info = true) const; // added July 15, 2020
+  bool Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print, const vector<SUSYMultiplet>  &Multiplet, bool info = true) const; 
   bool Labels_Load(string ifilename, SConfig &VEVConfig) const;
   
   bool FindCouplings(const SConfig &VEVConfig, const vector<string> &FieldLabels, vector<YukawaCoupling> &Result, bool EffectiveCoupling = false) const;
