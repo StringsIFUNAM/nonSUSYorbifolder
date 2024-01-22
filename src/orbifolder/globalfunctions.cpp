@@ -978,10 +978,10 @@ rational<CHugeInt> D2HugeInt(const double x)
   {
     tmp = x * i;
     if(fabs(roundf(tmp) - tmp) < prec)
-      return rational<CHugeInt>((CHugeInt)((int)roundf(tmp)), CHugeInt(i)); //return rational<CHugeInt>((CHugeInt)((int)roundf(tmp)),i);
+      return rational<CHugeInt>((CHugeInt)((int)roundf(tmp)), CHugeInt(i)); 
   }
   cout << "Error in globalfunctions:D2HugeInt(...): no conversion from double to CHugeInt found. Return 0." << endl;
-  return rational<CHugeInt>(CHugeInt(0), CHugeInt(1)); //return rational<CHugeInt>(0,1);
+  return rational<CHugeInt>(CHugeInt(0), CHugeInt(1)); 
 }
 
 
@@ -1416,13 +1416,3 @@ bool operator==(const FPCoordinates &FP1, const FPCoordinates &FP2)
   }
   return true;
 }
-
-
-
-
-
-
-
-
-
-
