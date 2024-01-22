@@ -117,19 +117,12 @@ public:
 	bool     PrintStates(const COrbifold &Orbifold, const SConfig &VEVConfig, const vector<unsigned> &FieldIndices, bool PrintInternalInformation = false) const;
 	bool     PrintSpectrum(const vector<unsigned> &FieldIndices, const SConfig &VEVConfig, bool print_Labels = false) const;
 	bool     PrintSpectrum(const CSpectrum &Spectrum) const;
-//	bool     PrintSummary(const CFixedBrane &FixedBrane, const COrbifoldGroup &OrbifoldGroup, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet = LeftChiral, bool print_Labels = false) const;
-    bool     PrintSummary(const CFixedBrane &FixedBrane, const COrbifoldGroup &OrbifoldGroup, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels = false) const;
-//  bool     PrintSummary(const CSector &Sector, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet = LeftChiral, bool print_Labels = false) const;  
+	bool     PrintSummary(const CFixedBrane &FixedBrane, const COrbifoldGroup &OrbifoldGroup, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels = false) const;
     bool     PrintSummary(const CSector &Sector, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet, bool print_Labels = false) const;  
-
-//	void     PrintSummaryOfVEVConfig(const SConfig &VEVConfig, const SUSYMultiplet &Multiplet = LeftChiral, bool print_Labels = false) const;
-	void     PrintSummaryOfVEVConfig(const SConfig &VEVConfig, const vector<SUSYMultiplet> &Multiplet, bool print_Labels = false) const;									//hacking here!!!
-//	bool     PrintSummaryOfSectors(const COrbifold &Orbifold, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet = LeftChiral, bool print_Labels = false) const;
+    void     PrintSummaryOfVEVConfig(const SConfig &VEVConfig, const vector<SUSYMultiplet> &Multiplet, bool print_Labels = false) const;									//hacking here!!!
 	bool     PrintSummaryOfSectors(const COrbifold &Orbifold, const SConfig &VEVConfig, const vector<SUSYMultiplet> &Multiplet, bool print_Labels = false) const;
-//	void     PrintSummaryOfFixedBranes(const COrbifold &Orbifold, const SConfig &VEVConfig, const SUSYMultiplet &Multiplet = LeftChiral, bool print_Labels = false) const;
-    void     PrintSummaryOfFixedBranes(const COrbifold &Orbifold, const SConfig &VEVConfig, const vector<SUSYMultiplet> &Multiplet, bool print_Labels = false) const; //sept21
-
-	bool     PrintSuperpotential(const SConfig &VEVConfig, bool EffectivePotential = false, bool PrintModuli = false) const;
+	void     PrintSummaryOfFixedBranes(const COrbifold &Orbifold, const SConfig &VEVConfig, const vector<SUSYMultiplet> &Multiplet, bool print_Labels = false) const; 
+    bool     PrintSuperpotential(const SConfig &VEVConfig, bool EffectivePotential = false, bool PrintModuli = false) const;
 	bool     PrintSUSYType(const SUSYMultiplet &Multiplet) const;
 
 	void     PrintTwist(const CTwistVector &TwistVector) const;
