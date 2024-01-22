@@ -1590,7 +1590,7 @@ bool COrbifold::CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndic
 	for (i = 0; i < number_of_U1s; ++i)
 	{
 		const doubleVector &U1_direction_i = U1_Directions[i];
-		tmp_i = CHugeInt(0); //tmp_i = 0;
+		tmp_i = CHugeInt(0); 
 		for (j = 0; j < 16; ++j)
 			tmp_i += D2RatHugeInt(U1_direction_i[j]) * D2RatHugeInt(U1_direction_i[j]);
 		U1LengthSquare[i] = tmp_i;
@@ -1953,7 +1953,7 @@ bool COrbifold::CheckDiscreteAnomaly(const SConfig &VEVConfig, const CGaugeIndic
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// begin: Z_N (R) - grav - grav
 		if (IsR) // -21 from gravitinos
-			GravAnomalyPolynomial = int(-21 + number_of_U1s) * (DiscreteSymmetry.SuperpotentialCharge/2); //GravAnomalyPolynomial = (-21 + number_of_U1s) * (DiscreteSymmetry.SuperpotentialCharge/2);
+			GravAnomalyPolynomial = int(-21 + number_of_U1s) * (DiscreteSymmetry.SuperpotentialCharge/2); 
 		else
 			GravAnomalyPolynomial = 0;
 
@@ -2099,7 +2099,7 @@ bool COrbifold::CheckDiscreteAnomaly(const SConfig &VEVConfig, const CGaugeIndic
 				if (!GaugeIndices.GetQuadraticIndexAdj(ggf, Index))
 					return false;
 
-				AnomalyPolynomial = int(Index) * (DiscreteSymmetry.SuperpotentialCharge/2); //AnomalyPolynomial = Index * (DiscreteSymmetry.SuperpotentialCharge/2);
+				AnomalyPolynomial = int(Index) * (DiscreteSymmetry.SuperpotentialCharge/2); 
 			}
 			else
 				AnomalyPolynomial = 0;
