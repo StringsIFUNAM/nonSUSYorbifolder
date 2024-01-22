@@ -1,4 +1,4 @@
-#include "canalysemodel.h"
+#include "canalysemodel.h" 
 #include "corbifold.h"
 #include "clinalg.h"
 #include "globalfunctions.h"
@@ -204,113 +204,6 @@ bool CAnalyseModel::ComputeN2BetaFunctionCoefficient(const COrbifold *Orbifold, 
 ######   Compute the beta function coefficient of the "factor"-th gauge group factor ######
 ######   and return the result.                                                      ######
 ######################################################################################## */
-/*int CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices &GaugeIndices, const SConfig &VEVConfig, const unsigned factor) const
-{
-	unsigned Index = 0;
-	rational<int> beta = 0;
-	rational<int> Factor = 0;
-
-	unsigned k = 0;
-	const size_t number_of_factors = VEVConfig.SymmetryGroup.GaugeGroup.factor.size();
-	if (factor >= number_of_factors)
-	{
-		cout << "\n  Warning in bool CAnalyseModel::ComputeBetaFunctionCoefficient(...) : \"factor\" out of range. Return 0." << endl;
-		return 0;
-	}
-
-	int           adj_factor = 3;
-	SUSYMultiplet Multiplet  = LeftChiral;
-
-	if (VEVConfig.InvariantSupercharges.size() == 2)
-	{
-		adj_factor = 2;
-		Multiplet  = Halfhyper;
-	}
-
-	const vector<CField>           &Fields = VEVConfig.Fields;
-	const gaugeGroupFactor<double> &ggf    = VEVConfig.SymmetryGroup.GaugeGroup.factor[factor];
-
-	if (!GaugeIndices.GetQuadraticIndexAdj(ggf, Index))
-		return 0;
-
-	beta = -1 * (adj_factor * rational<int>(Index,2));
-
-	// begin: run through all left-chiral fields
-	for( vector<CField>::const_iterator it_field = Fields.begin(); it_field != Fields.end(); ++it_field)
-	{
-		// left-chiral multiplet
-		if (it_field->Multiplet == Multiplet)
-		{
-			const RepVector &Dimensions = it_field->Dimensions;
-
-			// begin: compute the charges under the modular symmetries
-			if (!GaugeIndices.GetQuadraticIndex(ggf, abs(Dimensions[factor].Dimension), Index))
-				return 0;
-
-			if (Index != 0)
-			{
-				Factor = Index;
-
-				for (k = 0; k < number_of_factors; ++k)
-				{
-					if (k != factor)
-						Factor *= abs(Dimensions[k].Dimension);
-				}
-				Factor /= rational<int>(2,1);
-
-				beta += Factor;
-			}
-			// end: compute the charges under the modular symmetries
-		}
-	}
-	// end: run through all left-chiral fields
-
-	return beta.numerator();
-}
-
-
-
-bool CAnalyseModel::GroupAFromB(const gaugeGroupFactor<double> &ggfA, const gaugeGroupFactor<double> &ggfB) const
-{
-	const vector<vector<double> > &ggf_SimpleRoots_A = ggfA.simpleroots;
-	const vector<vector<double> > &ggf_SimpleRoots_B = ggfB.simpleroots;
-
-	const size_t sA = ggf_SimpleRoots_A.size();
-	const size_t sB = ggf_SimpleRoots_B.size();
-
-	vector<bool> AfromB(sA, false);
-
-	unsigned i = 0;
-	unsigned j = 0;
-
-	for (i = 0; i < sA; ++i)
-	{
-		const vector<double> &ggf_SimpleRoot_A = ggf_SimpleRoots_A[i];
-
-		for (j = 0; j < sB; ++j)
-		{
-			const vector<double> &ggf_SimpleRoot_B = ggf_SimpleRoots_B[j];
-			if (fabs(ggf_SimpleRoot_A * ggf_SimpleRoot_B) >= 0.0001)
-				AfromB[i] = true;
-		}
-	}
-	if (find(AfromB.begin(), AfromB.end(), false) == AfromB.end())
-		return true;
-
-	if (find(AfromB.begin(), AfromB.end(), true) == AfromB.end())
-		return false;
-
-	cout << "\n  Warning in bool CAnalyseModel::GroupAFromB(...) : Some roots of A originate from B, some do not. Return false." << endl;
-	return false;
-}
-
-*/
-
-
-//////////////////////////////////////////////////////////
-// Begin for practicing
-
-//int CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices &GaugeIndices, const SConfig &VEVConfig, const unsigned factor) const
 rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices &GaugeIndices, const SConfig &VEVConfig, const unsigned factor) const
 {
 	unsigned Index = 0;
@@ -318,7 +211,6 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 	rational<int> Factor = 0;
     rational<int> Factors = 0;
 	
-
 	unsigned k = 0;
 	const size_t number_of_factors = VEVConfig.SymmetryGroup.GaugeGroup.factor.size();
 	if (factor >= number_of_factors)
@@ -326,23 +218,15 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 		cout << "\n  Warning in bool CAnalyseModel::ComputeBetaFunctionCoefficient(...) : \"factor\" out of range. Return 0." << endl;
 		return 0;
 	}
-
-	//int           adj_factor = 3;
+	
     rational<int> adj_factor(11,3);
     rational<int> facf(2,3);
     rational<int> facs(1,3);
-    
-	//SUSYMultiplet Multiplet  = LeftChiral;
+    	
     vector<SUSYMultiplet> Multiplets(2);				    //Particle types to be printed
 	Multiplets[0]=Scalar;									//and to be given for equivalence check
 	Multiplets[1]=LeftFermi;
 
-/*	if (VEVConfig.InvariantSupercharges.size() == 2)
-	{
-		adj_factor = 2;
-		Multiplet  = Halfhyper;
-	}
-*/
 	const vector<CField>           &Fields = VEVConfig.Fields;
 	const gaugeGroupFactor<double> &ggf    = VEVConfig.SymmetryGroup.GaugeGroup.factor[factor];
 
@@ -351,9 +235,6 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 
 	beta = -1 * (adj_factor * rational<int>(Index,2));
 
-//    cout << "Indexadj =  " << Index << "   ratind2 = " << rational<int>(Index,2) << endl;
-
-/*
 	// begin: run through all left-chiral fields
 	for( vector<CField>::const_iterator it_field = Fields.begin(); it_field != Fields.end(); ++it_field)
 	{
@@ -375,48 +256,7 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 					if (k != factor)
 						Factor *= abs(Dimensions[k].Dimension);
 				}
-				//Factor /= rational<int>(2,1);
-				Factor = Factor*rational<int>(1,2)*facf;
-				//beta += Factor;
-				beta = beta + Factor;
-			}	
-			// end: compute the charges under the modular symmetries
-		}
-	}
-	// end: run through all left-chiral fields
-//	return beta.numerator(); //original
-//	return boost::rational_cast<double>(beta);
-//    return beta.numerator()/beta.denominator();
-//	 return static_cast<double>(beta.numerator() / beta.denominator());
-	
-}
-
-*/
-
-	// begin: run through all left-chiral fields
-	for( vector<CField>::const_iterator it_field = Fields.begin(); it_field != Fields.end(); ++it_field)
-	{
-		// left-chiral multiplet
-		if (it_field->Multiplet == Multiplets[1])
-		{
-			const RepVector &Dimensions = it_field->Dimensions;
-
-			// begin: compute the charges under the modular symmetries
-			if (!GaugeIndices.GetQuadraticIndex(ggf, abs(Dimensions[factor].Dimension), Index))
-				return 0;
-
-			if (Index != 0)
-			{
-				Factor = Index;
-
-				for (k = 0; k < number_of_factors; ++k)
-				{
-					if (k != factor)
-						Factor *= abs(Dimensions[k].Dimension);
-				}
-				//Factor /= rational<int>(2,1);
 				Factor = Factor*rational<int>(1,2);
-				//beta += Factor;
 				beta = beta + facf*Factor;
 			}	
 			// end: compute the charges under the modular symmetries
@@ -440,9 +280,7 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 					if (k != factor)
 						Factors *= abs(Dimensions[k].Dimension);
 				}
-				//Factor /= rational<int>(2,1);
 				Factors = Factors*rational<int>(1,2);
-				//beta += Factor;
 				beta = beta + facs*Factors;
 			}	
 			// end: compute the charges under the modular symmetries
@@ -489,8 +327,6 @@ bool CAnalyseModel::GroupAFromB(const gaugeGroupFactor<double> &ggfA, const gaug
 	cout << "\n  Warning in bool CAnalyseModel::GroupAFromB(...) : Some roots of A originate from B, some do not. Return false." << endl;
 	return false;
 }
-
-// End for practicing
 
 
 /* ########################################################################################
@@ -845,7 +681,7 @@ bool CAnalyseModel::AccidentalU1Charges_Find(SConfig &VEVConfig, const vector<un
 		// run through all (real, not the artificial) superpotential couplings
 		for (j = 0; j < c1; ++j)
 		{
-			U1_sum = CHugeInt(0); //U1_sum = 0;
+			U1_sum = CHugeInt(0); 
 
 			const vector<unsigned> &FieldIndices = FieldCouplings[j].FieldIndices;
 			s1 = FieldIndices.size();
@@ -862,7 +698,7 @@ bool CAnalyseModel::AccidentalU1Charges_Find(SConfig &VEVConfig, const vector<un
 	// end: check invariance of the superpotential under accidental global U1 symmetry
 
 	// begin: separate the gauge symmetires
-	vector<rational<CHugeInt> >          LineFSize(f2, rational<CHugeInt>(CHugeInt(0))); //vector<rational<CHugeInt> >          LineFSize(f2, rational<CHugeInt>(0));
+	vector<rational<CHugeInt> >          LineFSize(f2, rational<CHugeInt>(CHugeInt(0))); 
 	vector<vector<rational<CHugeInt> > > MatrixB(f2, LineFSize);
 	for (i = 0; i < f2; ++i)
 	{
@@ -941,7 +777,7 @@ bool CAnalyseModel::AccidentalU1Charges_Find(SConfig &VEVConfig, const vector<un
 
 		for (j = 0; j < c1; ++j)
 		{
-			U1_sum = CHugeInt(0); //U1_sum = 0;
+			U1_sum = CHugeInt(0); 
 
 			const vector<unsigned> &FieldIndices = FieldCouplings[j].FieldIndices;
 			s1 = FieldIndices.size();
@@ -5763,7 +5599,6 @@ bool CAnalyseModel::GetOneBlowUpModePerFixedPoint(const COrbifold &Orbifold, con
 }
 
 
-
 /* ########################################################################################
 ######   Labels_Create(istream &in, SConfig &VEVConfig, ...) const                   ######
 ######                                                                               ######
@@ -5784,171 +5619,6 @@ bool CAnalyseModel::GetOneBlowUpModePerFixedPoint(const COrbifold &Orbifold, con
 ######   Read new labels for the fields of SUSY type "Multiplet" in the vev-config   ######
 ######   "VEVConfig" from the input "in".                                            ######
 ######################################################################################## */
-/*bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print, const SUSYMultiplet &Multiplet, bool info) const
-{
-	if(!in.good())
-	{
-		(*Print.out) << "Warning! Could not find the input for creating the labels." << endl;
-		return false;
-	}
-
-	const SSymmetryGroup &SymmetryGroup = VEVConfig.SymmetryGroup;
-
-	vector<CField> NewFields = VEVConfig.Fields;
-	const size_t f1 = NewFields.size();
-	if (f1 == 0)
-		return false;
-
-	const bool UseAnySUSYKind = (Multiplet == AnyKind);
-
-	unsigned i = 0;
-	unsigned j = 0;
-
-	vector<unsigned> tmp_FieldIndices;
-
-	vector<unsigned>          Spec_Multiplicities;
-	vector<RepVector>         Spec_Dimensions;
-	vector<CVector>           Spec_U1Charges;
-	vector<vector<unsigned> > Spec_FieldIndices;
-
-	size_t s1 = 0;
-	size_t s2 = 0;
-	bool field_not_known = true;
-
-	for (i = 0; i < f1; ++i)
-	{
-		const CField &Field = NewFields[i];
-
-		if (UseAnySUSYKind || (Field.Multiplet == Multiplet))
-		{
-			field_not_known = true;
-			s1 = Spec_Multiplicities.size();
-			for (j = 0; field_not_known && (j < s1); ++j)
-			{
-				if (AreRepVectorsEqual(SymmetryGroup, Spec_Dimensions[j], Field.Dimensions) && AreU1ChargesEqual(SymmetryGroup, Spec_U1Charges[j], Field.U1Charges))
-				{
-					++Spec_Multiplicities[j];
-					Spec_FieldIndices[j].push_back(i);
-
-					field_not_known = false;
-				}
-			}
-			if (field_not_known)
-			{
-				Spec_Multiplicities.push_back(1);
-				Spec_Dimensions.push_back(Field.Dimensions);
-				Spec_U1Charges.push_back(Field.U1Charges);
-
-				tmp_FieldIndices.clear();
-				tmp_FieldIndices.push_back(i);
-				Spec_FieldIndices.push_back(tmp_FieldIndices);
-			}
-		}
-	}
-
-	s1 = Spec_Multiplicities.size();
-
-	if (info)
-	{
-		(*Print.out) << "  Massless spectrum:\n\n";
-		for (i = 0; i < s1; ++i)
-		{
-			(*Print.out) << setw(3) << Spec_Multiplicities[i] << " ";
-			Print.PrintRep(Spec_Dimensions[i], SymmetryGroup);
-			(*Print.out) << "  ";
-			Print.PrintU1Charges(Spec_U1Charges[i], SymmetryGroup);
-			(*Print.out) << "\n";
-		}
-		(*Print.out) << "\n  Please create the labels:" << endl;
-	}
-
-	// begin: read the input
-	string tmp_string = "";
-	const string AllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	vector<string> corresponding_Labels;
-	size_t NewNumberOfLabels = 0;
-
-	for (i = 0; i < s1; ++i)
-	{
-		if (info)
-		{
-			(*Print.out) << setw(3) << Spec_Multiplicities[i] << " ";
-			Print.PrintRep(Spec_Dimensions[i], SymmetryGroup);
-			(*Print.out) << "  ";
-			Print.PrintU1Charges(Spec_U1Charges[i], SymmetryGroup);
-			(*Print.out) << " = ";
-		}
-
-		// read the label
-		if (!getline(in, tmp_string))
-			return false;
-
-		// the new label shall not contain any of the forbidden characters
-		if ((tmp_string.size() == 0) || (tmp_string.find_first_not_of(AllowedCharacters) != string::npos))
-		{
-			(*Print.out) << "  " << Print.cbegin << "Label Error: The label is only allowed to contain characters and numbers." << Print.cend << endl;
-			return false;
-		}
-
-		// the new label shall not be in use already for a different representation
-		if (find(corresponding_Labels.begin(), corresponding_Labels.end(), tmp_string) != corresponding_Labels.end())
-			return false;
-
-		corresponding_Labels.push_back(tmp_string);
-
-		const vector<unsigned> FieldIndices = Spec_FieldIndices[i];
-		s2 = FieldIndices.size();
-		for (j = 0; j < s2; ++j)
-		{
-			CField &Field = NewFields[FieldIndices[j]];
-			Field.Labels.push_back(tmp_string);
-			Field.Numbers.push_back(j+1);
-
-			NewNumberOfLabels = Field.Labels.size();
-		}
-	}
-	// end: read the input
-
-	unsigned counter = 1;
-	for (j = 0; j < f1; ++j)
-	{
-		CField &Field = NewFields[j];
-		if (Field.Labels.size() != NewNumberOfLabels)
-		{
-			Field.Labels.push_back("X");
-			Field.Numbers.push_back(counter);
-			++counter;
-		}
-	}
-	VEVConfig.Fields = NewFields;
-
-	return true;
-}
-*/
-
-// begin Labels_Create to modify, July 15, 2020
-
-/* ########################################################################################
-######   Labels_Create(istream &in, SConfig &VEVConfig, ...) const                   ######
-######                                                                               ######
-######   Version: 16.11.2011                                                         ######
-######   Check-Level: 1                                                              ######
-######                                                                               ######
-###########################################################################################
-######   input:                                                                      ######
-######   1) in        : read field labels from here                                  ######
-######   2) VEVConfig : assign new labels to the fields in "VEVConfig"               ######
-######   3) Print     : if "info" is true print the output to this CPrint object     ######
-######   4) Multiplet : Assign labels to fields of this SUSY type (e.g. LeftChiral)  ######
-######   5) info      : print info?                                                  ######
-######   output:                                                                     ######
-######   return value : finished succesfully?                                        ######
-###########################################################################################
-######   description:                                                                ######
-######   Read new labels for the fields of SUSY type "Multiplet" in the vev-config   ######
-######   "VEVConfig" from the input "in".                                            ######
-######################################################################################## */
-//bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print, const SUSYMultiplet &Multiplet, bool info) const
 bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print, const vector<SUSYMultiplet>  &Multiplet, bool info) const
 {
 	if(!in.good())
@@ -5964,8 +5634,6 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 	if (f1 == 0)
 		return false;
 
-//	const bool UseAnySUSYKind = (Multiplet == AnyKind);
-
 	unsigned i = 0;
 	unsigned j = 0;
 
@@ -5980,21 +5648,18 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 	size_t s2 = 0;
 	bool field_not_known = true;
 
-///// July 15, 2020
           vector<SUSYMultiplet> Multiplets(2);						
 	      Multiplets[0]=Scalar;									
 	      Multiplets[1]=LeftFermi;
-///////////
-
 
 	for (i = 0; i < f1; ++i)
 	{
-/////
+
       for (int k=0; k<Multiplet.size(); k++)
-	  { //d
+	  { 
 		const CField &Field = NewFields[i];
 
-//		if (UseAnySUSYKind || (Field.Multiplet == Multiplet))
+
        if ( Field.Multiplet == Multiplet[k] )     
 
 		{
@@ -6021,8 +5686,8 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 				Spec_FieldIndices.push_back(tmp_FieldIndices);
 			}
 		}
-      } //d
-/////         
+      } 
+         
 	}
 
 	s1 = Spec_Multiplicities.size();
@@ -6103,9 +5768,6 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 
 	return true;
 }
-
-
-// end Labels_Create to modify, July 15, 2020
 
 
 
