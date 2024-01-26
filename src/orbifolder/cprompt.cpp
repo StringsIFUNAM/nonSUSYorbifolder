@@ -1,4 +1,4 @@
-#include "cprompt.h"
+#include "cprompt.h" 
 #include "canalysemodel.h"
 #include "globalfunctions.h"
 #include "crandommodel.h"
@@ -1397,7 +1397,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
   // if the current directory is />
   if (this->current_folder[0] < 0)
-  { //b  begin
+  { 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // change directory
     // updated on 10.10.2011
@@ -1417,15 +1417,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         if (Lattice == E8xE8)
           SELFDUALLATTICE = 1;
-        /*else
-        if (Lattice == Spin32)
-          SELFDUALLATTICE = 2;
-        else
-        {
-          SELFDUALLATTICE = 1;
-          if (this->print_output)
-            (*this->Print.out) << "\n  " << this->Print.cbegin << "Self-dual lattice not defined. Set to E8xE8." << this->Print.cend << "\n" << endl;
-        }*/
         return true;
       }
 
@@ -1438,7 +1429,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
-    // rename orbifold    //sept16
+    // rename orbifold    
     if (this->FindCommandType2(command, "rename orbifold(", parameter_string1, parameter_string2))
     {
       // begin: find parameters
@@ -1483,23 +1474,18 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     }    
     
 
-/////////////////////////////////
-// begin new load orbifolds, april 26
-
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // load orbifolds 
     if (this->FindCommandType2(command, "load orbifolds(", parameter_string1, parameter_string2)
-     || this->FindCommandType2(command, "load orbifold(", parameter_string1, parameter_string2))  //sept16
+     || this->FindCommandType2(command, "load orbifold(", parameter_string1, parameter_string2))  
     {
       const bool inequivalent      = this->FindParameterType1(parameter_string2, "inequivalent");
       (*this->Print.out) << "\n";
-      this->LoadOrbifolds(parameter_string1, inequivalent, false);  //tambien ok deleting false,false
+      this->LoadOrbifolds(parameter_string1, inequivalent, false);  
       this->MessageParameterNotKnown(parameter_string2);
       return true;
     }
 
-///// end new loas orbifolds, april 26
-/////////////////////////////////
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // save orbifolds //sept16
@@ -1745,8 +1731,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       bool random_origin = false;
 
-      vector<SUSYMultiplet> Multiplets(2);			//Particle types to be printed
-	  Multiplets[0]=Scalar;							//and to be given for equivalence check
+      vector<SUSYMultiplet> Multiplets(2);		
+	  Multiplets[0]=Scalar;							
 	  Multiplets[1]=LeftFermi;
 
       int newPID = -1;
@@ -1888,8 +1874,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               
               if (check_anomalies && !model_with_problem && (!save_if_new || (save_if_new && save_current_model))) 
               {   
-                if ((!NewOrbifold.CheckAnomaly(NewOrbifold.StandardConfig, this->GaugeIndices, this->Print, false) ))
-//                  || !NewOrbifold.CheckDiscreteAnomaly(NewOrbifold.StandardConfig, this->GaugeIndices, anomalous_element, this->Print, true)))
+                if ((!NewOrbifold.CheckAnomaly(NewOrbifold.StandardConfig, this->GaugeIndices, this->Print, false) ))                  
                 {         
                   (*this->Print.out) << "\n  " << this->Print.cbegin << "Warning: problems with discrete and/or gauge anomalies." << this->Print.cend << endl;
                   model_with_problem = true;
@@ -1962,7 +1947,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       PID_Data.PID_StartingTimes.push_back(time (NULL));
       PID_Data.PID_Done.push_back(false);
       PID_Data.PID_Filenames.push_back(Filename);
-
 
       this->MessageParameterNotKnown(parameter_string2);
       return true;
@@ -2300,9 +2284,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // updated on 09.09.2011  //menu B
+        // updated on 09.09.2011  
         if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
-        { //begin if
+        { 
                      
           if (this->FindParameterType1(parameter_string1, "short cuts"))
           {
@@ -2703,7 +2687,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "\n";
           }
 
-          this->MessageHelpCreateNewOrbifold(3);
+          this->MessageHelpCreateNewOrbifold(2);
           // end: print
 
           this->MessageParameterNotKnown(parameter_string2);
@@ -4453,7 +4437,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 return true;
               }
 
-             vector<SUSYMultiplet> Multiplets(2); //added sept25						
+             vector<SUSYMultiplet> Multiplets(2); 						
 	         Multiplets[0]=Scalar;									
 	         Multiplets[1]=LeftFermi;       
 
@@ -4617,7 +4601,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             {
               (*this->Print.out) << "\n  " << this->Print.cbegin << "Using label #" << VEVConfig.use_Labels+1 << " of the fields." << this->Print.cend << "\n" << endl;
 
-              vector<SUSYMultiplet> Multiplets(2); //sept26
+              vector<SUSYMultiplet> Multiplets(2); 
      	      Multiplets[0]=Scalar;								
 	          Multiplets[1]=LeftFermi;
 
@@ -4638,12 +4622,10 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                   (*this->Print.out) << "\n  " << this->Print.cbegin << "Vev-configuration \"StandardConfig1\" cannot be changed." << this->Print.cend << "\n" << endl;
                 return true;
               }
-
-             
-              vector<SUSYMultiplet> Multiplets(2);			//Particle types to be printed
-	          Multiplets[0]=Scalar;							//and to be given for equivalence check
+       
+              vector<SUSYMultiplet> Multiplets(2);	
+	          Multiplets[0]=Scalar;							
 	          Multiplets[1]=LeftFermi;  
-                
                 
               if (this->online_mode)
               {
@@ -4852,8 +4834,8 @@ bool CPrompt::LoadOrbifolds(const string &Filename, bool inequivalent, unsigned 
     return false;
   }
 
-   vector<SUSYMultiplet> Multiplets(2);		//Particle types to be printed
-   Multiplets[0]=Scalar;						//and to be given for equivalence check
+   vector<SUSYMultiplet> Multiplets(2);		
+   Multiplets[0]=Scalar;						
    Multiplets[1]=LeftFermi;
 
   CInequivalentModels InequivModels; 
@@ -5249,12 +5231,10 @@ void CPrompt::MessageHelpCreateNewOrbifold(unsigned StartWithLine) const
   if (!this->print_output)
     return;
 
-  (*this->Print.out) << "\n  " << this->Print.cbegin << "Input data for orbifold model \"" << this->Orbifolds[this->OrbifoldIndex].OrbifoldGroup.Label << "\" is needed:" << this->Print.cend << "\n";
+  (*this->Print.out) << "\n  " << this->Print.cbegin << "Heterotic string SO(16)xSO(16) is assigned. Input data for orbifold model \"" << this->Orbifolds[this->OrbifoldIndex].OrbifoldGroup.Label << "\" is needed:" << this->Print.cend << "\n";
 
   vector<string> Text;
-   
-  Text.push_back(") heterotic string type SO(16)xSO(16) is already assigned.");  
-
+  
   Text.push_back(") print available space groups    : Print a list of possible space groups.");
   Text.push_back(") use space group(i)              : Choose the space group.");
 
