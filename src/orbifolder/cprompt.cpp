@@ -43,7 +43,7 @@ const char* command_names_main[] = {
     "rename orbifold(",
     "to(",
     "help",
-    //"print info",
+    "print info",
     "load when done",
     //"do not check anomalies",
     nullptr
@@ -121,10 +121,12 @@ const char* command_names_orbifold_spectrum[] = {
     "print(",
     "list of charges(",
     "tex table(",
-    "of sectors",
-    "of fixed points",
-    "of sector T(",                     
-    "of fixed point(",               
+    "of",
+    "sectors",
+    "fixed"
+    ,"points",
+    "sector T(",                     
+    "point(",               
     "no U1s",                               
     "with labels",
     nullptr
