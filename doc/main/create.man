@@ -1,0 +1,64 @@
+.TH "create" 1 "February 1, 2024" "Enrique Escalante-Notario"
+
+.SH NAME
+create - Create an orbifold(s) with a specified point group.
+
+.SH SYNOPSIS
+.B create [OPTION]... [FILE]...
+
+.SH DESCRIPTION
+This command creates an orbifold(s) assigns the point group (N,M) to the created orbifold.
+
+.SH OPTIONS
+
+.IP "orbifold(name_orbifold) with point group(N,M)" 
+(name_orbifold) unique name for the new orbifol and specifies the point group for the new orbifold, where N and M are parameters specific to the point group.
+
+.IP "random orbifold from(orbifold_label)" 
+Given a previously created model named (orbifold_name), a random search for models with the same point group is performed.
+
+.IP "do not check anomalies"
+asdas
+
+.IP "load when done"
+asdas
+
+.IP "print info"
+adasd
+
+.IP "save to(Filename)"
+asdasd
+
+.IP "if(...)" 
+Options SM, PM, SU5
+Options # generations
+Options inequivalent
+
+.IP "save to(""
+asdfas
+
+.IP "use(1,0,1,0,0,1,1)"
+adasd
+
+.IP "#models(X)"
+asdasd
+
+
+.SH EXAMPLE
+The following command creates an orbifold with the name "ExampleOrbifold" and assigns the point group (3, 2) to the created orbifold:
+
+.EX
+create orbifold(ExampleOrbifold) with point group(3,2)
+.EE
+
+.SH AUTHOR
+Enrique Escalante-Notario
+
+.SH SEE ALSO
+Related here article, additional documentation.
+
+.SH REPORTING BUGS
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
+
+.SH VERSION
+1.0
