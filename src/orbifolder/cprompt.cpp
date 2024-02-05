@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <vector>
 
-
+#include <cstdlib>
 #include <iostream>
 #include <cstring>
 #include <readline/readline.h>
@@ -1400,6 +1400,21 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
   // if the current directory is />
   if (this->current_folder[0] < 0)
   { 
+        
+    if (command.substr(0,3) == "man")
+    {    
+      string path_doc = " ./doc/main/";
+      // Insertar path_doc en la posición 4
+      command.insert(4, path_doc);
+      // Concatenar ".man" al final
+      command += ".man";
+      
+      // Ejecutar el comando utilizando system
+      int result = system(command.c_str());
+
+      return true;
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // change directory
     // updated on 10.10.2011
@@ -2326,6 +2341,26 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 1:
       { 
+
+                
+        if (command.substr(0,3) == "man")
+        {    
+          string path_doc = " ./doc/model/";
+          // Insertar path_doc en la posición 4
+          command.insert(4, path_doc);
+          // Concatenar ".man" al final
+          command += ".man";
+          
+          // Ejecutar el comando utilizando system
+          int result = system(command.c_str());
+
+          return true;
+        }
+
+
+
+
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // updated on 24.01.2011
         if (this->FindCommandType1(command, "cd ..", parameter_string1))
@@ -3124,6 +3159,23 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 2:
       { 
+
+        if (command.substr(0,3) == "man")
+        {    
+          string path_doc = " ./doc/gauge_group/";
+          // Insertar path_doc en la posición 4
+          command.insert(4, path_doc);
+          // Concatenar ".man" al final
+          command += ".man";
+          
+          // Ejecutar el comando utilizando system
+          int result = system(command.c_str());
+
+          return true;
+        }
+
+
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // updated on 18.02.2011
         if (this->FindCommandType1(command, "cd ..", parameter_string1))
@@ -3436,7 +3488,27 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       // spectrum
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 3:
-      {  
+      { 
+
+
+
+        if (command.substr(0,3) == "man")
+        {    
+          string path_doc = " ./doc/spectrum/";
+          // Insertar path_doc en la posición 4
+          command.insert(4, path_doc);
+          // Concatenar ".man" al final
+          command += ".man";
+          
+          // Ejecutar el comando utilizando system
+          int result = system(command.c_str());
+
+          return true;
+        }
+
+
+
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // updated on 18.02.2011
         if (this->FindCommandType1(command, "cd ..", parameter_string1))
@@ -3744,6 +3816,25 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           {  //l
             bool print_configs = false;
             bool print_help    = false;
+
+
+
+            if (command.substr(0,3) == "man")
+            {    
+              string path_doc = " ./doc/vev-config/";
+              // Insertar path_doc en la posición 4
+              command.insert(4, path_doc);
+              // Concatenar ".man" al final
+              command += ".man";
+              
+              // Ejecutar el comando utilizando system
+              int result = system(command.c_str());
+
+              return true;
+            }
+
+
+
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 04.09.2011
@@ -4372,6 +4463,21 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           ////////////////////////////////////////////////////////////////////////////////////////////////////////////
           case 1:
           { 
+
+            if (command.substr(0,3) == "man")
+            {    
+              string path_doc = " ./doc/labels/";
+              // Insertar path_doc en la posición 4
+              command.insert(4, path_doc);
+              // Concatenar ".man" al final
+              command += ".man";
+              
+              // Ejecutar el comando utilizando system
+              int result = system(command.c_str());
+
+              return true;
+            }
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 18.02.2011
             if (this->FindCommandType1(command, "cd ..", parameter_string1))
