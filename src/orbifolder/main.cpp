@@ -228,11 +228,11 @@ int main(int argc, char *argv[])
       cout << endl;
     }
 }*/
-  cout << "\n  ###########################################################################\n";
-  cout << "  #  The C++ Orbifolder                                                     #\n";
-  cout << "  #  Version: 1.2                                                           #\n";
-  cout << "  #  by H.P. Nilles, S. Ramos-Sanchez, P.K.S. Vaudrevange and A. Wingerter  #\n";
-  cout << "  ###########################################################################\n" << endl;
+  cout << "\n  ########################################################################################\n";
+  cout << "  #  Non-Supersymmetric Orbifolder                                                       #\n";
+  cout << "  #  Version: 1.0                                                                        #\n";
+  cout << "  #  by E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange #\n";
+  cout << "  ########################################################################################\n" << endl;
 
 
 
