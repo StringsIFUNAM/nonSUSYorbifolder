@@ -5,6 +5,7 @@
 **.Po
 *.Po
 **.a
+*.a
 
 # Ignorar archivos generados durante la compilación
 build/
