@@ -8,16 +8,17 @@ save - Save orbifolds to a specified file.
 
 .SH DESCRIPTION
 This command saves the current orbifolds to the specified file (Filename).
+Also work with orbifold.
 
 .SH OPTIONS
 .TP
-.B orbifolds(Filename)
+.B Filename
 Specifies the file to which the current orbifolds will be saved.
 
 .SH EXAMPLE
-The following command saves the current orbifolds to a file named "output.orb":
+The following command saves the current orbifolds to a file named "models.txt":
 .EX
-save orbifolds(output.orb)
+save orbifolds(models.txt)
 .EE
 
 .SH AUTHOR
@@ -26,23 +27,8 @@ Enrique Escalante-Notario
 .SH SEE ALSO
 Related manuals, additional documentation.
 
-.SH HISTORY
-Date and details of previous versions.
-
-.SH NOTES
-Additional information or important considerations.
-
-.SH BUGS
-List of known issues or bugs.
-
-.SH COPYRIGHT
-Copyright © Year, Your Company
-
-.SH ACKNOWLEDGMENTS
-Acknowledgments to individuals or resources that contributed to the development.
-
 .SH REPORTING BUGS
-Instructions for reporting bugs.
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
 
 .SH VERSION
-Current version number of the command.
+1.0

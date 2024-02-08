@@ -39,12 +39,13 @@ const char* command_names_main[] = {
     "#models(",
     "delete orbifold",
     "dir",
-    "load orbifolds(",
+    "load",
+    "orbifolds(",
     "rename orbifold(",
     "to(",
     "help",
     "print info",
-    "load when done",
+    "when done",
     //"do not check anomalies",
     nullptr
 };
