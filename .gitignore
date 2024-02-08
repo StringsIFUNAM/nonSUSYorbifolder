@@ -4,6 +4,7 @@
 *.exe
 **.Po
 *.Po
+**.a
 
 # Ignorar archivos generados durante la compilación
 build/
