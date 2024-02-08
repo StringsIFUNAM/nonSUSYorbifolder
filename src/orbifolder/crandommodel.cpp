@@ -216,7 +216,7 @@ bool CRandomModel::Initiate(const COrbifoldGroup &OrbifoldGroup, const vector<bo
 
 	// Old routines
 	// create vectors
-	/*ListOfPossibilities.clear();
+	ListOfPossibilities.clear();
 	  for (a1 = -4; a1 <= 4; ++a1)
 	  {
 	    Possibility[0] = a1;
@@ -237,10 +237,10 @@ bool CRandomModel::Initiate(const COrbifoldGroup &OrbifoldGroup, const vector<bo
 	      }
 	    }
 	  }
-	  s1 = ListOfPossibilities.size();*/
+	  s1 = ListOfPossibilities.size();
 
 
-	ListOfPossibilities.clear();
+	/*ListOfPossibilities.clear();
 	for (a1 = -6; a1 <= 12; ++a1) // original upper bound: 4
 	{
 		Possibility[0] = a1;
@@ -281,7 +281,7 @@ bool CRandomModel::Initiate(const COrbifoldGroup &OrbifoldGroup, const vector<bo
 			}
 		}
 	}
-	s1 = ListOfPossibilities.size();
+	s1 = ListOfPossibilities.size();*/
 
 	vector<double> PossibleOrders;
 	PossibleOrders.push_back(-1.0);

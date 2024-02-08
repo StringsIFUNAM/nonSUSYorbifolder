@@ -4007,7 +4007,7 @@ bool CPrint::PrintSummary(const CFixedBrane &FixedBrane, const COrbifoldGroup &O
 
 	const CSpaceGroupElement &Element = constr_Element.SGElement;
 	(*this->out) << "  -------------------------------------------------------------------------------------------------------------\n";
-	(*this->out) << "  sector:      (m,n, k)  = (" << Element.Get_m() << ", " << Element.Get_n() << ", " << Element.Get_k() << ")\n";
+	(*this->out) << "  sector:      (m,n,k)  = (" << Element.Get_m() << ", " << Element.Get_n() << ", " << Element.Get_k() << ")\n";
 	(*this->out) << "  fixed point:  ";
 
 	if (FixedBrane.GetFixedBraneLabel() != "")
