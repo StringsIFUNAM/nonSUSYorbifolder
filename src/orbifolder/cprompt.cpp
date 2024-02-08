@@ -1634,8 +1634,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     {
  // begin: find parameters
 
-     //comment feb8, 2024
-
       bool save_if_new = false; 
       bool save_all    = true;  
       bool save_SM     = false;
