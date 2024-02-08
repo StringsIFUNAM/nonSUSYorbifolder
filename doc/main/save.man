@@ -1,0 +1,34 @@
+.TH "save" 1 "February 1, 2024" "Enrique Escalante-Notario"
+
+.SH NAME
+save - Save orbifolds to a specified file.
+
+.SH SYNOPSIS
+.B save orbifolds(Filename)
+
+.SH DESCRIPTION
+This command saves the current orbifolds to the specified file (Filename).
+Also work with orbifold.
+
+.SH OPTIONS
+.TP
+.B Filename
+Specifies the file to which the current orbifolds will be saved.
+
+.SH EXAMPLE
+The following command saves the current orbifolds to a file named "models.txt":
+.EX
+save orbifolds(models.txt)
+.EE
+
+.SH AUTHOR
+Enrique Escalante-Notario
+
+.SH SEE ALSO
+Related manuals, additional documentation.
+
+.SH REPORTING BUGS
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
+
+.SH VERSION
+1.0

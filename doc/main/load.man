@@ -1,0 +1,33 @@
+.TH "load" 1 "February 1, 2024" "Enrique Escalante-Notario"
+
+.SH NAME
+load - Load orbifolds from a specified file.
+
+.SH SYNOPSIS
+.B load orbifolds(Filename)
+
+.SH DESCRIPTION
+This command loads orbifolds from the specified file (Filename) into the current environment.
+
+.SH OPTIONS
+.TP
+.B orbifolds(Filename)
+Specifies the file from which orbifolds will be loaded.
+
+.SH EXAMPLE
+The following command loads orbifolds from a file named "models.txt":
+.EX
+load orbifolds(models.txt)
+.EE
+
+.SH AUTHOR
+Enrique Escalante-Notario
+
+.SH SEE ALSO
+Related manuals, additional documentation.
+
+.SH REPORTING BUGS
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
+
+.SH VERSION
+Current version number of the command.

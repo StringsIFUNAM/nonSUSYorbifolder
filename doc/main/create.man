@@ -1,0 +1,79 @@
+.TH "create" 1 "February 1, 2024" "Enrique Escalante-Notario"
+
+.SH NAME
+create - Create an orbifold(s) with a specified point group.
+
+.SH SYNOPSIS
+.B create [OPTION]...
+
+.SH DESCRIPTION
+This command creates an orbifold(s) assigns the point group (N,M) to the created orbifold.
+
+.SH OPTIONS
+
+.IP "orbifold(OrbifoldLabel) with point group(N,M)" 
+OrbifoldLabel is a unique name for the new orbifold, in addition it is necessary to specify the point group for the orbifold, this is done by N and M to represent the group Z_NxZM. For Z_N groups, M=1 must be assigned.
+
+.IP "random orbifold from(OrbifoldLabel)" 
+Given a previously created model named OrbifoldLabel, we can make a random search for models with the same point group.
+
+This command can be complemented with the following options:
+
+\(bu do not check anomalies
+
+Avoiding anomaly review speeds up model search, but the resulting models may not be useful.
+
+\(bu load when done
+
+Load the models when the search is finished.
+
+\(bu print info
+
+This enables notifications of the random search process.
+
+\(bu save to(Filename)
+
+Instructs the saving of the found models to a text file named Filename.
+
+\(bu if()
+
+This option allows adding more conditional options such as:
+ - Type of models: SM, PM, SU5
+ - Numers of generations: # generations
+ - Search for non-equivalent models: inequivalent
+
+
+\(bu use(1,0,0,0,0,0,0,1)
+
+One can request that in the search, the resulting models have the same shift vector if a 1 is placed in the first entry of the 8-dimensional vector or that the last Wilson line is equal if a 1 is placed in the last entry of the 8-dimensional vector. Otherwise, 0 should be placed.
+
+\(bu #models(X)
+
+Specify the number of models to be found.
+
+.IP
+
+
+.SH EXAMPLE
+The following command creates an orbifold with the name "ExampleOrbifold" and assigns the point group (3, 2) to the created orbifold:
+
+.B create orbifold(ExampleOrbifold) with point group(3,2)
+
+
+Starting from the model we have created, a random search for 10 SM-type models is performed, displaying information. Additionally, upon completion, load and save the found models.
+
+
+.B create random orbifold from(ExampleOrbifold) if(SM) #models(10) save_to(10_models_SM.txt) load when done
+
+
+.SH AUTHOR
+Enrique Escalante-Notario
+
+.SH SEE ALSO
+Related here article, additional documentation.
+
+.SH REPORTING BUGS
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
+
+.SH VERSION
+1.0
