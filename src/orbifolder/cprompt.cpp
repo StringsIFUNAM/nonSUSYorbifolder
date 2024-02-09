@@ -1749,6 +1749,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       bool random_origin = false;
 
+      if (!Use_Filename && !load_when_done && !print_info)
+      {
+        if (this->print_output)
+          (*this->Print.out) << "\n  " << this->Print.cbegin << "Models neither saved nor displayed. Parameter \"load when done\" turned on." << this->Print.cend << flush;
+        command += " load when done";
+      } 
+
       vector<SUSYMultiplet> Multiplets(2);		
 	  Multiplets[0]=Scalar;							
 	  Multiplets[1]=LeftFermi;
@@ -1764,6 +1771,15 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       if (newPID == 0) /* child process */
       {
+
+        if (!Use_Filename)
+        {
+          Filename = "tmp_fileID";
+          std::ostringstream osID;
+          osID << getpid();
+          Filename += osID.str();
+          Filename += ".txt";
+        }
         
         const double Rmax = RAND_MAX+0.000001;
 
@@ -1951,6 +1967,15 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       } 
       /* parent process */
       usleep(100);
+
+      if (!Use_Filename)
+      {
+        Filename = "tmp_fileID";
+        std::ostringstream osID;
+        osID << newPID;
+        Filename += osID.str();
+        Filename += ".txt";
+      }
 
       (*this->Print.out) << "\n  " << this->Print.cbegin << "New child process \"PID " << newPID << "\" from command \"" << command << "\"." << this->Print.cend << "\n" << endl;
 
@@ -5340,7 +5365,7 @@ void CPrompt::MessageHelpCreateNewOrbifold(unsigned StartWithLine) const
   if (!this->print_output)
     return;
 
-  (*this->Print.out) << "\n  " << this->Print.cbegin << "Heterotic string SO(16)xSO(16) is assigned. Input data for orbifold model \"" << this->Orbifolds[this->OrbifoldIndex].OrbifoldGroup.Label << "\" is needed:" << this->Print.cend << "\n";
+  (*this->Print.out) << "\n  " << this->Print.cbegin << "Heterotic string with SO(16)xSO(16) lattice is assigned. Input data for orbifold model \"" << this->Orbifolds[this->OrbifoldIndex].OrbifoldGroup.Label << "\" is needed:" << this->Print.cend << "\n";
 
   vector<string> Text;
   
