@@ -67,7 +67,7 @@ Starting from the model we have created, a random search for 10 SM-type models i
 
 
 .SH AUTHOR
-Enrique Escalante-Notario
+E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
 
 .SH SEE ALSO
 Related here article, additional documentation.

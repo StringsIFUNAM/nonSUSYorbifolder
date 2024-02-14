@@ -1,48 +1,40 @@
-.TH "load" 1 "February 1, 2024" "Enrique Escalante-Notario"
+.TH "delete" 1 "February 1, 2024" "Enrique Escalante-Notario"
 
 .SH NAME
-load - Load orbifolds from a specified file.
+delete - Delete orbifolds.
 
 .SH SYNOPSIS
-.B load orbifolds(Filename)
+.B delete orbifold(OrbifoldLabel)
 
 .SH DESCRIPTION
-This command loads orbifolds from the specified file (Filename) into the current environment.
+This command deletes the orbifold with the specified name (OrbifoldLabel), and it is also capable of deleting all loaded orbifolds
 
 .SH OPTIONS
 .TP
-.B orbifolds(Filename)
-Specifies the file from which orbifolds will be loaded.
+.B orbifold(OrbifoldLabel)
+Specifies the orbifold that will be deleted.
+
+
+.TP
+.B orbifolds
+All orbifolds are deleted
+
 
 .SH EXAMPLE
-The following command loads orbifolds from a file named "example.orb":
+The following command deletes the orbifold named ExampleOrbifold.
+
 .EX
-load orbifolds(example.orb)
+cd ExampleOrbifold
 .EE
 
 .SH AUTHOR
-Enrique Escalante-Notario
+E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
 
 .SH SEE ALSO
-Related manuals, additional documentation.
-
-.SH HISTORY
-Date and details of previous versions.
-
-.SH NOTES
-Additional information or important considerations.
-
-.SH BUGS
-List of known issues or bugs.
-
-.SH COPYRIGHT
-Copyright © Year, Your Company
-
-.SH ACKNOWLEDGMENTS
-Acknowledgments to individuals or resources that contributed to the development.
+Related here article, additional documentation.
 
 .SH REPORTING BUGS
-Instructions for reporting bugs.
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
 
 .SH VERSION
-Current version number of the command.
+1.0

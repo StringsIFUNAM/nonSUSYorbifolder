@@ -1,48 +1,34 @@
-.TH "load" 1 "February 1, 2024" "Enrique Escalante-Notario"
+.TH "rename" 1 "February 1, 2024" "Enrique Escalante-Notario"
 
 .SH NAME
-load - Load orbifolds from a specified file.
+Rename - orbifold.
 
 .SH SYNOPSIS
-.B load orbifolds(Filename)
+.B rename orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
 
 .SH DESCRIPTION
-This command loads orbifolds from the specified file (Filename) into the current environment.
+This command allows changing the label of an orbifold.
 
 .SH OPTIONS
 .TP
-.B orbifolds(Filename)
-Specifies the file from which orbifolds will be loaded.
+.B orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
+We define the new label for the orbifold.
 
 .SH EXAMPLE
-The following command loads orbifolds from a file named "example.orb":
+The following command rename one orbifold 
+
 .EX
-load orbifolds(example.orb)
+rename orbifold orbifold(ExampleOrbifold) to(Orbifold_example)
 .EE
 
 .SH AUTHOR
-Enrique Escalante-Notario
+E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
 
 .SH SEE ALSO
-Related manuals, additional documentation.
-
-.SH HISTORY
-Date and details of previous versions.
-
-.SH NOTES
-Additional information or important considerations.
-
-.SH BUGS
-List of known issues or bugs.
-
-.SH COPYRIGHT
-Copyright © Year, Your Company
-
-.SH ACKNOWLEDGMENTS
-Acknowledgments to individuals or resources that contributed to the development.
+Related here article, additional documentation.
 
 .SH REPORTING BUGS
-Instructions for reporting bugs.
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
 
 .SH VERSION
-Current version number of the command.
+1.0
