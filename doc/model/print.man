@@ -1,69 +1,69 @@
-print(1)                    General Commands Manual                   print(1)
+.TH "print" 1 "February 1, 2024" "Enrique Escalante-Notario"
+
+.SH NAME
+print - Print information about orbifold
+
+.SH SYNOPSIS
+.B print [options]
+
+.SH DESCRIPTION
+This command prints information about orbifold's features. For example
+the space groups that are available.
+
+.SH OPTIONS
+.TP
+.B available space groups
+Print details about available space groups.
+.TP
+.B print orbifold label
+.TP 
+.B print heterotic string type
+.TP 
+.B print available space groups
+.TP
+.B print point group
+.TP
+.B print space group
+.TP
+.B print twist
+.TP
+.B print #SUSY
+.TP 
+.B print shift
+.TP
+.B print Wilson lines
 
 
-
-NNAAMMEE
-       print - Print information about available space groups.
-
-
-SSYYNNOOPPSSIISS
-       pprriinntt aavvaaiillaabbllee ssppaaccee ggrroouuppss
+.SH EXAMPLES
+The following command prints general information about available space groups:
+.EX
+print available space groups
+.EE
 
 
-DDEESSCCRRIIPPTTIIOONN
-       This  command  prints  information about available space groups. If the
-       option available space  groups  is  provided,  it  will  print  details
-       specifically about available space groups.
+.SH AUTHOR
+Enrique Escalante-Notario
 
+.SH SEE ALSO
+Related manuals, additional documentation.
 
-OOPPTTIIOONNSS
-       aavvaaiillaabbllee ssppaaccee ggrroouuppss
-              Print details about available space groups.
+.SH HISTORY
+Date and details of previous versions.
 
+.SH NOTES
+Additional information or important considerations.
 
-EEXXAAMMPPLLEESS
-       The  following command prints general information about available space
-       groups:
-       print available space groups
+.SH BUGS
+List of known issues or bugs.
 
+.SH COPYRIGHT
+Copyright © Year, Your Company
 
+.SH ACKNOWLEDGMENTS
+Acknowledgments to individuals or resources that contributed to the development.
 
-AAUUTTHHOORR
-       Enrique Escalante-Notario
+.SH REPORTING BUGS
+Instructions for reporting bugs.
 
-
-SSEEEE AALLSSOO
-       Related manuals, additional documentation.
-
-
-HHIISSTTOORRYY
-       Date and details of previous versions.
-
-
-NNOOTTEESS
-       Additional information or important considerations.
-
-
-BBUUGGSS
-       List of known issues or bugs.
-
-
-CCOOPPYYRRIIGGHHTT
-       Copyright  Year, Your Company
-
-
-AACCKKNNOOWWLLEEDDGGMMEENNTTSS
-       Acknowledgments to individuals or resources that contributed to the de-
-       velopment.
-
-
-RREEPPOORRTTIINNGG BBUUGGSS
-       Instructions for reporting bugs.
-
-
-VVEERRSSIIOONN
-       Current version number of the command.
-
-
-
-Enrique Escalante-Notario      February 1, 2024                       print(1)
+.SH VERSION
+Current version number of the command.
