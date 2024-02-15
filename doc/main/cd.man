@@ -7,7 +7,7 @@ cd - Change directory.
 .B cd OrbifoldLabel
 
 .SH DESCRIPTION
-This command allows us to switch to the folder of a specific orbifold identified by its label
+This command allows us to switch to the directory of a specific orbifold identified by its label
 
 .SH OPTIONS
 .TP
@@ -15,7 +15,7 @@ This command allows us to switch to the folder of a specific orbifold identified
 Specifies the label of the orbifold of interest.
 
 .SH EXAMPLE
-The following command changes to the folder of the orbifold ExampleOrbifold:
+The following command changes to the directory of the orbifold ExampleOrbifold:
 .EX
 cd orbifolds(example.orb)
 .EE

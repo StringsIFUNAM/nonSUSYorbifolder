@@ -15,7 +15,7 @@ This command allows us leave this directory.
 Specifies the path to main directory of the orbifold of interest.
 
 .SH EXAMPLE
-The following command changes to the folder of the orbifold ExampleOrbifold:
+The following command changes to the main directory:
 .EX
 cd ..
 .EE
