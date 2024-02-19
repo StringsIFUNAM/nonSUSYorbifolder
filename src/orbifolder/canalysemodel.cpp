@@ -1005,26 +1005,40 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("N");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension = 10;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("T");
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension = -10;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("bT");
+		Scheme.Multiplets.push_back(LeftFermi); 
 
 		Dimensions[0].Dimension = -5;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("F");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(NoU1Charges);
+		Scheme.Labels.push_back("H"); 
+		Scheme.Multiplets.push_back(Scalar);  
 
 		Dimensions[0].Dimension = 5;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("bF");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(NoU1Charges);
+		Scheme.Labels.push_back("bH");
+		Scheme.Multiplets.push_back(Scalar);  
+
 
 		return true;
 	}
@@ -1044,21 +1058,25 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("N");
+		Scheme.Multiplets.push_back(Scalar); 
 
 		Dimensions[0].Dimension = 16;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("F");
+		Scheme.Multiplets.push_back(LeftFermi); 
 
 		Dimensions[0].Dimension = -16;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("bF");
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension = 10;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("H");
+		Scheme.Multiplets.push_back(Scalar);
 
 		return true;
 	}
@@ -1084,6 +1102,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("q");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("sq");            
+		Scheme.Multiplets.push_back(Scalar);      
 
 		Dimensions[0].Dimension = -3;
 		Dimensions[1].Dimension =  2;
@@ -1091,6 +1114,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("bq");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("bsq");            
+		Scheme.Multiplets.push_back(Scalar);      
 
 		Dimensions[0].Dimension = -3;
 		Dimensions[1].Dimension =  1;
@@ -1098,6 +1126,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("bu");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("bsu");            
+		Scheme.Multiplets.push_back(Scalar);      
 
 		Dimensions[0].Dimension =  3;
 		Dimensions[1].Dimension =  1;
@@ -1105,6 +1138,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("u");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("su");            
+		Scheme.Multiplets.push_back(Scalar);      
 
 		Dimensions[0].Dimension = -3;
 		Dimensions[1].Dimension =  1;
@@ -1112,6 +1150,12 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("bd");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("bsd");            
+		Scheme.Multiplets.push_back(Scalar);      
+
 
 		Dimensions[0].Dimension =  3;
 		Dimensions[1].Dimension =  1;
@@ -1119,6 +1163,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("d");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("sd");            
+		Scheme.Multiplets.push_back(Scalar);      
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -1126,6 +1175,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("l");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("h");            
+		Scheme.Multiplets.push_back(Scalar);     
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -1133,6 +1187,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("bl");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("bh");      
+		Scheme.Multiplets.push_back(Scalar);  
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -1140,6 +1199,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("be");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("bse");            
+		Scheme.Multiplets.push_back(Scalar);      
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -1147,6 +1211,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("e");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("se");            
+		Scheme.Multiplets.push_back(Scalar);      
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -1154,6 +1223,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("n");
+		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.SetOfU1Charges.push_back(YCharges); 
+		Scheme.Labels.push_back("sn");            
+		Scheme.Multiplets.push_back(Scalar);      
 
 		return true;
 	}
@@ -1179,6 +1253,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("f");
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension = -4;
 		Dimensions[1].Dimension =  2;
@@ -1186,6 +1261,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("bf");
+		Scheme.Multiplets.push_back(LeftFermi); 
 
 		Dimensions[0].Dimension = -4;
 		Dimensions[1].Dimension =  1;
@@ -1193,6 +1269,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("fc");
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension =  4;
 		Dimensions[1].Dimension =  1;
@@ -1200,6 +1277,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("bfc");
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension =  4;
 		Dimensions[1].Dimension =  1;
@@ -1207,6 +1285,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("q");
+		Scheme.Multiplets.push_back(LeftFermi); 
 
 		Dimensions[0].Dimension = -4;
 		Dimensions[1].Dimension =  1;
@@ -1214,6 +1293,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("bq");
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension =  6;
 		Dimensions[1].Dimension =  1;
@@ -1221,6 +1301,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("c");
+		Scheme.Multiplets.push_back(LeftFermi); 
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -1228,6 +1309,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("h");
+		Scheme.Multiplets.push_back(LeftFermi); 
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -1235,6 +1317,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("dl");
+		Scheme.Multiplets.push_back(LeftFermi); 
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -1242,6 +1325,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("dr");
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -1249,6 +1333,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("s");
+		Scheme.Multiplets.push_back(Scalar); 
 
 		return true;
 	}
@@ -1868,7 +1953,7 @@ bool CAnalyseModel::AnalyseModel(const COrbifold &Orbifold, const SConfig &Origi
 							{
 
 								SConfig NewSMVEVConfig = SMVEVConfig;
-								//this->AutoCreateLabels(SMScheme, NewSMVEVConfig);			//hacking here!!! disable labeling
+								this->AutoCreateLabels(SMScheme, NewSMVEVConfig);			//hacking here!!! disable labeling
 
 								NewSMVEVConfig.ConfigLabel  = "SMConfig";
 								NewSMVEVConfig.ConfigNumber = SMcounter;
@@ -2376,6 +2461,7 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 
 	vector<RepVector> new_SetOfDimensions;
 	vector<CVector>   new_SetOfU1Charges;
+	vector<SUSYMultiplet> new_SetOfMultiplets;
 	vector<string>    new_Labels;
 	vector<unsigned>  new_counter;
 
@@ -2408,6 +2494,7 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 			{
 				const RepVector &SchemeDimensions = Scheme.SetOfDimensions[j];
 				const CVector   &SchemeU1Charges  = Scheme.SetOfU1Charges[j];
+				const SUSYMultiplet &SchemeMultiplet = Scheme.Multiplets[j];
 
 				equal = true;
 				for (k = 0; equal && (k < number_of_usedfactors); ++k)
@@ -2432,7 +2519,7 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 					if (fabs(U1Charges[SymmetryGroup.observable_sector_U1s[k]] - (UseNormalizationFactors[k] * U1Flip[k] * SchemeU1Charges[k])) > prec)
 						equal = false;
 				}
-				if (equal)
+				if (equal && Field.Multiplet == SchemeMultiplet)
 				{
 					Field.Labels.push_back(Scheme.Labels[j]);
 					Field.Numbers.push_back(counter[j]);
@@ -2455,7 +2542,7 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 				equal = false;
 				for (k = 0; !equal && (k < s2); ++k)
 				{
-					if ((AreRepVectorsEqual(new_SetOfDimensions[k], newDimensions)) && (new_SetOfU1Charges[k] == newU1Charges))
+					if ((AreRepVectorsEqual(new_SetOfDimensions[k], newDimensions)) && (new_SetOfU1Charges[k] == newU1Charges) && (new_SetOfMultiplets[k] == Field.Multiplet))
 					{
 						Field.Labels.push_back(new_Labels[k]);
 						Field.Numbers.push_back(new_counter[k]);
@@ -2477,7 +2564,7 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 					// if the current "Dimensions" and "U1Charges" are the charge conjugate of a known one add a "b" in front of the label
 					for (k = 0; !equal && (k < s2); ++k)
 					{
-						if ((AreRepVectorsEqual(new_SetOfDimensions[k], newDimensionsCC)) && (new_SetOfU1Charges[k] == newU1ChargesCC))
+						if ((AreRepVectorsEqual(new_SetOfDimensions[k], newDimensionsCC)) && (new_SetOfU1Charges[k] == newU1ChargesCC) && (new_SetOfMultiplets[k] == Field.Multiplet))
 						{
 							label = "b" + new_Labels[k];
 							Field.Labels.push_back(label);
@@ -2485,6 +2572,7 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 
 							new_SetOfDimensions.push_back(newDimensions);
 							new_SetOfU1Charges.push_back(newU1Charges);
+							new_SetOfMultiplets.push_back(Field.Multiplet);
 							new_Labels.push_back(label);
 							new_counter.push_back(2);
 
@@ -2503,6 +2591,9 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 							Xcounter = 0;
 							++XcounterAdd;
 						}
+						if (Field.Multiplet == Scalar || Field.Multiplet == bScalar) 
+						label = "s" + XLabels[Xcounter] + labelAdd;   
+						else                                          
 						label = XLabels[Xcounter] + labelAdd;
 						++Xcounter;
 
@@ -2511,6 +2602,7 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 
 						new_SetOfDimensions.push_back(newDimensions);
 						new_SetOfU1Charges.push_back(newU1Charges);
+						new_SetOfMultiplets.push_back(Field.Multiplet);
 						new_Labels.push_back(label);
 						new_counter.push_back(2);
 					}
@@ -2528,7 +2620,6 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 
 	return true;
 }
-
 
 
 /* ########################################################################################
