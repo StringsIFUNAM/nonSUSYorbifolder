@@ -46,6 +46,8 @@ const char* command_names_main[] = {
     "help",
     "print info",
     "when done",
+    "program("
+    "from("
     //"do not check anomalies",
     nullptr
 };
