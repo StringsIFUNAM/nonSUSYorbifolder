@@ -1559,15 +1559,74 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     // create orbifold
     // updated on 21.10.2011
     if (this->FindCommandType2(command, "create orbifold(", parameter_string1, parameter_string2))
-    {
-      
+    {         
+      // begin: find parameters
+      const bool b1 = this->FindParameterType2(parameter_string2, "from(", parameter_string3);
       const bool b2 = this->FindParameterType2(parameter_string2, "with point group(", parameter_string3);
+
+      if ((!b1 && !b2) || (b1 && b2))
+      {
+        if (this->print_output)
+          (*this->Print.out) << "\n  " << this->Print.cbegin << "One parameter needed: \"from(AnotherOrbifoldLabel)\" or \"with point group(M,N)\"." << this->Print.cend << "\n" << endl;
+
+        this->MessageParameterNotKnown(parameter_string2);
+        return true;
+      }
+      // end: find parameters
+
+      // begin: new orbifold label
+      if (this->MessageLabelError(parameter_string1))
+      {
+        this->MessageParameterNotKnown(parameter_string2);
+        return true;
+      }
+
+      if (this->MessageOrbifoldAlreadyExists(parameter_string1))
+      {
+        (*this->Print.out) << endl;
+        this->MessageParameterNotKnown(parameter_string2);
+        return true;
+      }
+      // end: new orbifold label
+
+      // case 1: "from(AnotherOrbifoldLabel)"
+      if (b1)
+      {
+        // begin: from orbifold
+        unsigned index = 0;
+        if (this->MessageOrbifoldNotKnown(parameter_string3, index))
+          return true;
+        // end: from orbifold
+
+        this->Orbifolds.push_back(this->Orbifolds[index]);
+        this->Orbifolds[this->Orbifolds.size()-1].OrbifoldGroup.Label = parameter_string1;
+
+        vector<SConfig> NewVEVConfigs = this->AllVEVConfigs[index];
+        t1 = NewVEVConfigs.size(); 
+        for (i = 0; i < t1; ++i)
+        {
+          PID &pid = NewVEVConfigs[i].pid;
+          pid.PIDs.clear();
+          pid.PID_Commands.clear();
+          pid.PID_JobIndices.clear();
+          pid.PID_StartingTimes.clear();
+          pid.PID_Done.clear();
+          pid.PID_Filenames.clear();
+        }
+        this->AllVEVConfigs.push_back(NewVEVConfigs);
+        this->AllVEVConfigsIndex.push_back(this->AllVEVConfigsIndex[index]);
+
+        if (this->print_output)
+          (*this->Print.out) << "\n  " << this->Print.cbegin << "Orbifold \"" << parameter_string1 << "\" created from \"" << parameter_string3 << "\"." << this->Print.cend << "\n" << endl;
+
+        this->MessageParameterNotKnown(parameter_string2);
+        return true;
+      }
 
       // case 2: "with point group(M,N)"
       vector<int> Orders;
       
-  if (!convert_string_to_vector_of_int(parameter_string3, Orders) || ((Orders.size() != 1) && (Orders.size() != 2)) || (find(Orders.begin(), Orders.end(), 0) != Orders.end()))  
-    
+      if (!convert_string_to_vector_of_int(parameter_string3, Orders) || ((Orders.size() != 1) && (Orders.size() != 2)) || (find(Orders.begin(), Orders.end(), 0) != Orders.end()))  
       {
         if (this->print_output)
           (*this->Print.out) << "\n  " << this->Print.cbegin << "The point group of the orbifold is ill-defined." << this->Print.cend << "\n" << endl;
@@ -2119,9 +2178,11 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         const bool PrintSubDir = !this->FindParameterType1(parameter_string1, "no subdirectories");
 
         (*this->Print.out) << "\n  commands of this directory:\n";
-        (*this->Print.out) << "    load orbifolds(Filename)\n";
+        (*this->Print.out) << "    load program(Filename)                    load commands from \"Filename\"\n\n";
+        (*this->Print.out) << "    load orbifolds(Filename)                  optional: \"inequivalent\"\n";
         (*this->Print.out) << "    save orbifolds(Filename)\n\n";
         (*this->Print.out) << "    create orbifold(OrbifoldLabel) with point group(M,N)\n";
+        (*this->Print.out) << "    create orbifold(OrbifoldLabel) from(AnotherOrbifoldLabel)\n";
         (*this->Print.out) << "    create random orbifold from(OrbifoldLabel)\n";
         (*this->Print.out) << "                                              various parameters, see \"help create random\"\n";
         (*this->Print.out) << "    rename orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)\n";

@@ -32,6 +32,7 @@ struct PhenoScheme
   vector<RepVector> SetOfDimensions;
   vector<CVector>   SetOfU1Charges;
   vector<string>    Labels;
+  vector<SUSYMultiplet> Multiplets; 
 
   // i specifies which dimension and U(1) charges specify the normalization
   unsigned          IndexOfSetToNormalizeCharges; // equal i
