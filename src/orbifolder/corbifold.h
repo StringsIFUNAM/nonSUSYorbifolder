@@ -11,14 +11,11 @@
 #include "cmonomial.h"
 #include "canalysemodel.h"
 #include "cfield.h"
-#include "cmassmatrix.h"
-#include "cyukawacouplings.h"
 #include "cgaugeinvariance.h"
 
 using std::vector;
 using std::string;
 
-class CMassMatrix;
 class OrbifoldGroup;
 class CFixedBrane;
 class CSector;
@@ -86,7 +83,6 @@ struct SConfig
   vector<CField>                  Fields;
 
   vector<YukawaCoupling>          FieldCouplings;
-  vector<CMassMatrix>             MassMatrices;
 
   vector<string>                  NamesOfSetsOfFields;
   vector<vector<unsigned> >       SetsOfFields;
@@ -140,7 +136,6 @@ public:
 
   SConfig                StandardConfig;
   SConfig                TachyonicStandardConfig;
-  CYukawaCouplings       YukawaCouplings;
 
 private :
   bool                   Config_Clear(SConfig &VEVConfig, string &Label);

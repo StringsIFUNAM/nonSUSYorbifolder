@@ -358,7 +358,6 @@ bool COrbifold::Create()
 	// Load tachyonic reps into StandardConfig for Spectra comparison to work
 	this->StandardConfig.Fields.insert(this->StandardConfig.Fields.end(), this->TachyonicStandardConfig.Fields.begin(), this->TachyonicStandardConfig.Fields.end());
 
-	this->YukawaCouplings.Initiate(this->OrbifoldGroup.GetSpaceGroup(), this->StandardConfig);
 
 	return true;
 }

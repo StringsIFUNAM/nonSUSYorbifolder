@@ -1809,6 +1809,41 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       vector<unsigned> OrbifoldIndices;
 
       bool random_origin = false;
+      
+      if (parameter_string1 == "*")
+      {
+        random_origin = true;
+
+        const size_t o1 = this->Orbifolds.size();
+        for (i = 0; i < o1; ++i)
+        {
+          if (this->Orbifolds[i].GetCheckStatus() == CheckedAndGood)
+            OrbifoldIndices.push_back(i);
+        }
+        if (OrbifoldIndices.size() == 0)
+        {
+          this->MessageParameterNotKnown(parameter_string2);
+          if (this->print_output)
+            (*this->Print.out) << "\n  " << this->Print.cbegin << "Cannot create orbifolds randomly from \"*\" because no valid orbifold model available." << this->Print.cend << "\n" << endl;
+          return true;
+        }
+        OriginalOrbifoldIndex = OrbifoldIndices[0];
+      }
+      else
+      {
+        if (this->MessageOrbifoldNotKnown(parameter_string1, OriginalOrbifoldIndex))
+        {
+          this->MessageParameterNotKnown(parameter_string2);
+          return true;
+        }
+        if (this->Orbifolds[OriginalOrbifoldIndex].GetCheckStatus() != CheckedAndGood)
+        {
+          this->MessageParameterNotKnown(parameter_string2);
+          if (this->print_output)
+            (*this->Print.out) << "\n  " << this->Print.cbegin << "Cannot create orbifolds randomly from \"" << parameter_string1 << "\" because model is not fully defined." << this->Print.cend << "\n" << endl;
+          return true;
+        }
+      }
 
       if (!Use_Filename && !load_when_done && !print_info)
       {
@@ -1847,7 +1882,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         std::ofstream tmp_out(Filename.data());
 
 
-       CInequivalentModels InequivModels; 
+        CInequivalentModels InequivModels; 
 
         COrbifoldGroup NewOrbifoldGroup;
         vector<CVector> UnbrokenRoots;
@@ -1903,7 +1938,20 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         i = 1;
         while (i <= max_models)
         { 
+          if (random_origin)
+          {
+            OriginalOrbifoldIndex = (unsigned)(rand() * (double)o1/Rmax);
+            if (OriginalOrbifoldIndex >= o1)
+            {
+              (*this->Print.out) << "\n  " << this->Print.cbegin << "Warning: orbifold-index out of range. Stop process." << this->Print.cend << endl;
+              tmp_out.close();
+              std::exit(0); // terminate child process
+            }
+            NewOrbifoldGroup = this->Orbifolds[OrbifoldIndices[OriginalOrbifoldIndex]].OrbifoldGroup;
+            NewOrbifoldGroup.LoadedU1Generators.clear();
 
+            SpecialIndex = OriginalOrbifoldIndex;
+          }
           // create random shifts and Wilson lines
           if (NewOrbifoldGroup.CreateRandom(RandomModels[SpecialIndex], false))
           { 
