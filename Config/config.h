@@ -42,7 +42,7 @@
 #define PACKAGE "orbifolder"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "orbifolder@projects.hepforge.org"
+#define PACKAGE_BUGREPORT "enriquescalante@gmail.com"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "Orbifolder"
@@ -54,7 +54,7 @@
 #define PACKAGE_TARNAME "orbifolder"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL "http://projects.hepforge.org/orbifolder/"
+#define PACKAGE_URL "https://github.com/enriqueescalante/Orbifolder_N-0"
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "1.0"
