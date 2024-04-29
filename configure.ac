@@ -1,4 +1,4 @@
-AC_INIT([Orbifolder], [1.0], [orbifolder@projects.hepforge.org], [orbifolder], [http://projects.hepforge.org/orbifolder/])
+AC_INIT([Orbifolder], [1.0], [enriquescalante@gmail.com], [orbifolder], [https://github.com/enriqueescalante/Orbifolder_N-0])
 
 m4_include([m4/m4_ax_boost_base.m4])
 
