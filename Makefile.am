@@ -6,7 +6,7 @@ SUBDIRS = \
 
 ACLOCAL_AMFLAGS = -I m4
 
-dist_noinst_DATA = *.txt GaugeInvariance/* Geometry/* src/examples/*
+dist_noinst_DATA = GaugeInvariance/* Geometry/* src/examples/*
 
 # Add readline library to relevant targets
 src_io_LDADD = -lreadline
