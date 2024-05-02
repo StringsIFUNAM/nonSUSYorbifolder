@@ -532,6 +532,8 @@ bool CMasslessHalfState::SolveMassEquation(const CVector &constructing_Element, 
 ######################################################################################## */
 bool CTachyonHalfState::TachyonSolver(const unsigned &nindex, const unsigned &kindex, const CVector &constructing_Element, const SelfDualLattice &Lattice)
 {
+	bool verbose = false; 
+	
 	if (this->Weights.size() != 0)
 	{
 		cout << "\n  Warning in bool CMasslessHalfState::SolveMassEquation(...) : set of weights is not empty - now cleared." << endl;
@@ -581,12 +583,15 @@ bool CTachyonHalfState::TachyonSolver(const unsigned &nindex, const unsigned &ki
 							this->Weights.push_back(TestVector + constructing_Element);
 							this->tachyonmass.push_back(m_R);
 
+						   if(verbose)
+						   {
 							cout << " potential tachyons in sector (1, " << nindex << ", " << kindex << ") with weight q_i = (";
 							for (int i=0; i<4; i++) {
 								cout << q[i]+constructing_Element[i] <<" ";
 							}
 							cout << ")\n possible tacyonic Excitation N = " << this->Excitation.NumberOperator << endl;
 							cout << " and mass M_R^2 = " << m_R << endl << endl;
+						   }
 						}
 					}
 				}

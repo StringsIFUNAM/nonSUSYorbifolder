@@ -1016,6 +1016,8 @@ const CSector &COrbifold::GetSector(const unsigned &i) const
 ######################################################################################## */
 bool COrbifold::CheckCPPartner() const
 {
+	bool verbose = false;
+	
 	bool CheckOk = true;
 
 	const bool SaveProblematicModels = true;
@@ -1156,6 +1158,8 @@ bool COrbifold::CheckCPPartner() const
 				}
 				if (!CC)
 				{
+				   if(verbose)
+				   {	
 					CheckOk = false;
 					cout << "\n  Warning: left and right chiral parts of the spectrum differ:" << endl;
 					cout << "  No partner for: ";
@@ -1166,6 +1170,7 @@ bool COrbifold::CheckCPPartner() const
 					cout << " localized at ";
 					Print.PrintSGElement(SGElement_i);
 					cout << endl;
+				   }	
 				}
 			}
 		}
@@ -1360,6 +1365,8 @@ bool COrbifold::CheckCPPartner() const
 ######################################################################################## */
 bool COrbifold::CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndices, CPrint &Print, bool info, double AddFactor) const
 {
+	bool verbose = false;
+	
 	if (fabs(AddFactor) < 0.0001)
 	{
 		(*Print.out) << "\n  Warning in bool COrbifold::CheckAnomaly(...) const: \"AddFactor\" ill-defined. Return false." << endl;
@@ -1517,8 +1524,11 @@ bool COrbifold::CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndic
 				// if SU(2)_i is anomalous
 				if ((number_of_su2 % 2) != CHugeInt(0))
 				{
+				   if(verbose)
+				   {
 					(*Print.out) << "\n  " << Print.cbegin << "SU(2)_" << i+1 << " gauge theory has anomalies." << Print.cend << endl;
 					AllAnomaliesCancel = false;
+				   }
 				}
 			}
 			// check: SU(N) - anomaly
@@ -1563,10 +1573,13 @@ bool COrbifold::CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndic
 				// if SU(N)_i is anomalous
 				if (sum_anomaly != CHugeInt(0))
 				{
+				   if(verbose)
+				   {
 					(*Print.out) << "\n  " << Print.cbegin << "SU(N)_" << i+1 << " gauge theory has anomalies." << Print.cend << endl;
 					if (!info)
 						(*Print.out) << "    " << Print.cbegin << i+1 << "-th gauge group factor is " << algebra << ": tr cubic    = " << sum_anomaly << Print.cend << "\n";
 					AllAnomaliesCancel = false;
+				   }
 				}
 			}
 		}
@@ -1646,18 +1659,24 @@ bool COrbifold::CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndic
 			NoAnomaly = false;
 			if (VEVConfig.SymmetryGroup.IsFirstU1Anomalous && (D2RatHugeInt(VEVConfig.SymmetryGroup.D0_FI_term) != sum_Qi))
 			{
+			   if(verbose)
+			   {
 				(*Print.out) << "\n  Warning in bool COrbifold::CheckAnomaly(...) const: FI term not correct. Return false." << endl;
 				return false;
+			   }
 			}
 
 			// begin check: tr Q_i^3 = 1/4 * |t_i|^2 tr Q_i
 			if (sum_Qi_three != (U1LengthSquare[i] * X * sum_Qi)/CHugeInt(4))
 			{
+			   if(verbose)
+			   {
 				(*Print.out) << "\n  " << Print.cbegin << "Anomalies are not universal: check tr Q_" << i+1 << "^3 = 1/4 * |t_" << i+1 << "|^2 tr Q_" << i+1 << "." << Print.cend << "\n";
 				(*Print.out) << "    " << Print.cbegin << "tr Q_" << i+1 << "   = " << sum_Qi << Print.cend << "\n";
 				(*Print.out) << "    " << Print.cbegin << "tr Q_" << i+1 << "^3 = " << sum_Qi_three << Print.cend << "\n";
 				(*Print.out) << "    " << Print.cbegin << "|t_" << i+1 << "|^2  = " << U1LengthSquare[i] << Print.cend << endl;
 				AllAnomaliesCancel = false;
+			   }
 			}
 			// end check: tr Q_i^3 = 1/4 * |t_i|^2 tr Q_i
 		}
@@ -1688,8 +1707,11 @@ bool COrbifold::CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndic
 				{
 					if (!NoAnomaly && (i == 0) && (j != 0))
 					{
+					   if(verbose)
+					   {
 						(*Print.out) << "\n  " << Print.cbegin << "Anomalies are not universal: first U(1) is anomalous, but tr Q_" << j+1 << "^2 Q_anom = 0." << Print.cend << endl;
 						AllAnomaliesCancel = false;
+					   }
 					}
 				}
 				else
@@ -1703,12 +1725,15 @@ bool COrbifold::CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndic
 					// begin check: 1/(2 |t_j|^2) tr Q_j^2 Q_i = 1/24 * tr Q_i
 					if (VEVConfig.SymmetryGroup.IsFirstU1Anomalous && (i == 0) && (sum_QiQjQj/(CHugeInt(2) * U1LengthSquare[j]) != ((X * sum_Qi) / CHugeInt(24))))
 					{
+					   if(verbose)
+					   {
 						(*Print.out) << "\n  " << Print.cbegin << "Anomalies are not universal: check 1/(2 |t_" << j+1<< "|^2) tr Q_" << j+1 << "^2 Q_" << i+1 << " = 1/24 * tr Q_" << i+1 << "." << Print.cend << "\n";
 						(*Print.out) << "    " << Print.cbegin << "tr Q_" << i+1 << "       = " << sum_Qi << Print.cend << "\n";
 						(*Print.out) << "    " << Print.cbegin << "tr Q_" << i+1 << " Q_" << j+1 << "^2 = " << sum_QiQjQj << Print.cend << "\n";
 						(*Print.out) << "    " << Print.cbegin << "|t_" << i+1 << "|^2 = " << U1LengthSquare[i] << Print.cend << "\n";
 						(*Print.out) << "    " << Print.cbegin << "|t_" << j+1 << "|^2 = " << U1LengthSquare[j] << Print.cend << endl;
 						AllAnomaliesCancel = false;
+					   }
 					}
 					// end check: 1/(2 |t_j|^2) tr Q_j^2 Q_i = 1/24 * tr Q_i
 				}
@@ -1782,10 +1807,13 @@ bool COrbifold::CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndic
 				// begin check: 12 tr index Q = tr Q
 				if (CHugeInt(12) * sum_anomaly != X * sum_Qis[j])
 				{
+				   if(verbose)
+				   {
 					(*Print.out) << "\n  " << Print.cbegin << "Anomalies are not universal: check 12 tr l(rep. of " << ggf.algebra << ") Q_" << j+1 << " = tr Q_" << j+1 << ".\n";
 					(*Print.out) << "    " << Print.cbegin << "tr Q_" << j+1 << " = " << sum_Qis[j] << Print.cend << "\n";
 					(*Print.out) << "    " << Print.cbegin << "tr l(rep. of " << ggf.algebra << ") Q_" << j+1 << " = " << sum_anomaly << Print.cend << endl;
 					AllAnomaliesCancel = false;
+				   }
 				}
 				// end check: 12 tr index Q = tr Q
 			}
@@ -2499,9 +2527,6 @@ bool COrbifold::Config_Clear(SConfig &VEVConfig, string &Label)
 	VEVConfig.Fields.clear();
 	VEVConfig.NamesOfSetsOfFields.clear();
 	VEVConfig.SetsOfFields.clear();
-
-	VEVConfig.NamesOfMonomials.clear();
-	VEVConfig.SetOfMonomials.clear();
 
 	VEVConfig.SymmetryGroup.D0_FI_term = 0.0;
 	VEVConfig.SymmetryGroup.Position_of_and_in_GaugeGroup = 0;

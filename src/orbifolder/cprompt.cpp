@@ -1,4 +1,4 @@
-#include "cprompt.h" 
+#include "cprompt.h"
 #include "canalysemodel.h"
 #include "globalfunctions.h"
 #include "crandommodel.h"
@@ -1981,7 +1981,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
              if (NewOrbifold.TachyonicStandardConfig.Fields.size() == 0)	 
              {
-
               if (!save_all && !model_with_problem)
               {
                 AllVEVConfigs.clear();
@@ -2001,7 +2000,11 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                     model_string += "_SU5_";
                 }
               }
-             }  
+             }
+             else
+             {
+			  save_current_model = false;
+			 }    
              
               if (save_current_model && (save_if_new || print_info) && !model_with_problem)                     
               {      
@@ -2019,9 +2022,10 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               {   
                 if ((!NewOrbifold.CheckAnomaly(NewOrbifold.StandardConfig, this->GaugeIndices, this->Print, false) ))                  
                 {         
-                  (*this->Print.out) << "\n  " << this->Print.cbegin << "Warning: problems with discrete and/or gauge anomalies." << this->Print.cend << endl;
-                  model_with_problem = true;
-                  model_string += "_ProblemAnomaly";
+                  //(*this->Print.out) << "\n  " << this->Print.cbegin << "Warning: problems with discrete and/or gauge anomalies." << this->Print.cend << endl;
+                  //model_with_problem = true;
+                  //model_string += "_ProblemAnomaly";
+                  save_current_model = false;
                 }
               }      
             } 

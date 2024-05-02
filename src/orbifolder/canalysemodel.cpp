@@ -840,7 +840,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("h");
-		Scheme.Multiplets.push_back(LeftFermi); 
+		Scheme.Multiplets.push_back(Scalar); 
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -1094,198 +1094,6 @@ bool CAnalyseModel::FindPositionOfGaugeGroup(const PhenoScheme &Scheme, const SC
 }
 
 
-/* ########################################################################################
-######   DTerms_FindDMonomials(const COrbifold &Orbifold, ...) const                 ######
-######                                                                               ######
-######   Version: 11.05.2011                                                         ######
-######   Check-Level: 1                                                              ######
-######                                                                               ######
-###########################################################################################
-######   input:                                                                      ######
-######   1) Orbifold    : the orbifold of the vev-config "VEVConfig"                 ######
-######   2) VEVConfig   : list of D-monomials will be saved here                     ######
-######   3) FieldIndices: list of field indices that may be contained in D-monomial  ######
-######   4) D0_withFI   : shall a Fayet Iliopoulos D-term for D_0 be used ?          ######
-######                                                                               ######
-######   output:                                                                     ######
-######   5) GaugeEquivalentFields: field indices with the same charges               ######
-######   6) AllFieldsInMonomial  : summary of field indices collected from all       ######
-######                             D-monomials                                       ######
-###########################################################################################
-######   description:                                                                ######
-######   Identifies gauge invaraint monomials in the fields of "VEVConfig" with      ######
-######   indices "FieldIndices". These monomials correspond to D=0.                  ######
-######################################################################################## */
-bool CAnalyseModel::DTerms_FindDMonomials(const COrbifold &Orbifold, SConfig &VEVConfig, const vector<unsigned> &FieldIndices, bool D0_withFI, vector<vector<unsigned> > &GaugeEquivalentFields, vector<unsigned> &AllFieldsInMonomial) const
-{
-	if ((AllFieldsInMonomial.size() != 0) || (GaugeEquivalentFields.size() != 0))
-	{
-		cout << "\n  Warning in bool CAnalyseModel::DTerms_FindDMonomials(..): one of the paramters is not empty - now cleared." << endl;
-		AllFieldsInMonomial.clear();
-		GaugeEquivalentFields.clear();
-	}
-
-	if (D0_withFI && !VEVConfig.SymmetryGroup.IsFirstU1Anomalous)
-	{
-		cout << "\n  Warning in bool CAnalyseModel::DTerms_FindDMonomials(..): anomalous U(1) not defined. Return false." << endl;
-		return false;
-	}
-
-	unsigned i = 0;
-	unsigned j = 0;
-
-	const size_t number_of_U1s       = VEVConfig.SymmetryGroup.GaugeGroup.u1directions.size();
-	size_t       number_of_used_U1s  = number_of_U1s;
-	unsigned     shift               = 0;
-	if (D0_withFI)
-	{
-		shift = 1;
-		number_of_used_U1s -= 1;
-	}
-
-	const rational<CHugeInt> Zero;
-
-	vector<rational<CHugeInt> >          Charges(number_of_used_U1s, Zero);
-	vector<vector<rational<CHugeInt> > > ChargeMatrixTranspose;
-
-	unsigned FieldIndex = 0;
-
-	// begin: collect the U(1) charges of those fields that shall be involved in D-flat monomials
-	//        but only use gauge-inequivalent fields
-	{
-		vector<RepVector> Known_Representations;
-		vector<unsigned>  tmp_GaugeEquivalentFields;
-		bool field_is_unknown = true;
-
-		// run through the field indices
-		const size_t s0 = FieldIndices.size();
-
-		for (i = 0; i < s0; ++i)
-		{
-			FieldIndex = FieldIndices[i];
-			const CField &tmp_Field = VEVConfig.Fields[FieldIndex];
-
-			const RepVector &Representation = tmp_Field.Dimensions;
-			const CVector   &U1Charges      = tmp_Field.U1Charges;
-
-			// convert the U(1) charges to ratioanl of CHugeInt
-			for (j = 0; j < number_of_used_U1s; ++j)
-				Charges[j] = D2HugeInt(U1Charges[j+shift]);
-
-			// begin: are the charges of the current field known?
-			field_is_unknown = true;
-			const size_t s1 = ChargeMatrixTranspose.size();
-			for (j = 0; field_is_unknown && (j < s1); ++j)
-			{
-				if ((ChargeMatrixTranspose[j] == Charges) && AreRepVectorsEqual(Known_Representations[j], Representation))
-				{
-					field_is_unknown = false;
-					GaugeEquivalentFields[j].push_back(FieldIndex);
-				}
-			}
-			if (field_is_unknown)
-			{
-				// save the charges
-				Known_Representations.push_back(Representation);
-				ChargeMatrixTranspose.push_back(Charges);
-
-				// save the field index
-				tmp_GaugeEquivalentFields.assign(1,FieldIndex);
-				GaugeEquivalentFields.push_back(tmp_GaugeEquivalentFields);
-			}
-			// end: are the charges of the current field known?
-		}
-	}
-	// end: collect the U(1) charges of those fields that shall be involved in D-flat monomials
-	//      but only use gauge-inequivalent fields
-
-	const size_t s1 = ChargeMatrixTranspose.size();
-
-	// begin: transpose the charge matrix
-	vector<rational<CHugeInt> > lineA(s1, Zero);
-	vector<vector<rational<CHugeInt> > > ChargeMatrix(number_of_used_U1s,lineA);
-
-	for (i = 0; i < s1; ++i)
-	{
-		for (j = 0; j < number_of_used_U1s; ++j)
-			ChargeMatrix[j][i] = ChargeMatrixTranspose[i][j];
-	}
-	// end: transpose the charge matrix
-
-	// begin: find the (positive integer) kernel of the charge matrix
-	CLinAlg<CHugeInt> LA;
-	vector<vector<rational<CHugeInt> > > BasisOfKernel;
-
-	if (!LA.FindPositiveIntegerKernel(ChargeMatrix, BasisOfKernel))
-	{
-		cout << "\n  Warning in bool CAnalyseModel::DTerms_FindDMonomials(...): Could not create the positive, integer kernel. Return false." << endl;
-		return false;
-	}
-	// end: find the (positive integer) kernel of the charge matrix
-
-	const size_t s2 = BasisOfKernel.size();
-
-	// begin: check and save the result
-	{
-		unsigned k = 0;
-		CVector U1Sum(number_of_U1s);
-		long long int num = 0;
-
-		for (i = 0; i < s2; ++i)
-		{
-			const vector<rational<CHugeInt> > &Vector_of_Exponents = BasisOfKernel[i];
-
-			// begin: save monomials
-			CMonomial Monomial(number_of_U1s);
-			U1Sum.Assign(number_of_U1s);
-			num = 0;
-
-			for (j = 0; j < Vector_of_Exponents.size(); ++j)
-			{
-				if (Vector_of_Exponents[j].denominator().ToLongLongInt() != 1)
-				{
-					cout << "\n  Warning in bool CAnalyseModel::DTerms_FindDMonomials(...): Exponent is not integer. Return false." << endl;
-					return false;
-				}
-
-				num = Vector_of_Exponents[j].numerator().ToLongLongInt();
-				if (num != 0)
-				{
-					Monomial.GaugeEquivalentFields.push_back(GaugeEquivalentFields[j]);
-					Monomial.Exponents.push_back(num);
-					U1Sum += VEVConfig.Fields[GaugeEquivalentFields[j][0]].U1Charges * (double)num;
-				}
-			}
-
-			Monomial.U1Charges = U1Sum;
-			if (Monomial.CheckGaugeInvariance(Orbifold, VEVConfig, false, true))
-				VEVConfig.SetOfMonomials.push_back(Monomial);
-			// end: save monomials
-
-			// begin: collect all fields that are involved in the D-flat directions
-			for (j = 0; j < Vector_of_Exponents.size(); ++j)
-			{
-				if (Vector_of_Exponents[j] != Zero)
-				{
-					const vector<unsigned> &GaugeEquivalentFields_j = GaugeEquivalentFields[j];
-					for (k = 0; k < GaugeEquivalentFields_j.size(); ++k)
-					{
-						unsigned tmp = GaugeEquivalentFields_j[k];
-
-						if (find(AllFieldsInMonomial.begin(), AllFieldsInMonomial.end(), tmp) == AllFieldsInMonomial.end())
-							AllFieldsInMonomial.push_back(tmp);
-					}
-				}
-			}
-			// end: collect all fields that are involved in the D-flat directions
-		}
-	}
-	// end: check and save the result
-
-	return true;
-}
-
-
 
 /* ########################################################################################
 ######   AnalyseModel(const COrbifold &Orbifold, ...) const                          ######
@@ -1392,7 +1200,7 @@ bool CAnalyseModel::AnalyseModel(const COrbifold &Orbifold, const SConfig &Origi
 							{
 
 								SConfig NewSMVEVConfig = SMVEVConfig;
-								this->AutoCreateLabels(SMScheme, NewSMVEVConfig);			//hacking here!!! disable labeling
+								this->AutoCreateLabels(SMScheme, NewSMVEVConfig);		
 
 								NewSMVEVConfig.ConfigLabel  = "SMConfig";
 								NewSMVEVConfig.ConfigNumber = SMcounter;
@@ -1455,33 +1263,6 @@ bool CAnalyseModel::AnalyseModel(const COrbifold &Orbifold, const SConfig &Origi
 					SU5 = true;
 					AllVEVConfigs.push_back(NewSU5VEVConfig);
 					Good_VEVConfig_Found = true;
-
-					/*if (this->SU5_GetFlippedU1(SU5VEVConfig, Roots10D.Weights, FlippedU1s))
-          {
-            s2 = FlippedU1s.size();
-            for (j = 0; j < s2; ++j)
-            {
-              Orbifold.Config_SetU1Direction(SU5VEVConfig, FlippedU1s[j], pos_of_U1);
-
-              SU5VEVConfig.SymmetryGroup.observable_sector_U1s.clear();
-              SU5VEVConfig.SymmetryGroup.observable_sector_U1s.push_back(pos_of_U1);
-              SU5VEVConfig.SymmetryGroup.U1s_AdditionalLabels[pos_of_U1] = "fl";
-
-              if (this->SU5_CheckVectorlikeness(Orbifold, SU5VEVConfig, pos_of_U1, Print, false))
-              {
-                SConfig NewSU5VEVConfig = SU5VEVConfig;
-                this->AutoCreateLabels(SU5Scheme, NewSU5VEVConfig);
-
-                NewSU5VEVConfig.ConfigLabel  = "SU5flConfig";
-                NewSU5VEVConfig.ConfigNumber = SU5counter;
-                ++SU5counter;
-
-                SU5 = true;
-                AllVEVConfigs.push_back(NewSU5VEVConfig);
-                Good_VEVConfig_Found = true;
-              }
-            }
-          }*/
 				}
 			}
 		}
@@ -1790,7 +1571,7 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 			const CField &Field = Fields[i];
 
 			// only left-chiral fields
-			if (Field.Multiplet == LeftFermi || Field.Multiplet == Scalar)
+			if (Field.Multiplet == LeftFermi)
 			{
 				// get the relevant dimensions and U(1) charges
 				for (j = 0; j < number_of_usedfactors; ++j)
@@ -3667,7 +3448,7 @@ int CAnalyseModel::PS_NetNumberOfGenerations(const SConfig &PSVEVConfig) const
 	for (i = 0; i < f1; ++i)
 	{
 		const CField &Field = Fields[i];
-		if (Field.Multiplet == LeftChiral)
+		if (Field.Multiplet == LeftFermi)
 		{
 			const RepVector &Dimensions = Field.Dimensions;
 
@@ -3791,7 +3572,7 @@ bool CAnalyseModel::PS_CheckVectorlikeness(SConfig &PSVEVConfig, CPrint &Print, 
 	for (i = 0; i < f1; ++i)
 	{
 		const CField &Field = Fields[i];
-		if (Field.Multiplet == LeftChiral)
+		if (Field.Multiplet == LeftFermi)
 		{
 			const RepVector &Dimensions = Field.Dimensions;
 
@@ -4243,7 +4024,7 @@ int CAnalyseModel::SU5_NetNumberOfGenerations(const SConfig &SU5VEVConfig) const
 	for (i = 0; i < f1; ++i)
 	{
 		const CField &Field = Fields[i];
-		if (Field.Multiplet == LeftChiral)
+		if (Field.Multiplet == LeftFermi)
 		{
 			const RepVector &Dimensions = Field.Dimensions;
 

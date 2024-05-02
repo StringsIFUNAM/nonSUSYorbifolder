@@ -13,7 +13,6 @@ using std::ostream;
 using std::ifstream;
 
 class CHugeInt;
-class CMonomial;
 class COrbifold;
 class CPrint;
 
@@ -82,7 +81,6 @@ public:
   bool AccidentalU1Charges_Load(SConfig &VEVConfig, ifstream &in);
   bool AccidentalU1Charges_Save(const SConfig &VEVConfig, ostream &out);
   
-  bool DTerms_FindDMonomials(const COrbifold &Orbifold, SConfig &VEVConfig, const vector<unsigned> &FieldIndices, bool D0_withFI, vector<vector<unsigned> > &GaugeEquivalentFields, vector<unsigned> &AllFieldsInMonomial) const;
 
   bool SetBmLGenerator(const COrbifold &Orbifold,SConfig &VEVConfig, const CVector &BmLGenerator, bool NeedsToBeNonAnomalous) const;
 

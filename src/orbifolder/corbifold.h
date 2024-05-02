@@ -8,7 +8,6 @@
 #include "cfixedpoint.h"
 #include "csector.h"
 #include "corbifoldcore.h"
-#include "cmonomial.h"
 #include "canalysemodel.h"
 #include "cfield.h"
 #include "cgaugeinvariance.h"
@@ -87,8 +86,6 @@ struct SConfig
   vector<string>                  NamesOfSetsOfFields;
   vector<vector<unsigned> >       SetsOfFields;
 
-  vector<string>                  NamesOfMonomials;
-  vector<CMonomial>               SetOfMonomials;
   vector<vector<YukawaCoupling> > FTerms;
 
   unsigned                        use_Labels;

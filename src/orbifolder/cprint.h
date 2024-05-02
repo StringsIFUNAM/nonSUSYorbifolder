@@ -19,7 +19,6 @@ class CMasslessHalfState;
 class CModedOscillator;
 class CVector;
 class CWilsonLines;
-class CMonomial;
 class CSpectrum;
 class CInequivalentModels;
 
@@ -87,7 +86,6 @@ public:
 	void     PrintMasslessHalfState(const CMasslessHalfState &MasslessHalfState, const vector<CModedOscillator> &all_Oscillators, const SelfDualLattice &Lattice) const;
 	bool     PrintMasslessLeftMovers(const CFixedBrane &FixedBrane, const vector<CModedOscillator> &all_Oscillators, const COrbifoldGroupElement &constructing_Element) const;
 	bool     PrintMasslessRightMovers(const CSector &Sector) const;
-	unsigned PrintMonomial(const CMonomial &Monomial, const SConfig &VEVConfig, bool print_gauge_equivalent_fields) const;
 
 	void     PrintOrbifoldGroup(const COrbifoldGroup &OrbifoldGroup) const;
 	void     PrintOscillator(const CModedOscillator &Oscillator) const;
