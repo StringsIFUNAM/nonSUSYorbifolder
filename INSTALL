@@ -32,11 +32,11 @@ configure script will fail.
 For Fedora, you can install the required libraries with the package
 management utility:
 
-yum -y install gsl gsl-devel boost boost-devel
+sudo dnf install gsl gsl-devel boost boost-devel
 
 For Ubuntu, the command reads:
 
-sudo apt-get libgsl0-dev libboost-math-dev
+sudo apt install libgsl0-dev libboost-math-dev
 
 To install new packages on your computer, you may need system
 administrator privileges.
@@ -71,3 +71,20 @@ slight modification:
 Similar switches can tell the compiler where GSL is located (try
 ./configure --help).
 
+3. Readline not installed?
+-------------------------------
+
+The library GNU Readline Library must be installed on your system. 
+If they are not, the configure script will fail.
+
+For Fedora, you can install the required libraries with the package
+management utility:
+
+sudo dnf install readline-devel
+
+For Ubuntu, the command reads:
+
+sudo apt install libreadline-dev
+
+To install new packages on your computer, you may need system
+administrator privileges.

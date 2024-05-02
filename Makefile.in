@@ -241,7 +241,7 @@ SUBDIRS = \
 		src/orbifolder
 
 ACLOCAL_AMFLAGS = -I m4
-dist_noinst_DATA = *.txt GaugeInvariance/* Geometry/* src/examples/*
+dist_noinst_DATA = GaugeInvariance/* Geometry/* src/examples/*
 all: all-recursive
 
 .SUFFIXES:

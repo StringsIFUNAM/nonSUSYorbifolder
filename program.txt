@@ -1,6 +1,0 @@
-create orbifold(Example) with point group(3,1)
-cd Example
-print available space groups
-set shift standard embedding
-cd ~
-

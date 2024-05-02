@@ -2,7 +2,7 @@ Basic installation instructions are enclosed in the INSTALL file in the
 same directory.
 
 For quoting the Orbifolder in your publications, please refer to the
-preprint arXiv:1110.5229 [hep-th].
+preprint arXiv:24xx.xxxxx [hep-th].
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ File structure of the source code in the directory "/src":
 directory "examples/"
 
   file:    "samplemain01.cpp"
-  content: the example main-file given in arXiv:1110.5229 [hep-th].
+  content: the example main-file given in arXiv:24xx.xxxxx [hep-th].
 
   ========================================
 
@@ -99,14 +99,6 @@ directory "orbifolder/"
            "clinalg.cpp"
   content: class "CLinAlg"
 
-  files:   "cmassmatrix.h"
-           "cmassmatrix.cpp"
-  content: class "CMassMatrix"
-
-  files:   "cmonomial.h"
-           "cmonomial.cpp"
-  content: class "CMonomial"
-
   files:   "corbifold.h"
            "corbifold.cpp"
   content: class "COrbifold"
@@ -179,10 +171,6 @@ directory "orbifolder/"
   files:   "cwilsonlines.h"
            "cwilsonlines.cpp"
   content: class "CWilsonLines"
-
-  files:   "cyukawacouplings.h"
-           "cyukawacouplings.cpp"
-  content: class "CYukawaCouplings"
 
   files:   "globalfunctions.h"
            "globalfunctions.cpp"
