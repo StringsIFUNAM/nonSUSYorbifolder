@@ -62,7 +62,7 @@ am_orbifolder_OBJECTS = canalysemodel.$(OBJEXT) \
 	globalfunctions.$(OBJEXT) cgaugeinvariance.$(OBJEXT) \
 	ctwist.$(OBJEXT) cshiftvector.$(OBJEXT) \
 	main.$(OBJEXT) chalfstate.$(OBJEXT) coscillator.$(OBJEXT) \
-	cvector.$(OBJEXT) cmonomial.$(OBJEXT) cspacegroup.$(OBJEXT) \
+	cvector.$(OBJEXT) cspacegroup.$(OBJEXT) \
 	chugeint.$(OBJEXT) cprint.$(OBJEXT) \
 	cspacegroupelement.$(OBJEXT) cwilsonline.$(OBJEXT)
 orbifolder_OBJECTS = $(am_orbifolder_OBJECTS)
@@ -223,7 +223,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I../io -I../linalg -I../groupTheory $(GSL_CFLAGS) $(BOOST_CPPFLAGS)
-orbifolder_SOURCES = canalysemodel.cpp chugeint.h corbifoldcore.cpp cprint.h cspacegroupelement.h cwilsonline.h canalysemodel.h cinequivalentspectra.cpp corbifoldcore.h cprompt.cpp cspacegroup.h cwilsonlines.cpp cfield.cpp cinequivalentspectra.h corbifold.cpp cprompt.h cspectrum.cpp cwilsonlines.h cfield.h clatticevector.cpp corbifoldgroup.cpp crandommodel.cpp cspectrum.h cfixedpoint.cpp clatticevector.h corbifoldgroupelement.cpp crandommodel.h cstate.cpp cfixedpoint.h clinalg.cpp corbifoldgroupelement.h csector.cpp cstate.h globalfunctions.cpp cgaugeinvariance.cpp clinalg.h corbifoldgroup.h csector.h ctwist.cpp globalfunctions.h cgaugeinvariance.h corbifold.h cshiftvector.cpp ctwist.h main.cpp chalfstate.cpp  coscillator.cpp cshiftvector.h cvector.cpp chalfstate.h cmonomial.cpp coscillator.h cspacegroup.cpp cvector.h chugeint.cpp cmonomial.h cprint.cpp cspacegroupelement.cpp cwilsonline.cpp
+orbifolder_SOURCES = canalysemodel.cpp chugeint.h corbifoldcore.cpp cprint.h cspacegroupelement.h cwilsonline.h canalysemodel.h cinequivalentspectra.cpp corbifoldcore.h cprompt.cpp cspacegroup.h cwilsonlines.cpp cfield.cpp cinequivalentspectra.h corbifold.cpp cprompt.h cspectrum.cpp cwilsonlines.h cfield.h clatticevector.cpp corbifoldgroup.cpp crandommodel.cpp cspectrum.h cfixedpoint.cpp clatticevector.h corbifoldgroupelement.cpp crandommodel.h cstate.cpp cfixedpoint.h clinalg.cpp corbifoldgroupelement.h csector.cpp cstate.h globalfunctions.cpp cgaugeinvariance.cpp clinalg.h corbifoldgroup.h csector.h ctwist.cpp globalfunctions.h cgaugeinvariance.h corbifold.h cshiftvector.cpp ctwist.h main.cpp chalfstate.cpp  coscillator.cpp cshiftvector.h cvector.cpp chalfstate.h coscillator.h cspacegroup.cpp cvector.h chugeint.cpp cprint.cpp cspacegroupelement.cpp cwilsonline.cpp
 orbifolder_LDADD = ../io/libio.a ../linalg/liblinalg.a ../groupTheory/libgroupTheory.a $(GSL_LIBS) $(BOOST_LDFLAGS)
 all: all-am
 
@@ -321,7 +321,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cinequivalentspectra.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/clatticevector.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/clinalg.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cmonomial.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/corbifold.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/corbifoldcore.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/corbifoldgroup.Po@am__quote@
