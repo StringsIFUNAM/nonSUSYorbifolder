@@ -177,6 +177,7 @@ COrbifoldGroup::~COrbifoldGroup()
 ######################################################################################## */
 bool COrbifoldGroup::CreateRandom(const CRandomModel &RandomModel, bool CreateBrotherModel)
 {
+	bool verbose = false;
 	unsigned Emergency_Exit = 0;
 	const unsigned &MAX_Emergency_Exit = RandomModel.GetMAX_Emergency_Exit();
 
@@ -553,8 +554,11 @@ bool COrbifoldGroup::CreateRandom(const CRandomModel &RandomModel, bool CreateBr
 	this->CreateModelDependentPart(Print, true);
 	if (this->OrbifoldGroup_CheckStatus != CheckedAndGood)
 	{
+	   if(verbose)
+	   {
 		cout << "\n  Warning in bool CRandomModel::Create() : Orbifold group ill-defined." << endl;
 		return false;
+	   }
 	}
 	return true;
 }
@@ -1060,6 +1064,7 @@ bool COrbifoldGroup::GetTwistVector(const CSpaceGroupElement &constructing_Eleme
 ######################################################################################## */
 bool COrbifoldGroup::CheckModularInvariance(CPrint &Print, bool info)
 {
+	bool verbose = false;
 	const vector<vector<double> > &SP_factors = this->SpaceGroup.ShiftsWL_ScalarProductFactors;
 	if (SP_factors.size() == 0)
 	{
@@ -1330,8 +1335,11 @@ bool COrbifoldGroup::CheckModularInvariance(CPrint &Print, bool info)
 					if (!is_even(sp))
 					{
 						if (info)
+						if(verbose)
+						{
 							(*Print.out) << "\n  " << SP_factors[i+3][j+3] << " W_" << i+1 << " x W_" << j+1 << " = " << sp << " = 0 mod 2 failed!" << flush;
 						IsModularInvariant = false;
+					    } 
 					}
 				}
 			}
