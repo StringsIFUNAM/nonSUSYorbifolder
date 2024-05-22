@@ -18,7 +18,6 @@ class CPrint;
 
 struct SConfig;
 struct SDimension;
-struct YukawaCoupling;
 
 typedef vector<SDimension> RepVector;
 
@@ -75,9 +74,7 @@ public:
 
   bool AreSomeFixedBranesEmpty(const COrbifold &Orbifold, const SConfig &VEVConfig) const;
   void FindEmptyFixedBranes(const COrbifold &Orbifold, const SConfig &VEVConfig, vector<CSpaceGroupElement> &EmptyFixedBranes) const;
-  bool GetAllBlowUpModePerFixedPoint(const COrbifold &Orbifold, const SConfig &VEVConfig, const vector<unsigned> &FieldIndices, vector<vector<unsigned> > &BlowupModes) const;
-  bool GetOneBlowUpModePerFixedPoint(const COrbifold &Orbifold, const SConfig &VEVConfig, const vector<unsigned> &FieldIndices, vector<unsigned> &BlowupModes) const;
-
+ 
   bool AccidentalU1Charges_Load(SConfig &VEVConfig, ifstream &in);
   bool AccidentalU1Charges_Save(const SConfig &VEVConfig, ostream &out);
   

@@ -19,18 +19,6 @@ class OrbifoldGroup;
 class CFixedBrane;
 class CSector;
 
-#ifndef STRUCT_YUKAWACOUPLING
-#define STRUCT_YUKAWACOUPLING
-struct YukawaCoupling
-{
-  vector<unsigned>          FieldIndices;
-  vector<vector<unsigned> > ComponentCoupling;
-  double                    CouplingStrength;
-  
-  vector<string>            LabelOfModuli;
-  vector<int>               ExponentsOfEtas;
-};
-#endif
 
 #ifndef TYPEDEF_CGAUGEGROUP
 #define TYPEDEF_CGAUGEGROUP
@@ -81,12 +69,8 @@ struct SConfig
   SSymmetryGroup                  SymmetryGroup;
   vector<CField>                  Fields;
 
-  vector<YukawaCoupling>          FieldCouplings;
-
   vector<string>                  NamesOfSetsOfFields;
   vector<vector<unsigned> >       SetsOfFields;
-
-  vector<vector<YukawaCoupling> > FTerms;
 
   unsigned                        use_Labels;
 
@@ -108,8 +92,7 @@ public:
   bool                   Create();
 
   bool                   CheckAnomaly(SConfig &VEVConfig, const CGaugeIndices &GaugeIndices, CPrint &Print, bool info = false, double AddFactor = 1.0) const;
-  bool                   CheckDiscreteAnomaly(const SConfig &VEVConfig, const CGaugeIndices &GaugeIndices, CSpaceGroupElement &anomalous_element, CPrint &Print, bool info) const;
-
+  
   bool                   FindGaugeGroup(const CFixedBrane &UntwistedSector, SConfig &VEVConfig, bool CreateAnomalousU1Generator = true);
 
   bool                   Config_SetU1Direction(SConfig &NewU1VEVConfig, const CVector &U1Direction, unsigned pos_of_U1 = 0) const;

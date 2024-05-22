@@ -5894,36 +5894,6 @@ void CPrompt::PrintCommandsConditions() const
 }
 
 
-
-/* ########################################################################################
-######   PrintCommandsMonomials() const                                              ######
-######                                                                               ######
-######   Version: 19.10.2011                                                         ######
-######   Check-Level: 1                                                              ######
-######                                                                               ######
-###########################################################################################
-######   input:                                                                      ######
-######   -                                                                           ######
-######   output:                                                                     ######
-######   -                                                                           ######
-######################################################################################## */
-void CPrompt::PrintCommandsMonomials() const
-{
-  if (!this->print_output)
-    return;
-
-  (*this->Print.out) << "\n  gauge invariant monomials:\n";
-  (*this->Print.out) << "    create monomial(MonomialLabel)\n";
-  (*this->Print.out) << "    delete monomial(MonomialLabel)\n";
-  (*this->Print.out) << "    delete monomials\n";
-  (*this->Print.out) << "    insert(fields) into monomial(MonomialLabel)\n";
-  (*this->Print.out) << "    print monomial(MonomialLabel)\n";
-  (*this->Print.out) << "    print monomials                           optional: \"check Q_anom quantization\"\n";
-  (*this->Print.out) << "                                                        \"cancelling FI term\"\n\n" << flush;
-}
-
-
-
 /* ########################################################################################
 ######   PrintCommandsProcesses() const                                              ######
 ######                                                                               ######
@@ -5945,37 +5915,6 @@ void CPrompt::PrintCommandsProcesses() const
   (*this->Print.out) << "    ps                                        list all active processes\n";
   (*this->Print.out) << "    kill(A)                                   terminate process with ID \"A\"; use \"kill(all)\" to terminate all\n";
   (*this->Print.out) << "    wait(X)                                   wait until all processes have been terminated (check every \"X\" seconds)\n\n" << flush;
-}
-
-
-
-/* ########################################################################################
-######   PrintCommandsSets() const                                                   ######
-######                                                                               ######
-######   Version: 19.10.2011                                                         ######
-######   Check-Level: 1                                                              ######
-######                                                                               ######
-###########################################################################################
-######   input:                                                                      ######
-######   -                                                                           ######
-######   output:                                                                     ######
-######   -                                                                           ######
-######################################################################################## */
-void CPrompt::PrintCommandsSets() const
-{
-  if (!this->print_output)
-    return;
-
-  (*this->Print.out) << "\n  sets of fields:\n";
-  (*this->Print.out) << "    create set(SetLabel)                      optional: \"from monomials\"\n";
-  (*this->Print.out) << "                                                        \"from monomial(MonomialLabel)\"\n";
-  (*this->Print.out) << "    delete set(SetLabel)\n";
-  (*this->Print.out) << "    delete sets\n";
-  (*this->Print.out) << "    insert(fields) into set(SetLabel)         optional: \"if(condition)\"\n";
-  (*this->Print.out) << "    remove(fields) from set(SetLabel)         optional: \"if(condition)\"\n";
-  (*this->Print.out) << "    print sets                                optional: \"if not empty\"\n";
-  (*this->Print.out) << "    print set(SetLabel)\n";
-  (*this->Print.out) << "    #fields in set(SetLabel)\n\n" << flush;
 }
 
 

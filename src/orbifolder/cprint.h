@@ -28,7 +28,6 @@ struct SSymmetryGroup;
 struct SConfig;
 struct GDT_Parameters;
 struct SDiscreteSymmetry;
-struct YukawaCoupling;
 struct SSpectrum;
 
 
@@ -66,13 +65,7 @@ public:
 	bool     PrintInequivalentModels(const vector<vector<CSpectrum> > &InequivalentModels) const;
 	bool     PrintAllInequivalentModels(const CInequivalentModels &InequivalentModels) const;
 
-	bool     PrintDiscreteSymmetry(const SDiscreteSymmetry &DiscreteSymmetry) const;
-	bool     PrintModularSymmetry(const SModularSymmetry &ModularSymmetry) const;
-	void     PrintDiscreteTorsion(const GDT_Parameters &DiscreteTorsion) const;
-
-	bool     PrintCouplings(const SConfig &VEVConfig, const vector<YukawaCoupling> &FieldCouplings, bool EffectivePotential = false, bool PrintModuli = false) const;
 	bool     PrintEigenvalues(const vector<COrbifoldGroupElement> &Centralizer, const vector<double> &Eigenvalues) const;
-	bool     PrintFTerms(const SConfig &VEVConfig) const;
 	bool     PrintGaugeGroupFactor(const SConfig &VEVConfig, const unsigned factor) const;
 	void     PrintGaugeGroup(const SConfig &VEVConfig, bool print_selection = false) const;
 	void     PrintHalfState(const CHalfState &HalfState, const CMasslessHalfState &MasslessHalfState, const vector<CModedOscillator> &all_Oscillators) const;
@@ -117,7 +110,6 @@ public:
     void     PrintSummaryOfVEVConfig(const SConfig &VEVConfig, const vector<SUSYMultiplet> &Multiplet, bool print_Labels = false) const;									//hacking here!!!
 	bool     PrintSummaryOfSectors(const COrbifold &Orbifold, const SConfig &VEVConfig, const vector<SUSYMultiplet> &Multiplet, bool print_Labels = false) const;
 	void     PrintSummaryOfFixedBranes(const COrbifold &Orbifold, const SConfig &VEVConfig, const vector<SUSYMultiplet> &Multiplet, bool print_Labels = false) const; 
-    bool     PrintSuperpotential(const SConfig &VEVConfig, bool EffectivePotential = false, bool PrintModuli = false) const;
 	bool     PrintSUSYType(const SUSYMultiplet &Multiplet) const;
 
 	void     PrintTwist(const CTwistVector &TwistVector) const;
