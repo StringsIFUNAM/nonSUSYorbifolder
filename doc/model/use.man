@@ -1,10 +1,10 @@
-.TH "set" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "use" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-set - Allows defining some configurations of the orbifold.
+use - set up some parameters.
 
 .SH SYNOPSIS
-.B set [OPTIONS]
+.B set up some parameters
 
 .SH DESCRIPTION
 This command prints information about available space groups. If the option
@@ -32,3 +32,4 @@ Reporting bugs and problems, in this link https://github.com/enriqueescalante/Or
 
 .SH VERSION
 1.0
+

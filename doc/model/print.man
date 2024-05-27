@@ -1,4 +1,4 @@
-.TH "print" 1 "February 1, 2024" "Enrique Escalante-Notario"
+.TH "print" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
 print - Print information about orbifold
@@ -42,28 +42,13 @@ print available space groups
 
 
 .SH AUTHOR
-Enrique Escalante-Notario
+E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
 
 .SH SEE ALSO
-Related manuals, additional documentation.
-
-.SH HISTORY
-Date and details of previous versions.
-
-.SH NOTES
-Additional information or important considerations.
-
-.SH BUGS
-List of known issues or bugs.
-
-.SH COPYRIGHT
-Copyright © Year, Your Company
-
-.SH ACKNOWLEDGMENTS
-Acknowledgments to individuals or resources that contributed to the development.
+Related here article, additional documentation.
 
 .SH REPORTING BUGS
-Instructions for reporting bugs.
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
 
 .SH VERSION
-Current version number of the command.
+1.0
