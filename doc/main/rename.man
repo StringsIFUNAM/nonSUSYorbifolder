@@ -1,4 +1,5 @@
-.TH "rename" 1 "February 1, 2024" "Enrique Escalante-Notario"
+.TH "rename" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+
 
 .SH NAME
 Rename - orbifold.

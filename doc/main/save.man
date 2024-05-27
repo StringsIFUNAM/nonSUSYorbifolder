@@ -1,4 +1,4 @@
-.TH "save" 1 "February 1, 2024" "Enrique Escalante-Notario"
+.TH "save" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
 save - Save orbifolds to a specified file.
