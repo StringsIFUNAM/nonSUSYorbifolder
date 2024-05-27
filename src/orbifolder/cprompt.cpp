@@ -1406,16 +1406,25 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         
     if (command.substr(0,3) == "man")
     {    
-      string path_doc = " ./doc/main/";
-      // Insertar path_doc en la posición 4
-      command.insert(4, path_doc);
-      // Concatenar ".man" al final
-      command += ".man";
+      if (command.length() >=4)
+      {
+        string path_doc = " ./doc/main/";
+        // Insertar path_doc en la posición 4
+        command.insert(4, path_doc);
+        // Concatenar ".man" al final
+        command += ".man";
       
-      // Ejecutar el comando utilizando system
-      int result = system(command.c_str());
+        // Ejecutar el comando utilizando system
+        int result = system(command.c_str());
 
-      return true;
+        return true;
+      }
+      else
+        {
+
+            cout << "What manual page do you want?" << endl;
+            return false;
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2485,7 +2494,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
                 
         if (command.substr(0,3) == "man")
-        {    
+        { 
+          if (command.length() >= 4) 
+          {
           string path_doc = " ./doc/model/";
           // Insertar path_doc en la posición 4
           command.insert(4, path_doc);
@@ -2496,6 +2507,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           int result = system(command.c_str());
 
           return true;
+        }
+          else
+          {
+
+            cout << "What manual page do you want?" << endl;
+            return false;
+          }
         }
 
 
@@ -3302,7 +3320,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       { 
 
         if (command.substr(0,3) == "man")
-        {    
+        { 
+          if(command.length()>= 4)
+          {   
           string path_doc = " ./doc/gauge_group/";
           // Insertar path_doc en la posición 4
           command.insert(4, path_doc);
@@ -3313,6 +3333,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           int result = system(command.c_str());
 
           return true;
+         }
+         else
+          {
+
+            cout << "What manual page do you want?" << endl;
+            return false;
+          }
         }
 
 
@@ -3635,6 +3662,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         if (command.substr(0,3) == "man")
         {    
+          if (command.length()>=4)
+          {
           string path_doc = " ./doc/spectrum/";
           // Insertar path_doc en la posición 4
           command.insert(4, path_doc);
@@ -3645,6 +3674,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           int result = system(command.c_str());
 
           return true;
+          }
+        else
+          {
+
+            cout << "What manual page do you want?" << endl;
+            return false;
+          }
         }
 
 
@@ -3961,7 +3997,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
 
             if (command.substr(0,3) == "man")
-            {    
+            { 
+              if (command.length()>=4)
+              {   
               string path_doc = " ./doc/vev-config/";
               // Insertar path_doc en la posición 4
               command.insert(4, path_doc);
@@ -3972,6 +4010,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               int result = system(command.c_str());
 
               return true;
+              }
+              else
+                {
+
+              cout << "What manual page do you want?" << endl;
+              return false;
+                }
+
             }
 
 
@@ -4606,7 +4652,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           { 
 
             if (command.substr(0,3) == "man")
-            {    
+            { 
+            if (command.length()>=4)
+              {   
               string path_doc = " ./doc/labels/";
               // Insertar path_doc en la posición 4
               command.insert(4, path_doc);
@@ -4617,6 +4665,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               int result = system(command.c_str());
 
               return true;
+            }
+              else
+                {
+
+              cout << "What manual page do you want?" << endl;
+              return false;
+                }
+
             }
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
