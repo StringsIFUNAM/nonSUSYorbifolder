@@ -2218,6 +2218,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     // show directories  
     if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
     {
+      if (this->FindParameterType1(parameter_string1, "processes"))  
+       this->PrintCommandsProcesses(); 
+      else 
       if (this->FindParameterType1(parameter_string1, "create random"))
       {
         (*this->Print.out) << "\n  create random orbifold from(OrbifoldLabel)\n";
@@ -2266,7 +2269,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         (*this->Print.out) << "  general commands:\n";
         (*this->Print.out) << "    dir                                       show commands; optional: \"no subdirectories\"\n";
-        (*this->Print.out) << "    help                                      optional: \"create random\"\n";
+        (*this->Print.out) << "    help                                      optional: \"create random\", \"processes\"\n";  
         if (!this->online_mode)
           (*this->Print.out) << "    exit                                      exit program\n";
         (*this->Print.out) << "\n" << flush;;
@@ -2454,7 +2457,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         // updated on 09.09.2011  
         if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
         { 
-                     
+          if (this->FindParameterType1(parameter_string1, "processes"))     
+          this->PrintCommandsProcesses();                                   
+          else                                                                             
           if (this->FindParameterType1(parameter_string1, "short cuts"))
           {
             (*this->Print.out) << "\n  short cuts:\n";
@@ -2465,6 +2470,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
           }
           else
+          if (this->FindParameterType1(parameter_string1, "conditions"))   
+            this->PrintCommandsConditions();  
+          else
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
             (*this->Print.out) << "  change directory:\n";
@@ -2474,8 +2482,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    cd vev-config                             change directory to /vev-config>\n";
             (*this->Print.out) << "    cd vev-config/labels                      change directory to /labels>\n\n";
             (*this->Print.out) << "  general commands:\n";
-            (*this->Print.out) << "    dir                                       show commands\n";
-            (*this->Print.out) << "    help                                      optional: \"short cuts\"\n";
+            (*this->Print.out) << "    dir                                       show commands\n";            
+            (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"short cuts\"\n"; 
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -3246,7 +3254,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         // updated on 23.09.2011  
         if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
         { 
-            
+          if (this->FindParameterType1(parameter_string1, "processes"))  
+          this->PrintCommandsProcesses();  
+          else      
           if (this->FindParameterType1(parameter_string1, "print"))
           {
             (*this->Print.out) << "\n  print commands:\n";
@@ -3270,6 +3280,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
           } 
           else
+          if (this->FindParameterType1(parameter_string1, "conditions")) 
+            this->PrintCommandsConditions(); 
+          else 
           {       
             const CSpaceGroup &SpaceGroup = Orbifold.OrbifoldGroup.GetSpaceGroup();
             const bool         ZMxZNxZK      = SpaceGroup.IsZMxZNxZK();  
@@ -3301,7 +3314,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir                                       show commands\n";
-            (*this->Print.out) << "    help                                      optional: \"print\", \"short cuts\"\n";
+            (*this->Print.out) << "    help                                      optional: \"conditions\", \"print\", \"short cuts\"\n"; 
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -3589,7 +3602,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           for (unsigned i = 0; i < VEVConfig.SymmetryGroup.GaugeGroup.factor.size(); ++i)
             s2 += VEVConfig.SymmetryGroup.GaugeGroup.factor[i].simpleroots.size();
 
-         
+          if (this->FindParameterType1(parameter_string1, "processes"))  
+            this->PrintCommandsProcesses();  
+          else         
           if (this->FindParameterType1(parameter_string1, "print"))
           {
             (*this->Print.out) << "\n  print commands:\n";
@@ -3623,6 +3638,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    v   change directory to /vev-config>\n";
             (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
           }
+          else    
+          if (this->FindParameterType1(parameter_string1, "conditions")) 
+            this->PrintCommandsConditions();  
           else
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
@@ -3639,8 +3657,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               }
             }
             (*this->Print.out) << "  general commands:\n";
-            (*this->Print.out) << "    dir                                       show commands\n";
-            (*this->Print.out) << "    help                                      optional: \"print\",\"short cuts\"\n";
+            (*this->Print.out) << "    dir                                       show commands\n";           
+            (*this->Print.out) << "    help                                      optional: \"conditions\", \"print\", \"processes\", \n"; 
+            (*this->Print.out) << "                                                        \"short cuts\"\n"; 
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -3935,6 +3954,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         // updated on 16.09.2011
         if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
         { 
+          if (this->FindParameterType1(parameter_string1, "processes"))  
+            this->PrintCommandsProcesses();  
+          else  
           if (this->FindParameterType1(parameter_string1, "print summary"))
           {
             (*this->Print.out) << "\n  print summary\n";
@@ -3957,6 +3979,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    v   change directory to /vev-config>\n";
             (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
           }
+          else 
+          if (this->FindParameterType1(parameter_string1, "conditions"))  
+            this->PrintCommandsConditions();  
           else
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
@@ -3965,9 +3990,11 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    print summary                             various parameters, see \"help print summary\"\n";
             (*this->Print.out) << "    print list of charges(fields)             optional: \"label of list(Label)\"\n"; 
             (*this->Print.out) << "    tex table(fields)                         optional: print labels(i,j,..)\n\n";  
+            (*this->Print.out) << "  optional for many commands of this directory:\n";   
+            (*this->Print.out) << "    if(condition)                             only if \"condition\" is fulfiled \n"; 
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir (or help)                             show commands\n";
-            (*this->Print.out) << "                                              optional: \"short cuts\", \"print summary\"\n";                                                       
+            (*this->Print.out) << "                                              optional: \"conditions\",  \"short cuts\" , \"print summary\"\n";                                                                                                            
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -4084,9 +4111,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               (*this->Print.out) << "  " << this->Print.cbegin << "   label ";
               for (i = 3; i < max_length; ++i)
                 (*this->Print.out) << " ";
-              (*this->Print.out) << "| field label # | fields with VEV " << this->Print.cend << "\n";
-              (*this->Print.out) << "  " << this->Print.cbegin << "  ----------------------------------------------------------------------------------------------------- " << this->Print.cend << "\n";
-
+              (*this->Print.out) << "| field label # |" << this->Print.cend << "\n"; 
+              (*this->Print.out) << "  " << this->Print.cbegin << "  -------------------------------------- " << this->Print.cend << "\n"; 
+             
               unsigned counter_printed_VEVs = 0;
               for (i = 0; i < t1; ++i)
               {
@@ -4113,25 +4140,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 }
                 const unsigned number_of_labels = VEVConfig.Fields[0].Labels.size();
                 (*this->Print.out) << " |      " << setw(3) << VEVConfig.use_Labels + 1 << " /" << setw(3) << number_of_labels << " | ";
-                counter_printed_VEVs = 0;
-                for (j = 0; j < f1; ++j)
-                {
-                  const CField &Field = VEVConfig.Fields[j];
-                  if (!Field.VEVs.IsZero())
-                  {
-                    (*this->Print.out) << "<";
-                    this->Print.PrintLabel(Field, VEVConfig.use_Labels);
-                    (*this->Print.out) << "> ";
-                    ++counter_printed_VEVs;
-                    if (counter_printed_VEVs % 10 == 0)
-                    {
-                      (*this->Print.out) << "\n       ";
-                      for (k = 0; k < max_length; ++k)
-                        (*this->Print.out) << " ";
-                      (*this->Print.out) << " |               | ";
-                    }
-                  }
-                }
                 (*this->Print.out) << "\n";
               }
               if (print_help)
@@ -4574,6 +4582,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "    s   change directory to /spectrum>\n";
                 (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
               }
+              else  
+              if (this->FindParameterType1(parameter_string1, "conditions"))  
+                this->PrintCommandsConditions();  
               else
               {
                 (*this->Print.out) << "\n  special commands of this directory:\n";
@@ -4632,7 +4643,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "    cd labels                                 change directory to /labels>\n\n";
                 (*this->Print.out) << "  general commands:\n";
                 (*this->Print.out) << "    dir                                       show commands\n";
-                (*this->Print.out) << "    help                                      optional: \"short cuts\"\n"; 
+                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"short cuts\"\n"; 
                 (*this->Print.out) << "    cd ..                                     leave this directory\n";
                 if (!this->online_mode)
                   (*this->Print.out) << "    exit                                      exit program\n";
@@ -4997,6 +5008,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             // updated on 26.09.2011
             if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
             { 
+              if (this->FindParameterType1(parameter_string1, "processes"))  
+                this->PrintCommandsProcesses();  
+              else  
               if (this->FindParameterType1(parameter_string1, "short cuts"))
               {
                 (*this->Print.out) << "\n  short cuts:\n";
@@ -5005,6 +5019,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "    s   change directory to /spectrum>\n";
                 (*this->Print.out) << "    v   change directory to /vev-config>\n\n" << flush;
               }
+              else 
+              if (this->FindParameterType1(parameter_string1, "conditions")) 
+                this->PrintCommandsConditions(); 
               else
               {
                 (*this->Print.out) << "\n  special commands of this directory:\n";
@@ -5037,7 +5054,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "\n";
                 (*this->Print.out) << "  general commands:\n";
                 (*this->Print.out) << "    dir                                       show commands\n";
-                (*this->Print.out) << "    help                                      optional: \"short cuts\"\n";
+                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"short cuts\"\n"; 
                 (*this->Print.out) << "    cd ..                                     leave this directory\n";
                 if (!this->online_mode)
                   (*this->Print.out) << "    exit                                      exit program\n";
@@ -5923,10 +5940,8 @@ void CPrompt::PrintCommandsConditions() const
   (*this->Print.out) << "    A condition consists of three parts, e.g. if(length == even):\n\n";
   (*this->Print.out) << "      1) left hand side: the variable:\n";
   (*this->Print.out) << "        \"length\"  : the length-square of the left-moving momentum, (p_sh)^2\n";
-  (*this->Print.out) << "        \"vev\"     : the vacuum expectation value\n";
   (*this->Print.out) << "        \"B-L\"     : the B-L charge\n";
   (*this->Print.out) << "        \"Q_i\"     : i-th U(1) charge, i = 1,2,3,...\n";
-  (*this->Print.out) << "        \"acc. Q_i\": i-th accidental U(1) charge, i = 1,2,3,...\n";
   (*this->Print.out) << "        \"p_sh_i\"  : i-th component of the left-moving momentum p_sh, i = 1,..,16\n";
   (*this->Print.out) << "        \"q_sh_i\"  : i-th component of the right-moving momentum q_sh, i = 1,..,4\n";
   (*this->Print.out) << "        \"#osci.\"  : number of oscillators acting on the left-mover\n";
@@ -5942,10 +5957,9 @@ void CPrompt::PrintCommandsConditions() const
   (*this->Print.out) << "        rational  : a rational number, e.g. \"0\" and \"1/2\"\n\n";
   (*this->Print.out) << "    More examples:\n";
   (*this->Print.out) << "      1) if(length == 3/2)\n";
-  (*this->Print.out) << "      2) if(vev != 0)\n";
-  (*this->Print.out) << "      3) if(B-L == even)\n";
-  (*this->Print.out) << "      4) if(Q_1 > 1/3)\n";
-  (*this->Print.out) << "      5) if(#osci. != 0)\n";
+  (*this->Print.out) << "      2) if(B-L == even)\n";
+  (*this->Print.out) << "      3) if(Q_1 > 1/3)\n";
+  (*this->Print.out) << "      4) if(#osci. != 0)\n";
   (*this->Print.out) << "      5) if(label involves X)\n\n" << flush;
 }
 
@@ -7382,8 +7396,7 @@ bool CPrompt::ApplyConditions(const vector<SCondition> &Conditions, vector<unsig
           }
           case 7: // R-charge R_i
           {
-
-            TestObject = Field.q_sh[Condition.ith_entry];
+            TestObject = Field.GetRMWeight(0, Sectors)[Condition.ith_entry]; 
             break;
           }
           case 8: // number of oscillators acting on the state

@@ -3156,8 +3156,6 @@ bool CPrint::PrintStates(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 
 		(*this->out) << "\n";
 
-		(*this->out) << "  vev                 : " << tmp_Field.VEVs.GetLength() << "\n";
-
 		if (PrintInternalInformation)
 		{
 			const vector<unsigned> &internalIndex = tmp_Field.GetInternalIndex();
