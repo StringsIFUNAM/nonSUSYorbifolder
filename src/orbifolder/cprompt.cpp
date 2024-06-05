@@ -2384,6 +2384,301 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       return true;
     }
   
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // create set or monomial
+    // updated on 26.01.2011
+    if ((case1 = this->FindCommandType1(command, "create set", parameter_string1)))  
+    {
+      unsigned index = 0;
+
+      // find the label of the new set or new monomial and save it into the string "tmp_string1"
+      if (this->FindParameterType2(parameter_string1, "(", tmp_string1))
+      {
+        if (this->MessageLabelError(tmp_string1))
+          return true;
+
+        vector<string> &NamesOfSetsOfFields = VEVConfig.NamesOfSetsOfFields;
+        vector<vector<unsigned> > &SetsOfFields   = VEVConfig.SetsOfFields;
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // create an empty set or create a set from a monomial
+        // updated on 19.04.2011
+        if (case1)
+        { 
+          if (this->MessageXAlreadyExists(NamesOfSetsOfFields, "Set", tmp_string1))
+            return true;
+
+          vector<unsigned> SetOfIndices;
+          vector<unsigned> tmp_SetOfFields;
+
+          t1 = tmp_SetOfFields.size();
+          if (t1 == 0)
+          {
+            if (this->print_output)
+              (*this->Print.out) << "\n  " << this->Print.cbegin << "Empty set \"" << tmp_string1 << "\"";
+          }
+          else
+          {
+            stable_sort(tmp_SetOfFields.begin(), tmp_SetOfFields.end());
+            if (this->print_output)
+            {
+              (*this->Print.out) << "  " << this->Print.cbegin << "Set \"" << tmp_string1 << "\" with " << t1 << " field";
+              if (t1 != 1) (*this->Print.out) << "s";
+            }
+          }
+          if (this->print_output)
+            (*this->Print.out) << " created." << this->Print.cend << "\n" << endl;
+
+          NamesOfSetsOfFields.push_back(tmp_string1);
+          SetsOfFields.push_back(tmp_SetOfFields);
+        } 
+      } 
+      this->MessageParameterNotKnown(parameter_string1);
+      return true;
+    } 
+
+ 
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // delete set or monomial
+    // updated on 19.04.2011
+    if ((case1 = this->FindCommandType1(command, "delete set", parameter_string1)))
+    {
+      unsigned index = 0;
+      // delete a set or all sets
+      if (case1)
+      {
+        vector<string>            &NamesOfSetsOfFields = VEVConfig.NamesOfSetsOfFields;
+        vector<vector<unsigned> > &SetsOfFields        = VEVConfig.SetsOfFields;
+
+        // delete set
+        // updated on 19.04.2011
+        if (this->FindParameterType2(parameter_string1, "(", tmp_string1))
+        {
+          if (this->MessageXNotKnown(NamesOfSetsOfFields, "Set", tmp_string1, index))
+            return true;
+
+          NamesOfSetsOfFields.erase(NamesOfSetsOfFields.begin() + index);
+          SetsOfFields.erase(SetsOfFields.begin() + index);
+
+          if (this->print_output)
+            (*this->Print.out) << "\n  " << this->Print.cbegin << "Set \"" << tmp_string1 << "\" deleted." << this->Print.cend << "\n" << endl;
+        }
+        else
+        // delete sets
+        // updated on 19.04.2011
+        if (this->FindParameterType1(parameter_string1, "s"))
+        {
+          NamesOfSetsOfFields.clear();
+          SetsOfFields.clear();
+
+          if (this->print_output)
+            (*this->Print.out) << "\n  " << this->Print.cbegin << "All sets deleted." << this->Print.cend << "\n" << endl;
+        }
+      }
+      this->MessageParameterNotKnown(parameter_string1);
+      return true;
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // insert/remove fields into/from a set (monomial)
+    // updated on 19.04.2011
+    if ((case1 = this->FindCommandType2(command, "insert(", parameter_string1, parameter_string2))
+     || (case2 = this->FindCommandType2(command, "remove(", parameter_string1, parameter_string2)))
+    {
+      unsigned index = 0;     
+      // begin: set
+      if (this->FindParameterType2(parameter_string2, "set(", tmp_string1) && 
+          ((case1 && this->FindParameterType1(parameter_string2, "into")) || (case2 && this->FindParameterType1(parameter_string2, "from"))))
+      {
+        vector<string>            &NamesOfSetsOfFields = VEVConfig.NamesOfSetsOfFields;
+        vector<vector<unsigned> > &SetsOfFields        = VEVConfig.SetsOfFields;
+
+        if (this->MessageXNotKnown(NamesOfSetsOfFields, "Set", tmp_string1, index))
+          return true;
+
+        vector<unsigned> &CurrentSet = SetsOfFields[index];
+
+        vector<SUSYMultiplet> Multiplets(2);     
+        Multiplets[0]=Scalar;				   
+	    Multiplets[1]=LeftFermi;  
+
+        vector<string> FieldLabels;
+        ExtractLabels(Multiplets, parameter_string1, FieldLabels); 
+        vector<unsigned> FieldIndices = GetIndices(FieldLabels);
+
+        // find conditions and apply them
+        if (!this->FindConditionsAndFilterFieldIndices(parameter_string2, FieldIndices))
+        {
+          cout << "Warning in bool CPrompt::ExecuteCommand(...): Could not apply the conditions. Return false." << endl;
+          return false;
+        }
+
+        //insert or remove fields
+        unsigned field_counter = 0;
+
+        t1 = FieldIndices.size();
+        for (i = 0; i < t1; ++i)
+        {
+          index = FieldIndices[i];
+          vector<unsigned>::iterator pos = find(CurrentSet.begin(), CurrentSet.end(), index);
+
+          if (case1 == (pos == CurrentSet.end()))
+          {
+            ++field_counter;
+            if (case1)
+              CurrentSet.push_back(index);
+            else
+            if (case2)
+              CurrentSet.erase(pos);
+          }
+        }
+
+        if (this->print_output)
+        {
+          (*this->Print.out) << "\n  " << this->Print.cbegin << field_counter << " field";
+          if (field_counter != 1) (*this->Print.out) << "s";
+        }
+
+        if (case1)
+        {
+          stable_sort(CurrentSet.begin(), CurrentSet.end());
+          if (this->print_output)
+            (*this->Print.out) << " inserted into";
+        }
+        else
+        if (case2)
+        {
+          if (this->print_output)
+            (*this->Print.out) << " removed from";
+        }
+
+        if (this->print_output)
+          (*this->Print.out) << " set \"" << tmp_string1 << "\"." << this->Print.cend << "\n" << endl;
+      }
+      // end: set
+      this->MessageParameterNotKnown(parameter_string2);
+      return true;
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // print set or monomial
+    // updated on 11.05.2011
+    if ((case1 = this->FindCommandType1(command, "print set", parameter_string1))) 
+    {
+      string           empty_string = "";
+      unsigned         max_length   = 0;
+      vector<unsigned> SetOfIndicesToPrint;
+      unsigned         index = 0;
+
+      // print a set or all sets
+      if (case1)
+      { 
+        vector<string>            &NamesOfSetsOfFields = VEVConfig.NamesOfSetsOfFields;
+        vector<vector<unsigned> > &SetsOfFields        = VEVConfig.SetsOfFields;
+
+        const unsigned break_line = 20;
+
+        // collect all sets
+        // updated on 20.04.2011
+        if ((parameter_string1.find("s", 0) != string::npos) && (parameter_string1.find("(", 0) == string::npos))
+        {
+          this->FindParameterType1(parameter_string1, "s");
+
+          const bool if_not_empty = this->FindParameterType1(parameter_string1, "if not empty");
+
+          t1 = NamesOfSetsOfFields.size();
+          if (if_not_empty)
+          {
+            for (i = 0; i < t1; ++i)
+            {
+              if (SetsOfFields[i].size() != 0)
+                SetOfIndicesToPrint.push_back(i);
+            }
+          }
+          else
+          {
+            for (i = 0; i < t1; ++i)
+              SetOfIndicesToPrint.push_back(i);
+          }
+        }
+        else
+        // find the set with label "tmp_string1"
+        // updated on 25.01.2011
+        if (this->FindParameterType2(parameter_string1, "(", tmp_string1))
+        {
+          if (this->MessageXNotKnown(NamesOfSetsOfFields, "Set", tmp_string1, index))
+            return true;
+
+          SetOfIndicesToPrint.push_back(index);
+        }
+
+        // print the set(s)
+        t1 = SetOfIndicesToPrint.size();
+        if (t1 == 0)
+        {
+          (*this->Print.out) << "\n  " << this->Print.cbegin << "No sets available." << this->Print.cend << "\n" << endl;
+          return true;
+        }
+
+        for (i = 0; i < t1; ++i)
+        {
+          index = SetOfIndicesToPrint[i];
+          if (NamesOfSetsOfFields[index].size() > max_length)
+            max_length = NamesOfSetsOfFields[index].size();
+        }
+
+        (*this->Print.out) << "\n";
+
+        empty_string = "";
+        for (i = 0; i < t1; ++i)
+        {
+          index = SetOfIndicesToPrint[i];
+
+          empty_string.resize(max_length - NamesOfSetsOfFields[index].size(), ' ');
+          (*this->Print.out) << "  " << empty_string << NamesOfSetsOfFields[index] << " = {";
+          const vector<unsigned> &CurrentSet = SetsOfFields[index];
+
+          t2 = CurrentSet.size();
+          for (j = 0; j < t2; ++j)
+          {
+            this->Print.PrintLabel(Fields[CurrentSet[j]], VEVConfig.use_Labels);
+            if (j+1 < t2)
+              (*this->Print.out) << this->Print.separator;
+
+            if (((j+1) % break_line) == 0)
+            {
+              empty_string.resize(max_length + 3, ' ');
+              (*this->Print.out) << "\n  " << empty_string;
+            }
+          }
+          (*this->Print.out) << "}" << this->Print.endofset << "\n" << endl;
+        }
+      } 
+      this->MessageParameterNotKnown(parameter_string1);
+      return true;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // count the number of fields in a set
+    // updated on 19.05.2011
+    if (this->FindCommandType2(command, "#fields in set(", parameter_string1, parameter_string2))  
+    {
+      vector<string>            &NamesOfSetsOfFields = VEVConfig.NamesOfSetsOfFields;
+      vector<vector<unsigned> > &SetsOfFields        = VEVConfig.SetsOfFields;
+
+      unsigned index = 0;
+      if (this->MessageXNotKnown(NamesOfSetsOfFields, "Set", parameter_string1, index))
+        return true;
+
+      (*this->Print.out) << "\n  " << this->Print.cbegin << "#fields in set \"" << parameter_string1 << "\" = " << SetsOfFields[index].size() << this->Print.cend << "\n" << endl;
+
+      this->MessageParameterNotKnown(parameter_string2);
+      return true;
+    }
+    
     // end: commands available in all orbifold directories
     // STEP 4 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2483,7 +2778,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    cd vev-config/labels                      change directory to /labels>\n\n";
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir                                       show commands\n";            
-            (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"short cuts\"\n"; 
+            (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n"; 
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -3314,7 +3609,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir                                       show commands\n";
-            (*this->Print.out) << "    help                                      optional: \"conditions\", \"print\", \"short cuts\"\n"; 
+            (*this->Print.out) << "    help                                      optional: \"conditions\", \"sets\", \"print\", \"short cuts\"\n"; 
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -3659,7 +3954,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir                                       show commands\n";           
             (*this->Print.out) << "    help                                      optional: \"conditions\", \"print\", \"processes\", \n"; 
-            (*this->Print.out) << "                                                        \"short cuts\"\n"; 
+            (*this->Print.out) << "                                                        \"sets\", \"short cuts\"\n"; 
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -3994,7 +4289,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    if(condition)                             only if \"condition\" is fulfiled \n"; 
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir (or help)                             show commands\n";
-            (*this->Print.out) << "                                              optional: \"conditions\",  \"short cuts\" , \"print summary\"\n";                                                                                                            
+            (*this->Print.out) << "                                              optional: \"conditions\", \"sets\", \"short cuts\" , \"print summary\"\n";                                                                                                            
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -4643,7 +4938,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "    cd labels                                 change directory to /labels>\n\n";
                 (*this->Print.out) << "  general commands:\n";
                 (*this->Print.out) << "    dir                                       show commands\n";
-                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"short cuts\"\n"; 
+                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n"; 
                 (*this->Print.out) << "    cd ..                                     leave this directory\n";
                 if (!this->online_mode)
                   (*this->Print.out) << "    exit                                      exit program\n";
@@ -5054,7 +5349,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "\n";
                 (*this->Print.out) << "  general commands:\n";
                 (*this->Print.out) << "    dir                                       show commands\n";
-                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"short cuts\"\n"; 
+                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n"; 
                 (*this->Print.out) << "    cd ..                                     leave this directory\n";
                 if (!this->online_mode)
                   (*this->Print.out) << "    exit                                      exit program\n";
