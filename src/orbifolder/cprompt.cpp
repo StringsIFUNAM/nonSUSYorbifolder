@@ -2768,6 +2768,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           if (this->FindParameterType1(parameter_string1, "conditions"))   
             this->PrintCommandsConditions();  
           else
+          if (this->FindParameterType1(parameter_string1, "sets"))  
+            this->PrintCommandsSets();  
+          else
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
             (*this->Print.out) << "  change directory:\n";
@@ -3578,6 +3581,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           if (this->FindParameterType1(parameter_string1, "conditions")) 
             this->PrintCommandsConditions(); 
           else 
+          if (this->FindParameterType1(parameter_string1, "sets")) 
+            this->PrintCommandsSets(); 
+          else  
           {       
             const CSpaceGroup &SpaceGroup = Orbifold.OrbifoldGroup.GetSpaceGroup();
             const bool         ZMxZNxZK      = SpaceGroup.IsZMxZNxZK();  
@@ -3937,6 +3943,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           if (this->FindParameterType1(parameter_string1, "conditions")) 
             this->PrintCommandsConditions();  
           else
+           if (this->FindParameterType1(parameter_string1, "sets")) 
+            this->PrintCommandsSets(); 
+          else
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
             (*this->Print.out) << "    print ...                                 various parameters, see \"help print\"\n\n";
@@ -4278,6 +4287,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           if (this->FindParameterType1(parameter_string1, "conditions"))  
             this->PrintCommandsConditions();  
           else
+          if (this->FindParameterType1(parameter_string1, "sets")) 
+            this->PrintCommandsSets(); 
+          else 
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
             (*this->Print.out) << "    print(fields)                             optional: \"with internal information\"\n";
@@ -4881,6 +4893,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               if (this->FindParameterType1(parameter_string1, "conditions"))  
                 this->PrintCommandsConditions();  
               else
+              if (this->FindParameterType1(parameter_string1, "sets")) 
+                this->PrintCommandsSets(); 
+              else 
               {
                 (*this->Print.out) << "\n  special commands of this directory:\n";
                 (*this->Print.out) << "    use config(ConfigLabel)                   change to configuration \"ConfigLabel\"\n";
@@ -5318,6 +5333,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               if (this->FindParameterType1(parameter_string1, "conditions")) 
                 this->PrintCommandsConditions(); 
               else
+              if (this->FindParameterType1(parameter_string1, "sets")) 
+                this->PrintCommandsSets();  
+              else  
               {
                 (*this->Print.out) << "\n  special commands of this directory:\n";
                 if (!UsingStandardConfig)
@@ -6282,6 +6300,34 @@ void CPrompt::PrintCommandsProcesses() const
   (*this->Print.out) << "    wait(X)                                   wait until all processes have been terminated (check every \"X\" seconds)\n\n" << flush;
 }
 
+
+/* ########################################################################################
+######   PrintCommandsSets() const                                                   ######
+######                                                                               ######
+######   Version: 19.10.2011                                                         ######
+######   Check-Level: 1                                                              ######
+######                                                                               ######
+###########################################################################################
+######   input:                                                                      ######
+######   -                                                                           ######
+######   output:                                                                     ######
+######   -                                                                           ######
+######################################################################################## */
+void CPrompt::PrintCommandsSets() const        
+{
+  if (!this->print_output)
+    return;
+
+  (*this->Print.out) << "\n  sets of fields:\n";
+  (*this->Print.out) << "    create set(SetLabel)\n";
+  (*this->Print.out) << "    delete set(SetLabel)\n";
+  (*this->Print.out) << "    delete sets\n";
+  (*this->Print.out) << "    insert(fields) into set(SetLabel)         optional: \"if(condition)\"\n";
+  (*this->Print.out) << "    remove(fields) from set(SetLabel)         optional: \"if(condition)\"\n";
+  (*this->Print.out) << "    print sets                                optional: \"if not empty\"\n";
+  (*this->Print.out) << "    print set(SetLabel)\n";
+  (*this->Print.out) << "    #fields in set(SetLabel)\n\n" << flush;
+}
 
 
 /* ########################################################################################

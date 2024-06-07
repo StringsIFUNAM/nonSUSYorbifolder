@@ -98,6 +98,7 @@ public:
   string            StringCurrentDirectory(string &output) const;
   void              PrintCommandsConditions() const;
   void              PrintCommandsProcesses() const;
+  void              PrintCommandsSets() const;
   void              PrintFor(unsigned number_of_Type, const string &Type, const string &Var) const;
     
   bool              FindSpaceGroupsInDirectory(const unsigned &M, const unsigned &N, const string &directory);
