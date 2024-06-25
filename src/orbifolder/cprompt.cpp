@@ -270,9 +270,37 @@ char* command_name_generator(const char* text, int state) {
 
 
 
+// Función para eliminar espacios vacíos del final de una cadena
+string rtrim(const string &s) {
+    size_t end = s.find_last_not_of(" \t\n\r\f\v");
+    return (end == string::npos) ? "" : s.substr(0, end + 1);
+}
+
+// Función para verificar si el mensaje de error contiene palabras clave de error
+bool containsErrorKeywords(const string &error_message, const vector<string> &keywords) {
+    for (const auto &keyword : keywords) {
+        if (error_message.find(keyword) != string::npos) {
+            return true;
+        }
+    }
+    return false;
+}
 
 
 
+
+// Palabras clave de error en diferentes idiomas
+vector<string> error_keywords = {
+    "No existe el archivo o el directorio",  // Español
+    "Ninguna entrada del manual para",       // Español
+    "No manual entry for",                   // Inglés
+    "No such file or directory",             // Inglés
+    "Aucune entrée de manuel pour",          // Francés
+    "Aucun fichier ou dossier de ce type",   // Francés
+    "Nessuna voce di manuale per",           // Italiano
+    "Nessun file o directory"                // Italiano
+    // Puedes agregar más palabras clave según sea necesario
+};
 
 
 
@@ -1408,21 +1436,48 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     {    
       if (command.length() >=4)
       {
+        command = rtrim(command);
+
         string path_doc = " ./doc/main/";
         // Insertar path_doc en la posición 4
         command.insert(4, path_doc);
         // Concatenar ".man" al final
         command += ".man";
       
+
+        // Redirigir la salida de error estándar a un archivo temporal
+        string temp_file = "temp_error.txt";
+        string full_command = command + " 2>" + temp_file;
+
         // Ejecutar el comando utilizando system
-        int result = system(command.c_str());
+        int result = system(full_command.c_str());
+
+
+        // Leer el archivo temporal para verificar el mensaje de error
+        ifstream error_file(temp_file);
+        stringstream error_stream;
+        error_stream << error_file.rdbuf();
+        string error_message = error_stream.str();
+
+        // Eliminar el archivo temporal
+        error_file.close();
+        remove(temp_file.c_str());
+
+        // Verificar el resultado de la ejercución y el mensaje de error
+        
+        if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n* create\n* delete\n* load\n* rename\n* save\n";
+            return false;
+        }
+
 
         return true;
       }
       else
         {
-
-            cout << "What manual page do you want?" << endl;
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n* create\n* delete\n* load\n* rename\n* save\n";
             return false;
         }
     }
@@ -2797,27 +2852,51 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 1:
       { 
-
-                
         if (command.substr(0,3) == "man")
         { 
-          if (command.length() >= 4) 
-          {
-          string path_doc = " ./doc/model/";
-          // Insertar path_doc en la posición 4
-          command.insert(4, path_doc);
-          // Concatenar ".man" al final
-          command += ".man";
+        command = rtrim(command);       
+        if (command.length() >= 4) 
+        {
+
+        string path_doc = " ./doc/model/";
+        // Insertar path_doc en la posición 4
+        command.insert(4, path_doc);
+        // Concatenar ".man" al final
+        command += ".man";
           
-          // Ejecutar el comando utilizando system
-          int result = system(command.c_str());
 
-          return true;
+
+        // Redirigir la salida de error estándar a un archivo temporal
+        string temp_file = "temp_error.txt";
+        string full_command = command + " 2>" + temp_file;
+
+        // Ejecutar el comando utilizando system
+        int result = system(full_command.c_str());
+
+        // Leer el archivo temporal para verificar el mensaje de error
+        ifstream error_file(temp_file);
+        stringstream error_stream;
+        error_stream << error_file.rdbuf();
+        string error_message = error_stream.str();
+
+        // Eliminar el archivo temporal
+        error_file.close();
+        remove(temp_file.c_str());
+
+        // Verificar el resultado de la ejercución y el mensaje de error
+        
+        if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n* print\n* set\n* use\n";
+            return false;
         }
-          else
-          {
 
-            cout << "What manual page do you want?" << endl;
+            return true;
+        }
+        else
+          {
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n* print\n* set\n* use\n";
             return false;
           }
         }
@@ -3635,26 +3714,55 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         if (command.substr(0,3) == "man")
         { 
-          if(command.length()>= 4)
-          {   
-          string path_doc = " ./doc/gauge_group/";
-          // Insertar path_doc en la posición 4
-          command.insert(4, path_doc);
-          // Concatenar ".man" al final
-          command += ".man";
-          
-          // Ejecutar el comando utilizando system
-          int result = system(command.c_str());
+        command = rtrim(command);
 
-          return true;
-         }
-         else
-          {
+        if(command.length()>= 4)
+        {
 
-            cout << "What manual page do you want?" << endl;
+        string path_doc = " ./doc/gauge_group/";
+        // Insertar path_doc en la posición 4
+        command.insert(4, path_doc);
+        // Concatenar ".man" al final
+        command += ".man";
+
+
+        // Redirigir la salida de error estándar a un archivo temporal
+        string temp_file = "temp_error.txt";
+        string full_command = command + " 2>" + temp_file;
+
+        // Ejecutar el comando utilizando system
+        int result = system(full_command.c_str());
+
+
+        // Leer el archivo temporal para verificar el mensaje de error
+        ifstream error_file(temp_file);
+        stringstream error_stream;
+        error_stream << error_file.rdbuf();
+        string error_message = error_stream.str();
+
+        // Eliminar el archivo temporal
+        error_file.close();
+        remove(temp_file.c_str());
+
+        // Verificar el resultado de la ejercución y el mensaje de error
+        
+        if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n* print\n* set\n";
             return false;
-          }
         }
+
+
+        return true;
+      }
+      else
+        {
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n* print\n* set\n";
+            return false;
+        }
+        }
+
 
 
 
@@ -3984,26 +4092,54 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
 
         if (command.substr(0,3) == "man")
-        {    
-          if (command.length()>=4)
-          {
-          string path_doc = " ./doc/spectrum/";
-          // Insertar path_doc en la posición 4
-          command.insert(4, path_doc);
-          // Concatenar ".man" al final
-          command += ".man";
-          
-          // Ejecutar el comando utilizando system
-          int result = system(command.c_str());
+        { 
+        command = rtrim(command);   
+        if (command.length()>=4)
+        {
+        string path_doc = " ./doc/spectrum/";
+        // Insertar path_doc en la posición 4
+        command.insert(4, path_doc);
+        // Concatenar ".man" al final
+        command += ".man";
 
-          return true;
-          }
-        else
-          {
 
-            cout << "What manual page do you want?" << endl;
+        // Redirigir la salida de error estándar a un archivo temporal
+        string temp_file = "temp_error.txt";
+        string full_command = command + " 2>" + temp_file;
+
+        // Ejecutar el comando utilizando system
+        int result = system(full_command.c_str());
+
+
+        // Leer el archivo temporal para verificar el mensaje de error
+        ifstream error_file(temp_file);
+        stringstream error_stream;
+        error_stream << error_file.rdbuf();
+        string error_message = error_stream.str();
+
+        // Eliminar el archivo temporal
+        error_file.close();
+        remove(temp_file.c_str());
+
+        // Verificar el resultado de la ejercución y el mensaje de error
+        
+        if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n* print\n";
             return false;
-          }
+        }
+
+
+        return true;
+        }
+        
+        else
+        {
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n* print\n";
+            return false;
+        }
+
         }
 
 
@@ -4332,26 +4468,52 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
             if (command.substr(0,3) == "man")
             { 
-              if (command.length()>=4)
-              {   
-              string path_doc = " ./doc/vev-config/";
-              // Insertar path_doc en la posición 4
-              command.insert(4, path_doc);
-              // Concatenar ".man" al final
-              command += ".man";
-              
-              // Ejecutar el comando utilizando system
-              int result = system(command.c_str());
+            command = rtrim(command);
 
-              return true;
-              }
-              else
-                {
+            if (command.length()>=4)
+            {   
+            string path_doc = " ./doc/vev-config/";
+            // Insertar path_doc en la posición 4
+            command.insert(4, path_doc);
+            // Concatenar ".man" al final
+            command += ".man";
 
-              cout << "What manual page do you want?" << endl;
-              return false;
-                }
 
+            // Redirigir la salida de error estándar a un archivo temporal
+            string temp_file = "temp_error.txt";
+            string full_command = command + " 2>" + temp_file;
+
+            // Ejecutar el comando utilizando system
+            int result = system(full_command.c_str());
+
+
+            // Leer el archivo temporal para verificar el mensaje de error
+            ifstream error_file(temp_file);
+            stringstream error_stream;
+            error_stream << error_file.rdbuf();
+            string error_message = error_stream.str();
+
+            // Eliminar el archivo temporal
+            error_file.close();
+            remove(temp_file.c_str());
+
+            // Verificar el resultado de la ejercución y el mensaje de error
+            
+            if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* analyze\n* cd\n* create\n* delete\n* print\n* rename\n* select\n* use\n";
+            return false;
+            }
+
+
+            return true;
+            }
+            else
+            {
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* analyze\n* cd\n* create\n* delete\n* print\n* rename\n* select\n* use\n";
+            return false;
+            }
             }
 
 
@@ -4973,28 +5135,55 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           { 
 
             if (command.substr(0,3) == "man")
-            { 
+            {
+            command = rtrim(command); 
             if (command.length()>=4)
-              {   
-              string path_doc = " ./doc/labels/";
-              // Insertar path_doc en la posición 4
-              command.insert(4, path_doc);
-              // Concatenar ".man" al final
-              command += ".man";
-              
-              // Ejecutar el comando utilizando system
-              int result = system(command.c_str());
+            {   
+            string path_doc = " ./doc/labels/";
+            // Insertar path_doc en la posición 4
+            command.insert(4, path_doc);
+            // Concatenar ".man" al final
+            command += ".man";
+            
 
-              return true;
+            // Redirigir la salida de error estándar a un archivo temporal
+            string temp_file = "temp_error.txt";
+            string full_command = command + " 2>" + temp_file;
+
+            // Ejecutar el comando utilizando system
+            int result = system(full_command.c_str());
+
+
+            // Leer el archivo temporal para verificar el mensaje de error
+            ifstream error_file(temp_file);
+            stringstream error_stream;
+            error_stream << error_file.rdbuf();
+            string error_message = error_stream.str();
+
+            // Eliminar el archivo temporal
+            error_file.close();
+            remove(temp_file.c_str());
+
+            // Verificar el resultado de la ejercución y el mensaje de error
+            
+            if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* assign\n* cd\n* change\n* create\n* load\n* print\n* save\n* use\n";
+            return false;
             }
-              else
-                {
 
-              cout << "What manual page do you want?" << endl;
-              return false;
-                }
+
+            return true;
+            }
+            else
+            {
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* assign\n* cd\n* change\n* create\n* load\n* print\n* save\n* use\n";
+            return false;
+            }
 
             }
+
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 18.02.2011
