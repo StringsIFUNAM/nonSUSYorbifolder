@@ -1,44 +1,51 @@
 .TH "print" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-print - Print information about orbifold
+print 
 
 .SH SYNOPSIS
 .B print [options]
 
 .SH DESCRIPTION
-This command prints information about orbifold's features. For example
-the space groups that are available.
+This command prints information about the orbifold geometry. 
 
 .SH OPTIONS
 .TP
+.B orbifold label
+.TP 
+.B heterotic string type
+.TP 
 .B available space groups
-Print details about available space groups.
 .TP
-.B print orbifold label
+.B point group
+.TP
+.B space group
+.TP
+.B twist
+.TP
+.B #SUSY
 .TP 
-.B print heterotic string type
-.TP 
-.B print available space groups
+.B shift
 .TP
-.B print point group
-.TP
-.B print space group
-.TP
-.B print twist
-.TP
-.B print #SUSY
-.TP 
-.B print shift
-.TP
-.B print Wilson lines
+.B Wilson lines
 
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command prints the available space groups.
+
+.B print available space groups
+
+The following command prints the Wilson lines (WLs), identified WLs and their allowed orders.
+
+.B print Wilson lines
+
+The following command prints the twist vector
+
+.B print twist
+
+For example, the user will see  v_1 = (    0,   1/3,   1/3,  -2/3) for the Z3 orbifold.
+
+
 
 
 .SH AUTHOR

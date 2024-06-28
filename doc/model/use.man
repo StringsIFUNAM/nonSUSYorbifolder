@@ -1,25 +1,23 @@
 .TH "use" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-use - set up some parameters.
+use 
 
 .SH SYNOPSIS
-.B set up some parameters
+.B use space group(i)
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This commands allows you to use a i-th space group. The i-th number corresponds from a list of space groups appearing with the command
+print available space groups. If the user chooses a different i-th geometry than the current one, then the orbifolder guides you to create the new model by completing the information for the shifts and Wilson lines.
 
 .SH OPTIONS
 .TP
-.B available space groups
-Print details about available space groups.
+The i-th number can be equal or greater than 1, depending of the allowed orbifold geometries for a given point group.  
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command allows you to use the space group labeled with the number i=4 from a list of orbifold geometries that appear with the command print available space groups, previously typed. 
+
+.B use space group(4)
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

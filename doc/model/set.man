@@ -1,25 +1,33 @@
 .TH "set" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-set - Allows defining some configurations of the orbifold.
+set
 
 .SH SYNOPSIS
 .B set [OPTIONS]
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command set shifts and Wilson lines.
 
 .SH OPTIONS
 .TP
-.B available space groups
-Print details about available space groups.
-
+.B shift V(i) = <16D vector> 
+For i = 1 or i = 1,2 depending if the point group is ZN or ZNxZM, respectively.
+.TP
+.B shift standard embedding 
+.TP
+.B WL W(i) = <16D vector>                
+For i = 1,2,...,6
+  
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command sets the first shift vector to 16D vector specified here as  <16D vector>. 
+
+.B set shift V(1) =  <16D vector>
+
+The following command sets the third Wilson line to a 16D vector specified here as  <16D vector>.
+
+.B swt WL W(3) =  <16D vector>
+
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
