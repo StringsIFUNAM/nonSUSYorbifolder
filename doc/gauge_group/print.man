@@ -1,26 +1,42 @@
 .TH "print" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-print - Print information about available space groups.
+print
 
 .SH SYNOPSIS
-.B print available space groups
+.B print [OPTIONS]
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command prints information about the gauge group.
 
 .SH OPTIONS
 .TP
-.B available space groups
-Print details about available space groups.
+.B gauge group 
+.TP
+.B beta coefficients
+.TP
+.B simple root(i)    
+i denotes the i-th simple root
+.TP
+.B simple roots
+.TP
+.B anomaly info
+.TP
+.B B-L generator
+.TP
+.B U1 generator(i)                     
+.TP
+.B U1 generators
+
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command prints the gauge group
 
+.B print gauge group
+
+The following command prints the simple roots
+
+.B print simple roots
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

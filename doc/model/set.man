@@ -26,7 +26,7 @@ The following command sets the first shift vector to 16D vector specified here a
 
 The following command sets the third Wilson line to a 16D vector specified here as  <16D vector>.
 
-.B swt WL W(3) =  <16D vector>
+.B set WL W(3) =  <16D vector>
 
 
 .SH AUTHOR

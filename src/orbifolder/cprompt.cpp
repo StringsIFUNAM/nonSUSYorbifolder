@@ -2289,7 +2289,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         (*this->Print.out) << "                                                \"0\" : create shift/WL randomly\n";
         (*this->Print.out) << "    \"#models(X)\"                            create \"X\" models with specified properties;\n";
         (*this->Print.out) << "                                              use \"X\" = \"all\" to create as many as possible\n";
+        (*this->Print.out) << "    \"print info\"                            print summary of spectrum\n";
         (*this->Print.out) << "    \"load when done\"                        after process finished, load new models\n";
+        (*this->Print.out) << "    \"do not check anomalies\"                speeds up the process\n";
         (*this->Print.out) << "  examples:\n";
         (*this->Print.out) << "    create random orbifold from(A) if(inequivalent SM) save to(File1.txt) #models(all)\n";
         (*this->Print.out) << "    create random orbifold from(B) if(inequivalent) save to(File2.txt) #models(100) use(1,1,0,0,0,0,0,0)\n\n" << flush;
@@ -4125,7 +4127,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* cd\n* print\n";
+                 << "Options are:\n* cd\n* print\n* textable\n"; 
             return false;
         }
 
@@ -4136,7 +4138,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         else
         {
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* cd\n* print\n";
+                 << "Options are:\n* cd\n* print\n* textable\n"; 
             return false;
         }
 

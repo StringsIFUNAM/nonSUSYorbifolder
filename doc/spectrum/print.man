@@ -1,25 +1,91 @@
 .TH "print" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-print - Print information about available space groups.
+print 
 
 .SH SYNOPSIS
-.B print available space groups
+.B print [OPTIONS]
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This commmand shows general information for the model spectrum. 
+
 
 .SH OPTIONS
 .TP
-.B available space groups
-Print details about available space groups.
+.B (fields)
+Write print(fields), with no space. Here fields can be the label for the field or * for all the fields in the spectrum.
+
+This command has the the following option
+
+\(bu with internal information
+
+It prints additional details for the fields.
+
+
+.TP
+.B all states
+.TP
+.B summary
+This command can be used with the following parameters in the form print summary parameters, where parameters can be
+
+\(bu of sectors
+
+\(bu of fixed points
+
+\(bu of sector T(m,n,k)
+
+\(bu of fixed point(label)
+
+\(bu of fixed point(m,n,k,n1,n2,n3,n4,n5,n6)
+
+\(bu no U1s
+
+\(bu with labels
+.TP
+.B list of charges(fields)
+
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command prints the spectrum of the orbifold model and the labels for the fields.
+
+.B print summary with labels
+
+The following command prints the spectrum according to the untiwsted and twisted sectors.
+
+.B print summary of sectors
+
+The following command prints information for the field labeled as f_1. It displays the sector, fixed point, space group charges, representation, left-moving and righ-moving momenta and oscillators.
+
+.B print(f_1)
+
+There are some variants, for example 
+
+-print(*)  
+
+-print(s_1) with internal information
+
+The first one prints the same kind of information but for all fields, while the second one gives additional details such as the gamma phases, internalIndex and field no. for the scalar field labeled as s_1.
+    
+The following command prints details of all fields.
+
+.B print all states
+
+The following command prints the left- and right-moving momenta, and the space group charges for the fermion field labeled as f_1. 
+
+.B print list of charges(f_1) 
+
+It also has the option
+
+- label of list(Label)
+
+For example 
+
+-print list of charges(f_1) label of list(Label)
+
+where Label is any label you want to assign. In this case one obtains: Label = the information displayed from print list of charges(f_1)
+
+
+
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

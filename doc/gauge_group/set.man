@@ -1,27 +1,21 @@
-.TH "print" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "set" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-print - Print information about available space groups.
+set
 
 .SH SYNOPSIS
-.B print available space groups
+.B set [OPTIONS]
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
-
+This command sets U1 generators
 .SH OPTIONS
 .TP
-.B available space groups
-Print details about available space groups.
-
+.B U1(i) = <16D vector> 
+ 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command sets the second U1 generator, which is a 16D vector denoted here as <16D vector>.
 
-
+.B set U1(2) = <16D vector>  
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
