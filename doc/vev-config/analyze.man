@@ -1,27 +1,28 @@
 .TH "analyze" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-print - Print information about available space groups.
+analyze
 
 .SH SYNOPSIS
-.B print available space groups
+.B analyze config 
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command checks if the current vev-configuration allows for vacua with Standard Model, Pati-Salam or SU(5) gauge group. In this case a new vacua will be created and the spectrum with appropiate labels is displayed. 
 
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
+This command can be complemented with the optional parameter 'print SU(5) simple roots'. In this case, the simple roots of an intermediate SU(5) gauge group that has been used to identify the hypercharge generator are displayed.
+
+If none of the three previous vev-configurations is identified then the message 'No vev-configuration identified' is displayed.   
+
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command analyzes the current vev-configuration.
+
+.B analyze config
 
 
+The following command analyzes the current vev-configuration and print the SU(5) simple roots.
+
+.B analyze config print SU(5) simple roots
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

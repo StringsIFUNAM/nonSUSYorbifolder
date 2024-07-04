@@ -1,25 +1,24 @@
 .TH "rename" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-print - Print information about available space groups.
+rename 
 
 .SH SYNOPSIS
-.B print available space groups
+.B rename config(OldConfigLabel) to(NewConfigLabel)
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command renames the vev-configuration OldConfigLabel to NewConfigLabel. Recall that StandardConfig1 cannot be changed. 
 
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+
+The following command renames the vev-configuration TestConfig1 to TestConfig2
+
+.B rename config(TestConfig1) to(TestConfig2)
+
+The following command renames the vev-configuration SMConfig1 to SMConfig2
+ 
+.B rename config(SMConfig1) to(SMConfig2)
 
 
 

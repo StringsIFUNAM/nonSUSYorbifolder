@@ -1,26 +1,31 @@
 .TH "print" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-print - Print information about available space groups.
+print 
 
 .SH SYNOPSIS
-.B print available space groups
+.B print [OPTIONS]
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+
+This command prints the vev-configurations or the gauge group of the orbifold model according to the use of options.
 
 .SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
+
+.B configs
+
+.B gauge group
+
+
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command prints the list of vev-configurations. The vev-configuration that is currently used is identified by an arrow.
 
+.B print configs
+
+The following command prints the gauge group of the orbifold model.
+
+.B print gauge group
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

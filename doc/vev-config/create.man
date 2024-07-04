@@ -1,24 +1,26 @@
 .TH "create" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 .SH NAME
-print - Print information about available space groups.
+create
 
 .SH SYNOPSIS
-.B print available space groups
+.B create config(ConfigLabel) 
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
-
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
+This command creates a new vev-configuration label. The option 'from(AnotherConfigLabel)' can be used, otherwise StandardConfig1 is taken as the standard origin configuration. 
+ 
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command creates a new configuration named Test1 from TestConfig1.
+
+.B create config(Test1) from(TestConfig1)
+
+The following command creates a new configuration called Test2 from an existing SMConfig1.
+
+.B create config(Test2) from(SMConfig1)
+
+The following command creates a new configuration named Test3, where the origin configuration is the StandardConfig1.
+
+.B create config(Test3)
 
 
 .SH AUTHOR
