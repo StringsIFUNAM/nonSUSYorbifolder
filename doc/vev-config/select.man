@@ -1,25 +1,86 @@
 .TH "select" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-print - Print information about available space groups.
+select observable sector
 
 .SH SYNOPSIS
-.B print available space groups
+.B select observable sector: [PARAMETERS]
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command allows to select different gauge group factors as the observable sector from the gauge group in the current vev-configuration. 
 
-.SH OPTIONS
+.SH PARAMETERS
 .TP
-.B available space groups
-Print details about available space groups.
+.B gauge group(i,j,...)
+
+for i,j = 1,..., number of non-Abelian gauge factors. The gauge group can be seen with the command 'print gauge group' and
+from this the position i,j for the i-th and j-th gauge group factor can be known. The selected gauge groups will be part of the observable sector, and the remaining ones form the hidden sector.
+
+.TP
+.B full gauge group
+
+All non-Abelian gauge group factos are chosen as part of the observable sector.
+
+.TP
+.B no gauge groups
+
+None of the non-Abelian gauge group factors are part of the observable sector, i.e. all of them belong to the hidden sector.
+
+.TP
+.B U1s(i,j,...) 
+
+for i,j = 1,..., number of Abelian U1 gauge factors. The gauge group can be seen with the command 'print gauge group' and
+from this the position i,j for the i-th and j-th Abelian gauge group factor can be known. The selected Abelian gauge groups will be part of the observable sector, and the remaining ones form the hidden sector.
+
+
+.TP
+.B all U1s
+
+All Abelian U1 factors are part of the observable sector.
+
+.TP
+.B no U1s
+
+None of the Abelian U1 factors form part of the observable sector, i.e. all of them belong to the hidden sector.
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+
+Consider the gauge group of the Z3 orbifold: SO(10) x SU(3) x SO(16) x U(1). 
+
+The following commands illustrate some of their uses. 
+
+.B select observable sector: gauge group(1,3)
+
+It selects SO(10) x SO(16) x U(1) as part of the observable sector while SU(3) is in the hidden sector. Factor groups in the hidden sector appear inside brackets, for example SO(10) x [SU(3)] x SO(16) x U(1). 
+ 
+
+
+.B select observable sector: no gauge groups
+
+Only the U(1) is selected as the observable sector, i.e. all non-Abelian gauge factors form the hidden group, which will appear inside brackets, for example [SO(10)] x [SU(3)] x [SO(16)] x U(1). 
+
+.B select observable sector: no U1s
+
+This selects all non-Abelian groups as the observable sector. The U(1) forms the hidden sector.
+
+.B select observable sector: gauge group(2,3) no U1s 
+
+In this case the observable sector is now SU(3) x SO(16), and the remaining two gauge groups form the hidden sector.  
+
+As a last example consider a gauge group in Standard Model vev-configuration:
+SU(3)_C x SU(2)_L x [SU(2)] x [SU(3)] x [U(1)_1] x U(1)_2,Y x [U(1)_3] x [U(1)_4] x [U(1)_5] x [U(1)_6] x [U(1)_7] x [U(1)_8] x [U(1)_9] x [U(1)_10]
+
+The observable sector is formed by the Standard Model gauge group SU(3)_C x SU(2)_L x U(1)_2,Y. All other gauge group factors are in the hidden sector.
+
+The following command 
+
+.B select observable sector: gauge group(1,2,4) U1s(2,5)
+
+selects SU(3)_C x SU(2)_L x SU(3) x U(1)_2,Y x U(1)_5 as the observable sector.
+
+
+
+ 
 
 
 .SH AUTHOR
