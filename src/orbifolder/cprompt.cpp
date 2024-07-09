@@ -5533,7 +5533,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 {
                   (*this->Print.out) << "    change label(A_i) to(B_j)\n";
                   (*this->Print.out) << "    create labels\n";
-                  (*this->Print.out) << "    assign label(Label) to fixed point(k,l,n1,n2,n3,n4,n5,n6)\n";
+                  (*this->Print.out) << "    assign label(Label) to fixed point(m,n,k,n1,n2,n3,n4,n5,n6)\n";
                 }
                 (*this->Print.out) << "    print labels                              \n";
                 if (!UsingStandardConfig)

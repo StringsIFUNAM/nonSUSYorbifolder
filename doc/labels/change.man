@@ -2,25 +2,26 @@
 
 
 .SH NAME
-print - Print information about available space groups.
+change
 
 .SH SYNOPSIS
-.B print available space groups
+.B change label(A_i) to(B_j)
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command changes the label A_i to B_j.
 
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command changes the label f_392 to a_1.
+
+.B change label(f_392) to(a_1)
+
+The following command changes the label s_13 to w_4.
+
+.B change label(s_13) to(w_4)
+
+Note. These labels can be seen with the command 'print(fields)' in the spectrum directory.
+
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

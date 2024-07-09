@@ -2,25 +2,21 @@
 
 
 .SH NAME
-print - Print information about available space groups.
+
+assign
 
 .SH SYNOPSIS
-.B print available space groups
+.B assign label(Label) to fixed point(m,n,k,n1,n2,n3,n4,n5,n6)
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
-
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
+This command assigns the Label to the fixed point/brane with localization (m,n,k,n1,n2,n3,n4,n5,n6)
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command assigns the Label 'Zz' to the fixed point specified by (1,2,2,0,2,0,2,0,2)
+
+.B assign label(Zz) to fixed point(1,2,2,0,2,0,2,0,2)
+
+Note. To know the localization (m,n,k,n1,n2,n3,n4,n5,n6) and see the assigned Label use the command 'print all states' in the spectrum directory.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

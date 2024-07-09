@@ -2558,7 +2558,7 @@ void CPrint::PrintState(const CState &State, const CSector &Sector, const CFixed
 		(*this->out) << "  untwisted Sector\n";
 	else
 	{
-		(*this->out) << "  (" << SGElement.Get_m() << ", " << SGElement.Get_n() << ") twisted Sector ";
+		(*this->out) << "  (" << SGElement.Get_m() << ", " << SGElement.Get_n() << ", " << SGElement.Get_k() << ") twisted Sector "; 
 		this->PrintSGElement(SGElement, true);
 		(*this->out) << "\n";
 	}
