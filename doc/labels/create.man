@@ -2,25 +2,19 @@
 
 
 .SH NAME
-print - Print information about available space groups.
+create
 
 .SH SYNOPSIS
-.B print available space groups
+.B create labels
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command allows to assign labels for the massless fields in the spectrum. This is for the current vev-configuration and the observable sector. 
 
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command prints the spectrum and asks the user to write the labels for each line of the massless spectrum. 
+ 
+.B create labels
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

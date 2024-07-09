@@ -2,25 +2,19 @@
 
 
 .SH NAME
-print - Print information about available space groups.
+load
 
 .SH SYNOPSIS
-.B print available space groups
+.B load labels(Filename)
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command loads the labels of an existing txt file saved with save labels(Filename) and with a name specified by Filename. This is properly used for the same model in the same vev-configuration and the same observable sector. 
 
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command loads the labels from a file named labels1.txt and assign the labels automatically to the massless fields in the spectrum.
+
+.B load labels(labels1.txt)
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

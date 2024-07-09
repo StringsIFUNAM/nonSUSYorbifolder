@@ -2,24 +2,19 @@
 
 
 .SH NAME
-print - Print information about available space groups.
+save
 
 .SH SYNOPSIS
-.B print available space groups
+.B save labels(Filename)
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command saves the current labels in a text file with a name specified by Filename.
 
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
+The following command saves the current used labels in a text file named labels1.txt
+
+.B save labels(labels1.txt)
 .EE
 
 

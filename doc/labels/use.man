@@ -2,25 +2,20 @@
 
 
 .SH NAME
-print - Print information about available space groups.
+use
 
 .SH SYNOPSIS
-.B print available space groups
+.B use label(i)
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
-
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
+This command changes the currently used labels to the labels specified by the number i, for i = 1,2,..., number of labels available. This is properly used for the same model in the same vev-configuration and same observable sector.
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+The following command changes the currently used labels to the labels stored in i=2  
+
+.B use label(2)
+
+A message 'Now using label #2' appears. The massless fields in the spectrum with the corresponding labels can be seen with the command 'print labels'.
 
 
 .SH AUTHOR

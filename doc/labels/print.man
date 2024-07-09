@@ -2,25 +2,25 @@
 
 
 .SH NAME
-print - Print information about available space groups.
+print 
 
 .SH SYNOPSIS
-.B print available space groups
+.B print labels
 
 .SH DESCRIPTION
-This command prints information about available space groups. If the option
-available space groups is provided, it will print details specifically about available space groups.
+This command displays the spectrum and the labels in the current vev-configuration for the observable sector.
 
-.SH OPTIONS
-.TP
-.B available space groups
-Print details about available space groups.
 
 .SH EXAMPLES
-The following command prints general information about available space groups:
-.EX
-print available space groups
-.EE
+Consider the Z3 standard embedding model. Its gauge group is SO(10) x SU(3) x SO(16) x U(1). This is the observable sector. The
+vev-configurations is TestConfig1. 
+
+The following command prints its spectrum and labels of the type s_1, s_2, ..., s_n for the scalars and f_1, f_2, ..., f_m for the fermions.
+
+.B print labels
+
+Note. For models in another vev-configuration like SMConfig1, where the gauge group in the observable sector is the Standard Model (SM) gauge group
+SU(3)_C x SU(2)_L x U(1)_Y, the labels are properly related to the SM particles and those beyond the SM or exotic particles. 
 
 
 .SH AUTHOR
