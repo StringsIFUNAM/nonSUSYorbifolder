@@ -1,0 +1,81 @@
+.TH "if" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+
+.SH NAME
+if 
+
+.SH SYNOPSIS
+.B if(condition)
+
+.SH DESCRIPTION
+This command chooses only those fields that satisfy the condition. It can be used for commands dealing with fields such as print(fields), print list of charges(fields) and tex table(fields) in the spectrum directory.
+
+
+.SH condition
+.TP
+
+A condition consists of three parts, e.g. if(length == even):
+
+      1) left hand side: the variable:
+        "length"  : the length-square of the left-moving momentum, (p_sh)^2
+        "B-L"     : the B-L charge
+        "Q_i"     : i-th U(1) charge, i = 1,2,3,...
+        "p_sh_i"  : i-th component of the left-moving momentum p_sh, i = 1,..,16
+        "q_sh_i"  : i-th component of the right-moving momentum q_sh, i = 1,..,4
+        "#osci."  : number of oscillators acting on the left-mover
+        "label"   : will compare the field label
+
+      2) in between: the comparison operator
+        "==", "!=", ">", ">=", "<" and "<=" or 
+        "involves", "!involves" for field labels
+      3) right hand side: the value
+        "even"    : only with comparison "==" and "!="
+        "odd"     : only with comparison "==" and "!="
+        "even/odd": only with comparison "==" and "!="
+        string    : check whether the field labels involve "string" or not
+        rational  : a rational number, e.g. "0" and "1/2"
+
+
+.SH EXAMPLES
+
+The following command presents the information of print(*), i.e the sector, fixed point, space group charges, representation, left-moving momenta and 
+righ-moving momentum and oscillators, only for the fields where the number of oscillators acting on the left mover are non zero. Recall that the symbol * means that all fields in the spectrum are taken in consideration.
+
+.B  print(*) if(#osci. != 0)
+
+The following command shows the information of tex table(*), i.e the sector, representation and U(1)s charges, only for the fields with first U(1) charge equal to -24.
+
+.B tex table(*) if(Q_1 == -24)
+
+The following command prints the information of print list of charges(*), i.e the shifted left-moving momenta, the shifted right-moving momentum and the discrete non R symmetries (if defined in the geometry file), only for the fields where the number of oscillators acting on the left mover are non zero. 
+
+.B print list of charges(*) if(#osci. != 0)
+
+The following command displays the information of print(*) only for the fields where the length-square of the shifted left-moving momentum is equal to 2/3.
+
+.B print(*) if(length == 2/3)
+
+The following command prints the information of print list of charges(*) only for the fields with first U(1) charge equal to 12.
+
+.B print list of charges(*) if(Q_1 == 12)          
+
+The following command shows the information of print(*) only for the fields where the second component of the shifted right-moving momentum is equal to -1/6.
+
+.B print(*) if(q_sh_2 == -1/6)
+
+The following command displays the information of print(*) only for the fields where the second component of the shifted left-moving momenta is equal to 1/3.
+
+.B print(*) if(p_sh_2 == 1/3)    
+
+
+.SH AUTHOR
+E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
+
+.SH SEE ALSO
+Related here article, additional documentation.
+
+.SH REPORTING BUGS
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
+
+.SH VERSION
+1.0
+

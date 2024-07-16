@@ -2,69 +2,74 @@
 
 
 .SH NAME
-create - Create an orbifold(s) with a specified point group.
+create 
 
 .SH SYNOPSIS
-.B create [OPTION]...
+.B create [OPTIONS]
 
 .SH DESCRIPTION
-This command creates an orbifold(s) assigns the point group (N,M) to the created orbifold.
+This command creates random orbifolds with point group ZM x ZN. It allows the use of several useful parameters.
 
 .SH OPTIONS
 
-.IP "orbifold(OrbifoldLabel) with point group(N,M)" 
-OrbifoldLabel is a unique name for the new orbifold, in addition it is necessary to specify the point group for the orbifold, this is done by N and M to represent the group Z_NxZM. For Z_N groups, M=1 must be assigned.
+.B "orbifold(OrbifoldLabel) with point group(M,N)"
+    This command creates an orbifold named OrbifolLabel with point group ZM x ZN. For ZM set N=1. The model is stored in the directory 
+    OrbifolLabel and after entering it, additional details of the model like the shifts and Wilson lines are required to enter. 
 
-.IP "random orbifold from(OrbifoldLabel)" 
-Given a previously created model named OrbifoldLabel, we can make a random search for models with the same point group.
+.B "create orbifold(OrbifoldLabel) from(AnotherOrbifoldLabel)
+    This command creates an orbifold model named OrbifoldLabel from another existing orbifold model (previously loaded or created) called 
+    AnotherOrbifoldLabel. The new created model is equal to AnotherOrbifoldLabel, they differ in their names. 
 
-This command can be complemented with the following options:
+.B "random orbifold from(OrbifoldLabel)" 
+    This commands creates a random orbifold from an existing orbifold model (previously loaded or created) named OrbifolLabel. It can be 
+    complemented with the following parameters:
 
-\(bu do not check anomalies
+\(bu if(...)
 
-Avoiding anomaly review speeds up model search, but the resulting models may not be useful.
-
-\(bu load when done
-
-Load the models when the search is finished.
-
-\(bu print info
-
-This enables notifications of the random search process.
+It indicates properties of the models to look for: SM, PS, SU5, and inequivalent.
 
 \(bu save to(Filename)
 
-Instructs the saving of the found models to a text file named Filename.
-
-\(bu if()
-
-This option allows adding more conditional options such as:
- - Type of models: SM, PM, SU5
- - Numers of generations: # generations
- - Search for non-equivalent models: inequivalent
-
+It saves the orbifold models in a text file named Filename.
 
 \(bu use(1,0,0,0,0,0,0,1)
 
-One can request that in the search, the resulting models have the same shift vector if a 1 is placed in the first entry of the 8-dimensional vector or that the last Wilson line is equal if a 1 is placed in the last entry of the 8-dimensional vector. Otherwise, 0 should be placed.
+The first two digits are for the shifts, the remaining digits are for the six Wilson Lines. 0 indicates that the shifts and Wilson lines are created randomly. 1 indicates that they are taken from the original OrbifoldLabel. 
+
+\(bu print info
+
+It prints a summary of the spectrum for the randomly created models.
 
 \(bu #models(X)
 
-Specify the number of models to be found.
+It creates a number of X random models with the specified properties. To create as many as possible use X = all. 
 
-.IP
+\(bu load when done
 
+After completing the creation of the models, this command loads the models. 
 
-.SH EXAMPLE
-The following command creates an orbifold with the name "ExampleOrbifold" and assigns the point group (3, 2) to the created orbifold:
+\(bu do not check anomalies
 
-.B create orbifold(ExampleOrbifold) with point group(3,2)
-
-
-Starting from the model we have created, a random search for 10 SM-type models is performed, displaying information. Additionally, upon completion, load and save the found models.
+It speeds up the search and creation of the orbifold models with the specified properties.
 
 
-.B create random orbifold from(ExampleOrbifold) if(SM) #models(10) save_to(10_models_SM.txt) load when done
+.SH EXAMPLES
+The following command creates an orbifold named orbi1 with point group Z3 x Z3.
+
+.B create orbifold(orbi1) with point group(3,3)
+
+After entering the directory, cd orbi1, additional details of the model like the shifts and Wilson lines need to be specified. 
+
+
+The following command creates ten random orbifolds from the Z3_1_1 orbifold model. They are required to be SM-like and inequivalent. The models
+are saved in the file tenmodels.txt and all Wilson lines and shifts are created randomly. After the process is complete, these models
+are loaded, each of them is stored in one directory named Model_SM1, ..., Model_SM10.
+
+.B create random orbifold from(Z3_1_1) if(inequivalent SM) save to(tenmodels.txt) use(0,0,0,0,0,0,0,0) load when done #models(10)
+
+The following command creates five random orbifold models from the Z3_1_1 orbifold. The models are saved in a file models.txt, the shift and the third and fourth Wilson lines are taken from the original model, while the other Wilson lines are created randomly. A summary of the spectrum is printed, and after the process is finished, the five models are loaded and stored in directories named Random1, ..., Random5. 
+
+.B create random orbifold from(Z3_1_1) save to(models.txt) use(1,0,0,0,1,1,0,0) load when done #models(5) print info
 
 
 .SH AUTHOR

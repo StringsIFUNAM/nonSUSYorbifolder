@@ -67,7 +67,7 @@ This selects all non-Abelian groups as the observable sector. The U(1) forms the
 
 In this case the observable sector is now SU(3) x SO(16), and the remaining two gauge groups form the hidden sector.  
 
-As a last example consider a gauge group in Standard Model vev-configuration:
+In the next example consider a gauge group in Standard Model vev-configuration:
 SU(3)_C x SU(2)_L x [SU(2)] x [SU(3)] x [U(1)_1] x U(1)_2,Y x [U(1)_3] x [U(1)_4] x [U(1)_5] x [U(1)_6] x [U(1)_7] x [U(1)_8] x [U(1)_9] x [U(1)_10]
 
 The observable sector is formed by the Standard Model gauge group SU(3)_C x SU(2)_L x U(1)_2,Y. All other gauge group factors are in the hidden sector.
@@ -77,10 +77,6 @@ The following command
 .B select observable sector: gauge group(1,2,4) U1s(2,5)
 
 selects SU(3)_C x SU(2)_L x SU(3) x U(1)_2,Y x U(1)_5 as the observable sector.
-
-
-
- 
 
 
 .SH AUTHOR
