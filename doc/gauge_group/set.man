@@ -7,15 +7,52 @@ set
 .B set [OPTIONS]
 
 .SH DESCRIPTION
-This command sets U1 generators
+This command sets U(1) generators and define U(1)_B-L as a 16D vectors.
+
 .SH OPTIONS
 .TP
-.B U1(i) = <16D vector> 
+.B U1(i) = <16D vector>
+
+where i indicates the i-th U(1) generator for an orbifold model. This assignation changes the basis of U(1) generators. The new generator must be orthogonal to all simple roots and to the j-th U(1) generator, for j < i. The k-th U(1) generators, for k > i, will be changed automatically, such that all generators are orthogonal to each other at the end. The anomalous U(1) cannot be changed.  
+
+.TP
+.B B-L = <16D vector> 
+
+It defines U(1)_B-L as a 16D vector. B-L is stored as an additional vector because in the orbifolder all U(1)
+generators are requested to be orthogonal to each other, however U(1)_B-L is in general not orthogonal to
+hypercharge.
+
+This command can be used with the paramater
+
+.B allow for anomalous B-L
+
+if U(1)_B-L is allowed to mix with the anomalous U(1).
  
 .SH EXAMPLES
-The following command sets the second U1 generator, which is a 16D vector denoted here as <16D vector>.
+\(bu The following command sets the seventh U(1) generator.
 
-.B set U1(2) = <16D vector>  
+.B set U1(7) = (-18, 0, 6, 6, 0, 0, 0, -14, -38, 22, 0, 0, 0, 0, 0, 180) 
+
+The 16D vector can also be written as in the following equivalent options
+
+set U1(7) = (-18 0 6 6 0 0 0 -14 -38 22 0 0 0 0 0 180)  
+
+set U1(7) = (-18, 0, 6, 6, 0^3, -14, -38, 22, 0^5, 180)  
+
+set U1(7) = (-18/1 0/1 6/1 6/1 0/1 0/1 0/1 -14/1 -38/1 22/1 0/1 0/1 0/1 0/1 0/1 180/1)  
+
+set U1(7) = -18, 0, 6, 6, 0^3, -14, -38, 22, 0^5, 180   
+
+set U1(7) = -18 0 6 6 0 0 0 -14 -38 22 0 0 0 0 0 180 
+
+set U1(7) = -18/1 0/1 6/1 6/1 0/1 0/1 0/1 -14/1 -38/1 22/1 0/1 0/1 0/1 0/1 0/1 180/1  
+
+
+\(bu The following command defines U(1)_B-L as a 16D vector.
+
+.B set B-L = (-5, 5, 5, 5, -5, 3, 17, 17, -14, -2, -4, 4, 0, 12, 0, 0)
+
+For the 16D vector the same options apply here.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

@@ -12,79 +12,160 @@ This commmand shows general information for the model spectrum.
 
 .SH OPTIONS
 .TP
+.B summary
+
+This command shows the spectrum and the four dimensional gauge group in the current vev-configuration. The spectrum consists of the scalars and fermion massless fields and their representations and charges under the four dimensional gauge group.    
+
+The command print summary can present additional details for the spectrum by writing print summary [parameters], where parameters can be
+
+.B \(bu with labels
+
+It presents the spectrum with some proper labels. For a given orbifold model and vev-configuration, fields of the four dimensional effective theory are referred with labels, for example, for a model in TestConfig1, the labels s_1, s_2, ... s_n and f_1, f_2, ..., f_m, indicate scalar and fermion fields respectively. For a model in SMConfig1 labels as l_1, l_2, l_3 refer to left-handed lepton doublets, and h_1, h_2 denote Higgs doublets.
+
+.B \(bu of sectors
+
+It shows the spectrum classified by the untwisted and twisted sectors where the scalar and fermion fields belong. The twisted sectors are denoted by T(m,n,k), where m,n,k are integer numbers. The untwisted sectors are indicated by T(0,0,0), which appear as U sector in the displayed information of this command. The notation T(m,n,k) is explained in the next parameter.  
+
+
+.B \(bu of sector T(m,n,k)
+
+It prints the spectrum for the specified sector T(m,n,k). The sector (m,n,k) refers to the untwisted and twisted sectors for the point group ZMxZNxZK = Z2WxZNxZK. The first Z2W is a Z2 symmetry group used in the construction of the non-SUSY heterotic string from the SUSY heterotic string. It is used internally in the non-SUSY orbifolder, so it is needed to specify all sectors when using this command. The letter W in Z2W refers to E. Witten who considers a Z2 symmetry in this construction. 
+
+Let us show some examples. For a Z3 point group we have Z2WxZ3 = ZMxZN, i.e. M=2, N=3. A sector T(m,n,k) = T(0,2,0) means the untwisted sector of Z2W and the second twisted sector of Z3. Now consider a Z3xZ3 orbifold, then internally it corresponds to Z2WxZ3xZ3 = ZMxZNxZK, i.e. M=2, N=3 and K = 3. A sector T(m,n,k) = T(1,2,1) refers to the twisted sector of Z2W, the second twisted sector of Z3 and the first twisted sector of the last Z3. A sector T(0,0,0) indicates the untwisted sector for Z2WxZNxZk and Z2WxZN.
+
+ 
+.B \(bu of fixed points
+
+This command presents the sector (m,n,k), the label for the fixed point and six integer numbers n_a = (n1,n2,n3,n4,n5,n6) of the translational part of the space group element associated to the fixed point, the 16D localization vector V_loc, and the field representation under the four dimensional gauge group in the current vev-configuration. If some sector does not contain particle fields then the word empty appears insted of the representation. 
+
+A comment for the notation n_a = (n1,n2,n3,n4,n5,n6) is given. The translational part of a space group element is n1 e1 + n2 e2 + ... + n6 e6, where e_a are the basis vectors of a six dimensional torus lattice, and n_a are integers. Each fixed point has a corresponding space group element called constructing element. Hence, the set of integer numbers n_a specify the translational part of a fixed point. In case of rototranslations the numbers n_a are fractional.  
+
+Then, the notation (m,n,k) (n1,n2,n3,n4,n5,n6) corresponds to the space group element g=(t^m u^k v^l, n_a e_a), where t, u and v are the generators for ZM=Z2W, ZN and ZK, respectively, and n_a e_a indicates n_1 e_1 + n_2 e_2 + ... + n_6 e_6. Note that m = 0,1 for the untwisted and twisted sector of Z2W.          
+
+.B \(bu of fixed point(label)
+
+It prints the same information as the previous command but only for the fixed point with the specified label. 
+
+.B \(bu of fixed point(m,n,k,n1,n2,n3,n4,n5,n6)
+
+It displays the same details as print summary of fixed point(label) but now by providing the sector (m,n,k) and the set of integer numbers n_a = (n1,n2,...,n6) instead of the label for the fixed point. 
+
+Recall that the label for the fixed point, the sector (m,n,k) and the numbers n_a are provided with the command print summary of fixed points. 
+
+.B \(bu no U1s
+
+It shows the spectrum without the U(1) charges. The parameters 'no U1s' and 'with labels' can be used with the command print summary and with the parameters: of sectors, of sector T(m,n,k), of fixed points, of fixed point(label), of fixed point(m,n,k,n1,n2,n3,n4,n5,n6). Some examples are
+shown in the examples section below.
+
+.TP
 .B (fields)
-Write print(fields), with no space. Here fields can be the label for the field or * for all the fields in the spectrum.
 
-This command has the the following option
+For a specified field label this command shows the sector (m,n,k), the fixed point n_a = (n1,n2,...,n6), the space group charges (discrete non R symmetries), the representaion of the field under the four dimensional gauge group in the current vev-configuration, the left-moving momentum, the right-moving momentum, and the oscillators acting on left states. 
 
-\(bu with internal information
+Recall that for a given orbifold model and vev-configuration, fields of the four dimensional effective theory are refered with labels. For example, for a model in TestConfig1 the labels s_1, s_2, ..., s_m indicate scalar fields, and f_1, f_2, ..., f_n indicate fermion fields. For a model in SMConfig1 labels as l_1, l_2, l_3 refer to left-handed lepton fields, and h_1, h_2, ..., h_n refer to Higgs doublets. The labels for the fields of an orbifold model in the current vev-configuration can be seen with the command print summary with labels. 
 
-It prints additional details for the fields.
+The word fields inside the parentheses of print(fields) refer to the label of a field or set of labels for fields. For instance, print(s_7) displays the respective information for the scalar field labeled as s_7, while print(f_1 }s_7) presents the details for the femion field f_1 and the scalar field s_7. Use print(*) to access all fields in the spectrum. Other options are shown in the examples section. 
 
+The command print(fields) can be used with the following parameter
+
+.B \(bu with internal information
+
+In this case additional details for the fields such as the gamma phases, internalIndex and field number are also printed. They represent internal information about how the fields' data can be accessed in the C++ source code
+of the orbifolder.
 
 .TP
 .B all states
-.TP
-.B summary
-This command can be used with the following parameters in the form print summary parameters, where parameters can be
 
-\(bu of sectors
+For all scalar and fermion fields in the spectrum this command presents the following information: sector (m,n,k), fixed point n_a = (n1,n2,...,n6), a label for the field, representation of the field under the four dimensional gauge group in the current vev-configuration,  left-moving momenta and the number of them, right-moving momentum, and gamma phases. 
 
-\(bu of fixed points
 
-\(bu of sector T(m,n,k)
-
-\(bu of fixed point(label)
-
-\(bu of fixed point(m,n,k,n1,n2,n3,n4,n5,n6)
-
-\(bu no U1s
-
-\(bu with labels
 .TP
 .B list of charges(fields)
 
+This command prints the left-moving momentum, right-moving momentum and space group charges (discrete non R symmetries) for fields specified by their labels. For example print list of charges(s_1 f_7), print list of charges(f_5). Use * to consider all fields in the spectrum. The same options for fields in print(fields) are also applied here. 
+
+
 
 .SH EXAMPLES
-The following command prints the spectrum of the orbifold model and the labels for the fields.
+
+\(bu The following command prints the spectrum of the orbifold model, the labels for the fields, and the four dimensional gauge group in the current vev-configuration.
 
 .B print summary with labels
 
-The following command prints the spectrum according to the untiwsted and twisted sectors.
+
+\(bu The following command shows the same information as the previous command but without the U(1)s charges.
+
+.B print summary with labels no U1s
+
+
+\(bu The following command prints the spectrum classified by untiwsted and twisted sectors.
 
 .B print summary of sectors
 
-The following command prints information for the field labeled as f_1. It displays the sector, fixed point, space group charges, representation, left-moving and righ-moving momenta and oscillators.
+\(bu The following command shows the spectrum for the twisted sector T(0,2,0).
+
+.B print summary of sector T(0,2,0)
+
+The previous command refers to the Z3 orbifold or Z2WxZ3 in the orbifolder. For the notation Z3 and Z2WxZ3 see the option section above in the description for the command print summary of sector T(m,n,k). The sector T(0,2,0) corresponds to the untiwsted sector of Z2W and the second twisted sector of Z3. 
+
+\(bu For the fermion field labeled as f_1 the following command prints the sector (m,n,k), fixed point n_a = (n1,n2,...,n6), space group charges (discrete non R symmetries), representations, left-moving momentum, right-moving momentum and oscillators.
 
 .B print(f_1)
 
-There are some variants, for example 
+Other options are
 
--print(*)  
+.B print(*)
 
--print(s_1) with internal information
+It prints the same kind of information but for all fields in the spectrum.  
 
-The first one prints the same kind of information but for all fields, while the second one gives additional details such as the gamma phases, internalIndex and field no. for the scalar field labeled as s_1.
-    
-The following command prints details of all fields.
+.B print(s_1) with internal information
 
-.B print all states
+It gives additional information such as the gamma phases, internalIndex and field number for the scalar field labeled as s_1.
+     
+.B print(f)
 
-The following command prints the left- and right-moving momenta, and the space group charges for the fermion field labeled as f_1. 
+It prints the information for all fermion fields labeled as f_1, f_2, f_3,..., f_n.
 
-.B print list of charges(f_1) 
+.B print(f-f_3)
+
+It prints the information for all fermions fields except f_3.
+
+.B print(s_1 f_1)
+
+It prints the information only for the scalar field s_1 and the fermion field f_1.
+
+\(bu The following command presents for all fields in the spectrum the sector (m,n,k), the label for the fixed point, the numbers n_a = (n1,n2,...n6) that specify the translational part of the space group element associated to the fixed point, the 16D localization vector V_loc, and the field representations.     
+
+.B print summary of fixed points
+
+From the previous example suppose that some scalar and fermion fields correspond to the sector (m,n,k)= (0,2,0) with n_a = (0,2,0,2,0,2), and
+they were labeled as T54. Then, the following commands displays the same information as print summary of fixed points but only for these set of fields.
+
+.B print summary of fixed point(T54)
+
+as an example of print summary of fixed point(label)
+
+.B print summary of fixed point(0,2,0,0,2,0,2,0,2)
+
+as an example of print summary of fixed point(m,n,k,n1,n2,n3,n4,n5,n6)
+
+\(bu The following command prints the left-moving momenta, the right-moving momentum, and the space group charges (discrete non R symmetries) for the scalar field s_7.
+
+.B print list of charges(s_7) 
 
 It also has the option
 
-- label of list(Label)
+.B - label of list(Label)
 
 For example 
 
--print list of charges(f_1) label of list(Label)
+.B print list of charges(s_7) label of list(Label)
 
-where Label is any label you want to assign. In this case one obtains: Label = the information displayed from print list of charges(f_1)
+where Label is any label you want to assign, for example a1. In this case the information displayed from print list of charges(f_1) is labeled as a1.
 
+\(bu The following command presents the same information as 'print summary of sectors' but with labels for the fields and without the U(1)s charges. 
 
+.B print summary of sectors with labels no U1s
 
 
 .SH AUTHOR
