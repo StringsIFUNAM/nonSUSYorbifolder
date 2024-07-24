@@ -7,7 +7,7 @@ print
 .B print [OPTIONS]
 
 .SH DESCRIPTION
-This commmand shows general information for the model spectrum. 
+This commmand shows general information for the orbifold model spectrum. 
 
 
 .SH OPTIONS
@@ -20,7 +20,7 @@ The command print summary can present additional details for the spectrum by wri
 
 .B \(bu with labels
 
-It presents the spectrum with some proper labels. For a given orbifold model and vev-configuration, fields of the four dimensional effective theory are referred with labels, for example, for a model in TestConfig1, the labels s_1, s_2, ... s_n and f_1, f_2, ..., f_m, indicate scalar and fermion fields respectively. For a model in SMConfig1 labels as l_1, l_2, l_3 refer to left-handed lepton doublets, and h_1, h_2 denote Higgs doublets.
+It presents the spectrum with some proper labels. For a given orbifold model and vev-configuration, fields of the four dimensional effective theory are referred with labels, for example, for a model in TestConfig1, the labels s_1, s_2, ... s_n and f_1, f_2, ..., f_m, indicate scalar and fermion fields respectively. For a model in SMConfig1 labels as l_1, l_2, l_3 refer to left-handed lepton doublets, and h_1, h_2, ..., h_n denote Higgs doublets.
 
 .B \(bu of sectors
 
@@ -29,7 +29,7 @@ It shows the spectrum classified by the untwisted and twisted sectors where the 
 
 .B \(bu of sector T(m,n,k)
 
-It prints the spectrum for the specified sector T(m,n,k). The sector (m,n,k) refers to the untwisted and twisted sectors for the point group ZMxZNxZK = Z2WxZNxZK. The first Z2W is a Z2 symmetry group used in the construction of the non-SUSY heterotic string from the SUSY heterotic string. It is used internally in the non-SUSY orbifolder, so it is needed to specify all sectors when using this command. The letter W in Z2W refers to E. Witten who considers a Z2 symmetry in this construction. 
+It prints the spectrum for the specified sector T(m,n,k). The sector (m,n,k) refers to the untwisted and twisted sectors for the point group ZMxZNxZK = Z2WxZNxZK. The first Z2W is a Z2 symmetry group used in the construction of the non-SUSY heterotic string from the SUSY heterotic string. It is used internally in the non-SUSY orbifolder, so it is needed to specify all sectors when using this command. The letter W in Z2W refers to E. Witten who considered a Z2 symmetry in this construction. 
 
 Let us show some examples. For a Z3 point group we have Z2WxZ3 = ZMxZN, i.e. M=2, N=3. A sector T(m,n,k) = T(0,2,0) means the untwisted sector of Z2W and the second twisted sector of Z3. Now consider a Z3xZ3 orbifold, then internally it corresponds to Z2WxZ3xZ3 = ZMxZNxZK, i.e. M=2, N=3 and K = 3. A sector T(m,n,k) = T(1,2,1) refers to the twisted sector of Z2W, the second twisted sector of Z3 and the first twisted sector of the last Z3. A sector T(0,0,0) indicates the untwisted sector for Z2WxZNxZk and Z2WxZN.
 
@@ -40,7 +40,7 @@ This command presents the sector (m,n,k), the label for the fixed point and six 
 
 A comment for the notation n_a = (n1,n2,n3,n4,n5,n6) is given. The translational part of a space group element is n1 e1 + n2 e2 + ... + n6 e6, where e_a are the basis vectors of a six dimensional torus lattice, and n_a are integers. Each fixed point has a corresponding space group element called constructing element. Hence, the set of integer numbers n_a specify the translational part of a fixed point. In case of rototranslations the numbers n_a are fractional.  
 
-Then, the notation (m,n,k) (n1,n2,n3,n4,n5,n6) corresponds to the space group element g=(t^m u^k v^l, n_a e_a), where t, u and v are the generators for ZM=Z2W, ZN and ZK, respectively, and n_a e_a indicates n_1 e_1 + n_2 e_2 + ... + n_6 e_6. Note that m = 0,1 for the untwisted and twisted sector of Z2W.          
+Then, the notation (m,n,k) (n1,n2,n3,n4,n5,n6) corresponds to the space group element g=(t^m u^n v^k, n_a e_a), where t, u and v are the generators for ZM=Z2W, ZN and ZK, respectively, and n_a e_a indicates n_1 e_1 + n_2 e_2 + ... + n_6 e_6. Note that m = 0,1 for the untwisted and twisted sector of Z2W.          
 
 .B \(bu of fixed point(label)
 
@@ -62,9 +62,9 @@ shown in the examples section below.
 
 For a specified field label this command shows the sector (m,n,k), the fixed point n_a = (n1,n2,...,n6), the space group charges (discrete non R symmetries), the representaion of the field under the four dimensional gauge group in the current vev-configuration, the left-moving momentum, the right-moving momentum, and the oscillators acting on left states. 
 
-Recall that for a given orbifold model and vev-configuration, fields of the four dimensional effective theory are refered with labels. For example, for a model in TestConfig1 the labels s_1, s_2, ..., s_m indicate scalar fields, and f_1, f_2, ..., f_n indicate fermion fields. For a model in SMConfig1 labels as l_1, l_2, l_3 refer to left-handed lepton fields, and h_1, h_2, ..., h_n refer to Higgs doublets. The labels for the fields of an orbifold model in the current vev-configuration can be seen with the command print summary with labels. 
+Recall that for a given orbifold model and vev-configuration, fields of the four dimensional effective theory are refered with labels, which can be seen with the command print summary with labels. 
 
-The word fields inside the parentheses of print(fields) refer to the label of a field or set of labels for fields. For instance, print(s_7) displays the respective information for the scalar field labeled as s_7, while print(f_1 }s_7) presents the details for the femion field f_1 and the scalar field s_7. Use print(*) to access all fields in the spectrum. Other options are shown in the examples section. 
+The word fields inside the parentheses of print(fields) refers to the label of a field or a set of labels for fields. For instance, print(s_7) displays the respective information for the scalar field labeled as s_7, while print(f_1 s_7) presents the details for the femion field f_1 and the scalar field s_7. Use print(*) to access all fields in the spectrum. Other options are shown in the examples section. 
 
 The command print(fields) can be used with the following parameter
 
@@ -76,13 +76,13 @@ of the orbifolder.
 .TP
 .B all states
 
-For all scalar and fermion fields in the spectrum this command presents the following information: sector (m,n,k), fixed point n_a = (n1,n2,...,n6), a label for the field, representation of the field under the four dimensional gauge group in the current vev-configuration,  left-moving momenta and the number of them, right-moving momentum, and gamma phases. 
+For all scalar and fermion fields in the spectrum this command presents the following information: sector (m,n,k), fixed point n_a = (n1,n2,...,n6), a label for the field, representation of the field under the four dimensional gauge group in the current vev-configuration,  left-moving momenta and the number of them, right-moving momentum and gamma phases. 
 
 
 .TP
 .B list of charges(fields)
 
-This command prints the left-moving momentum, right-moving momentum and space group charges (discrete non R symmetries) for fields specified by their labels. For example print list of charges(s_1 f_7), print list of charges(f_5). Use * to consider all fields in the spectrum. The same options for fields in print(fields) are also applied here. 
+This command prints the left-moving momentum, right-moving momentum and space group charges (discrete non R symmetries) for fields specified by their labels. For example print list of charges(s_1 f_7), print list of charges(f_5). Use * to consider all fields in the spectrum. The same options for fields in print(fields) also apply here. 
 
 
 
@@ -106,7 +106,7 @@ This command prints the left-moving momentum, right-moving momentum and space gr
 
 .B print summary of sector T(0,2,0)
 
-The previous command refers to the Z3 orbifold or Z2WxZ3 in the orbifolder. For the notation Z3 and Z2WxZ3 see the option section above in the description for the command print summary of sector T(m,n,k). The sector T(0,2,0) corresponds to the untiwsted sector of Z2W and the second twisted sector of Z3. 
+Suppose the previous command refers to the Z3 orbifold or Z2WxZ3 in the orbifolder. Then, the sector T(0,2,0) corresponds to the untiwsted sector of Z2W and the second twisted sector of Z3. For the notation Z3 and Z2WxZ3 see the option section above in the description for the command print summary of sector T(m,n,k). 
 
 \(bu For the fermion field labeled as f_1 the following command prints the sector (m,n,k), fixed point n_a = (n1,n2,...,n6), space group charges (discrete non R symmetries), representations, left-moving momentum, right-moving momentum and oscillators.
 
