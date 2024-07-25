@@ -6402,7 +6402,7 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
         {
           case 0:
           {
-            output += " ";
+            output += "";
             return true;
           }
           case 1:
