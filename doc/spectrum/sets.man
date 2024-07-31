@@ -1,0 +1,147 @@
+.TH "sets" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+
+.SH NAME
+sets
+
+.SH SYNOPSIS
+.B There are different commands that manage sets of fields. The sets are stored in the current vev-configuration of the orbifold model. 
+
+.SH DESCRIPTION
+The commands that operate sets of fields are listed below.
+
+.B create set(SetLabel)
+
+This command creates an empty set named SetLabel.
+
+.B delete set(SetLabel)
+
+It deletes the set named SetLabel.
+
+.B delete sets
+
+It delete all sets created.
+
+.B insert(fields) into set(SetLabel)
+
+It inserts fields into a created set named SetLabel. 
+
+.B remove(fields) from set(SetLabel)
+
+It removes the indicated fields from the set named SetLabel.
+
+The two previous commands (insert and remove) can be used with the following parameter.
+
+.B - if(conditions)
+
+where only the fields that satisfy the condition are inserted (removed) in (from) the set called SetLabel. 
+
+.B print sets
+
+It shows all created sets.
+
+This command can be used with the following parameter.
+
+.B - if not empty
+
+In this case only the not empty sets are printed. 
+
+.B print set(SetLabel)
+
+It prints the set called SetLabel.
+
+.B #fields in set(SetLabel)
+
+It counts the number of fields in the set called SetLabel.
+
+
+.SH EXAMPLES
+
+The following commands are used in the spectrum directory with the Z3 orbifold in the standard embedding. Its spectrum is in the vev-configuration called TestConfig1. The commands in the provided examples are a guide for using them with other orbifold models in the same or in a distinct vev-configuration.
+
+\(bu The following command creates a set called test1.
+
+.B create set(test1)
+
+The output reads
+
+Empty set "test1" created.
+
+\(bu The following command inserts some fermion and scalar fields into the previously created set.
+
+.B insert(f_4 f_16 s_7 s_1 f_35 s_16) into set(test1)
+
+The output reads
+
+6 fields inserted into set "test1".
+
+\(bu The following command prints the existing sets
+
+.B print sets
+
+The output reads
+
+test1 = {s_1, f_4, s_7, s_16, f_16, f_35}
+
+Note that only the set test1 is printed since it is the only one that was created in this example.
+
+\(bu The following command prints the set called test1.
+
+.B print set(test1)
+
+The output reads
+
+test1 = {s_1, f_4, s_7, s_16, f_16, f_35}
+
+\(bu The following command counts the number of fields in the set called test1.
+
+.B #fields in set(test1)
+
+The output reads
+
+#fields in set "test1" = 6
+
+\(bu The following command removes all fields in the set called test1 fulfilling the condition that their number of oscillators is not equal to zero.
+
+.B remove(*) from set(test1) if(#osci. != 0)
+
+The output reads
+
+  1 field removed from set "test1".
+
+\(bu The following command prints the set called test1.
+
+.B print set(test1)
+
+  test1 = {s_1, f_4, s_7, f_16, f_35}
+
+Note that only the scalar field s_16 was removed in this case.
+
+\(bu The following command deletes the set called test1.
+
+.B delete set(test1)
+
+The output reads
+
+  Set "test1" deleted.
+
+\(bu The following command deletes all sets 
+
+.B delete sets
+
+The output reads
+
+  All sets deleted.
+ 
+
+.SH AUTHOR
+E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
+
+.SH SEE ALSO
+Related here article, additional documentation.
+
+.SH REPORTING BUGS
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
+
+.SH VERSION
+1.0
+

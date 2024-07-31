@@ -4127,7 +4127,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* cd\n* print\n* textable\n* if\n"; 
+                 << "Options are:\n* cd\n* print\n* textable\n* if\n* sets\n"; 
             return false;
         }
 
@@ -4138,7 +4138,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         else
         {
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* cd\n* print\n* textable\n* if\n"; 
+                 << "Options are:\n* cd\n* print\n* textable\n* if\n* sets\n"; 
             return false;
         }
 
