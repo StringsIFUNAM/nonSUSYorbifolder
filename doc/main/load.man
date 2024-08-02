@@ -2,24 +2,91 @@
 
 
 .SH NAME
-load - Load orbifolds from a specified file.
+load 
 
 .SH SYNOPSIS
-.B load orbifolds(Filename)
+.B load [OPTIONS] 
 
 .SH DESCRIPTION
-This command loads orbifolds from the specified file (Filename) into the current environment.
+This command loads the orbifold models contained in a file named Filename. Another function of the command is to load and execute a list of commands.  
 
 .SH OPTIONS
 .TP
-.B orbifolds(Filename)
-Specifies the file from which orbifolds will be loaded.
 
-.SH EXAMPLE
-The following command loads orbifolds from a file named "models.txt":
-.EX
-load orbifolds(models.txt)
-.EE
+.B orbifolds(Filename)
+
+It loads orbifold models from a file named Filename. The command can be used with the following parameter
+
+.B - inequivalent
+
+In this case, only models with inequivalent massless spectra are loaded. 
+
+.TP
+.B program(Filename)
+
+It loads and executes a list of commands from a file named Filename.
+
+
+.SH EXAMPLES
+
+\(bu The following command loads the orbifold model defined in the file modelZ3_1.txt
+
+.B load orbifolds(modelZ3_1.txt)
+
+The output reads
+
+  Load orbifolds from file "modelZ3_1.txt".
+  Orbifold "Z3_1_1" loaded.
+
+Where Z3_1_1 is the orbifold label. It is also the name of the corresponding orbifold directory.
+
+
+\(bu The following command loads all orbifolds contained in a file named models.txt
+
+.B load orbifolds(models.txt)
+
+If the file models.txt has 13 models, then the output reads
+
+  Load orbifolds from file "models.txt".
+  13 orbifolds loaded.
+
+Where the 13 corresponding orbifold labels are the names of the 13 orbifold directories where each orbifold model is stored.
+
+\(bu Suppose that in the previous example the file models.txt contains 3 equivalent models, then the following command loads only the inequivalent models
+
+.B load orbifolds(models.txt) inequivalent
+
+The output reads,
+
+  Load inequivalent orbifolds from file "models.txt".
+  10 orbifolds loaded.
+
+Recall that the orbifold labels are the names of the orbifold directories.
+
+Note. In the three previous examples the command 
+
+.B load orbifold(Filename) 
+
+can also be used. 
+
+\(bu The following command loads and executes the commands from the file named commands.txt
+
+.B load program(commands.txt)
+
+As an example, suppose the file commands.txt contains the following list of commands
+
+  load orbifolds(modelZ3_1.txt)
+  cd Z3_1_1
+  cd spectrum
+  print summary
+  cd ..
+  cd model 
+  print twist
+  cd ..
+  cd gauge group
+  print gauge group
+
+then these 10 commands are executed automatically and the corresponding outputs are shown on the computer screen.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

@@ -1,25 +1,19 @@
 .TH "cd" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-cd - Change directory.
+cd 
 
 .SH SYNOPSIS
 .B cd OrbifoldLabel
 
 .SH DESCRIPTION
-This command allows us leave this directory.
+This commands allows to enter the orbifold directory with label OrbifoldLabel. 
 
-.SH OPTIONS
-.TP
-.B ..
-Specifies the path to main directory of the orbifold of interest.
+.SH EXAMPLES
 
-.SH EXAMPLE
-The following command changes to the main directory:
-.EX
-cd ..
-.EE
+Suppose that an orbifold model with label Z3model was loaded or created. Then the following command gives access to the corresponding orbifold directory.
 
+.B cd Z3model 
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

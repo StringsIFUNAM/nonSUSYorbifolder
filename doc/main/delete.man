@@ -1,31 +1,50 @@
 .TH "delete" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-delete - Delete orbifolds.
+delete 
 
 .SH SYNOPSIS
-.B delete orbifold(OrbifoldLabel)
+.B delete [OPTIONS]
 
 .SH DESCRIPTION
-This command deletes the orbifold with the specified name (OrbifoldLabel), and it is also capable of deleting all loaded orbifolds
+This command deletes orbifolds. 
 
 .SH OPTIONS
 .TP
 .B orbifold(OrbifoldLabel)
-Specifies the orbifold that will be deleted.
 
+It deletes the orbifold called OrbifoldLabel.
 
 .TP
 .B orbifolds
-All orbifolds are deleted
 
+It deletes all orbifolds.
 
-.SH EXAMPLE
-The following command deletes the orbifold named ExampleOrbifold.
+.SH EXAMPLES
 
-.EX
-cd ExampleOrbifold
-.EE
+The orbifold labels of previously loaded or created orbifolds are the names of the orbifold directories. They can be seen in the main directory after the line 'change directory'. Suppose we have three orbifolds labeled as Z3_1_1, Model_SM3 and O1, then the following lines appear (together with other information like the commands in the directory) after typing dir in the main directory
+
+change directory:
+    cd Z3_1_1
+    cd Model_SM3
+    cd O1
+
+\(bu The following command deletes the orbifold named Z3_1_1. 
+
+.B delete orbifold(Z3_1_1)
+
+The output reads
+
+Orbifold "Z3_1_1" deleted.
+
+\(bu The following command deletes all existing orbifolds.
+
+.B delete orbifolds
+
+The output reads
+
+All orbifolds deleted.
+
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

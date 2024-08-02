@@ -1,25 +1,28 @@
 .TH "save" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-save - Save orbifolds to a specified file.
+save
 
 .SH SYNOPSIS
 .B save orbifolds(Filename)
 
 .SH DESCRIPTION
-This command saves the current orbifolds to the specified file (Filename).
-Also work with orbifold.
+This command saves all existing orbifold models (previously loaded or created) to a file named Filename.
 
 .SH OPTIONS
-.TP
-.B Filename
-Specifies the file to which the current orbifolds will be saved.
 
-.SH EXAMPLE
-The following command saves the current orbifolds to a file named "models.txt":
-.EX
-save orbifolds(models.txt)
-.EE
+It also works with
+
+.B save orbifold(Filename)
+
+.SH EXAMPLES
+\(bu The following command saves all current orbifolds to a file named allmodels.txt
+
+.B save orbifolds(allmodels.txt)
+
+\(bu The following command saves all existing orbifolds to a file named models.txt
+
+.B save orbifold(models.txt)  
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

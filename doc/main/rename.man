@@ -1,26 +1,24 @@
 .TH "rename" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
-
 .SH NAME
-Rename - orbifold.
+rename
 
 .SH SYNOPSIS
 .B rename orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
 
 .SH DESCRIPTION
-This command allows changing the label of an orbifold.
+This command renames the label of an existing orbifold model. 
 
-.SH OPTIONS
-.TP
-.B orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
-We define the new label for the orbifold.
+.SH EXAMPLES
+\(bu The following command renames the orbifold label 'Z3_1_1' to a new label 'Model1' 
 
-.SH EXAMPLE
-The following command rename one orbifold 
+.B rename orbifold(Z3_1_1) to(Model1)
 
-.EX
-rename orbifold orbifold(ExampleOrbifold) to(Orbifold_example)
-.EE
+\(bu The following command renames the orbifold label 'Random1' to 'Orbi1' 
+
+.B rename orbifold(Random1) to(Orbi1)
+
+\(bu Note. The NewOrbifoldLabel is only allowed to contain characters and numbers, so labels like Model-1 or Orbi_1 produce a label error.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
