@@ -4,23 +4,28 @@
 save
 
 .SH SYNOPSIS
-.B save orbifolds(Filename)
+.B save [OPTIONS]
 
 .SH DESCRIPTION
-This command saves all existing orbifold models (previously loaded or created) to a file named Filename.
+This command saves all orbifold models of the main directory to a file. Recall that in the main directory the loaded orbifold models are assigned to orbifold directories with names corresponding to the orbifold labels.  
 
 .SH OPTIONS
+.TP
+.B orbifolds(Filename)
 
-It also works with
+It saves all orbifolds of the main directory to a file named Filename.
 
-.B save orbifold(Filename)
+.TP
+.B orbifold(Filename)
+
+It has the same function as the previous one.
 
 .SH EXAMPLES
-\(bu The following command saves all current orbifolds to a file named allmodels.txt
+\(bu The following command saves all orbifold models of the main directoy to a file named allmodels.txt
 
 .B save orbifolds(allmodels.txt)
 
-\(bu The following command saves all existing orbifolds to a file named models.txt
+\(bu The following command saves all currently loaded orbifolds to a file named models.txt
 
 .B save orbifold(models.txt)  
 

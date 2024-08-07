@@ -22,12 +22,12 @@ It deletes all orbifolds.
 
 .SH EXAMPLES
 
-The orbifold labels of previously loaded or created orbifolds are the names of the orbifold directories. They can be seen in the main directory after the line 'change directory'. Suppose we have three orbifolds labeled as Z3_1_1, Model_SM3 and O1, then the following lines appear (together with other information like the commands in the directory) after typing dir in the main directory
+The orbifold labels of previously loaded orbifold models are the names of the orbifold directories. They can be seen in the main directory after the line 'change directory'. Suppose we have loaded three orbifolds labeled as Z3_1_1, Model_SM3 and Z6model, then the following lines appear (together with other information like the commands in the directory) after typing dir in the main directory
 
 change directory:
     cd Z3_1_1
     cd Model_SM3
-    cd O1
+    cd Z6model
 
 \(bu The following command deletes the orbifold named Z3_1_1. 
 
@@ -37,7 +37,7 @@ The output reads
 
 Orbifold "Z3_1_1" deleted.
 
-\(bu The following command deletes all existing orbifolds.
+\(bu The following command deletes all currently loaded orbifolds.
 
 .B delete orbifolds
 

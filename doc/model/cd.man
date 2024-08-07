@@ -1,24 +1,46 @@
 .TH "cd" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
 
 .SH NAME
-cd - Change directory.
+cd 
 
 .SH SYNOPSIS
-.B cd ..
+.B cd [OPTIONS]
 
 .SH DESCRIPTION
-This command allows us leave this directory.
+This command changes directory.
 
 .SH OPTIONS
 .TP
-.B ..
-Specifies the path to main directory of the orbifold of interest.
+.B cd ..
 
-.SH EXAMPLE
-The following command changes to the main directory:
-.EX
-cd ..
-.EE
+It goes back one directory.
+
+.TP
+.B cd ~
+
+It goes back to the main directory.
+
+
+.SH EXAMPLES
+
+\(bu The following command goes back to the previous directory.
+
+.B cd ..
+
+The next lines in the prompt show the example. 
+
+  /Z3_1_1/model/> cd ..
+  /Z3_1_1/> cd ..
+  /> 
+
+\(bu The following command goes back to the main directory.
+
+.B cd ~
+
+The next lines in the prompt show the example.
+
+  /Z3_1_1/model/> cd ~
+  /> 
 
 
 .SH AUTHOR

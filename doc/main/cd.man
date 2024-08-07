@@ -4,16 +4,37 @@
 cd 
 
 .SH SYNOPSIS
-.B cd OrbifoldLabel
+.B cd [OPTIONS]
 
 .SH DESCRIPTION
-This commands allows to enter the orbifold directory with label OrbifoldLabel. 
+This command changes directory. 
+
+.SH OPTIONS
+.TP
+.B OrbifoldLabel
+
+It is the name of the orbifold model directory and the orbifold model label. 
 
 .SH EXAMPLES
 
-Suppose that an orbifold model with label Z3model was loaded or created. Then the following command gives access to the corresponding orbifold directory.
+\(bu Suppose that an orbifold model with label Z3_1_1 was loaded. The following command enters to the corresponding orbifold directory.
 
-.B cd Z3model 
+.B cd Z3_1_1
+
+The following lines in the prompt show the example. 
+
+ /> cd Z3_1_1
+ /Z3_1_1/> 
+
+\(bu Suppose that five SM-like models were loaded with labels Model_SM1, ..., Model_SM5. The following command enters the directory called Model_SM5
+
+.B cd Model_SM5
+
+The following lines in the prompt show the example. 
+
+ /> cd Model_SM5
+ /Model_SM5/> 
+
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

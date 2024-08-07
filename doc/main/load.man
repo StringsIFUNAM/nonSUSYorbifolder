@@ -86,7 +86,7 @@ As an example, suppose the file commands.txt contains the following list of comm
   cd gauge group
   print gauge group
 
-then these 10 commands are executed automatically and the corresponding outputs are shown on the computer screen.
+then these 10 commands are executed automatically and the corresponding output is shown on the computer screen.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

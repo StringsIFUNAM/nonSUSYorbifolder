@@ -4,10 +4,17 @@
 rename
 
 .SH SYNOPSIS
-.B rename orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
+.B rename [OPTIONS]
 
 .SH DESCRIPTION
-This command renames the label of an existing orbifold model. 
+This command renames the label of an orbifold model previously loaded in the main directory.
+
+.SH OPTIONS
+.TP
+.B orbifold(OldOrbifoldLabel) to(NewOrbifoldLabel)
+
+This is the only option. Here OldOrbifoldLabel is the original label of the orbifold model and NewOrbifoldLabel is the name of the new label.
+ 
 
 .SH EXAMPLES
 \(bu The following command renames the orbifold label 'Z3_1_1' to a new label 'Model1' 
@@ -17,8 +24,6 @@ This command renames the label of an existing orbifold model.
 \(bu The following command renames the orbifold label 'Random1' to 'Orbi1' 
 
 .B rename orbifold(Random1) to(Orbi1)
-
-\(bu Note. The NewOrbifoldLabel is only allowed to contain characters and numbers, so labels like Model-1 or Orbi_1 produce a label error.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
