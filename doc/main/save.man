@@ -1,4 +1,4 @@
-.TH "save" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "save" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 save
@@ -7,7 +7,7 @@ save
 .B save [OPTIONS]
 
 .SH DESCRIPTION
-This command saves all orbifold models of the main directory to a file. Recall that in the main directory the loaded orbifold models are assigned to orbifold directories with names corresponding to the orbifold labels.  
+This command saves all orbifold models currently loaded in the orbifolder (accesible in the main directory) to a file. Recall that in the main directory the loaded orbifold models are assigned to orbifold directories with names corresponding to the orbifold labels.  
 
 .SH OPTIONS
 .TP

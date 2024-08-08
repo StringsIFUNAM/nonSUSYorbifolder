@@ -1,4 +1,4 @@
-.TH "create" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "create" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 
 .SH NAME
@@ -11,6 +11,17 @@ create
 This command creates random orbifolds with point group ZMxZN or ZM. 
 
 .SH OPTIONS
+.TP
+.B  orbifold(OrbifoldLabel) with point group(M,N)
+   
+This command creates an orbifold named OrbifoldLabel with point group ZMxZN. For ZM set N=1. The model is stored in the directory OrbifolLabel. Additional details of the model like the shifts and Wilson lines are required to enter once one enters the OrbifoldLabel directory.
+
+.TP
+.B  orbifold(OrbifoldLabel) from(AnotherOrbifoldLabel)
+
+This command creates an orbifold model named OrbifoldLabel from another existing orbifold model (previously loaded) called AnotherOrbifoldLabel. The new created model is equal to AnotherOrbifoldLabel. They differ in their names. 
+
+
 .TP
 .B  random orbifold from(OrbifoldLabel) 
 
@@ -44,16 +55,6 @@ It prints a summary of the spectrum for the randomly created models.
 
 It speeds up the search and creation of the orbifold models with the specified properties.
 
-
-.TP
-.B  orbifold(OrbifoldLabel) with point group(M,N)
-   
-This command creates an orbifold named OrbifoldLabel with point group ZMxZN. For ZM set N=1. The model is stored in the directory OrbifolLabel. Additional details of the model like the shifts and Wilson lines are required to enter once one enters the OrbifoldLabel directory.
-
-.TP
-.B  orbifold(OrbifoldLabel) from(AnotherOrbifoldLabel)
-
-This command creates an orbifold model named OrbifoldLabel from another existing orbifold model (previously loaded) called AnotherOrbifoldLabel. The new created model is equal to AnotherOrbifoldLabel. They differ in their names. 
 
 .SH EXAMPLES
 \(bu The following command creates an orbifold named model1 with point group Z3xZ3.

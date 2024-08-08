@@ -1,4 +1,4 @@
-.TH "cd" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "cd" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 cd 
@@ -11,12 +11,12 @@ This command changes directory.
 
 .SH OPTIONS
 .TP
-.B cd ..
+.B ..
 
 It goes back one directory.
 
 .TP
-.B cd ~
+.B ~
 
 It goes back to the main directory.
 
@@ -41,6 +41,18 @@ The next lines in the prompt show the example.
 
   /Z3_1_1/model/> cd ~
   /> 
+
+\(bu There are some short cuts that allow to go to any of the following directories.
+
+   gg  change directory to /gauge group>
+   s   change directory to /spectrum>
+   v   change directory to /vev-config>
+   l   change directory to /vev-config/labels>
+
+The next lines show an example.
+
+ /Z3_1_1/model/> s
+ /Z3_1_1/spectrum/> 
 
 
 .SH AUTHOR

@@ -1,4 +1,4 @@
-.TH "delete" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "delete" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 delete 

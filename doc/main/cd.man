@@ -1,4 +1,4 @@
-.TH "cd" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "cd" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 cd 
@@ -7,7 +7,7 @@ cd
 .B cd [OPTIONS]
 
 .SH DESCRIPTION
-This command changes directory. 
+In the main directory it can only direct to the directories of the currently loaded orbifolds. 
 
 .SH OPTIONS
 .TP
