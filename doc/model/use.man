@@ -1,23 +1,44 @@
-.TH "use" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "use" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 use 
 
 .SH SYNOPSIS
-.B use space group(i)
-
+.B use [OPTIONS] 
 .SH DESCRIPTION
-This commands allows you to use a i-th space group. The i-th number corresponds from a list of space groups appearing with the command
-print available space groups. If the user chooses a different i-th geometry than the current one, then the orbifolder guides you to create the new model by completing the information for the shifts and Wilson lines.
+This command loads the space group from the i-th geometry file. The list of the geometry files that are compatible with the orbifold point group appear with the command 'print available space groups'. After picking up a different i-th geometry than the current one, the orbifolder asks for input data such as the shifts and Wilson lines in order to complete the orbifold model. 
 
 .SH OPTIONS
 .TP
-The i-th number can be equal or greater than 1, depending of the allowed orbifold geometries for a given point group.  
+.B space group(i)
+
+The index i goes from 1 to n, where n is the number of geometries that are consistent with the point group, ZN or ZNxZK, of the orbifold model. 
 
 .SH EXAMPLES
-The following command allows you to use the space group labeled with the number i=4 from a list of orbifold geometries that appear with the command print available space groups, previously typed. 
+\(bu The following command loads the space group labeled with the number i=3 from a list of orbifold geometries that appear with the command 'print available space groups', previously typed. 
 
-.B use space group(4)
+.B use space group(3)
+
+\(bu An explicit example is the following. Consider the Z4_1_1 orbifold model, then the command print available space groups show in the prompt the following information
+
+ /Z4_1_1/model/> print available space groups
+
+  available Z_4 space groups: 
+     # | lattice         | additional label   | geometry file
+    ----------------------------------------------------------------------------------------------------- 
+     1 | Z4_1            |                    | "Geometry/Geometry_Z4_1_1.txt"
+     2 | Z4_2            |                    | "Geometry/Geometry_Z4_2_1.txt"
+     3 | Z4_3            |                    | "Geometry/Geometry_Z4_3_1.txt"
+
+To select the space group associated with the third geometry file we type
+
+/Z4_1_1/model/> use space group(3)
+
+Then, the orbifolder asks for the shift and Wilson lines to complete the creation of the orbifold model.
+
+
+\(bu NOTE. The notation Z4_1_1, Z4_2_1, Z4_3_1 is based in the general notation ZN (i,j) (ZN_i_j) where ZN is the point group and the pair (i,j) indicates the i-th lattice and j-th rototranslation element. When i=1 and j=1 the lattice is factorizable and there are no rototranslations elements.
+When i > 1 and j > 1 is the opposite. So, the three Z4 geometries indicates that there are three distinct lattices (one is factorizable, two are non-factorizable) and no rototranslations that are compatible with the Z4 point group.  
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

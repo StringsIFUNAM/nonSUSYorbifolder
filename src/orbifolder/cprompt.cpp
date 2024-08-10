@@ -2750,6 +2750,55 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 0:
       { // 
+
+        if (command.substr(0,3) == "man")
+        { 
+        command = rtrim(command);       
+        if (command.length() >= 4) 
+        {
+
+        string path_doc = " ./doc/orbidir/";
+        // Insertar path_doc en la posición 4
+        command.insert(4, path_doc);
+        // Concatenar ".man" al final
+        command += ".man";
+          
+
+        // Redirigir la salida de error estándar a un archivo temporal
+        string temp_file = "temp_error.txt";
+        string full_command = command + " 2>" + temp_file;
+
+        // Ejecutar el comando utilizando system
+        int result = system(full_command.c_str());
+
+        // Leer el archivo temporal para verificar el mensaje de error
+        ifstream error_file(temp_file);
+        stringstream error_stream;
+        error_stream << error_file.rdbuf();
+        string error_message = error_stream.str();
+
+        // Eliminar el archivo temporal
+        error_file.close();
+        remove(temp_file.c_str());
+
+        // Verificar el resultado de la ejercución y el mensaje de error
+        
+        if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n";
+            return false;
+        }
+
+            return true;
+        }
+        else
+          {
+            cout << "Error: A command name is expected after the instruction man.\n"
+                 << "Options are:\n* cd\n";
+            return false;
+          }
+        }
+
         // updated on 29.06.2011
         if (this->FindCommandType1(command, "cd ", parameter_string1))
         {

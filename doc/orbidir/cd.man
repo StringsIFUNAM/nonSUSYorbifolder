@@ -1,0 +1,119 @@
+.TH "cd" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
+
+.SH NAME
+cd 
+
+.SH SYNOPSIS
+.B cd [OPTIONS]
+
+.SH DESCRIPTION
+In the orbifold directory this command goes to the directories that explore different aspects of the orbifold models. Additionally, it offers the usual
+uses as shown below. 
+
+.SH OPTIONS
+.TP
+.B model
+
+It goes to the model directory.
+
+.TP
+.B gauge group
+
+It goes to the gauge group directory.
+
+.TP
+.B spectrum
+
+It goes to the spectrum directory.
+
+.TP
+.B vev-config
+
+It goes to the vev-config directory.
+
+.TP
+.B vev-config/labels
+
+It goes to the vev-config/labels directory.
+
+.TP
+.B ..
+
+It goes back one directory.
+
+.TP
+.B ~ 
+
+It goes to the main directory.
+
+
+.SH EXAMPLES
+
+\(bu The following command goes to the gauge group directory.
+
+.B cd gauge group
+
+The next lines in the prompt show the example
+
+  /Z3_1_1/> cd gauge group
+  /Z3_1_1/gauge group/> 
+
+Note. In these examples the orbifold directory is named Z3_1_1.
+
+\(bu The following command goes to the model directory.
+
+.B cd model
+
+The next lines in the prompt show the example
+
+  /Z3_1_1/> cd model
+  /Z3_1_1/model/> 
+
+\(bu The following command goes back to the previous directory, which in this case is the main directory.
+
+.B cd ..
+
+The next lines in the prompt show the example. 
+
+  /Z3_1_1/> cd ..
+  /> 
+
+
+\(bu The following command goes back to the main directory.
+
+.B cd ~
+
+The next lines in the prompt show the example.
+
+  /Z3_1_1/> cd ~
+  /> 
+
+\(bu There are some short cuts that allow to go to any of the following directories.
+
+   gg  change directory to /gauge group>
+   s   change directory to /spectrum>
+   v   change directory to /vev-config>
+   l   change directory to /vev-config/labels>
+
+The next lines in the prompt show an example.
+
+  /Z3_1_1/> s
+  /Z3_1_1/spectrum/> 
+
+Another example is
+
+  /Z3_1_1/> gg
+  /Z3_1_1/gauge group/> 
+
+
+.SH AUTHOR
+E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
+
+.SH SEE ALSO
+Related here article, additional documentation.
+
+.SH REPORTING BUGS
+Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
+
+.SH VERSION
+1.0

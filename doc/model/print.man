@@ -1,4 +1,4 @@
-.TH "print" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "print" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 print 
@@ -33,18 +33,14 @@ Using the SO(16)xSO(16) heterotic string.
 
 It presents a list of the geometry files that are compatible with the specified point group. The orbifolder 
 search the geometry files in the directory /localdirectory/Geometry> of the local PC. For example, for an
-orbifold model with point group Z6 there are six consistent geometries and the output reads, for example,
+orbifold model with point group Z4 there are three consistent geometries and the output reads, for example,
 
-  available Z_6 space groups: 
+  available Z_4 space groups: 
      # | lattice         | additional label   | geometry file
     ----------------------------------------------------------------------------------------------------- 
-     1 | Z6-I_1          |                    | "Geometry/Geometry_Z6-I_1_1.txt"
-     2 | Z6-II_1         |                    | "Geometry/Geometry_Z6-II_1_1.txt"
-     3 | Z6-II_3         |                    | "Geometry/Geometry_Z6-II_3_1.txt"
-     4 | Z6-I_2          |                    | "Geometry/Geometry_Z6-I_2_1.txt"
-     5 | Z6-II_2         |                    | "Geometry/Geometry_Z6-II_2_1.txt"
-     6 | Z6-II_4         |                    | "Geometry/Geometry_Z6-II_4_1.txt"
-
+     1 | Z4_1            |                    | "Geometry/Geometry_Z4_1_1.txt"
+     2 | Z4_2            |                    | "Geometry/Geometry_Z4_2_1.txt"
+     3 | Z4_3            |                    | "Geometry/Geometry_Z4_3_1.txt"
 
 .TP
 .B point group
@@ -95,8 +91,8 @@ Some comments about notation are given.
 First, the notation (m,n,k) corresponds to the rotational part of the space group generators, specifically to the point group Z2WxZNxZK used internally in the orbifolder. Recall that the usual point group ZNxZK (ZN) corresponds to Z2WxZNxZK (Z2WxZN) in the orbifolder. An explanation of this notation
 and some examples can be seen in the spectrum directory by using the command 'man print' and looking at the description for the command 'print summary of sector T(m,n,k)'.
 
-Second, the orbifold geometry Z3xZ3 (3,2) corresponds to the notation ZNxZK (i,j), where ZNxZK is the point group and the pair of positive integer numbers (i,j) refer to the i-th torus lattice and the j-th rototranslation element. When i > 1 (j > 1) the orbifold geometries present non-factorizable torus lattices (rototranslation elements).  
-
+Second, the orbifold geometry Z3xZ3 (3,2) corresponds to the notation ZNxZK (i,j), where ZNxZK is the point group and the pair of positive integer numbers (i,j) refer to the i-th torus lattice and the j-th rototranslation element. When i > 1 (j > 1) the orbifold geometries present non-factorizable torus lattices (rototranslation elements). So, geometries with i = 1 and j = 1 indicate a factorizable lattice and no rototranslations. Similar features applies for ZN (i,j) orbifold geometries.  
+ 
 .TP
 .B twist
 
@@ -175,10 +171,11 @@ Considering an SM-like model based on the Z3xZ3 (1,1) geometry, the output reads
 
 .SH EXAMPLES
 
-
-\(bu Consider an orbifold with point group Z8, then the following command shows the orbifold geometries that are compatible with the point group Z8.
+\(bu Consider the orbifold model with label Z8-I_1_1. The following command shows the orbifold geometries that are compatible with the point group Z8.
 
 .B print available space groups
+
+The output reads,
 
   available Z_8 space groups: 
      # | lattice         | additional label   | geometry file
@@ -189,10 +186,14 @@ Considering an SM-like model based on the Z3xZ3 (1,1) geometry, the output reads
      4 | Z8-I_2          |                    | "Geometry/Geometry_Z8-I_2_1.txt"
      5 | Z8-II_1         |                    | "Geometry/Geometry_Z8-II_1_1.txt"
 
+Note. The notation ZN (i,j) indicates the point group ZN and the pair (i,j) denotes the i-th lattice and j-th rototranslation element. If (i,j) are both > 1 then there are non-factorizable lattices and rototranslations elements. ZN-I and ZN-II indicate that there are two distinct twist vectors that are consistent with the point group ZN. So,  the notation Z8-I (1,1), Z8-I (2,1), Z8-I (3,1) means that there are three distinct lattices (one factorizble and two non factorizable) that are compatible with the Z8 point group. The notation Z8-II (1,1) and Z8-II (2,1) indicates that there are two diferent lattices that are consistent with the Z8 point group but with a different twist vector than the twist vector used in Z8-I. In all these five geometries there are no rototranslations.   
+
 
 \(bu For a model with orbifold geometry Z4xZ4 (1,1) the following commands prints the point group.
 
 .B print point group
+
+The output reads,
 
   Point group is Z_4 x Z_4.
 
@@ -200,6 +201,8 @@ Considering an SM-like model based on the Z3xZ3 (1,1) geometry, the output reads
 \(bu The following command shows the space group generators for the Z4xZ4 (1,1) orbifold
 
 .B print space group  
+
+The output reads,
 
   Space group based on Z_4 x Z_4 point group and root-lattice of Z4xZ4_1.
   Generators are:
@@ -219,12 +222,16 @@ Considering an SM-like model based on the Z3xZ3 (1,1) geometry, the output reads
 
 .B print shift
 
+The output reads,
+
   V_1 = ( -3/16,  -1/16,   1/16,   1/16,   1/16,   1/16,   1/16,   3/16),  ( -9/16,  -7/16,  -1/16,  -1/16,  -1/16,  -1/16,   1/16,   3/16)
  
 
 \(bu The following command prints the label of a SM-like model. The label is also the name of the current orbifold directory.
 
 .B print orbifold label
+
+The output reads, for example,
 
   Orbifold "Model_SM1".
 
@@ -233,12 +240,16 @@ Considering an SM-like model based on the Z3xZ3 (1,1) geometry, the output reads
 
 .B print twist
 
+The output reads,
+
   v_1 = (    0,   1/4,   1/4,  -1/2)
 
 
 \(bu For a SM-like model in the Z3 orbifold the following command shows the Wilson lines 
 
 .B print Wilson lines
+
+The output reads, for example,
 
   Wilson lines identified on the orbifold: 
     W_1 = W_2, W_3 = W_4, W_5 = W_6
@@ -250,11 +261,6 @@ Considering an SM-like model based on the Z3xZ3 (1,1) geometry, the output reads
   W_4 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
   W_5 = ( 11/3,     0,  10/3,   2/3,     3,   1/3,     4,     3),  (  8/3,     0,     4,  10/3,   4/3,  -5/3,  10/3,     3)
   W_6 = ( 11/3,     0,  10/3,   2/3,     3,   1/3,     4,     3),  (  8/3,     0,     4,  10/3,   4/3,  -5/3,  10/3,     3)
-
-
-
-
-
 
 
 .SH AUTHOR
