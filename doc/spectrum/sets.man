@@ -1,4 +1,4 @@
-.TH "sets" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "sets" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 sets
@@ -9,46 +9,55 @@ sets
 .SH DESCRIPTION
 The commands that operate sets of fields are listed below.
 
+.TP
 .B create set(SetLabel)
 
 This command creates an empty set named SetLabel.
 
+.TP
 .B delete set(SetLabel)
 
 It deletes the set named SetLabel.
 
+.TP
 .B delete sets
 
 It delete all sets created.
 
+.TP
 .B insert(fields) into set(SetLabel)
 
-It inserts fields into a created set named SetLabel. 
+It inserts fields into a created set named SetLabel. It can be used with the following parameter
 
+.B if(conditions)
+
+where only the fields that satisfy the condition are inserted in the set called SetLabel.
+
+
+.TP
 .B remove(fields) from set(SetLabel)
 
-It removes the indicated fields from the set named SetLabel.
+It removes the indicated fields from the set named SetLabel. It can be used with the following parameter
 
-The two previous commands (insert and remove) can be used with the following parameter.
+.B if(conditions)
 
-.B - if(conditions)
+where only the fields that satisfy the condition are removed from the set called SetLabel. 
 
-where only the fields that satisfy the condition are inserted (removed) in (from) the set called SetLabel. 
-
+.TP
 .B print sets
 
-It shows all created sets.
+It shows all created sets. It can be used with the following parameter.
 
-This command can be used with the following parameter.
-
-.B - if not empty
+.B if not empty
 
 In this case only the not empty sets are printed. 
 
+.TP
 .B print set(SetLabel)
 
 It prints the set called SetLabel.
 
+.TP
 .B #fields in set(SetLabel)
 
 It counts the number of fields in the set called SetLabel.

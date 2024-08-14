@@ -1,4 +1,4 @@
-.TH "print" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "print" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 print
@@ -18,7 +18,7 @@ It prints the four-dimensional gauge group in the current vev-configuration.
 .TP
 .B beta coefficients
 
-It shows the non-supersymmetric beta coefficients at one-loop for the non-Abelian gauge groups in the observable sector of the full four-dimensional gauge group. It also prints the current vev-configuration. 
+It shows the non-supersymmetric beta coefficients at one-loop for the non-Abelian gauge groups in the observable sector of the four-dimensional gauge group. It also prints the current vev-configuration. 
 
 .TP
 .B simple roots
@@ -33,12 +33,12 @@ It shows the i-th simple root as a 16D vector. The index i can be any number bet
 .TP
 .B anomaly info
 
-It displays information about the gauge and gravitational anomalies and verify their unversality relations.
+It displays information about the gauge and gravitational anomalies and verify their universality relations.
 
 .TP
 .B B-L generator
 
-It prints the B-L generator as a 16D vector. It was previously introduced with the command set B-L = <16D vector>. See man set, for example. 
+It prints the B-L generator as a 16D vector, which was previously introduced with the command set B-L = <16D vector>. See man set, for example. 
  
 
 .TP
@@ -53,7 +53,7 @@ It prints the i-th U(1) generator as a 16D vector.
 
 .SH EXAMPLES
 
-\(bu For the Z3 orbifold model in the standard embedding, the following command prints the gauge group and the current vev-configuration
+\(bu For the Z3_1_1 orbifold model, the following command prints the gauge group and the current vev-configuration.
 
 .B print gauge group
 
@@ -69,7 +69,7 @@ The output reads
 where gauge group factors in brackets belong to the hidden sector and the others consitute the observable sector, which in this case is the SM gauge group SU(3)_C x SU(2)_L x U(1)_2,Y.  
 
 
-\(bu Consider the Z3 orbifold model in the standard embedding. The following command 
+\(bu Consider the Z3_1_1 orbifold model, the following command 
 
 .B print beta coefficients
 
@@ -80,17 +80,16 @@ shows the non-supersymmetric beta coefficients at one loop for the non-Abelian g
     b_{SU(3)} = 40/1
     b_{SO(16)} = -10/1
 
-
-\(bu For the SM-like model in the orbifold geometry Z3xZ3 (1,1) presented previously (as an example of 'print gauge group'), the outputs reads, for example,
+\(bu For a SM-like model in the orbifold geometry Z3xZ3 (1,1) (presented previously as the second example of 'print gauge group'), the outputs reads, for example,
 
   Beta function coefficients in vev-configuration "SMConfig1" (N = 0 SUSY):
     b_{SU(3)_C} = 65/6
     b_{SU(2)_L} = 19/2
 
-Recall that the beta coefficients are calculated for the non-Abelian gauge groups of the observable sector in the current vev-configuration.
+Note that the beta coefficients are calculated for the non-Abelian gauge groups of the observable sector in the current vev-configuration. The gauge groups in the observable sector can be changed by using the command 'select observable sector' in the vev-config directory.
 
 
-\(bu Consider the Z3 orbifold in the standard embedding where its 4D gauge group is SO(10)xSU(3)xSO(16)xU(1). The following command displays a choice of simple roots for the non-Abelian group factors
+\(bu Consider the Z3_1_1 orbifold model. The gauge group is SO(10)xSU(3)xSO(16)xU(1). The following command displays a choice of simple roots for the non-Abelian group factors
 
 .B print simple roots
 
@@ -131,7 +130,7 @@ and the output reads,
 
 .B prints anomaly info
 
-For the Z3 orbifold model with standard embedding the output reads, for example,
+For the Z3_1_1 orbifold model the output reads, for example,
 
   SU(N)^3 anomaly:
     2-th gauge group factor A2: tr cubic    = 0/1
@@ -152,14 +151,14 @@ For the Z3 orbifold model with standard embedding the output reads, for example,
 
 .B print U1 generators
 
-For the Z3 orbifold model with standard embedding the output reads
+For the Z3_1_1 orbifold model the output reads
 
   U(1) generators:
     (   24,    24,    24,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)  
 
 Here only one U(1) generator is shown since the 4D gauge group is SO(10)xSU(3)xSO(16)xU(1). 
 
-Now suppose a SM-like model with a 4D gauge group containing ten U(1)s and in the SM vev-configuration (as the example used in 'print gauge group'). In  this case the output reads, for example,
+\(bu Now suppose a SM-like model with a 4D gauge group containing ten U(1)s and in the SM vev-configuration (as the second example used in 'print gauge group'). In  this case the output reads, for example,
 
   U(1) generators:
     ( -5/2,   5/2,   5/2,   5/2,  -5/2,   3/2, -15/2, -15/2),  (   -7,    -1,    -2,     2,     1,     6,     1,    -1)  

@@ -1,4 +1,4 @@
-.TH "if" 1 "February 1, 2024" "Escalante, Perez, Ramos and Vaudrevange"
+.TH "if" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 if 
@@ -37,32 +37,32 @@ A condition consists of three parts, e.g. if(length == even):
 
 .SH EXAMPLES
 
-The following command presents the information of print(*), i.e the sector, fixed point, space group charges, representation, left-moving momenta and 
+\(bu The following command presents the information of print(*), i.e the sector, fixed point, space group charges, representation, left-moving momenta and 
 righ-moving momentum and oscillators, only for the fields where the number of oscillators acting on the left mover are non zero. Recall that the symbol * means that all fields in the spectrum are taken in consideration.
 
 .B  print(*) if(#osci. != 0)
 
-The following command shows the information of tex table(*), i.e the sector, representation and U(1)s charges, only for the fields with first U(1) charge equal to -24.
+\(bu The following command shows the information of tex table(*), i.e the sector, representation and U(1)s charges, only for the fields with first U(1) charge equal to -24.
 
 .B tex table(*) if(Q_1 == -24)
 
-The following command prints the information of print list of charges(*), i.e the shifted left-moving momenta, the shifted right-moving momentum and the discrete non R symmetries (if defined in the geometry file), only for the fields where the number of oscillators acting on the left mover are non zero. 
+\(bu The following command prints the information of print list of charges(*), i.e the shifted left-moving momenta, the shifted right-moving momentum and the discrete non R symmetries (if defined in the geometry file), only for the fields where the number of oscillators acting on the left mover are non zero. 
 
 .B print list of charges(*) if(#osci. != 0)
 
-The following command displays the information of print(*) only for the fields where the length-square of the shifted left-moving momentum is equal to 2/3.
+\(bu The following command displays the information of print(*) only for the fields where the length-square of the shifted left-moving momentum is equal to 2/3.
 
 .B print(*) if(length == 2/3)
 
-The following command prints the information of print list of charges(*) only for the fields with first U(1) charge equal to 12.
+\(bu The following command prints the information of print list of charges(*) only for the fields with first U(1) charge equal to 12.
 
 .B print list of charges(*) if(Q_1 == 12)          
 
-The following command shows the information of print(*) only for the fields where the second component of the shifted right-moving momentum is equal to -1/6.
+\(bu The following command shows the information of print(*) only for the fields where the second component of the shifted right-moving momentum is equal to -1/6.
 
 .B print(*) if(q_sh_2 == -1/6)
 
-The following command displays the information of print(*) only for the fields where the second component of the shifted left-moving momenta is equal to 1/3.
+\(bu The following command displays the information of print(*) only for the fields where the second component of the shifted left-moving momenta is equal to 1/3.
 
 .B print(*) if(p_sh_2 == 1/3)    
 

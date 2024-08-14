@@ -4552,7 +4552,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             
             if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* analyze\n* cd\n* create\n* delete\n* print\n* rename\n* select\n* use\n";
+                 << "Options are:\n* cd\n* analyze\n* create\n* delete\n* print\n* rename\n* select\n* use\n";
             return false;
             }
 
@@ -4562,7 +4562,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             else
             {
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* analyze\n* cd\n* create\n* delete\n* print\n* rename\n* select\n* use\n";
+                 << "Options are:\n* cd\n* analyze\n* create\n* delete\n* print\n* rename\n* select\n* use\n";
             return false;
             }
             }
@@ -5219,7 +5219,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             
             if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* assign\n* cd\n* change\n* create\n* load\n* print\n* save\n* use\n";
+                 << "Options are:\n* cd\n* assign\n* change\n* create\n* load\n* print\n* save\n* use\n";
             return false;
             }
 
@@ -5229,7 +5229,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             else
             {
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* assign\n* cd\n* change\n* create\n* load\n* print\n* save\n* use\n";
+                 << "Options are:\n* cd\n* assign\n* change\n* create\n* load\n* print\n* save\n* use\n";
             return false;
             }
 
