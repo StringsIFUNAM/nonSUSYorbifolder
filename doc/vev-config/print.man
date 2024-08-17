@@ -8,24 +8,72 @@ print
 
 .SH DESCRIPTION
 
-This command prints the vev-configurations or the gauge group of the orbifold model according to the use of options.
+This command prints a list of the current vev-configurations. It also shows the gauge group of the orbifold model in the current vev-configuration. 
 
 .SH OPTIONS
-
+.TP
 .B configs
 
+It prints a list of all currently vev-configurations. They are identified by a label, for example TestConfig1.
+  
+.TP
 .B gauge group
 
-
+It prints the gauge group in the current vev-configuration of the orbifold model.
 
 .SH EXAMPLES
-The following command prints the list of vev-configurations. The vev-configuration that is currently used is identified by an arrow.
+\(bu The following command prints the list of vev-configurations. 
 
 .B print configs
 
-The following command prints the gauge group of the orbifold model.
+- An explicit example is the following. Consider the Z3_1_1 orbifold model. The use of this command in the prompt and the output reads, for example,
+
+  /Z3_1_1/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+    -> "TestConfig1"     |        1 /  1 | 
+
+Note. The current used vev-configuration for the orbifold model is indicated by an arrow.
+
+- Consider now a SM-like model named Model_SM3 in the vev-configuration SMConfig1. The use of the command in the prompt and the output reads,
+
+  /Model_SM3/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+       "TestConfig1"     |        1 /  1 | 
+    -> "SMConfig1"       |        2 /  2 | 
+
+Note. The command 'analyze config' was previously executed and that is why the SMConfig1 was identified for this orbifold model, originally in the vev-configuration named TestConfig1. Also, new labels were assigned to the fields in the spectrum for this SM-like model. The number of field label on the right of the output indicates that. 
+
+
+\(bu The following command prints the gauge group of an orbifold model in the current vev-configuration
 
 .B print gauge group
+
+- As an example consider the Z3_1_1 orbifold model. The use of this command in the prompt and the output reads, 
+
+  /Z3_1_1/vev-config/> print gauge group
+
+    Gauge group in vev-configuration "TestConfig1": SO(10) x SU(3) and SO(16) and U(1)_1
+
+
+- Another example is the following. Consider a SM-like model, then the use of this command in the prompt and the corresponding output reads 
+
+  /Model_SM3/vev-config/> print gauge group
+
+    Gauge group in vev-configuration "SMConfig1": SU(3)_C x SU(2)_L x [SU(2)] and [SU(3)] and [U(1)_1] x U(1)_2,Y x [U(1)_3] x [U(1)_4] x [U(1)_5] x [U  (1)_6] x [U(1)_7] x [U(1)_8] x [U(1)_9] x [U(1)_10]
+
+    (factors in brackets, e.g. [SU(2)], belong to the hidden sector in this vev-configuration)
+
+Note. In this model the current vev-configuration is SMConfig1 and gauge groups factors that are not in brackets belong to the observable sector which in this case is the SM gauge group.
+
+
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

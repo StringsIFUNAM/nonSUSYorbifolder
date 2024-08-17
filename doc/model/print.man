@@ -91,7 +91,7 @@ Some comments about notation are given.
 First, the notation (m,n,k) corresponds to the rotational part of the space group generators, specifically to the point group Z2WxZNxZK used internally in the orbifolder. Recall that the usual point group ZNxZK (ZN) corresponds to Z2WxZNxZK (Z2WxZN) in the orbifolder. An explanation of this notation
 and some examples can be seen in the spectrum directory by using the command 'man print' and looking at the description for the command 'print summary of sector T(m,n,k)'.
 
-Second, the orbifold geometry Z3xZ3 (3,2) corresponds to the notation ZNxZK (i,j), where ZNxZK is the point group and the pair of positive integer numbers (i,j) refer to the i-th torus lattice and the j-th rototranslation element. When i > 1 (j > 1) the orbifold geometries present non-factorizable torus lattices (rototranslation elements). So, geometries with i = 1 and j = 1 indicate a factorizable lattice and no rototranslations. Similar features applies for ZN (i,j) orbifold geometries.  
+Second, the orbifold geometry Z3xZ3 (3,2) corresponds to the notation ZNxZK (i,j), where ZNxZK is the point group and the pair of positive integer numbers (i,j) refer to the i-th torus lattice and the j-th rototranslation element. When i > 1 (j > 1) the orbifold geometries present non-factorizable torus lattices (rototranslation elements). So, geometries with i = 1 and j = 1 indicate a factorizable lattice and no rototranslations. Similar features apply for ZN (i,j) orbifold geometries.  
  
 .TP
 .B twist

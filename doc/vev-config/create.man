@@ -3,25 +3,62 @@
 create
 
 .SH SYNOPSIS
-.B create config(ConfigLabel) 
+.B create [OPTIONS]
 
-.SH DESCRIPTION
-This command creates a new vev-configuration label. The option 'from(AnotherConfigLabel)' can be used, otherwise StandardConfig1 is taken as the standard origin configuration. 
  
+.SH DESCRIPTION
+This command creates a new vev-configuration from another vev-configuration.
+ 
+.SH OPTIONS
+.TP
+.B config(ConfigLabel)
+
+
+It creates a new vev-configuaration named ConfigLabel. Its origin is the standard vev-configuration named StandardConfig1. 
+
+The command 'create config(ConfigLabel)' can be used with the following parameter
+
+.B \(bu from(AnotherConfigLabel)
+
+It creates a new vev-configuration named ConfigLabel from an existing vev-configuration called AnotherConfigLabel.
+
 
 .SH EXAMPLES
-The following command creates a new configuration named Test1 from TestConfig1.
+\(bu The following command creates a new vev-configuration named Test1 from an existing vev-configuration called TestConfig1.
 
 .B create config(Test1) from(TestConfig1)
 
-The following command creates a new configuration called Test2 from an existing SMConfig1.
+An explicit example is the following. Consider the Z3_1_1 orbifold model, then the use of this command in the prompt and its corresponding output reads, for example,
 
-.B create config(Test2) from(SMConfig1)
+ /Z3_1_1/vev-config/> create config(Test1) from(TestConfig1)
 
-The following command creates a new configuration named Test3, where the origin configuration is the StandardConfig1.
+   Vev-configuration "Test1" created from "TestConfig1".
+   Now using new configuration "Test1".
 
-.B create config(Test3)
+\(bu The following command creates a new vev-configuration named Test2, where the StandardConfig1 is taken as the origin vev-configuration.
 
+.B create config(Test2)
+ 
+For example, consider the Z3_1_1 orbifold model, then the execution of this command in the prompt and its output reads, for example,
+
+ /Z3_1_1/vev-config/> create config(Test2)
+ 
+   Vev-configuration "Test2" created from "StandardConfig1".
+   Now using new configuration "Test2".
+ 
+
+\(bu The following command creates a new vev-configuration called TestSM from an existing SM vev-configuration named SMConfig1.
+
+.B create config(TestSM) from(SMConfig1)
+
+For example, consider an existing vev-configuration named SMConfig1, then the previous command creates a new vev-configuration called TestSM. The use of this command in the prompt and its corresponding output reads,
+
+ /Model_SM3/vev-config/> create config(TestSM) from(SMConfig1)
+
+   Vev-configuration "TestSM1" created from "SMConfig1".
+   Now using new configuration "TestSM1".
+
+\(bu NOTE. The existing vev-configurations can be seen by using the command 'print configs'. 
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

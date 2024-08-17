@@ -4,22 +4,46 @@
 rename 
 
 .SH SYNOPSIS
-.B rename config(OldConfigLabel) to(NewConfigLabel)
+.B rename [OPTIONS]
 
 .SH DESCRIPTION
-This command renames the vev-configuration OldConfigLabel to NewConfigLabel. Recall that StandardConfig1 cannot be changed. 
+This command renames a vev-configuration.  
+
+.SH OPTIONS
+.TP
+.B config(OldConfigLabel) to(NewConfigLabel)
+
+It renames an existing vev-configuration named OldConfigLabel to a new name indicated by NewConfigLabel. 
 
 
 .SH EXAMPLES
 
-The following command renames the vev-configuration TestConfig1 to TestConfig2
+\(bu The following command renames vev-configuration SMConfig1 to Test2
 
-.B rename config(TestConfig1) to(TestConfig2)
+.B rename config(SMConfig1) to(Test2)
 
-The following command renames the vev-configuration SMConfig1 to SMConfig2
- 
-.B rename config(SMConfig1) to(SMConfig2)
+In the prompt, the use of this command and its output reads, for example,
 
+  /Model_SM3/vev-config/> rename config(SMConfig1) to(Test2)
+
+    Vev-configuration "SMConfig1" renamed to "Test2".
+
+
+\(bu The following command renames the vev-configuration TestConfig1 to Test1
+
+.B rename config(TestConfig1) to(Test1)
+
+The use of this command in the prompt and the output reads, for example,
+
+  /Z3_1_1/vev-config/> rename config(TestConfig1) to(Test1)
+
+    Vev-configuration "TestConfig1" renamed to "Test1".
+
+\(bu NOTE. The StandardConfig1 cannot be renamed. For example, in the prompt this is shown as
+
+  /Z3_1_1/vev-config/> rename config(StandardConfig1) to(Test2)
+
+    Vev-configuration "StandardConfig1" cannot be changed.
 
 
 .SH AUTHOR

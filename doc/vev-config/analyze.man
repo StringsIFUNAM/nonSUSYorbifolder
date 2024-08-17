@@ -4,25 +4,113 @@
 analyze
 
 .SH SYNOPSIS
-.B analyze config 
+.B analyze [OPTIONS]
 
 .SH DESCRIPTION
-This command checks if the current vev-configuration allows for vacua with Standard Model, Pati-Salam or SU(5) gauge group. In this case a new vacua will be created and the spectrum with appropiate labels is displayed. 
+This command checks if the current vev-configuration of the orbifold model allows for vacua with Standard Model (SM), Pati-Salam (PS) or SU(5) gauge group, three generations of quarks and leptons and a number of vector-like exotics. If this happens then a new vacua will be created and the spectrum with appropiate labels for all fields is displayed, for example l_1, l_2 and l_3 for the three generations of lepton doublets. If none of the three previous possibilities is identified for the current orbifold model, then the message 'No vev-configuration identified' is shown.
 
-This command can be complemented with the optional parameter 'print SU(5) simple roots'. In this case, the simple roots of an intermediate SU(5) gauge group that has been used to identify the hypercharge generator are displayed.
 
-If none of the three previous vev-configurations is identified then the message 'No vev-configuration identified' is displayed.   
+.SH OPTIONS
+.TP
+.B config
+
+It checks if the current orbifold model allows for vacua with SM, PS or SU5 gauge group, three generations of fermions and vector-like exotics. If one of these possibilities is realised then the corresponding spectrum with appropiate field labels is printed, otherwise the message 'No vev-configuration identified' appears.
+
+The command 'analyze config' can be used with the following parameter
+
+.B \(bu print SU(5) simple roots
+
+In this case the simple roots of an intermediate SU(5) gauge group that has been used to identify the hypercharge generator are also displayed.
 
 
 .SH EXAMPLES
-The following command analyzes the current vev-configuration.
+\(bu The following command analyzes the current vev-configuration of an orbifold model
 
 .B analyze config
 
+An explicit example in the prompt is the following. Consider a SM-like model with label Model_SM3, then this command produces an output that reads, for example,
 
-The following command analyzes the current vev-configuration and print the SU(5) simple roots.
+ /Model_SM3/vev-config/> analyze config
+
+   Analyzing vev-configuration "TestConfig1" ...
+   One vev-configuration identified, labeled "SMConfig1" and selected.
+   Using label #2 of the fields.
+
+   Gauge group in vev-configuration "SMConfig1": SU(3)_C x SU(2)_L and U(1)_Y
+
+     3 (  3,  1)_s  U(1) : ( -1/3)  sd_1 sd_2 
+    32 (  1,  1)_s  U(1) : (    0)  sn_1 - sn_26 
+     3 (  1,  2)_s  U(1) : (  1/2)  bh_1 bh_2 
+    60 (  1,  1)_s  U(1) : (  1/3)  sx_1 - sx_42 
+    72 (  1,  1)_s  U(1) : ( -1/3)  bsx_1 - bsx_54 
+    15 (  1,  1)_s  U(1) : (  2/3)  sz_1 - sz_9 
+     3 (  1,  2)_s  U(1) : ( -1/6)  sx2_1 - sx2_3 
+     3 (  1,  1)_s  U(1) : ( -2/3)  bsz_1 - bsz_3 
+     3 (  1,  2)_s  U(1) : (  1/6)  bsx2_1 - bsx2_3 
+     3 (  3,  1)_s  U(1) : (  1/3)  sy2_1 - sy2_3 
+     9 ( -3,  1)_s  U(1) : (  1/3)  bsd_1 - bsd_9 
+
+   183 (  1,  1)_f  U(1) : (    0)  n_1 - n_107 
+
+     3 (  3,  2)_f  U(1) : (  1/6)  q_1 q_2 
+     3 ( -3,  1)_f  U(1) : ( -2/3)  bu_1 bu_2 
+     5 ( -3,  1)_f  U(1) : (  1/3)  bd_1 - bd_3 
+     2 (  3,  1)_f  U(1) : ( -1/3)  d_1 d_2 
+     5 (  1,  2)_f  U(1) : ( -1/2)  l_1 - l_3 
+     2 (  1,  2)_f  U(1) : (  1/2)  bl_1 bl_2 
+     3 (  1,  1)_f  U(1) : (    1)  be_1 be_2 
+
+    21 (  1,  1)_f  U(1) : ( -2/3)  v_1 - v_21 
+    21 (  1,  1)_f  U(1) : (  2/3)  bv_1 - bv_21 
+   120 (  1,  1)_f  U(1) : (  1/3)  w_1 - w_78 
+   120 (  1,  1)_f  U(1) : ( -1/3)  bw_1 - bw_78 
+    18 ( -3,  1)_f  U(1) : (    0)  y_1 - y_18 
+    18 (  3,  1)_f  U(1) : (    0)  by_1 - by_18 
+
+     3 (  3,  1)_f  U(1) : (  1/3)  v2_1 - v2_3 
+    15 (  1,  2)_f  U(1) : ( -1/6)  w2_1 - w2_15 
+     3 ( -3,  1)_f  U(1) : ( -1/3)  bv2_1 - bv2_3 
+    15 (  1,  2)_f  U(1) : (  1/6)  bw2_1 - bw2_15 
+
+
+Another example is the Z3_1_1 orbifold model, in this case none of the three vacua (SM, PS or SU5) is allowed. The output reads, for example,
+
+ /Z3_1_1/vev-config/> analyze config
+
+   Analyzing vev-configuration "TestConfig1" ...
+   No vev-configuration identified.
+
+
+\(bu The following command analyzes the current vev-configuration and prints the simple roots of an intermediate SU(5) gauge group that has been used to identify the hypercharge generator.
 
 .B analyze config print SU(5) simple roots
+
+An explicit example is the following. Consider the Model_SM3 presented before, then in the prompt this command gives an output that reads, for example, 
+
+ /Model_SM3/vev-config/> analyze config print SU(5) simple roots
+
+   Analyzing vev-configuration "TestConfig1" ...
+
+   Hypercharge generator:
+ (  1/2,   1/3,   1/3,   1/3,   1/2,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+   SU(5) origin:
+ (    0,     0,     1,    -1,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+ (    0,     1,    -1,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+ (    1,     0,     0,     0,    -1,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+ (   -1,    -1,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+   One vev-configuration identified, labeled "SMConfig1" and selected.
+   Using label #2 of the fields.
+
+   Gauge group in vev-configuration "SMConfig1": SU(3)_C x SU(2)_L and U(1)_Y
+
+     3 (  3,  1)_s  U(1) : ( -1/3)  sd_1 sd_2 
+    32 (  1,  1)_s  U(1) : (    0)  sn_1 - sn_26 
+     3 (  1,  2)_s  U(1) : (  1/2)  bh_1 bh_2 
+
+    ... 
+
+where ... indicates that the complete spectrum is presented. 
+
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

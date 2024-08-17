@@ -4,21 +4,27 @@
 use
 
 .SH SYNOPSIS
-.B use config(ConfigLabel)
+.B use [OPTIONS]
 
 .SH DESCRIPTION
-This command changes the currently used vev-configuration to ConfigLabel. To see the ConfigLabels the command 'print configs' can be used previously.
+This command changes the currently used vev-configuration of an orbifold model to another vev-configuration. 
 
+.SH OPTIONS
+.TP
+.B config(ConfigLabel)
+
+The new vev-configuration is named ConfigLabel. 
 
 .SH EXAMPLES
-The following command changes the currently used vev-configuration to TestConfig1.
+\(bu The following command changes the currently used vev-configuration to the vev-configuration called TestConfig1.
 
 .B use config(TestConfig1)
 
-The following command changes the currently used vev-configuration to SMConfig1.
+\(bu The following command changes the currently used vev-configuration to SMConfig1.
 
 .B use config(SMConfig1)
 
+\(bu NOTE. The labels of the currently vev-configurations are displayed with the command 'print configs'.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

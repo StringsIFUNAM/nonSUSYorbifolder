@@ -4,22 +4,25 @@
 delete
 
 .SH SYNOPSIS
-.B delete config(ConfigLabel) 
+.B delete [OPTIONS]
 
 .SH DESCRIPTION
-This command deletes the vev-configuration ConfigLabel. Recall the vev-configuration StandardConfig1 cannot be changed.
+This command deletes a vev-configuration. 
 
+.SH OPTIONS
+.TP
+.B config(ConfigLabel)
 
 .SH EXAMPLES
-The following command deletes the vev-configuration Test1
+\(bu The following command deletes the vev-configuration called Test1
 
 .B delete config(Test1)
 
-
-The following command deletes the vev-configuration SMConfig1
+\(bu The following command deletes the vev-configuration named SMConfig1
 
 .B delete config(SMConfig1)
 
+\(bu NOTE. The list of currently vev-configurations are displayed with the command 'print configs'. The vev-configuration that is used after deleting a vev-configuration is the previous one of the deleted configuration. The vev-configuration named StandardConfig1 cannot be deleted. 
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

@@ -7,8 +7,7 @@ cd
 .B cd [OPTIONS]
 
 .SH DESCRIPTION
-In the orbifold directory this command goes to the directories that explore different aspects of the orbifold models. Additionally, it offers the usual
-uses as shown below. 
+In the orbifold directory this command goes to the directories that explore different aspects of the orbifold models.  
 
 .SH OPTIONS
 .TP
@@ -88,8 +87,9 @@ The next lines in the prompt show the example.
   /Z3_1_1/> cd ~
   /> 
 
-\(bu There are some short cuts that allow to go to any of the following directories.
+\(bu There are some short cuts that allow to go to any of the following directories
 
+   m   change directory to /model>
    gg  change directory to /gauge group>
    s   change directory to /spectrum>
    v   change directory to /vev-config>

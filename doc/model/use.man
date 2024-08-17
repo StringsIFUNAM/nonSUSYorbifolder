@@ -19,7 +19,7 @@ The index i goes from 1 to n, where n is the number of geometries that are consi
 
 .B use space group(3)
 
-\(bu An explicit example is the following. Consider the Z4_1_1 orbifold model, then the command print available space groups show in the prompt the following information
+\(bu An explicit example is the following. Consider the Z4_1_1 orbifold model, then the command 'print available space groups' shows in the prompt the following information
 
  /Z4_1_1/model/> print available space groups
 
@@ -30,7 +30,7 @@ The index i goes from 1 to n, where n is the number of geometries that are consi
      2 | Z4_2            |                    | "Geometry/Geometry_Z4_2_1.txt"
      3 | Z4_3            |                    | "Geometry/Geometry_Z4_3_1.txt"
 
-To select the space group associated with the third geometry file we type
+To select the space group associated with the third geometry file type
 
 /Z4_1_1/model/> use space group(3)
 
@@ -38,7 +38,7 @@ Then, the orbifolder asks for the shift and Wilson lines to complete the creatio
 
 
 \(bu NOTE. The notation Z4_1_1, Z4_2_1, Z4_3_1 is based in the general notation ZN (i,j) (ZN_i_j) where ZN is the point group and the pair (i,j) indicates the i-th lattice and j-th rototranslation element. When i=1 and j=1 the lattice is factorizable and there are no rototranslations elements.
-When i > 1 and j > 1 is the opposite. So, the three Z4 geometries indicates that there are three distinct lattices (one is factorizable, two are non-factorizable) and no rototranslations that are compatible with the Z4 point group.  
+When i > 1 and j > 1 is the opposite. So, the three Z4 orbifold geometries indicate that there are three distinct lattices (one is factorizable, two are non-factorizable) that are compatible with the Z4 point group, and there are no rototranslations.   
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
