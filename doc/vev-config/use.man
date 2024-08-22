@@ -20,11 +20,40 @@ The new vev-configuration is named ConfigLabel.
 
 .B use config(TestConfig1)
 
-\(bu The following command changes the currently used vev-configuration to SMConfig1.
+An explicit example is shown next. Consider a SM-like model labeled as Model_SM3 and in the SMConfig1. The current vev-configurations for this orbifold model can be seen with the command 'print configs'. Its use in the prompt and the output reads, for example,
+
+  /Model_SM3/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+       "TestConfig1"     |        1 /  1 | 
+    -> "SMConfig1"       |        2 /  2 | 
+
+
+where the arrow indicates the currently used vev-configuration. The use of the command 'use config(TestConfig1)' in the prompt and the corresponding output reads, for example,
+
+  /Model_SM3/vev-config/> use config(TestConfig1)
+
+    Now using vev-configuration "TestConfig1".
+
+The command 'print configs' now shows
+
+  /Model_SM3/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+    -> "TestConfig1"     |        1 /  1 | 
+       "SMConfig1"       |        2 /  2 | 
+ 
+
+\(bu The following command changes the currently used vev-configuration (TestConfig1 in the previous example) to the vev-configuration SMConfig1.
 
 .B use config(SMConfig1)
 
-\(bu NOTE. The labels of the currently vev-configurations are displayed with the command 'print configs'.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
