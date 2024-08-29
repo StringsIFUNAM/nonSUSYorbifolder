@@ -2297,6 +2297,20 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         (*this->Print.out) << "    create random orbifold from(B) if(inequivalent) save to(File2.txt) #models(100) use(1,1,0,0,0,0,0,0)\n\n" << flush;
       }
       else
+      if (this->FindParameterType1(parameter_string1, "system commands"))
+      {
+        (*this->Print.out) << "\n  system commands:\n";
+        (*this->Print.out) << "    @status\n";
+        if (!this->online_mode)
+        {
+          (*this->Print.out) << "    @print enter                              print new line\n";
+          (*this->Print.out) << "    @print(string)                            optional: unformatted\n";
+          (*this->Print.out) << "    @begin print to file(Filename)\n";
+          (*this->Print.out) << "    @end print to file\n";
+        }
+        (*this->Print.out) << "    @typesetting(Type)                       \"Type\" can be \"mathematica\", \"latex\" or \"standard\" \n\n" << flush;       
+      }
+      else
       {
         const bool PrintSubDir = !this->FindParameterType1(parameter_string1, "no subdirectories");
 
@@ -2326,7 +2340,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         (*this->Print.out) << "  general commands:\n";
         (*this->Print.out) << "    dir                                       show commands; optional: \"no subdirectories\"\n";
-        (*this->Print.out) << "    help                                      optional: \"create random\", \"processes\"\n";  
+        (*this->Print.out) << "    help                                      optional: \"create random\", \"system commands\", \"processes\"\n"; 
         if (!this->online_mode)
           (*this->Print.out) << "    exit                                      exit program\n";
         (*this->Print.out) << "\n" << flush;;

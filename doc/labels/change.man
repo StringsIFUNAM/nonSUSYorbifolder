@@ -5,23 +5,39 @@
 change
 
 .SH SYNOPSIS
-.B change label(A_i) to(B_j)
+.B change [OPTIONS]
 
 .SH DESCRIPTION
-This command changes the label A_i to B_j.
+This command changes the label of the field.
 
+.SH OPTIONS
+.TP
+.B label (A_i) to(B_j)
+
+It changes the label of the field A_i to B_j.
 
 .SH EXAMPLES
-The following command changes the label f_392 to a_1.
+\(bu The following command changes the label of the field s_1 to a_1
 
-.B change label(f_392) to(a_1)
+.B change label(s_1) to(a_1)
 
-The following command changes the label s_13 to w_4.
+The use of this command in the prompt and the corresponding output reads, for example, 
 
-.B change label(s_13) to(w_4)
+  /Z3_1_1/vev-config/labels/> change label(s_1) to(a_1)
 
-Note. These labels can be seen with the command 'print(fields)' in the spectrum directory.
+    Label changed from "s_1" to "a_1".
 
+\(bu The following command changes the label of the field f_1 to b_1
+
+.B change label(f_1) to(b_1)
+
+The use of this command in the prompt and the corresponding output reads, for example, 
+
+  /Z3_1_1/vev-config/labels/> change label(f_1) to(b_1)
+
+    Label changed from "f_1" to "b_1".
+
+NOTE. The new assigned field labels can be seen with the command 'print labels' in the labels directory, also with the command 'print summary with labels' in the spectrum directory.  
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

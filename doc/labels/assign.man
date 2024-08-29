@@ -6,17 +6,71 @@
 assign
 
 .SH SYNOPSIS
-.B assign label(Label) to fixed point(m,n,k,n1,n2,n3,n4,n5,n6)
+.B assign [OPTIONS]
 
 .SH DESCRIPTION
-This command assigns the Label to the fixed point/brane with localization (m,n,k,n1,n2,n3,n4,n5,n6)
+This command assigns a new label to the fixed point/brane with localization (m,n,k,n1,n2,n3,n4,n5,n6).
+
+.SH OPTIONS
+.TP
+.B label(Label) to fixed point(m,n,k,n1,n2,n3,n4,n5,n6)
+
+
+It assigns the label 'Label' to the fixed point/brane with localization (m,n,k,n1,n2,n3,n4,n5,n6).
 
 .SH EXAMPLES
-The following command assigns the Label 'Zz' to the fixed point specified by (1,2,2,0,2,0,2,0,2)
 
-.B assign label(Zz) to fixed point(1,2,2,0,2,0,2,0,2)
+\(bu The following command assigns the Label 'Z' to the fixed point with localization (0,2,0,0,1,0,0,0,0)
 
-Note. To know the localization (m,n,k,n1,n2,n3,n4,n5,n6) and see the assigned Label use the command 'print all states' in the spectrum directory.
+.B assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)
+
+To explain this case consider the Z3 orbifold model named Z3_1_1. The command 'print all states' in the spectrum directory lists the currently labels associated to the fixed point/brane with localization (m,n,k,n1,n2,n3,n4,n5,n6). For example, a part of the corresponding output reads, 
+
+  /Z3_1_1/spectrum/> print all states
+
+   ...
+
+  =========================================================================
+    (0, 2, 0) twisted Sector (0, 2, 0) (    0,     1,     0,     0,     0,     0)
+    label: T31
+  -------------------------------------------------------------------------
+      1 ( 10,  1,  1)_s  U(1) : (  -24)  s_22 
+      1 (  1,  1,  1)_s  U(1) : (   48)  s_23 
+  -------------------------------------------------------------------------
+
+ ...
+
+where ... indicates additional information. The localization for the fixed point is given after the words twisted sector, i.e. (0, 2, 0) (    0,     1,     0,     0,     0,     0) which corresponds to (m,n,k) (n1,n2,n3,n4,n5,n6). The label associated with the fixed point with localization (m,n,k,n1,n2,n3,n4,n5,n6) = (0, 2, 0, 0, 1, 0, 0, 0, 0) is T31. This is the label that is changed with the command 'assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)' in the labels directory. Note that different fields can be associated with the same localization for the fixed point, i.e. with the same label. In this case the fields labeled as s_22, s_23, s_24, s_25, s_26 and f_10 have the same fixed point localization (m,n,k,n1,n2,n3,n4,n5,n6) = (0, 2, 0, 0, 1, 0, 0, 0, 0), i.e. the same label T31. 
+
+The use of the command 'assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)' in the prompt and the corresponding output reads, for example,
+
+  /Z3_1_1/vev-config/labels/> assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)
+
+    Label "Z" assigned to fixed point (0, 2, 0) (    0,     1,     0,     0,     0,     0)).
+
+
+Then, the use of the command 'print all states' in the spectrum directory displays the corresponding information where now the label for the fixed point with localization (m,n,k,n1,n2,n3,n4,n5,n6) = (0, 2, 0, 0, 1, 0, 0, 0, 0) is Z. This change applies for the fields labeled as s_22, s_23, s_24, s_25, s_26 and f_10, since all of them share the same localization. In the prompt the output reads, for example,
+
+
+  /Z3_1_1/spectrum/> print all states
+
+  ...
+
+  =========================================================================
+    (0, 2, 0) twisted Sector (0, 2, 0) (    0,     1,     0,     0,     0,     0)
+    label: Z
+  -------------------------------------------------------------------------
+      1 ( 10,  1,  1)_s  U(1) : (  -24)  s_22 
+      1 (  1,  1,  1)_s  U(1) : (   48)  s_23 
+  -------------------------------------------------------------------------
+
+  ... 
+
+where the new assigned label Z appears explicitly.
+
+\(bu Other examples for the command 'assign label(Label) to fixed point(m,n,k,n1,n2,n3,n4,n5,n6)' follow a similar treatment as the example shown above.  
+
+NOTE. An explanation for the notation (m,n,k,n1,n2,n3,n4,n5,n6) is provided by using the command 'man print' in the spectrum directory.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

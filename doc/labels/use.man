@@ -5,18 +5,85 @@
 use
 
 .SH SYNOPSIS
-.B use label(i)
+.B use [OPTIONS]
 
 .SH DESCRIPTION
-This command changes the currently used labels to the labels specified by the number i, for i = 1,2,..., number of labels available. This is properly used for the same model in the same vev-configuration and same observable sector.
+This command changes the currently used labels for the massless fields of the spectrum to another set of labels previously created. 
+
+.SH OPTIONS
+.TP
+.B label(i)
+
+It changes the currently labels for the fields in the massless spectrum for other labels specified by the index i = 1,2,...,n, where n is the total number of labels (previously created).  
 
 .SH EXAMPLES
-The following command changes the currently used labels to the labels stored in i=2  
+\(bu The following command changes the currently used labels of the massless spectrum to the second labels in a list of i = 1,2,...,n labels.  
 
 .B use label(2)
 
-A message 'Now using label #2' appears. The massless fields in the spectrum with the corresponding labels can be seen with the command 'print labels'.
+Then, a message indicating the number (i) of label used is shown. 
 
+NOTES. The masless spectrum with the corresponding labels for the fields can be seen with the command 'print labels' in this label directory. The current vev-configuration and the number i of label used from a total number n of created labels can be seen with the command 'print configs' in the vev-config directory.
+
+\(bu An explicit example is shown next. Consider the Z3 orbifold model named Z3_1_1, and in the vev-configuration 'TestConfig1'. Suppose the command 'create labels' in the label directory was completed two times. Then, in the vev-config directory the use of the command 'print configs' and the corresponding output in the prompt reads, for example,
+
+/Z3_1_1/vev-config/> print configs
+
+  list of vev-configurations: 
+     label             | field label # |
+    -------------------------------------- 
+     "StandardConfig1" |        1 /  1 | 
+  -> "TestConfig1"     |        3 /  3 | 
+
+This indicates that the current vev-configuration is TestConfig1 and that the current used labels correspond to i = 3, also that there are n = 3 labels currently available indicated by the fraction 3 / 3 = i / n, where i = 1, 2, 3.  Note that the labels for i = 1 are those automatically assigned by the orbifolder, and the labels for i = 2,3 correspond to the labels manually assigned by the user with the command 'create labels' used twice.
+
+Next, in the labels directory the use of the command
+
+.B use label(2)
+
+produces the following output in the prompt,
+
+/Z3_1_1/vev-config/labels/> use label(2)
+
+  Now using label #2.
+
+The corresponding field labels for i = 2 can be seen with the command 'print labels' in the labels directory. The output reads, for example,
+
+/Z3_1_1/vev-config/labels/> print labels
+
+  Using label #2 of the fields.
+
+  Gauge group in vev-configuration "TestConfig1": SO(10) x SU(3) and SO(16) and U(1)
+  First U(1) is anomalous with tr Q_anom = 20736.00.
+
+    3 ( 10,  3,  1)_s  U(1) : (  -24)  a_1 - a_3 
+    3 (  1,  3,  1)_s  U(1) : (   48)  b_1 - b_3 
+   27 ( 10,  1,  1)_s  U(1) : (  -24)  g_1 - g_27 
+   27 (  1,  1,  1)_s  U(1) : (   48)  h_1 - h_27 
+   81 (  1, -3,  1)_s  U(1) : (    0)  j_1 - j_81 
+
+    1 ( 16,  1,  1)_f  U(1) : (  -36)  c_1 
+    1 (  1,  1,-128)_f  U(1) : (    0)  d_1 
+    1 (-16,  1,  1)_f  U(1) : (   36)  e_1 
+    3 ( 16,  3,  1)_f  U(1) : (   12)  f_1 - f_3 
+   27 ( 16,  1,  1)_f  U(1) : (   12)  i_1 - i_27 
+    1 ( 10,  1, 16)_f  U(1) : (    0)  k_1 
+    3 (  1, -3, 16)_f  U(1) : (   24)  l_1 - l_3 
+   27 (  1,  1, 16)_f  U(1) : (   24)  m_1 - m_27 
+
+where the corresponding created labels for i = 2 are now displayed. Here, it is understood that the user create those labels by using the command 'create labels'.
+
+Going back to the vev-config directory the command 'print configs' now displays the following information
+
+/Z3_1_1/vev-config/> print configs
+
+  list of vev-configurations: 
+     label             | field label # |
+    -------------------------------------- 
+     "StandardConfig1" |        1 /  1 | 
+  -> "TestConfig1"     |        2 /  3 | 
+
+This indicates that the currently vev-configuration is TestConfig1 and the labels used for the fields correspond to i = 2 of a total of n = 3 labels as the fraction 2 / 3 = i / n says.
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
