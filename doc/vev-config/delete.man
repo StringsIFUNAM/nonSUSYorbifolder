@@ -14,15 +14,136 @@ This command deletes a vev-configuration.
 .B config(ConfigLabel)
 
 .SH EXAMPLES
+\(bu The following command deletes the vev-configuration called TestConfig1
+
+.B delete config(TestConfig1)
+
+An explicit example is the following. Consider the Z3 orbifold model named Z3_1_1. To see the defined vev-configurations use the command 'print configs' in the prompt. The output read, e.g.
+
+  /Z3_1_1/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+    -> "TestConfig1"     |        1 /  1 | 
+
+
+These are the two standard vev-confifgurations for each orbifold model. The use of the command 'delete config(TestConfig1)' in the prompt and the corresponding output reads, for example,
+
+  /Z3_1_1/vev-config/> delete config(TestConfig1)
+
+    Vev-configuration "TestConfig1" deleted.
+    Now using vev-configuration "StandardConfig1".
+
+Recall the StandardConfig1 cannot be changed. So, it cannot be deleted nor renamed. 
+
+
 \(bu The following command deletes the vev-configuration called Test1
 
 .B delete config(Test1)
+
+To show an explicit case consider the Z3 orbifold model used previously. Suppose the command 'create config(Test2) from(TestConfig1)' was executed. Then, in the prompt one sees, for example,
+
+  /Z3_1_1/vev-config/> create config(Test2) from(TestConfig1)
+
+    Vev-configuration "Test2" created from "TestConfig1".
+    Now using new configuration "Test2".
+
+and the command 'print configs' shows
+
+  /Z3_1_1/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+       "TestConfig1"     |        1 /  1 | 
+    -> "Test2"           |        1 /  1 | 
+
+The arrow says that the currently used vev-configuration is Test2. Now, to delete it one uses the command 'delete config(Test2)'. The output reads, e.g. 
+
+  /Z3_1_1/vev-config/> delete config(Test2)
+
+    Vev-configuration "Test2" deleted.
+    Now using vev-configuration "TestConfig1".
+
+The use of the command 'print configs' now displays
+
+  /Z3_1_1/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+    -> "TestConfig1"     |        1 /  1 | 
+
+indicating that the currently used vev-configuration is now TestConfig1, which was the previous one of the deleted vev-configuration Test2 in the list showed with the command 'print configs'.
+
 
 \(bu The following command deletes the vev-configuration named SMConfig1
 
 .B delete config(SMConfig1)
 
-\(bu NOTE. The list of currently vev-configurations are displayed with the command 'print configs'. The vev-configuration that is used after deleting a vev-configuration is the previous one of the deleted configuration. The vev-configuration named StandardConfig1 cannot be deleted. 
+An explicit example is the following. Consider a SM-like model named Model_SM3 in the orbifold geometry Z3xZ3 (1,1). The use of the command 'print configs' in the prompt and the output reads, e.g.
+
+  Model_SM3/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+    -> "TestConfig1"     |        1 /  1 | 
+  
+Recall that these two vev-configurations are the standard ones for each orbifold geometry. This SM-like model allows vacua with Standard Model gauge group. This can be verified by using the command 'analyze config'. Its use in the prompt and the corresponding output reads, for example,
+
+/Model_SM3/vev-config/> analyze config
+
+  Analyzing vev-configuration "TestConfig1" ...
+  One vev-configuration identified, labeled "SMConfig1" and selected.
+  Using label #2 of the fields.
+
+  Gauge group in vev-configuration "SMConfig1": SU(3)_C x SU(2)_L and U(1)_Y
+
+    3 (  3,  1)_s  U(1) : ( -1/3)  sd_1 sd_2 
+   32 (  1,  1)_s  U(1) : (    0)  sn_1 - sn_26 
+
+     ...   
+     ... 
+
+    3 ( -3,  1)_f  U(1) : ( -1/3)  bv2_1 - bv2_3 
+   15 (  1,  2)_f  U(1) : (  1/6)  bw2_1 - bw2_15 
+
+where ... indicate that other fields are part of the spectrum. Note that the orbifolder assigns new and appropiate labels to the fields for this orbifold model in the SMConfig1. Next, with the command 'print configs' one sees,
+
+  /Model_SM3/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+       "TestConfig1"     |        1 /  1 | 
+    -> "SMConfig1"       |        2 /  2 | 
+
+If for some reason one wants to delete the SMConfig1, then the command 'delete config(SMConfig1)' do that. The use of this command in the prompt and its output reads, e.g.
+
+  /Model_SM3/vev-config/> delete config(SMConfig1)
+
+    Vev-configuration "SMConfig1" deleted.
+    Now using vev-configuration "TestConfig1".
+
+and the commadn 'print configs' now shows,
+
+  /Model_SM3/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+    -> "TestConfig1"     |        1 /  1 | 
+
+
+NOTE. The standard labels for the fields in the StandardConfig1 and TestConfig1 are s_i and f_j for the scalar and fermion fields respectively, where i and j runs from 1 to the total number of these fields.  
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange

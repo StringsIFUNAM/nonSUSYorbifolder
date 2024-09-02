@@ -8,25 +8,27 @@ print
 
 .SH DESCRIPTION
 
-This command prints a list of the current vev-configurations. It also shows the gauge group of the orbifold model in the current vev-configuration. 
+This command prints the vev-configurations and gauge group for the orbifold model.
+
 
 .SH OPTIONS
 .TP
 .B configs
 
-It prints a list of all currently vev-configurations. They are identified by a label, for example TestConfig1.
+It prints a list of vev-configurations defined for the orbifold model. The currently vev-configuration is indicated by an arrow.
   
 .TP
 .B gauge group
 
-It prints the gauge group in the current vev-configuration of the orbifold model.
+It prints the gauge group for the selected choice of observable and hidden sector of the currently used vev-configuration. Gauge group factors that belong to the hidden are in brackets.
+
 
 .SH EXAMPLES
-\(bu The following command prints the list of vev-configurations. 
+\(bu The following command prints a list of vev-configurations defined for the orbifold model.  
 
 .B print configs
 
-- An explicit example is the following. Consider the Z3_1_1 orbifold model. The use of this command in the prompt and the output reads, for example,
+- An explicit example is the following. Consider the Z3 orbifol model named Z3_1_1. The use of this command in the prompt and the output reads, for example,
 
   /Z3_1_1/vev-config/> print configs
 
@@ -36,9 +38,8 @@ It prints the gauge group in the current vev-configuration of the orbifold model
        "StandardConfig1" |        1 /  1 | 
     -> "TestConfig1"     |        1 /  1 | 
 
-Note. The current used vev-configuration for the orbifold model is indicated by an arrow.
 
-- Consider now a SM-like model named Model_SM3 in the vev-configuration SMConfig1. The use of the command in the prompt and the output reads,
+- Consider now a SM-like model named Model_SM3 in the vev-configuration SMConfig1. The use of the command 'print configs' in the prompt and the output reads, for example,
 
   /Model_SM3/vev-config/> print configs
 
@@ -49,21 +50,21 @@ Note. The current used vev-configuration for the orbifold model is indicated by 
        "TestConfig1"     |        1 /  1 | 
     -> "SMConfig1"       |        2 /  2 | 
 
-Note. The command 'analyze config' was previously executed and that is why the SMConfig1 was identified for this orbifold model, originally in the vev-configuration named TestConfig1. Also, new labels were assigned to the fields in the spectrum for this SM-like model. The number of field label on the right of the output indicates that. 
+The fractions on the second column indicate the i-th labeling of the fields that is currently used.  
 
 
-\(bu The following command prints the gauge group of an orbifold model in the current vev-configuration
+\(bu The following command prints the gauge group of the orbifold model for the selected choice of observable and hidden sector of the currently used vev-configuration
 
 .B print gauge group
 
-- As an example consider the Z3_1_1 orbifold model. The use of this command in the prompt and the output reads, 
+- As an example consider the Z3 orbifold model named Z3_1_1. The use of this command in the prompt and the output reads, 
 
   /Z3_1_1/vev-config/> print gauge group
 
     Gauge group in vev-configuration "TestConfig1": SO(10) x SU(3) and SO(16) and U(1)_1
 
 
-- Another example is the following. Consider a SM-like model, then the use of this command in the prompt and the corresponding output reads 
+- Another example is the following. Consider a SM-like model named Model_SM3 in the vev-configuration SMConfg1. The use of this command in the prompt and the corresponding output reads, for example, 
 
   /Model_SM3/vev-config/> print gauge group
 
@@ -71,7 +72,7 @@ Note. The command 'analyze config' was previously executed and that is why the S
 
     (factors in brackets, e.g. [SU(2)], belong to the hidden sector in this vev-configuration)
 
-Note. In this model the current vev-configuration is SMConfig1 and gauge groups factors that are not in brackets belong to the observable sector which in this case is the SM gauge group.
+The observable sector, which in this case is the Standard model gauge group, can be changed with the command 'select observable sector: parameters'. See 'man select' for a brief explanation.  
 
 
 

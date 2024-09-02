@@ -18,30 +18,77 @@ It renames an existing vev-configuration named OldConfigLabel to a new name indi
 
 .SH EXAMPLES
 
-\(bu The following command renames vev-configuration SMConfig1 to Test2
-
-.B rename config(SMConfig1) to(Test2)
-
-In the prompt, the use of this command and its output reads, for example,
-
-  /Model_SM3/vev-config/> rename config(SMConfig1) to(Test2)
-
-    Vev-configuration "SMConfig1" renamed to "Test2".
-
-
 \(bu The following command renames the vev-configuration TestConfig1 to Test1
 
 .B rename config(TestConfig1) to(Test1)
 
-The use of this command in the prompt and the output reads, for example,
+An explicit case is shown next. Consider the Z3 orbifold model labeled as Z3_1_1. The command 'print configs' shows in the prompt the following information 
+ 
+  /Z3_1_1/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+    -> "TestConfig1"     |        1 /  1 | 
+
+Then, the use of the command 'rename config(TestConfig1) to(Test1)' in the prompt and its corresponding output reads, for example, 
 
   /Z3_1_1/vev-config/> rename config(TestConfig1) to(Test1)
 
     Vev-configuration "TestConfig1" renamed to "Test1".
 
+Now, the command 'print configs' shows
+
+
+/Z3_1_1/vev-config/> print configs
+
+  list of vev-configurations: 
+     label             | field label # |
+    -------------------------------------- 
+     "StandardConfig1" |        1 /  1 | 
+  -> "Test1"           |        1 /  1 | 
+
+where one sees the new name, Test1, for the previous name TestConfig1.
+
+
+\(bu The following command renames vev-configuration SMConfig1 to Test2
+
+.B rename config(SMConfig1) to(Test2)
+
+An explicit case is the following. Consider a SM-like model named Model_SM3 in the SMConfig1. The use of the command 'print configs' in the prompt shows
+
+  /Model_SM3/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+       "TestConfig1"     |        1 /  1 | 
+    -> "SMConfig1"       |        2 /  2 | 
+
+
+To rename SMConfig1 to TestSM one executes the command 'rename config(SMConfig1) to(Test2)' in the prompt, the output reads, e.g.
+
+  /Model_SM3/vev-config/> rename config(SMConfig1) to(Test2)
+
+    Vev-configuration "SMConfig1" renamed to "Test2".
+
+Now, the command 'print configs' displays
+
+  /Model_SM3/vev-config/> print configs
+
+    list of vev-configurations: 
+       label             | field label # |
+      -------------------------------------- 
+       "StandardConfig1" |        1 /  1 | 
+       "TestConfig1"     |        1 /  1 | 
+    -> "Test2"           |        2 /  2 | 
+
+
 \(bu NOTE. The StandardConfig1 cannot be renamed. For example, in the prompt this is shown as
 
-  /Z3_1_1/vev-config/> rename config(StandardConfig1) to(Test2)
+  /Z3_1_1/vev-config/> rename config(StandardConfig1) to(Test1)
 
     Vev-configuration "StandardConfig1" cannot be changed.
 

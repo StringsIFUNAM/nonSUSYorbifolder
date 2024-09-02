@@ -24,11 +24,11 @@ In this case the simple roots of an intermediate SU(5) gauge group that has been
 
 
 .SH EXAMPLES
-\(bu The following command analyzes the current vev-configuration of an orbifold model
+\(bu The following command analyzes the current vev-configuration of an orbifold model.
 
 .B analyze config
 
-An explicit example in the prompt is the following. Consider a SM-like model with label Model_SM3, then this command produces an output that reads, for example,
+An explicit example is the following. Consider a SM-like model named Model_SM3. The current vev-configuration is TestConfig1. The use of this command in the prompt and its output reads, for example,
 
  /Model_SM3/vev-config/> analyze config
 
@@ -73,7 +73,7 @@ An explicit example in the prompt is the following. Consider a SM-like model wit
     15 (  1,  2)_f  U(1) : (  1/6)  bw2_1 - bw2_15 
 
 
-Another example is the Z3_1_1 orbifold model, in this case none of the three vacua (SM, PS or SU5) is allowed. The output reads, for example,
+\(bu Another example is the Z3_1_1 orbifold model, in this case none of the three vacua (SM, PS or SU5) is allowed. The output reads, for example,
 
  /Z3_1_1/vev-config/> analyze config
 
@@ -85,7 +85,7 @@ Another example is the Z3_1_1 orbifold model, in this case none of the three vac
 
 .B analyze config print SU(5) simple roots
 
-An explicit example is the following. Consider the Model_SM3 presented before, then in the prompt this command gives an output that reads, for example, 
+An explicit example is the following. Consider the previous SM-like model named Model_SM3. The current vev-configuration is TestConfig1. The use of this command prompt and its output reads, for example, 
 
  /Model_SM3/vev-config/> analyze config print SU(5) simple roots
 
