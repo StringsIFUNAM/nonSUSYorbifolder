@@ -4781,7 +4781,7 @@ bool CAnalyseModel::SU5_CheckVectorlikeness(const COrbifold &Orbifold, SConfig &
 ######   "VEVConfig" from the input "in".                                            ######
 ######################################################################################## */
 bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print, const vector<SUSYMultiplet>  &Multiplet, bool info) const
-{
+{ 
 	if(!in.good())
 	{
 		(*Print.out) << "Warning! Could not find the input for creating the labels." << endl;
@@ -4804,9 +4804,18 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 	vector<RepVector>         Spec_Dimensions;
 	vector<CVector>           Spec_U1Charges;
 	vector<vector<unsigned> > Spec_FieldIndices;
-
+	
 	size_t s1 = 0;
-	size_t s2 = 0;
+    size_t s2 = 0;
+	
+	vector<unsigned>          Specp_Multiplicities; 
+	vector<RepVector>         Specp_Dimensions; 
+	vector<CVector>           Specp_U1Charges; 
+	vector<vector<unsigned> > Specp_FieldIndices; 
+	
+	size_t s1p = 0; 
+	size_t s2p = 0; 
+ 	
 	bool field_not_known = true;
 
           vector<SUSYMultiplet> Multiplets(2);						
@@ -4814,30 +4823,26 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 	      Multiplets[1]=LeftFermi;
 
 	for (i = 0; i < f1; ++i)
-	{
+	{ 
+	   const CField &Field = NewFields[i];
 
-      for (int k=0; k<Multiplet.size(); k++)
-	  { 
-		const CField &Field = NewFields[i];
+       if ( Field.Multiplet == Multiplet[0] )     
 
-
-       if ( Field.Multiplet == Multiplet[k] )     
-
-		{
+		{ 
 			field_not_known = true;
 			s1 = Spec_Multiplicities.size();
 			for (j = 0; field_not_known && (j < s1); ++j)
-			{
+			{ 
 				if (AreRepVectorsEqual(SymmetryGroup, Spec_Dimensions[j], Field.Dimensions) && AreU1ChargesEqual(SymmetryGroup, Spec_U1Charges[j], Field.U1Charges))
-				{
+				{ 
 					++Spec_Multiplicities[j];
 					Spec_FieldIndices[j].push_back(i);
 
 					field_not_known = false;
-				}
-			}
+				} 
+			} 
 			if (field_not_known)
-			{
+			{ 
 				Spec_Multiplicities.push_back(1);
 				Spec_Dimensions.push_back(Field.Dimensions);
 				Spec_U1Charges.push_back(Field.U1Charges);
@@ -4845,27 +4850,25 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 				tmp_FieldIndices.clear();
 				tmp_FieldIndices.push_back(i);
 				Spec_FieldIndices.push_back(tmp_FieldIndices);
-			}
-		}
-      } 
-         
-	}
+			} 
+		}           
+	} 
 
 	s1 = Spec_Multiplicities.size();
 
 	if (info)
-	{
-		(*Print.out) << "  Massless spectrum:\n\n";
+	{ 
+		(*Print.out) << "  Massless scalar spectrum:\n\n";
 		for (i = 0; i < s1; ++i)
-		{
+		{ 
 			(*Print.out) << setw(3) << Spec_Multiplicities[i] << " ";
 			Print.PrintRep(Spec_Dimensions[i], SymmetryGroup);
 			(*Print.out) << "  ";
 			Print.PrintU1Charges(Spec_U1Charges[i], SymmetryGroup);
 			(*Print.out) << "\n";
-		}
-		(*Print.out) << "\n  Please create the labels:" << endl;
-	}
+		} 
+		(*Print.out) << "\n  Please create the labels for the scalar spectrum:" << endl;
+	} 
 
 	// begin: read the input
 	string tmp_string = "";
@@ -4874,15 +4877,15 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 	size_t NewNumberOfLabels = 0;
 
 	for (i = 0; i < s1; ++i)
-	{
+	{ 
 		if (info)
-		{
+		{ 
 			(*Print.out) << setw(3) << Spec_Multiplicities[i] << " ";
 			Print.PrintRep(Spec_Dimensions[i], SymmetryGroup);
 			(*Print.out) << "  ";
 			Print.PrintU1Charges(Spec_U1Charges[i], SymmetryGroup);
 			(*Print.out) << " = ";
-		}
+		} 
 
 		// read the label
 		if (!getline(in, tmp_string))
@@ -4890,10 +4893,10 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 
 		// the new label shall not contain any of the forbidden characters
 		if ((tmp_string.size() == 0) || (tmp_string.find_first_not_of(AllowedCharacters) != string::npos))
-		{
+		{ 
 			(*Print.out) << "  " << Print.cbegin << "Label Error: The label is only allowed to contain characters and numbers." << Print.cend << endl;
 			return false;
-		}
+		} 
 
 		// the new label shall not be in use already for a different representation
 		if (find(corresponding_Labels.begin(), corresponding_Labels.end(), tmp_string) != corresponding_Labels.end())
@@ -4904,32 +4907,142 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 		const vector<unsigned> FieldIndices = Spec_FieldIndices[i];
 		s2 = FieldIndices.size();
 		for (j = 0; j < s2; ++j)
-		{
+		{ 
 			CField &Field = NewFields[FieldIndices[j]];
 			Field.Labels.push_back(tmp_string);
 			Field.Numbers.push_back(j+1);
 
 			NewNumberOfLabels = Field.Labels.size();
-		}
-	}
+		} 
+	} 
+	// end: read the input
+   
+    for (i = 0; i < f1; ++i)
+	{ 
+	   const CField &Field = NewFields[i];
+
+       if ( Field.Multiplet == Multiplet[1] )     
+
+		{ 
+			field_not_known = true;
+			s1p = Specp_Multiplicities.size();
+			for (j = 0; field_not_known && (j < s1p); ++j)
+			{ 
+				if (AreRepVectorsEqual(SymmetryGroup, Specp_Dimensions[j], Field.Dimensions) && AreU1ChargesEqual(SymmetryGroup, Specp_U1Charges[j], Field.U1Charges))
+				{ 
+					++Specp_Multiplicities[j];
+					Specp_FieldIndices[j].push_back(i);
+
+					field_not_known = false;
+				} 
+			} 
+			if (field_not_known)
+			{ 
+				Specp_Multiplicities.push_back(1);
+				Specp_Dimensions.push_back(Field.Dimensions);
+				Specp_U1Charges.push_back(Field.U1Charges);
+
+				tmp_FieldIndices.clear();
+				tmp_FieldIndices.push_back(i);
+				Specp_FieldIndices.push_back(tmp_FieldIndices);
+			} 
+		}         
+	} 
+
+	s1p = Specp_Multiplicities.size();
+
+    cout << "" << endl;
+    
+    if (info)
+	{ 
+		(*Print.out) << "  Massless fermion spectrum:\n\n";
+		for (i = 0; i < s1p; ++i)
+		{ 
+			(*Print.out) << setw(3) << Specp_Multiplicities[i] << " ";
+			Print.PrintRep(Specp_Dimensions[i], SymmetryGroup);
+			(*Print.out) << "  ";
+			Print.PrintU1Charges(Specp_U1Charges[i], SymmetryGroup);
+			(*Print.out) << "\n";
+		} 
+		(*Print.out) << "\n  Please create the labels for the fermion spectrum:" << endl;
+	} 
+  
+    // begin: read the input
+    string tmp_stringp = "";
+	const string AllowedCharactersp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	vector<string> correspondingp_Labels;
+	size_t NewNumberOfLabelsp = 0;
+
+	for (i = 0; i < s1p; ++i)
+	{ 
+		if (info)
+		{ 
+			(*Print.out) << setw(3) << Specp_Multiplicities[i] << " ";
+			Print.PrintRep(Specp_Dimensions[i], SymmetryGroup);
+			(*Print.out) << "  ";
+			Print.PrintU1Charges(Specp_U1Charges[i], SymmetryGroup);
+			(*Print.out) << " = ";
+		} 
+
+		// read the label
+		if (!getline(in, tmp_stringp))
+			return false;
+
+		// the new label shall not contain any of the forbidden characters
+		if ((tmp_stringp.size() == 0) || (tmp_stringp.find_first_not_of(AllowedCharactersp) != string::npos))
+		{ 
+			(*Print.out) << "  " << Print.cbegin << "Label Error: The label is only allowed to contain characters and numbers." << Print.cend << endl;
+			return false;
+		} 
+
+		// the new label shall not be in use already for a different representation
+		if (find(correspondingp_Labels.begin(), correspondingp_Labels.end(), tmp_stringp) != correspondingp_Labels.end())
+			return false;
+
+		correspondingp_Labels.push_back(tmp_stringp);
+
+		const vector<unsigned> FieldIndices = Specp_FieldIndices[i];
+		s2p = FieldIndices.size();
+		for (j = 0; j < s2p; ++j)
+		{ 
+			CField &Field = NewFields[FieldIndices[j]];
+			Field.Labels.push_back(tmp_stringp);
+			Field.Numbers.push_back(j+1);
+
+			NewNumberOfLabelsp = Field.Labels.size();
+		} 
+	} 
 	// end: read the input
 
-	unsigned counter = 1;
+   unsigned counter = 1;
 	for (j = 0; j < f1; ++j)
-	{
+	{ 
 		CField &Field = NewFields[j];
 		if (Field.Labels.size() != NewNumberOfLabels)
-		{
+		{ 
 			Field.Labels.push_back("X");
 			Field.Numbers.push_back(counter);
 			++counter;
-		}
-	}
+		} 
+	} 
 	VEVConfig.Fields = NewFields;
 
+   unsigned counterp = 1;
+	for (j = 0; j < f1; ++j)
+	{ 
+		CField &Field = NewFields[j];
+		if (Field.Labels.size() != NewNumberOfLabelsp)
+		{ 
+			Field.Labels.push_back("X");
+			Field.Numbers.push_back(counterp);
+			++counterp;
+		} 
+	} 
+	VEVConfig.Fields = NewFields;
+	
+	 
 	return true;
-}
-
+} 
 
 
 /* ########################################################################################

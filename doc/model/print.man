@@ -13,203 +13,142 @@ This command prints information about the orbifold geometry.
 .TP
 .B orbifold label
 
-It prints the orbifold label. For example, for the Z3 orbifold model the label is Z3_1_1, which is defined in the second line
-of modelZ3_1.txt as Label:Z3_1_1. The output reads
-
-Orbifold "Z3_1_1".
-
-This label is also the name of the current orbifold directory. 
+It prints the orbifold label, which is also the name of the corresponding orbifold directory. 
 
 .TP 
 .B heterotic string type
 
-It shows the gauge group of the non-SUSY heterotic string. The output is
-
-Using the SO(16)xSO(16) heterotic string.
-
+It prints the ten dimensional gauge group, SO(16) x SO(16), for the non-supersymmetric heterotic string. 
 
 .TP 
 .B available space groups
 
 It presents a list of the geometry files that are compatible with the specified point group. The orbifolder 
-search the geometry files in the directory /localdirectory/Geometry> of the local PC. For example, for an
-orbifold model with point group Z4 there are three consistent geometries and the output reads, for example,
-
-  available Z_4 space groups: 
-     # | lattice         | additional label   | geometry file
-    ----------------------------------------------------------------------------------------------------- 
-     1 | Z4_1            |                    | "Geometry/Geometry_Z4_1_1.txt"
-     2 | Z4_2            |                    | "Geometry/Geometry_Z4_2_1.txt"
-     3 | Z4_3            |                    | "Geometry/Geometry_Z4_3_1.txt"
+search the geometry files in the directory /localdirectory/Geometry> of the local PC. 
 
 .TP
 .B point group
 
-It displays the point group of the orbifold model. For the Z3 orbifold the output reads, e.g. 
-
-Point group is Z_3.
-
+It displays the point group of the orbifold model. 
 
 .TP
 .B space group
 
-It prints the point group, the root-lattice and the space group generators. For the Z3 orbifold the output reads, for example,
+It prints the point group, the root-lattice and the space group generators. 
 
-  Space group based on Z_3 point group and root-lattice of Z3_1.
-  Generators are:
-
-  (1, 0, 0) (    0,     0,     0,     0,     0,     0), 
-  (0, 1, 0) (    0,     0,     0,     0,     0,     0), 
-  (0, 0, 0) (    1,     0,     0,     0,     0,     0), 
-  (0, 0, 0) (    0,     1,     0,     0,     0,     0), 
-  (0, 0, 0) (    0,     0,     1,     0,     0,     0), 
-  (0, 0, 0) (    0,     0,     0,     1,     0,     0), 
-  (0, 0, 0) (    0,     0,     0,     0,     1,     0), 
-  (0, 0, 0) (    0,     0,     0,     0,     0,     1)
-
-where (m,n,k) (n1,n2,...,n6) corresponds to the space group element (t^m u^n v^k, n_a e_a), for a = 1,2,...,6. 
-An example whith rototranslations is provided by the orbifold model with point group Z3xZ3 (3,2). In this case
-the output reads as
-
-  Space group based on Z_3 x Z_3 point group and root-lattice of Z3xZ3_3.
-  Generators are:
-
-  (1, 0, 0) (    0,     0,     0,     0,     0,     0), 
-  (0, 1, 0) (    0,     0,   1/3,   2/3,     0,     0), 
-  (0, 0, 1) (  2/3,   2/3,   1/3,   1/3,     0,     0), 
-  (0, 0, 0) (    1,     0,     0,     0,     0,     0), 
-  (0, 0, 0) (    0,     1,     0,     0,     0,     0), 
-  (0, 0, 0) (    0,     0,     1,     0,     0,     0), 
-  (0, 0, 0) (    0,     0,     0,     1,     0,     0), 
-  (0, 0, 0) (    0,     0,     0,     0,     1,     0), 
-  (0, 0, 0) (    0,     0,     0,     0,     0,     1)
-
-where the first line correspond to (t,0^6) and the second and third lines indicate the rototranslations generators (u,1/3 e_3 + 2/3 e_4) and (v, 2/3 e_1  2/3 e_2 + 1/3 e_3 + 1/3 e4), respectively. Finally, the last six lines represent the translation generators (1, e_a) for a = 1,2,...,6.
-
-Some comments about notation are given. 
-
-First, the notation (m,n,k) corresponds to the rotational part of the space group generators, specifically to the point group Z2WxZNxZK used internally in the orbifolder. Recall that the usual point group ZNxZK (ZN) corresponds to Z2WxZNxZK (Z2WxZN) in the orbifolder. An explanation of this notation
-and some examples can be seen in the spectrum directory by using the command 'man print' and looking at the description for the command 'print summary of sector T(m,n,k)'.
-
-Second, the orbifold geometry Z3xZ3 (3,2) corresponds to the notation ZNxZK (i,j), where ZNxZK is the point group and the pair of positive integer numbers (i,j) refer to the i-th torus lattice and the j-th rototranslation element. When i > 1 (j > 1) the orbifold geometries present non-factorizable torus lattices (rototranslation elements). So, geometries with i = 1 and j = 1 indicate a factorizable lattice and no rototranslations. Similar features apply for ZN (i,j) orbifold geometries.  
- 
 .TP
 .B twist
 
-The command 'print twist' shows the twist vector(s) as four-dimensional vector(s). For example
+It shows the twist vector(s) as 4D vector(s). 
 
-  v_1 = (    0,   1/3,   1/3,  -2/3)
-
-for a Z3 orbifold, and
-
-  v_1 = (    0,     0,   1/3,  -1/3)
-  v_2 = (    0,   1/3,     0,  -1/3)
-
-for an orbifold with point group Z3xZ3. In both cases the command 'print twists' also works.
-
-The twist vector for the Z2W symmetry in the internally point group Z2WXZNxZK used in the orbfifolder is v_0 = (    0,     1,     1,     1), which is not printed for the users.
 
 .TP
 .B #SUSY
 
-It shows the message
+It prints the number of supersymmetry in four dimensions. In this case N = 0 in 4D. 
 
-N = 0 SUSY in 4d.
-
-This indicates the absence of supersymmetry in the effective four-dimensional models.
  
 .TP 
 .B shift
 
-It shows the shift(s) vector(s), for example
-
-  V_1 = (  1/3,   1/3,  -2/3,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-
-for a Z3 orbifold model, and
-
-  V_1 = (    0,   1/3,  -1/3,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  V_2 = (  1/3,     0,  -1/3,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-
-for a Z3xZ3 orbifold. The command 'print shifts' can also be used for both ZN and ZNxZK orbifolds.
-
-The shift vector associated to the Z2W symmetry is
-
- V_0 = (    0,     0,     0,     1,     0,     0,     0,     0),  (    0,     0,     0,     1,     0,     0,     0,     0)
-
-which is not printed for the users. Recall that for internal use in the orbifolder the point group ZN or ZNxZK corresponds to Z2WxZN or Z2WxZNxZK, respectively. 
+It shows the shift(s) as 16D vectors. 
 
 .TP
 .B Wilson lines
 
-It shows the six Wilson lines, their orders and identifications. For example, for the Z3 orbifold the output reads
-
- Wilson lines identified on the orbifold: 
-    W_1 = W_2, W_3 = W_4, W_5 = W_6
-  Allowed orders of the Wilson lines: 3 3 3 3 3 3 
-
-  W_1 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_2 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_3 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_4 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_5 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_6 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-
-Considering an SM-like model based on the Z3xZ3 (1,1) geometry, the output reads e.g.
-
-
-  Wilson lines identified on the orbifold: 
-    W_1 = W_2, W_3 = W_4, W_5 = W_6
-  Allowed orders of the Wilson lines: 3 3 3 3 3 3 
-
-  W_1 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_2 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_3 = (-11/6,  -7/6,  -1/6,  -1/6,   1/6,  -7/6,   5/6,   5/6),  ( 11/6,   7/6,  -3/2,   1/6,   1/6,   5/6,  13/6,  -1/6)
-  W_4 = (-11/6,  -7/6,  -1/6,  -1/6,   1/6,  -7/6,   5/6,   5/6),  ( 11/6,   7/6,  -3/2,   1/6,   1/6,   5/6,  13/6,  -1/6)
-  W_5 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_6 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-
+It prints the relations among the Wilson lines, their order and the Wilson lines themselves as 16D vectors.
 
 .SH EXAMPLES
 
-\(bu Consider the orbifold model with label Z8-I_1_1. The following command shows the orbifold geometries that are compatible with the point group Z8.
+\(bu The following command prints the orbifold label.
+
+.B print orbifold label
+
+For example, consider the Z3 orbifold labeled as Z3_1_1. Then, the use of this command in the prompt and its output reads, 
+
+  /Z3_1_1/model/> print orbifold label
+
+    Orbifold "Z3_1_1".
+
+Consider now a SM-like model labeled as Model_SM3. The output reads, for example,
+
+  /Model_SM3/model/> print orbifold label
+
+    Orbifold "Model_SM3".
+
+\(bu The following command prints the 10D gauge group of the heterotic string without SUSY.
+
+.B print heterotic string type
+
+The use of this command in the prompt and its output reads, for example,
+
+  /Z3_1_1/model/> print heterotic string type
+
+    Using the SO(16)xSO(16) heterotic string.
+
+This output message is standard for all orbifold models. 
+
+
+\(bu The following command displays the orbifold geometries that are compatible with the orbifold point group. 
 
 .B print available space groups
 
-The output reads,
+An explicit example is the following. Consider the Z8 orbifold model labeled as Z8-I_1_1. The use of this command in the prompt and its output reads,
 
-  available Z_8 space groups: 
-     # | lattice         | additional label   | geometry file
-    ----------------------------------------------------------------------------------------------------- 
-     1 | Z8-I_1          |                    | "Geometry/Geometry_Z8-I_1_1.txt"
-     2 | Z8-I_3          |                    | "Geometry/Geometry_Z8-I_3_1.txt"
-     3 | Z8-II_2         |                    | "Geometry/Geometry_Z8-II_2_1.txt"
-     4 | Z8-I_2          |                    | "Geometry/Geometry_Z8-I_2_1.txt"
-     5 | Z8-II_1         |                    | "Geometry/Geometry_Z8-II_1_1.txt"
+  /Z8-I_1_1/model/> print available space groups
 
-Note. The notation ZN (i,j) indicates the point group ZN and the pair (i,j) denotes the i-th lattice and j-th rototranslation element. If (i,j) are both > 1 then there are non-factorizable lattices and rototranslations elements. ZN-I and ZN-II indicate that there are two distinct twist vectors that are consistent with the point group ZN. So,  the notation Z8-I (1,1), Z8-I (2,1), Z8-I (3,1) means that there are three distinct lattices (one factorizble and two non factorizable) that are compatible with the Z8 point group. The notation Z8-II (1,1) and Z8-II (2,1) indicates that there are two diferent lattices that are consistent with the Z8 point group but with a different twist vector than the twist vector used in Z8-I. In all these five geometries there are no rototranslations.   
+    available Z_8 space groups: 
+       # | lattice         | additional label   | geometry file
+      ----------------------------------------------------------------------------------------------------- 
+       1 | Z8-I_1          |                    | "Geometry/Geometry_Z8-I_1_1.txt"
+       2 | Z8-I_3          |                    | "Geometry/Geometry_Z8-I_3_1.txt"
+       3 | Z8-II_2         |                    | "Geometry/Geometry_Z8-II_2_1.txt"
+       4 | Z8-I_2          |                    | "Geometry/Geometry_Z8-I_2_1.txt"
+       5 | Z8-II_1         |                    | "Geometry/Geometry_Z8-II_1_1.txt
 
 
-\(bu For a model with orbifold geometry Z4xZ4 (1,1) the following commands prints the point group.
+Some comments about the notation are given. The file name Geometry_Z8-I_1_1.txt indicates that this is the orbifold geometry for the orbifold Z8-I (1,1). Let us explain the general notation ZN (i,j) first.  It indicates the point group ZN, while the pair (i,j) denotes the i-th lattice and j-th rototranslation element. If (i,j) appears with i > 1 and j > 1 then there are non-factorizable lattices and rototranslations elements respectively in that geometry. Now, the notation ZN-I and ZN-II indicates that there are two distinct twist vectors that are consistent with the point group ZN. So,  the notation Z8-I (1,1), Z8-I (2,1), Z8-I (3,1) means that there are three distinct lattices (one factorizble because i = 1, and two non factorizable corresponding to i = 2 and i = 3) that are compatible with the Z8 point group. The notation Z8-II (1,1) and Z8-II (2,1) indicates that there are two diferent lattices (one factorizable and one non-factorizable) that are consistent with the Z8 point group but with a different twist vector than the twist vector used in Z8-I. In all these five geometries there are no rototranslations becuase j = 1 in all of them. A similar interpretation of the notation applies to ZNxZM (i,j) orbifold geometries.    
+
+
+\(bu The following command prints the the point group of an orbifold model.
 
 .B print point group
 
-The output reads,
+For example, consider the Z3 orbifold model called Z3_1_1. The use of this command in the prompt and its output reads,
 
-  Point group is Z_4 x Z_4.
+  /Z3_1_1/model/> print point group
+
+    Point group is Z_3.
 
 
-\(bu The following command shows the space group generators for the Z4xZ4 (1,1) orbifold
+\(bu The following command shows the space group generators of an orbifold model.
 
 .B print space group  
 
-The output reads,
+For example, consider the Z3 orbifold model labeled as Z3_1_1. The use of this command in the prompt and its output reads, 
 
-  Space group based on Z_4 x Z_4 point group and root-lattice of Z4xZ4_1.
-  Generators are:
+  /Z3_1_1/model/> print space group
+
+    Space group based on Z_3 point group and root-lattice of Z3_1.
+    Generators are:
+
+    (1, 0, 0) (    0,     0,     0,     0,     0,     0), 
+    (0, 1, 0) (    0,     0,     0,     0,     0,     0), 
+    (0, 0, 0) (    1,     0,     0,     0,     0,     0), 
+    (0, 0, 0) (    0,     1,     0,     0,     0,     0), 
+    (0, 0, 0) (    0,     0,     1,     0,     0,     0), 
+    (0, 0, 0) (    0,     0,     0,     1,     0,     0), 
+    (0, 0, 0) (    0,     0,     0,     0,     1,     0), 
+    (0, 0, 0) (    0,     0,     0,     0,     0,     1)
+
+
+The notation (m,n,k) (n1,n2,n3,n4,n5,n6) corresponds to the space group element (t^m u^n v^k, n_a e_a), where t,u,v are the generators of the point group ZMxZNxZK respectively, with ZM=Z2W, a Z2 symmetry that is used in the construction of the non-SUSY heterotic string. This Z2W symmetry is used internally in the orbifolder. So, an orbifold with a usual point group ZN corresponds to ZMxZN = Z2WxZN internally in the orbifolder. The first two rows
 
   (1, 0, 0) (    0,     0,     0,     0,     0,     0), 
   (0, 1, 0) (    0,     0,     0,     0,     0,     0), 
-  (0, 0, 1) (    0,     0,     0,     0,     0,     0), 
+
+denote the generators for the ZM=Z2W and the ZN=Z3 symmetry, that is, the rotational generators for the space group. The six remaining rows
+
   (0, 0, 0) (    1,     0,     0,     0,     0,     0), 
   (0, 0, 0) (    0,     1,     0,     0,     0,     0), 
   (0, 0, 0) (    0,     0,     1,     0,     0,     0), 
@@ -217,50 +156,83 @@ The output reads,
   (0, 0, 0) (    0,     0,     0,     0,     1,     0), 
   (0, 0, 0) (    0,     0,     0,     0,     0,     1)
 
+denote the translational generators n1 e1 + n2 e2 + ... + n6 e6 of the space group.
 
-\(bu The following command shows the shift vector for a SM-like model with orbifold geometry Z8-II (2,1)
+Another example that presents rototranslation generators is the orbifold with point group Z3xZ3 (3,2). The use of the command 'print space groups' in the prompt and its output reads,
 
-.B print shift
+  /Z3xZ3_3_2/model/> print space group
 
-The output reads,
+    Space group based on Z_3 x Z_3 point group and root-lattice of Z3xZ3_3.
+    Generators are:
 
-  V_1 = ( -3/16,  -1/16,   1/16,   1/16,   1/16,   1/16,   1/16,   3/16),  ( -9/16,  -7/16,  -1/16,  -1/16,  -1/16,  -1/16,   1/16,   3/16)
+    (1, 0, 0) (    0,     0,     0,     0,     0,     0), 
+    (0, 1, 0) (    0,     0,   1/3,   2/3,     0,     0), 
+    (0, 0, 1) (  2/3,   2/3,   1/3,   1/3,     0,     0), 
+    (0, 0, 0) (    1,     0,     0,     0,     0,     0), 
+    (0, 0, 0) (    0,     1,     0,     0,     0,     0), 
+    (0, 0, 0) (    0,     0,     1,     0,     0,     0), 
+    (0, 0, 0) (    0,     0,     0,     1,     0,     0), 
+    (0, 0, 0) (    0,     0,     0,     0,     1,     0), 
+    (0, 0, 0) (    0,     0,     0,     0,     0,     1)
+
+where the first line denotes the generator for ZM=Z2W, the second and third lines denote the rototranslations generators (u,1/3 e_3 + 2/3 e_4) and (v, 2/3 e_1  2/3 e_2 + 1/3 e_3 + 1/3 e4) for Z3xZ3 respectively. Finally, the last six lines represent the translation generators (1, n1 e1 + n2 e2 + ... n6 e6).
+
+Some comments about notation are in order. First, the notation (m,n,k) corresponds to the rotational part of the space group generators, specifically to the point group Z2WxZNxZK used internally in the orbifolder. Recall that the usual point group ZNxZK (ZN) corresponds to Z2WxZNxZK (Z2WxZN) in the orbifolder. An explanation of this notation and some examples can be seen in the spectrum directory by using the command 'man print' and looking at the description for the command 'print summary of sector T(m,n,k)'. Second, the orbifold geometry Z3xZ3 (3,2) corresponds to the notation ZNxZK (i,j), where ZNxZK is the point group and the pair of positive integer numbers (i,j) refer to the i-th torus lattice and the j-th rototranslation element. When i > 1 (j > 1) the orbifold geometries present non-factorizable torus lattices (rototranslation elements). So, geometries with i = 1 and j = 1 indicate a factorizable lattice and no rototranslations. Similar features in the notation apply for ZN (i,j) orbifold geometries.  
  
-
-\(bu The following command prints the label of a SM-like model. The label is also the name of the current orbifold directory.
-
-.B print orbifold label
-
-The output reads, for example,
-
-  Orbifold "Model_SM1".
-
-
-\(bu The following command prints the twist vector for an orbifold with point group Z4.
+\(bu The following command prints the twist(s) as 4D vectors.
 
 .B print twist
 
-The output reads,
+For example, consider the Z3 orbifold model called Z3_1_1. The use of this command in the prompt and its output reads
 
-  v_1 = (    0,   1/4,   1/4,  -1/2)
+  /Z3_1_1/model/> print twist
 
+    v_1 = (    0,   1/3,   1/3,  -2/3)
 
-\(bu For a SM-like model in the Z3 orbifold the following command shows the Wilson lines 
+Note. The command 'print twists' also works. 
 
-.B print Wilson lines
+\(bu The following command prints the number of supersymmetry in 4D.
+
+.B print #SUSY
 
 The output reads, for example,
 
-  Wilson lines identified on the orbifold: 
-    W_1 = W_2, W_3 = W_4, W_5 = W_6
-  Allowed orders of the Wilson lines: 3 3 3 3 3 3 
+  /Z3_1_1/model/> print #SUSY
 
-  W_1 = ( -3/2,  -1/6, -11/6,  23/6, -11/6,   1/6,   1/6,  -1/6),  ( 23/6, -11/6,   1/6,  13/6,  -3/2,   1/2,   7/6,  -1/2)
-  W_2 = ( -3/2,  -1/6, -11/6,  23/6, -11/6,   1/6,   1/6,  -1/6),  ( 23/6, -11/6,   1/6,  13/6,  -3/2,   1/2,   7/6,  -1/2)
-  W_3 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_4 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
-  W_5 = ( 11/3,     0,  10/3,   2/3,     3,   1/3,     4,     3),  (  8/3,     0,     4,  10/3,   4/3,  -5/3,  10/3,     3)
-  W_6 = ( 11/3,     0,  10/3,   2/3,     3,   1/3,     4,     3),  (  8/3,     0,     4,  10/3,   4/3,  -5/3,  10/3,     3)
+    N = 0 SUSY in 4d.
+
+This output message is standard for all orbifold models.
+
+\(bu The following commands print the shift(s) as 16D vectors.  
+
+.B print shift
+
+For example, consider the Z3 orbifold model labeled Z3_1_1. The use of this command in the prompt and its output reads,
+
+  /Z3_1_1/model/> print shift
+
+    V_1 = (  1/3,   1/3,  -2/3,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+
+Note. The command 'print shifts' also works. 
+
+\(bu The following command displays the Wilson lines of an orbifold model along with their relations and orders. 
+
+.B print Wilson lines
+
+For example, consider the Z3 orbifold model labeled Z3_1_1. The use of this command in the prompt and its output reads,
+
+  /Z3_1_1/model/> print Wilson lines
+
+    Wilson lines identified on the orbifold: 
+      W_1 = W_2, W_3 = W_4, W_5 = W_6
+    Allowed orders of the Wilson lines: 3 3 3 3 3 3 
+
+    W_1 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+    W_2 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+    W_3 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+    W_4 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+    W_5 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
+    W_6 = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
 
 
 .SH AUTHOR

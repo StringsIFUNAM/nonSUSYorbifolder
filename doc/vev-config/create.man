@@ -35,18 +35,17 @@ An explicit example is the following. Consider the Z3 orbifold model named Z3_1_
    Vev-configuration "Test1" created from "TestConfig1".
    Now using new configuration "Test1".
 
-\(bu The following command creates a new vev-configuration named Test2. Since it does not use the parameter 'from(AnotherConfigLabel)' the StandardConfig1 is taken as the origin of the new vev-configuration.
+\(bu The following command creates a new vev-configuration named Test2.
 
 .B create config(Test2)
- 
-For example, consider the Z3_1_1 orbifold model. Then, the use of this command in the prompt and its output reads, for example,
+
+In this case the parameter 'from(AnotherConfigLabel)' is not used. So, the StandardConfig1 is taken as the origin of the new vev-configuration. For example, consider the Z3 orbifold model named Z3_1_1. Then, the use of this command in the prompt and its output reads, for example,
 
  /Z3_1_1/vev-config/> create config(Test2)
  
    Vev-configuration "Test2" created from "StandardConfig1".
    Now using new configuration "Test2".
  
-
 \(bu The following command creates a new vev-configuration called TestSM from a defined vev-configuration named SMConfig1.
 
 .B create config(TestSM) from(SMConfig1)
@@ -58,7 +57,7 @@ For example, consider SM-like model named Model_SM3. The current vev-configurati
    Vev-configuration "TestSM1" created from "SMConfig1".
    Now using new configuration "TestSM1".
 
-NOTE. The defined vev-configurations for the orbifold model can be seen with the command 'print configs'. 
+NOTE. The currently defined vev-configurations for the orbifold model can be seen with the command 'print configs'. 
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
