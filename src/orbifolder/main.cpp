@@ -242,21 +242,22 @@ int main(int argc, char *argv[])
     CPrompt Prompt;
     Prompt.StartPrompt();
   }
-  else
-  if (argc == 2)
+  else if (argc == 2)
   {
     const string ModelFilename = argv[1];
-    if (ModelFilename == "web")
-    {
-      cout << "  Initiate web interface...\n" << endl;
-      CPrompt Prompt;
-      Prompt.StartPrompt("", false, true);
-    }
-    else
-    {
-      CPrompt Prompt(ModelFilename.data());
-      Prompt.StartPrompt();
-    }
+    CPrompt Prompt(ModelFilename.data());
+    Prompt.StartPrompt();
   }
+  else if (argc == 3)
+  {
+    const string ModelFilename = argv[1];
+    const string CommandFilename = argv[2];
+    if (ModelFilename == "script")
+    {
+      cout << "  Executing list of commands...\n" << endl;
+      CPrompt Prompt;
+      Prompt.StartPrompt(CommandFilename, true, true);
+    }
+  }      
   return EXIT_SUCCESS;
 }
