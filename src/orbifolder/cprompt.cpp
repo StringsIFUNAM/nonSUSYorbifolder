@@ -545,7 +545,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
       struct stat stFileInfo;
 
       old_number_of_commands = Commands.size();
-      while ((exec_command == Commands.size()) || (stat(ifilename.c_str(),&stFileInfo) == 0))
+      while ((exec_command == Commands.size()) )//|| (stat(ifilename.c_str(),&stFileInfo) == 0))
       {
         // begin: wait for the file "ifilename" to exist
         if (stat(ifilename.c_str(), &stFileInfo) != 0)
