@@ -492,8 +492,19 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
   if (this->online_mode)
   {
-    ifilename = "program.txt";
-    this->output_filename  = "result.txt";
+    //ifilename = "program.txt";
+    // Encontrar la posición del punto
+    size_t pos_point = ifilename.find('.');
+    string name_without_extension = "";
+    // Si encontramos un punto en la cadena
+    if (pos_point != std::string::npos) 
+    {
+        // Extraer la subcadena desde el inicio hasta el punto
+        name_without_extension = ifilename.substr(0, pos_point);
+    }
+
+
+    this->output_filename  = "result_"+name_without_extension+".txt";
   }
   else
   {
@@ -555,11 +566,11 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
         // end: load the commands
 
         // begin: delete the file "ifilename"
-        usleep(500);
-        tmp_string1 = "rm ";
-        tmp_string1 += ifilename;
-        if (system(tmp_string1.data()) != 0)
-          cout << "  System(" << tmp_string1 << ") failed." << endl;
+        //usleep(500);
+        //tmp_string1 = "rm ";
+        //tmp_string1 += ifilename;
+        //if (system(tmp_string1.data()) != 0)
+        //  cout << "  System(" << tmp_string1 << ") failed." << endl;
 
         // end: delete the file "ifilename"
       }
@@ -624,11 +635,11 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
       // just replace this
 
-      char* user_input;
+      char* user_input; 
 
       string my_folder;
 
-      string my_prompt = "/> ";
+      string my_prompt = ""; //"/> "
 
       current_folder_global = current_folder;
 
@@ -1277,7 +1288,8 @@ bool CPrompt::ExecuteCommand(string command)
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // exit
   // updated on 12.10.2011
-  if (!this->online_mode && this->FindCommandType1(command, "exit", parameter_string1))
+  // !this->online_mode &&
+  if ( this->FindCommandType1(command, "exit", parameter_string1))
   {
     this->pre_exit = true;
 
@@ -6424,7 +6436,7 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
 {
   if (this->current_folder[0] == -1)
   {
-    output = ""; // Remove prompt symbol
+    output = "> "; // Remove prompt symbol
     return true;
   }
   else
@@ -6435,27 +6447,27 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
     {
       case 0:
       {
-        output += ""; // Fix double prompt
+        output += "> "; // Fix double prompt
         return true;
       }
       case 1:
       {
-        output += "/model";
+        output += "/model> ";
         return true;
       }
       case 2:
       {
-        output += "/gauge group";
+        output += "/gauge group> proc/";
         return true;
       }
       case 3:
       {
-        output += "/spectrum";
+        output += "/spectrum> ";
         return true;
       }
       case 4:
       {
-        output += "/couplings";
+        output += "/couplings> ";
         return true;
       }
       case 5:
@@ -6465,12 +6477,12 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
         {
           case 0:
           {
-            output += "";
+            output += "> ";
             return true;
           }
           case 1:
           {
-            output += "/labels";
+            output += "/labels> ";
             return true;
           }
         }
