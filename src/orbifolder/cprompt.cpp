@@ -823,7 +823,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
       output_file.close();
       output_file_open = false;
       usleep(7500);
-      return true
+      return true;
     }
 
     if (output_file_open && !this->keep_output_to_file)
