@@ -622,7 +622,6 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
           output_file.close();
           output_file_open = false;
         }
-        return true;
       }
       // It's comment, for elimine double prompt
       /*if (!this->keep_output_to_file)
@@ -824,6 +823,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
       output_file.close();
       output_file_open = false;
       usleep(7500);
+      return true
     }
 
     if (output_file_open && !this->keep_output_to_file)
@@ -6457,7 +6457,7 @@ bool CPrompt::PrintCurrentDirectory(string &output) const
       }
       case 2:
       {
-        output += "/gauge group> proc/";
+        output += "/gauge group> ";
         return true;
       }
       case 3:
