@@ -823,6 +823,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
       output_file.close();
       output_file_open = false;
       usleep(7500);
+      cout << "Script executed successfully! The resulting output was saved in the file: " <<this->output_filename<< "." << endl;
       return true;
     }
 
