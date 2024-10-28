@@ -136,6 +136,7 @@ private:
 
   bool                     keep_output_to_file;
   string                   output_filename;
+  string                   output_filename_aux;
 
   vector<int>              current_folder;  // current_folder[0] = -1 is the main directory, else the corresponding orbifold directory
                                             // current_folder[1] gives the subdirectory in an orbifold directory: 

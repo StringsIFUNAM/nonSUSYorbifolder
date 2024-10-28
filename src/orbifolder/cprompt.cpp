@@ -490,6 +490,8 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
 
 
+
+
   if (this->online_mode)
   {
     //ifilename = "program.txt";
@@ -523,6 +525,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
   string parameter_string2 = "";
 
   std::ofstream output_file;
+  std::ofstream output_file_aux;
 
   size_t old_number_of_commands = 0;
   bool output_file_open = false;
@@ -708,16 +711,16 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
     // STEP 3 //////////////////////////////////////////////////////////////////////////////////////////////////////////
     // begin: write output to file?
-    if (this->online_mode)
-    {
-      if (this->FindParameterType1(command, "@begin print"))
-      {
-        if (this->print_output)
-          (*this->Print.out) << "\n  " << this->Print.cbegin << "Command disabled in the web interface." << this->Print.cend << "\n" << endl;
-        command = "";
-      }
-    }
-    else
+    //if (this->online_mode)
+    //{
+    //  if (this->FindParameterType1(command, "@begin print"))
+    //  {
+    //    if (this->print_output)
+    //      (*this->Print.out) << "\n  " << this->Print.cbegin << "Command disabled in the web interface." << this->Print.cend << "\n" << endl;
+    //    command = "";
+    //  }
+    //}
+    //else
     {
       if (this->FindParameterType2(command, "@begin print to file(", this->output_filename))
       {
@@ -734,7 +737,25 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
         if (this->keep_output_to_file)
         {
           if (this->print_output)
-            (*this->Print.out) << "\n  " << this->Print.cbegin << "Output permanently written to file \"" << this->output_filename << "\". Ignoring parameter \"to file(" << tmp_string1 << ")\"." << this->Print.cend << "\n" << endl;
+          {  
+            if (this->online_mode)
+            {
+                this->output_filename_aux = tmp_string1;
+                (*this->Print.out) << "\n  " << this->Print.cbegin << "Result written to file \"" << this->output_filename_aux << "\"." << this->Print.cend << "\n" << endl;
+
+                output_file_aux.open(this->output_filename_aux.data(), ofstream::app | ios::ate);
+
+
+                if (output_file_aux.is_open()&& output_file_aux.good())
+                {
+                    this->Print.out = &output_file_aux;
+                    (*this->Print.out) << flush;
+                }
+
+            }
+            else
+                (*this->Print.out) << "\n  " << this->Print.cbegin << "Output permanently written to file \"" << this->output_filename << "\". Ignoring parameter \"to file(" << tmp_string1 << ")\"." << this->Print.cend << "\n" << endl;
+          }
         }
         else
         {
@@ -749,6 +770,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
         }
       }
     }
+
 
     if (output_file_open && (!output_file.is_open() || !output_file.good()))
     {
@@ -825,6 +847,14 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
       usleep(7500);
       cout << "Script executed successfully! The resulting output was saved in the file: " <<this->output_filename<< "." << endl;
       return true;
+    }
+
+    if (output_file_aux.is_open() && output_file_aux.good())
+    {
+
+      output_file_aux.close();
+
+      this->Print.out = &output_file;
     }
 
     if (output_file_open && !this->keep_output_to_file)
@@ -1337,16 +1367,16 @@ bool CPrompt::ExecuteCommand(string command)
     if (this->FindParameterType1(parameter_string1, "status"))
     {
       (*this->Print.out) << "\n  status:\n";
-      if (this->online_mode)
-        (*this->Print.out) << "    output is written to the web interface.\n";
-      else
-      {
-        (*this->Print.out) << "    output is written to: ";
-        if (this->keep_output_to_file)
-          (*this->Print.out) << "file \"" << this->output_filename << "\".\n";
-        else
-          (*this->Print.out) << "screen.\n";
-      }
+      //if (this->online_mode)
+      //  (*this->Print.out) << "    output is written to the web interface.\n";
+      //else
+      //{
+      //  (*this->Print.out) << "    output is written to: ";
+      //  if (this->keep_output_to_file)
+      //    (*this->Print.out) << "file \"" << this->output_filename << "\".\n";
+      //  else
+      //    (*this->Print.out) << "screen.\n";
+      //}
 
       (*this->Print.out) << "    typesetting: ";
       if (this->Print.GetOutputType() == Tstandard)
@@ -2314,13 +2344,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       {
         (*this->Print.out) << "\n  system commands:\n";
         (*this->Print.out) << "    @status\n";
-        if (!this->online_mode)
-        {
+        //if (!this->online_mode)
+        //{
           (*this->Print.out) << "    @print enter                              print new line\n";
           (*this->Print.out) << "    @print(string)                            optional: unformatted\n";
           (*this->Print.out) << "    @begin print to file(Filename)\n";
           (*this->Print.out) << "    @end print to file\n";
-        }
+        //}
         (*this->Print.out) << "    @typesetting(Type)                       \"Type\" can be \"mathematica\", \"latex\" or \"standard\" \n\n" << flush;       
       }
       else
@@ -5520,12 +5550,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 	          Multiplets[0]=Scalar;							
 	          Multiplets[1]=LeftFermi;  
                 
-              if (this->online_mode)
-              {
-                if (this->print_output)
-                  (*this->Print.out) << "\n  " << this->Print.cbegin << "Command disabled in the web interface." << this->Print.cend << "\n" << endl;
-                return true;
-              }
+              //if (this->online_mode)
+              //{
+              //  if (this->print_output)
+              //    (*this->Print.out) << "\n  " << this->Print.cbegin << "Command disabled in the web interface." << this->Print.cend << "\n" << endl;
+              //  return true;
+              //}
 
               if (Analyse.Labels_Load(parameter_string1, VEVConfig))
               {
@@ -5550,12 +5580,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             // updated on 30.08.2011
             if (this->FindCommandType2(command, "save labels(", parameter_string1, parameter_string2))
             {
-              if (this->online_mode)
-              {
-                if (this->print_output)
-                  (*this->Print.out) << "\n  " << this->Print.cbegin << "Command disabled in the web interface." << this->Print.cend << "\n" << endl;
-                return true;
-              }
+              //if (this->online_mode)
+              //{
+              //  if (this->print_output)
+              //    (*this->Print.out) << "\n  " << this->Print.cbegin << "Command disabled in the web interface." << this->Print.cend << "\n" << endl;
+              //  return true;
+              //}
 
               std::ofstream out(parameter_string1.data());
               if((!out.is_open()) || (!out.good()))
@@ -5625,12 +5655,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                   this->PrintFor(VEVConfig.Fields[0].Labels.size(), "labels", "i");
                   (*this->Print.out) << "\n";
                 }
-                if (!this->online_mode)
-                {
+                //if (!this->online_mode)
+                //{
                   if (!UsingStandardConfig)
                     (*this->Print.out) << "    load labels(Filename)\n";
                   (*this->Print.out) << "    save labels(Filename)\n";
-                }
+                //}
                 (*this->Print.out) << "\n";
                 (*this->Print.out) << "  general commands:\n";
                 (*this->Print.out) << "    dir                                       show commands\n";
