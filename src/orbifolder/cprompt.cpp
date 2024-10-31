@@ -743,7 +743,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
                 this->output_filename_aux = tmp_string1;
                 (*this->Print.out) << "\n  " << this->Print.cbegin << "Result written to file \"" << this->output_filename_aux << "\"." << this->Print.cend << "\n" << endl;
 
-                output_file_aux.open(this->output_filename_aux.data(), ofstream::app | ios::ate);
+                output_file_aux.open(this->output_filename_aux.data(), ofstream::out | ios::ate);
 
 
                 if (output_file_aux.is_open()&& output_file_aux.good())
