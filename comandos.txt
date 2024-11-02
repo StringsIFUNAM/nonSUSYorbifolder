@@ -1,8 +1,0 @@
-create orbifold(A) with point group(3)
-cd A
-print available space groups
-set shift standard embedding
-s
-print summary to file(spectrum_z3.txt)
-gg
-print gauge group
