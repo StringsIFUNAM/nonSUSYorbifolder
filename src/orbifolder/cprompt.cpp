@@ -4512,9 +4512,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "  parameters:\n";
             (*this->Print.out) << "    \"of sectors\"                              group table by sectors\n";
             (*this->Print.out) << "    \"of fixed points\"                         group table by fixed points\n";
-            (*this->Print.out)  << "    \"of sector T(m,n,k)\"                      print sector T(m,n,k) only\n";  
+            (*this->Print.out)  << "    \"of sector T(k,m,n)\"                      print sector T(k,m,n) only\n";  
             (*this->Print.out)  << "    \"of fixed point(label)\"                   print fixed point \"label\" only\n";  
-            (*this->Print.out) << "    \"of fixed point(m,n,k,n1,n2,n3,n4,n5,n6)\" print specified fixed point only\n";   
+            (*this->Print.out) << "    \"of fixed point(k,m,n,n1,n2,n3,n4,n5,n6)\" print specified fixed point only\n";   
             (*this->Print.out) << "    \"no U1s\"                                  omit the U(1) charges\n";
             (*this->Print.out) << "    \"with labels\"                             print the field labels\n\n" << flush;
           }
@@ -5639,7 +5639,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 {
                   (*this->Print.out) << "    change label(A_i) to(B_j)\n";
                   (*this->Print.out) << "    create labels\n";
-                  (*this->Print.out) << "    assign label(Label) to fixed point(m,n,k,n1,n2,n3,n4,n5,n6)\n";
+                  (*this->Print.out) << "    assign label(Label) to fixed point(k,m,n,n1,n2,n3,n4,n5,n6)\n";
                 }
                 (*this->Print.out) << "    print labels                              \n";
                 if (!UsingStandardConfig)

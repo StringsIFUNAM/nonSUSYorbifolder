@@ -107,7 +107,7 @@ An explicit example is the following. Consider the Z8 orbifold model labeled as 
        5 | Z8-II_1         |                    | "Geometry/Geometry_Z8-II_1_1.txt
 
 
-Some comments about the notation are given. The file name Geometry_Z8-I_1_1.txt indicates that this is the orbifold geometry for the orbifold Z8-I (1,1). Let us explain the general notation ZN (i,j) first.  It indicates the point group ZN, while the pair (i,j) denotes the i-th lattice and j-th rototranslation element. If (i,j) appears with i > 1 and j > 1 then there are non-factorizable lattices and rototranslations elements respectively in that geometry. Now, the notation ZN-I and ZN-II indicates that there are two distinct twist vectors that are consistent with the point group ZN. So,  the notation Z8-I (1,1), Z8-I (2,1), Z8-I (3,1) means that there are three distinct lattices (one factorizble because i = 1, and two non factorizable corresponding to i = 2 and i = 3) that are compatible with the Z8 point group. The notation Z8-II (1,1) and Z8-II (2,1) indicates that there are two diferent lattices (one factorizable and one non-factorizable) that are consistent with the Z8 point group but with a different twist vector than the twist vector used in Z8-I. In all these five geometries there are no rototranslations becuase j = 1 in all of them. A similar interpretation of the notation applies to ZNxZM (i,j) orbifold geometries.    
+Some comments about the notation are given. The file name Geometry_Z8-I_1_1.txt indicates that this is the orbifold geometry for the orbifold Z8-I (1,1). Let us explain the general notation ZM (i,j) first.  It indicates the point group ZM, while the pair (i,j) denotes the i-th lattice and j-th rototranslation element. If (i,j) appears with i > 1 and j > 1 then there are non-factorizable lattices and rototranslations elements respectively in that geometry. Now, the notation ZM-I and ZM-II indicates that there are two distinct twist vectors that are consistent with the point group ZM. So,  the notation Z8-I (1,1), Z8-I (2,1), Z8-I (3,1) means that there are three distinct lattices (one factorizble because i = 1, and two non factorizable corresponding to i = 2 and i = 3) that are compatible with the Z8 point group. The notation Z8-II (1,1) and Z8-II (2,1) indicates that there are two diferent lattices (one factorizable and one non-factorizable) that are consistent with the Z8 point group but with a different twist vector than the twist vector used in Z8-I. In all these five geometries there are no rototranslations becuase j = 1 in all of them. A similar interpretation of the notation applies to ZMxZN (i,j) orbifold geometries.    
 
 
 \(bu The following command prints the the point group of an orbifold model.
@@ -142,12 +142,12 @@ For example, consider the Z3 orbifold model labeled as Z3_1_1. The use of this c
     (0, 0, 0) (    0,     0,     0,     0,     0,     1)
 
 
-The notation (m,n,k) (n1,n2,n3,n4,n5,n6) corresponds to the space group element (t^m u^n v^k, n_a e_a), where t,u,v are the generators of the point group ZMxZNxZK respectively, with ZM=Z2W, a Z2 symmetry that is used in the construction of the non-SUSY heterotic string. This Z2W symmetry is used internally in the orbifolder. So, an orbifold with a usual point group ZN corresponds to ZMxZN = Z2WxZN internally in the orbifolder. The first two rows
+The notation (k,m,n) (n1,n2,n3,n4,n5,n6) corresponds to the space group element (t^k u^m v^n, n_a e_a), where t,u,v are the generators of the point group ZKxZMxZN respectively, with ZK=Z2W. This Z2W = Z2 symmetry is used internally by the orbifolder for constructing the non-SUSY heterotic string from the SUSY heterotic string. So, an orbifold with a usual point group ZM corresponds to ZKxZM = Z2WxZM internally in the orbifolder. The first two rows
 
   (1, 0, 0) (    0,     0,     0,     0,     0,     0), 
   (0, 1, 0) (    0,     0,     0,     0,     0,     0), 
 
-denote the generators for the ZM=Z2W and the ZN=Z3 symmetry, that is, the rotational generators for the space group. The six remaining rows
+denote the generators for the ZK=Z2W and the ZM=Z3 symmetry, that is, the presence of rotational generators for the space group. The six remaining rows
 
   (0, 0, 0) (    1,     0,     0,     0,     0,     0), 
   (0, 0, 0) (    0,     1,     0,     0,     0,     0), 
@@ -156,9 +156,10 @@ denote the generators for the ZM=Z2W and the ZN=Z3 symmetry, that is, the rotati
   (0, 0, 0) (    0,     0,     0,     0,     1,     0), 
   (0, 0, 0) (    0,     0,     0,     0,     0,     1)
 
-denote the translational generators n1 e1 + n2 e2 + ... + n6 e6 of the space group.
+denote the presence of translational generators n1 e1 + n2 e2 + ... + n6 e6 of the space group.
 
-Another example that presents rototranslation generators is the orbifold with point group Z3xZ3 (3,2). The use of the command 'print space groups' in the prompt and its output reads,
+Another example that presents rototranslation generators is the orbifold with point group Z3xZ3 (3,2). In this case the point group Z3xZ3 corresponds
+to ZKxZMxZN = Z2WxZ3xZ3 in the orbifolder. The use of the command 'print space groups' in the prompt and its output reads,
 
   /Z3xZ3_3_2/model/> print space group
 
@@ -175,9 +176,9 @@ Another example that presents rototranslation generators is the orbifold with po
     (0, 0, 0) (    0,     0,     0,     0,     1,     0), 
     (0, 0, 0) (    0,     0,     0,     0,     0,     1)
 
-where the first line denotes the generator for ZM=Z2W, the second and third lines denote the rototranslations generators (u,1/3 e_3 + 2/3 e_4) and (v, 2/3 e_1  2/3 e_2 + 1/3 e_3 + 1/3 e4) for Z3xZ3 respectively. Finally, the last six lines represent the translation generators (1, n1 e1 + n2 e2 + ... n6 e6).
+where the first line denotes the generator for ZK=Z2W, the second and third lines denote the rototranslations generators (u,1/3 e_3 + 2/3 e_4) and (v, 2/3 e_1  2/3 e_2 + 1/3 e_3 + 1/3 e4) for Z3xZ3 respectively. Finally, the last six lines represent the translation generators (1, n1 e1 + n2 e2 + ... n6 e6).
 
-Some comments about notation are in order. First, the notation (m,n,k) corresponds to the rotational part of the space group generators, specifically to the point group Z2WxZNxZK used internally in the orbifolder. Recall that the usual point group ZNxZK (ZN) corresponds to Z2WxZNxZK (Z2WxZN) in the orbifolder. An explanation of this notation and some examples can be seen in the spectrum directory by using the command 'man print' and looking at the description for the command 'print summary of sector T(m,n,k)'. Second, the orbifold geometry Z3xZ3 (3,2) corresponds to the notation ZNxZK (i,j), where ZNxZK is the point group and the pair of positive integer numbers (i,j) refer to the i-th torus lattice and the j-th rototranslation element. When i > 1 (j > 1) the orbifold geometries present non-factorizable torus lattices (rototranslation elements). So, geometries with i = 1 and j = 1 indicate a factorizable lattice and no rototranslations. Similar features in the notation apply for ZN (i,j) orbifold geometries.  
+Some comments about notation are in order. First, the notation (k,m,n) corresponds to the rotational part of the space group generators, specifically to the point group Z2WxZMxZN used internally in the orbifolder. Recall that the usual point group ZMxZN (ZM) corresponds to Z2WxZMxZN (Z2WxZM) in the orbifolder. An explanation of this notation and some examples can be seen in the spectrum directory by using the command 'man print' and looking at the description for the command 'print summary of sector T(k,m,n)'. Second, the orbifold geometry Z3xZ3 (3,2) corresponds to the notation ZMxZN (i,j), where ZMxZN is the point group and the pair of positive integer numbers (i,j) refer to the i-th torus lattice and the j-th rototranslation element. When i > 1 (j > 1) the orbifold geometries present non-factorizable torus lattices (rototranslation elements). So, geometries with i = 1 and j = 1 indicate a factorizable lattice and no rototranslations. Similar features in the notation apply for ZM (i,j) orbifold geometries.  
  
 \(bu The following command prints the twist(s) as 4D vectors.
 
