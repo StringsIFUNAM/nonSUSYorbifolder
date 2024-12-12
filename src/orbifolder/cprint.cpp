@@ -3049,7 +3049,7 @@ bool CPrint::PrintStates(const COrbifold &Orbifold, const SConfig &VEVConfig, co
 		(*this->out) << "\n";
 
 		const CSpaceGroupElement &Element = tmp_Field.SGElement;
-		(*this->out) << "  sector (k,m,n)        : " << this->vector_open << Element.Get_m() << this->separator << Element.Get_n() << this->separator << Element.Get_k() << this->vector_close << "\n";
+		(*this->out) << "  sector (k,m,n)      : " << this->vector_open << Element.Get_m() << this->separator << Element.Get_n() << this->separator << Element.Get_k() << this->vector_close << "\n";
 		(*this->out) << "  fixed point n_a     : " << this->vector_open;
 		this->PrintRational(Element.Get_n(0), false);
 		(*this->out) << this->separator;
