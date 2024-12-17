@@ -30,17 +30,16 @@ It shows the spectrum classified by the untwisted and twisted sectors where the 
 
 .B \(bu of sector T(k,m,n)
 
-It prints the spectrum for the specified sector T(k,m,n). The sector (k,m,n) refers to the untwisted and twisted sectors for the point group ZKxZMxZN = Z2WxZMxZN. The first Z2W is a Z2 symmetry group used in the construction of the non-SUSY heterotic string from the SUSY heterotic string. It is used internally in the non-SUSY orbifolder, so it is needed to specify all sectors when using this command. The letter W in Z2W refers to E. Witten who considered a Z2 symmetry in this construction. 
+It prints the spectrum for the specified sector T(k,m,n). The sector (k,m,n) refers to the untwisted and twisted sectors for the point group ZKxZMxZN = Z2WxZMxZN. The Z2W is used to construct the 10D non-SUSY heterotic string from the 10D SUSY heterotic string and it is needed to specify all sectors when using this command. The letter W in Z2W refers to Edward Witten who considers it in this construction. This group is defined as Z2W={b^k|b^2=1}, where k=0,1, b=e^{2 pi i v_0} is the generator of this group of order two, and v_0=(0,1,1,1) is the Witten twist vector. The group Z2W acts freely (i.e. with no fixed points). The point group that is used for the compactification is ZMxZN. An orbifold is usually denoted by the point group ZMxZN. In the N=0 orbifolder the full point group is Z2WxZMxZN. 
 
-Let us show some examples. For a Z3 point group we have Z2WxZ3 = ZKxZM, i.e. K=2, M=3. A sector T(k,m,n) = T(0,2,0) means the untwisted sector of Z2W and the second twisted sector of Z3. Now consider a Z3xZ3 orbifold, then internally it corresponds to Z2WxZ3xZ3 = ZKxZMxZN, i.e. K=2, M=3 and N = 3. A sector T(k,m,n) = T(1,2,1) refers to the twisted sector of Z2W, the second twisted sector of Z3 and the first twisted sector of the last Z3. A sector T(0,0,0) indicates the untwisted sector for Z2WxZMxZN and also Z2WxZM (in this case the third zero in T(0,0,0) indicates the absence of the ZN point group). Recall that a cylic group of order M is defined as ZM = {u^m such that u^(0 mod M) = 1}, where m = 0,1,2,3,...,M-1. The element u in ZM is the generator of this group. The sector associated to m = 0 is the untwisted sector, and the sectors corresponding to m = 1,2,3,...,M-1 are the twisted sectors.   
+Some examples illustrate the notation. For a ZM=Z3 point group we have ZKxZM=Z2WxZ3, i.e. K=2 and M=3. A sector T(k,m,n) = T(0,2,0) means the untwisted sector of Z2W and the second twisted sector of Z3. Now consider a Z3xZ3 orbifold, then this corresponds to Z2WxZ3xZ3, i.e. K=2, M=3 and N = 3. A sector T(k,m,n) = T(1,2,1) refers to the twisted sector of Z2W, the second twisted sector of Z3, and the first twisted sector of the last Z3. A sector T(0,0,0) indicates the untwisted sector for Z2WxZMxZN and also Z2WxZM (in this case the third zero in T(0,0,0) indicates the absence of the ZN point group). Recall that a cylic group of order M is defined as ZM={t^m, such that t^(0 mod M)=1}, where m=0,1,2,3,...,M-1. The element t in ZM is the generator of this group. The sector associated to m=0 is the untwisted sector, and the sectors corresponding to m=1,2,3,...,M-1 are the twisted sectors.   
 
  
 .B \(bu of fixed points
 
-This command presents the sector (k,m,n), the label for the fixed point and six integer numbers n_a = (n1,n2,n3,n4,n5,n6) of the translational part of the space group element associated to the fixed point, the 16D localization vector V_loc, and the field representation under the four dimensional gauge group in the current vev-configuration. If some sector does not contain particle fields then the word empty appears insted of the representation. 
+This command presents the sector (k,m,n), the label for the fixed point and six integer numbers n_a = (n1,n2,n3,n4,n5,n6) of the translational part of the space group element associated to the fixed point, the 16D localization vector V_loc, and the field representation under the four dimensional gauge group in the current vev-configuration. If some sector does not contain particle fields then the word 'empty' appears insted of the representation. 
 
-The notation (k,m,n) (n1,n2,n3,n4,n5,n6) refers to the space group element g=(t^k u^m v^n, n1 e1 + n2 e2 + ... + n6 e6), where t, u and v are the generators for ZK=Z2W, ZM and ZN, respectively. This is for the point group ZKxZMxZN = Z2WxZMxZN. Also, k = 0,1, m = 0,1,2,...,M-1 and n = 0,1,2,...,N-1. The set of integer numbers n_a = (n1,n2,...,n6) indicates n_1 e_1 + n_2 e_2 + ... + n_6 e_6, where e_a, a = 1,...,6, are the lattice basis vectors. Each fixed point has a corresponding space group element called constructing element. So, a fixed point can be specified by the set of numbers (k,m,n)(n1,n2,...,n6) meaning (t^k u^m v^n, n1 e1 + n2 e2 + ... + n6 e6). The part (t^k u^m v^n) is the rotational part and it is used to
-specify the untwisted and twisted sectors by the set of numbers (k,m,n). The the linear combination (n1 e1 + .... + n6 e6) is the translational part of the space group element. In case of rototranslations the numbers n_a are non integers.  
+The notation (k,m,n) (n1,n2,n3,n4,n5,n6) refers to the space group element g=(b^k t^m w^n, n1 e1 + n2 e2 + ... + n6 e6), where b, t and w are the generators of ZK=Z2W, ZM and ZN, respectively. Then, k = 0,1, m = 0,1,2,...,M-1 and n = 0,1,2,...,N-1. The complete point group is Z2WxZMxZN. The set of integer numbers n_a = (n1,n2,...,n6) indicates n_1 e_1 + n_2 e_2 + ... + n_6 e_6, where e_a, a = 1,...,6, are the lattice basis vectors. Each fixed point has a corresponding space group element called constructing element. Then, a fixed point can be specified by the set of numbers (k,m,n)(n1,n2,...,n6), meaning (b^k t^m w^n, n1 e1 + n2 e2 + ... + n6 e6). The part (b^k t^m w^n) is the rotational part of the space group element and it is used to specify the untwisted and twisted sectors by the set of numbers (k,m,n). The linear combination (n1 e1 + .... + n6 e6) is the translational part of the space group element. In case of rototranslations the numbers n_a are non integers.  
 
 
 .B \(bu of fixed point(label)
@@ -49,7 +48,7 @@ It prints the same information as the previous command but only for the fixed po
 
 .B \(bu of fixed point(k,m,n,n1,n2,n3,n4,n5,n6)
 
-It displays the same details as print summary of fixed point(label) but now by providing the sector (k,m,n) and the set of integer numbers n_a = (n1,n2,...,n6) that specify the fixed point instead of the label. 
+It displays the same details as print summary of fixed point(label) but now by providing the sector (k,m,n) and the set of integer numbers n_a = (n1,n2,...,n6) that specify the fixed point, instead of the label. 
 
 Recall that the label for the fixed point, the sector (k,m,n) and the numbers n_a are provided with the command 'print summary of fixed points'. 
 
@@ -60,11 +59,11 @@ It shows the spectrum without the U(1) charges. The parameters 'no U1s' and 'wit
 .TP
 .B (fields)
 
-For a specified field label this command shows the sector (k,m,n), the numbers n_a = (n1,n2,...,n6) of the translational part, the space group charges (discrete non R symmetries), the representaion of the field under the four dimensional gauge group in the current vev-configuration, the left-moving momentum, the right-moving momentum, and the oscillators acting on left states. 
+For a specified field label this command shows the sector (k,m,n), the numbers n_a = (n1,n2,...,n6) of the translational part, the representaion of the field under the four dimensional gauge group in the current vev-configuration, the left-moving momentum, the right-moving momentum, and the oscillators acting on left states. 
 
 Recall that for a given orbifold model and vev-configuration, fields of the four dimensional effective theory are refered with labels, which can be seen with the command 'print summary with labels'. 
 
-The word fields inside the parentheses of print(fields) refers to the label of a field or a set of labels for fields. For instance, print(s_7) displays the respective information for the scalar field labeled as s_7, while print(f_1 s_7) presents the details for the femion field f_1 and the scalar field s_7. Use print(*) to access all fields in the spectrum. Other options are shown in the examples section. 
+The word 'fields' inside the parentheses of print(fields) refers to the label of a field or a set of labels for fields. For instance, print(s_7) displays the respective information for the scalar field labeled as s_7, while print(f_1 s_7) presents the details for the femion field f_1 and the scalar field s_7. Use print(*) to access all fields in the spectrum. Other options are shown in the examples section below.
 
 The command print(fields) can be used with the following parameter
 
@@ -81,11 +80,11 @@ For all fields in the spectrum of an orbifold model this command presents the fo
 .TP
 .B list of charges(fields)
 
-This command prints the left-moving momenta, the right-moving momentum and the space group charges (discrete non R symmetries) for fields specified by their labels. For example print list of charges(s_1 f_7), print list of charges(f_5), etc. The same options for fields in the command 'print(fields)' also apply here, for example use (*) in (fields) to consider all fields in the spectrum. This command can be used with the following parameter
+This command prints the left-moving momentum and the right-moving momentum for fields specified by their labels. For example print list of charges(s_1 f_7), print list of charges(f_5), etc. The same options for fields in the command print(fields) also apply here, for example use (*) in (fields) to consider all fields in the spectrum, i.e. print(*). The command print list of charges(fields) can be used with the following parameter
 
 .B \(bu label of list(Label)
 
-In this case the information displayed from 'print list of charges(fields)' is tagged as Label.
+In this case the information displayed from the command 'print list of charges(fields)' is tagged as Label.
 
 
 .SH EXAMPLES
@@ -287,8 +286,7 @@ The use of this command and its output reads,
     T(0,2,0) Sector:
      27 ( 16,  1,  1)_f  U(1) : (   12) 
 
-\(bu The following command displays the following information for a field or set of fields: the sector (k,m,n), the set of numbers n_a = (n1,n2,...,n6), the space group charges (discrete non R symmetries), the representations of the fields under the 4D gauge group, the left-moving momentum, the right-moving momenta and the oscillators. For example, for a scalar field labeled as s_27 the following command prints the
-corresponding information.
+\(bu The next command displays the following information for a field or set of fields: the sector (k,m,n), the set of numbers n_a = (n1,n2,...,n6), the representations of the fields under the 4D gauge group, the left-moving momentum, the right-moving momenta and the oscillators. For example, for a scalar field labeled as s_27 the following command prints the corresponding information.
 
 .B print(s_27)
 
@@ -297,9 +295,8 @@ As an explicit example, consider the Z3 orbifold named Z3_1_1. Then, the use of 
   /Z3_1_1/spectrum/> print(s_27)
 
       s_27
-    sector (k,m,n)        : (0, 2, 0)
+    sector (k,m,n)      : (0, 2, 0)
     fixed point n_a     : (0, 1, 0, 1, 0, 0)
-    space group charges : (2)
 
     representation      : ( 10,  1,  1)_s  U(1): (  -24)
 
@@ -319,7 +316,7 @@ As an explicit example, consider the Z3 orbifold named Z3_1_1. Then, the use of 
     oscillators         : no
 
 
-Other options are
+Other options for 'fields' in print(fields) are
 
 .B print(*)
 
@@ -341,21 +338,22 @@ It prints the information only for the scalar field s_1 and the fermion field f_
 
 It gives additional information such as the gamma phases, internalIndex and field number for the scalar field labeled as s_1.
 
-\(bu The following command presents the following information for all fields in the spectrum: the sector (k,m,n), the label for the fixed point, the numbers n_a = (n1,n2,...n6) that specify the translational part of the space group element associated to the fixed point, the 16D localization vector V_loc, and the field representations in that sector. If the sector does not contain fields then the word empty is displayed instead of the representations. It also shows, at the beginning, the current vev-configuration and the 4D gauge group. If one of the U(1)s is anomalous then a line indicating this also appears.
+\(bu The next command presents the following information for all fields in the spectrum: the sector (k,m,n), the label for the fixed point, the numbers n_a = (n1,n2,...n6) that specify the translational part of the space group element associated to the fixed point, the 16D localization vector V_loc, and the field representations in that sector. If the sector does not contain fields then the word 'empty' is displayed instead of the representations. It also shows, at the beginning, the current vev-configuration and the 4D gauge group. If one of the U(1)s is anomalous, then a line indicating this also appears.
 
 .B print summary of fixed points
 
 For example, consider the Z3 orbifold model called Z3_1_1. Then the use of this command and its output reads, e.g.
 
-  /Z3_1_1/spectrum/> print summary of fixed points 
+
+  /Z3_1_1/spectrum> print summary of fixed points
 
     Gauge group in vev-configuration "TestConfig1": SO(10) x SU(3) and SO(16) and U(1)
     First U(1) is anomalous with tr Q_anom = 20736.00.
 
     -------------------------------------------------------------------------------------------------------------
-    sector:      (k,m,n)  = (0, 0, 0)
+    sector:    (k,m,n)  = (0, 0, 0)
     fixed point:  U
-                n_a   = (    0,     0,     0,     0,     0,     0)
+                  n_a   = (    0,     0,     0,     0,     0,     0)
     -------------------------------------------------------------------------------------------------------------
     V_loc = (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
     -------------------------------------------------------------------------------------------------------------
@@ -365,8 +363,9 @@ For example, consider the Z3 orbifold model called Z3_1_1. Then the use of this 
 
     ...
 
--------------------------------------------------------------------------------------------------------------
-    sector:      (k,m,n)  = (0, 2, 0)
+
+    -------------------------------------------------------------------------------------------------------------
+    sector:    (k,m,n)  = (0, 2, 0)
     fixed point:  T54
                   n_a   = (    0,     2,     0,     2,     0,     2)
     -------------------------------------------------------------------------------------------------------------
@@ -377,24 +376,23 @@ For example, consider the Z3 orbifold model called Z3_1_1. Then the use of this 
       3 (  1, -3,  1)_s  U(1) : (    0) 
     -------------------------------------------------------------------------------------------------------------
 
+    ...   
 
-    ...
-
-  -------------------------------------------------------------------------------------------------------------
-    sector:      (k,m,n)  = (0, 2, 0)
+    -------------------------------------------------------------------------------------------------------------
+    sector:    (k,m,n)  = (0, 2, 0)
     fixed point:  T54
                   n_a   = (    0,     2,     0,     2,     0,     2)
     -------------------------------------------------------------------------------------------------------------
     V_loc = (  2/3,   2/3,  -4/3,     0,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0)
     -------------------------------------------------------------------------------------------------------------
       1 ( 16,  1,  1)_f  U(1) : (   12) 
-    -------------------------------------------------------------------------------------------------------------
-
+    ------------------------------------------------------------------------------------------------------------- 
 
     ...
 
+
     -------------------------------------------------------------------------------------------------------------
-    sector:      (k,m,n)  = (1, 2, 0)
+    sector:    (k,m,n)  = (1, 2, 0)
     fixed point:  T109
                   n_a   = (    0,     2,     0,     2,     0,     2)
     -------------------------------------------------------------------------------------------------------------
@@ -405,7 +403,6 @@ For example, consider the Z3 orbifold model called Z3_1_1. Then the use of this 
 
 where ... indicates the respective information for all other fixed points that were not displayed here for space reasons. 
 
-
 \(bu From the previous example suppose that, for some reasons, we are interested in the fixed point specified by the sector (k,m,n)= (0,2,0) and the set of numbers n_a = (0,2,0,2,0,2) associated to the label T54 as shown in the displayed output above. Then, as an example of the command 'print summary of fixed point(label)' the following instruction displays the corresponding information for this fixed point using the label T54
 
 .B print summary of fixed point(T54)
@@ -415,7 +412,7 @@ In the prompt, the use of this command and its output reads,
   /Z3_1_1/spectrum/> print summary of fixed point(T54)
 
     -------------------------------------------------------------------------------------------------------------
-    sector:      (k,m,n)  = (0, 2, 0)
+    sector:    (k,m,n)  = (0, 2, 0)
     fixed point:  T54
                   n_a   = (    0,     2,     0,     2,     0,     2)
     -------------------------------------------------------------------------------------------------------------
@@ -426,7 +423,7 @@ In the prompt, the use of this command and its output reads,
       3 (  1, -3,  1)_s  U(1) : (    0) 
     -------------------------------------------------------------------------------------------------------------
     -------------------------------------------------------------------------------------------------------------
-    sector:      (k,m,n)  = (0, 2, 0)
+    sector:    (k,m,n)  = (0, 2, 0)
     fixed point:  T54
                   n_a   = (    0,     2,     0,     2,     0,     2)
     -------------------------------------------------------------------------------------------------------------
@@ -443,7 +440,7 @@ In the prompt, the use of this command and its output reads,
 shows an output that looks as in the previous example. 
 
 
-\(bu The following command shows for all field in the spectrum the sector (k,m,n), the numbers n_a = (n1,n2,...,n6) of the translational part of the constructing element, the label for the fixed point, the representation of the field under the four dimensional gauge group in the current vev-configuration, the field label, the left-moving momenta, the right-moving momentum and the gamma phases.
+\(bu The following command shows for all fields in the spectrum the sector (k,m,n), the numbers n_a = (n1,n2,...,n6) of the translational part of the constructing element, the label for the fixed point, the representation of the field under the four dimensional gauge group in the current vev-configuration, the field label, the left-moving momenta, the right-moving momentum and the gamma phases.
 
 .B print all states
 
@@ -494,24 +491,25 @@ For example, consider the Z3 orbifold model called Z3_1_1. The use of this comma
 
 where the ... indicates the corresponding details for all other fields in the spectrum. They are not showed here for space reasons. 
 
-\(bu The following command prints the left-moving momentum, the right-moving momentum, the space group charges (discrete non R symmetries) and the field label for a scalar field with label s_27.
+\(bu The following command prints the left-moving momenta, the right-moving momentum and the field label for a scalar field with label s_27.
 
 .B print list of charges(s_27) 
 
 For example, for the Z3 orbifold named Z3_1_1 the use of this command and its output reads,
 
-  /Z3_1_1/spectrum/> print list of charges(s_27) 
+  /Z3_1_1/spectrum> print list of charges(s_27)
 
-    ( -1/3,  -1/3,  -1/3,    -1,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     0,    -1,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     0,     0,    -1,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     0,     0,     0,    -1,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     0,     0,     0,     0,    -1),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     0,     0,     0,     0,     1),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     0,     0,     0,     1,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     0,     0,     1,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     0,     1,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
-    ( -1/3,  -1/3,  -1/3,     1,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,    -1/3),  (    2),  "s_27"
+    ( -1/3,  -1/3,  -1/3,    -1,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,    -1,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,     0,    -1,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,     0,     0,    -1,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,     0,     0,     0,    -1),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,     0,     0,     0,     1),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,     0,     0,     1,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,     0,     1,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,     1,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     1,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+
 
 Note. This information also appears as part of the details displayed by the command 'print(s_27)'.
 
@@ -525,15 +523,15 @@ For example, the command
 
 shows the information displayed from 'print list of charges(s_27)' now labeled as A1. For instance, the output reads,
 
-/Z3_1_1/spectrum/> print list of charges(s_27) label of list(A1)
+  /Z3_1_1/spectrum> print list of charges(s_27) label of list(A1)
 
-  A1 = 
-  ( -1/3,  -1/3,  -1/3,    -1,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  (    2),  "s_27"
- 
- ...
+    A1 = 
+    ( -1/3,  -1/3,  -1/3,    -1,     0,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
+    ( -1/3,  -1/3,  -1/3,     0,    -1,     0,     0,     0),  (    0,     0,     0,     0,     0,     0,     0,     0),  (    0,  -1/3,  -1/3,  -1/3),  "s_27"
 
-where ... indicates the remaining information as shown in the previous example. 
+  ...
 
+where ... indicates the remaining information as shown in the previous example where the command 'print list of charges(s_27)' was used.
 
 
 

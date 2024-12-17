@@ -37,7 +37,9 @@ A condition consists of three parts, e.g. if(length == even):
 
 .SH EXAMPLES
 
-\(bu The following command presents the information of print(*), i.e the sector, fixed point, space group charges, representation, left-moving momenta and 
+All the following instructions refer to the Z3 orbifold, but similar formats apply for other orbifolds.
+
+\(bu The following command presents the information of print(*), i.e the sector, fixed point, representation, left-moving momenta and 
 righ-moving momentum and oscillators, only for the fields where the number of oscillators acting on the left mover are non zero. Recall that the symbol * means that all fields in the spectrum are taken in consideration.
 
 .B  print(*) if(#osci. != 0)
@@ -46,7 +48,7 @@ righ-moving momentum and oscillators, only for the fields where the number of os
 
 .B tex table(*) if(Q_1 == -24)
 
-\(bu The following command prints the information of print list of charges(*), i.e the shifted left-moving momenta, the shifted right-moving momentum and the discrete non R symmetries (if defined in the geometry file), only for the fields where the number of oscillators acting on the left mover are non zero. 
+\(bu The following command prints the information of print list of charges(*), i.e the shifted left-moving momenta and the shifted right-moving momentum, only for the fields where the number of oscillators acting on the left mover are non zero. 
 
 .B print list of charges(*) if(#osci. != 0)
 

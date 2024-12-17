@@ -20,11 +20,11 @@ It assigns the label 'Label' to the fixed point/brane with localization (k,m,n,n
 
 .SH EXAMPLES
 
-\(bu The following command assigns the Label 'Z' to the fixed point with localization (0,2,0,0,1,0,0,0,0)
+\(bu Consider the Z3 orbifold model named Z3_1_1. The following command assigns the Label 'Z' to the fixed point with localization (0,2,0,0,1,0,0,0,0)
 
 .B assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)
 
-To explain this case consider the Z3 orbifold model named Z3_1_1. The command 'print all states' in the spectrum directory lists the currently labels associated to the fixed point/brane with localization (k,m,n,n1,n2,n3,n4,n5,n6). For example, a part of the corresponding output reads, 
+First, we give some previous information to know the label that is changed. The command 'print all states' in the spectrum directory lists the currently labels associated to the fixed point/brane with localization (k,m,n,n1,n2,n3,n4,n5,n6). For example, a part of the corresponding output reads, 
 
   /Z3_1_1/spectrum/> print all states
 
@@ -40,9 +40,9 @@ To explain this case consider the Z3 orbifold model named Z3_1_1. The command 'p
 
  ...
 
-where ... indicates additional information. The localization for the fixed point is given after the words twisted sector, i.e. (0, 2, 0) (    0,     1,     0,     0,     0,     0) which corresponds to (k,m,n) (n1,n2,n3,n4,n5,n6). The label associated with the fixed point with localization (k,m,n,n1,n2,n3,n4,n5,n6) = (0, 2, 0, 0, 1, 0, 0, 0, 0) is T31. This is the label that is changed with the command 'assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)' in the labels directory. Note that different fields can be associated with the same localization for the fixed point, i.e. with the same label. In this case the fields labeled as s_22, s_23, s_24, s_25, s_26 and f_10 have the same fixed point localization (k,m,n,n1,n2,n3,n4,n5,n6) = (0, 2, 0, 0, 1, 0, 0, 0, 0), i.e. the same label T31. 
+where ... indicates additional information (see the man help in the spectrum directory by typing man print, then look for 'print all states'). The label associated with the fixed point with localization (k,m,n,n1,n2,n3,n4,n5,n6) = (0, 2, 0, 0, 1, 0, 0, 0, 0) is T31. This is the label that is changed with the command 'assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)' in the labels directory. Note that different fields can be associated with the same localization for the fixed point, i.e. with the same label. In this case, for the Z3 orbfifold, the fields labeled as s_22, s_23, s_24, s_25, s_26 and f_10 have the same fixed point localization (k,m,n,n1,n2,n3,n4,n5,n6) = (0, 2, 0, 0, 1, 0, 0, 0, 0), i.e. the same label T31. 
 
-The use of the command 'assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)' in the prompt and the corresponding output reads, for example,
+Now, the use of the command 'assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)' in the prompt and the corresponding output reads, 
 
   /Z3_1_1/vev-config/labels/> assign label(Z) to fixed point(0,2,0,0,1,0,0,0,0)
 
@@ -70,7 +70,8 @@ where the new assigned label Z appears explicitly.
 
 \(bu Other examples for the command 'assign label(Label) to fixed point(k,m,n,n1,n2,n3,n4,n5,n6)' follow a similar treatment as the example shown above.  
 
-NOTE. An explanation for the notation (k,m,n,n1,n2,n3,n4,n5,n6) is provided by using the command 'man print' in the spectrum directory.
+NOTE. An explanation for the notation (k,m,n,n1,n2,n3,n4,n5,n6) is provided in the spectrum directory by typing man print.
+
 
 .SH AUTHOR
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
