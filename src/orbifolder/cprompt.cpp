@@ -75,7 +75,7 @@ const char* command_names_orbifold_model[] = {
 
 const char* command_names_orbifold[] = {
     "m",
-    "gg",  
+    "gg",
     "s",
     "v",
     "l",
@@ -128,9 +128,9 @@ const char* command_names_orbifold_spectrum[] = {
     "sectors",
     "fixed"
     ,"points",
-    "sector T(",                     
-    "point(",               
-    "no U1s",                               
+    "sector T(",
+    "point(",
+    "no U1s",
     "with labels",
     nullptr
 };
@@ -204,7 +204,7 @@ const char** getCommandNames(vector<int>&current_folder_global) {
         {
             return command_names_orbifold_gauge;
         }
-        case 3: 
+        case 3:
         {
             return command_names_orbifold_spectrum;
         }
@@ -226,7 +226,7 @@ const char** getCommandNames(vector<int>&current_folder_global) {
               }
             }
 
-        
+
         }
         default:
             return nullptr;
@@ -272,8 +272,16 @@ char* command_name_generator(const char* text, int state) {
 
 // Función para eliminar espacios vacíos del final de una cadena
 string rtrim(const string &s) {
+    size_t start = s.find_first_not_of(" \t\n\r\f\v");
     size_t end = s.find_last_not_of(" \t\n\r\f\v");
-    return (end == string::npos) ? "" : s.substr(0, end + 1);
+    if (start == string::npos) {
+        return "";
+    }
+
+    // Recortar espacios al inicio y al final
+    return s.substr(start, end - start + 1);
+    //return (start == string::npos || end == string::npos) ? "" : s.substr(start+5, end - start + 1);
+    //return (end == string::npos) ? "" : s.substr(0, end + 1);
 }
 
 // Función para verificar si el mensaje de error contiene palabras clave de error
@@ -335,8 +343,8 @@ CPrompt::CPrompt()
   this->online_mode         = false;
   this->print_output        = true;
   this->wait_for_processes  = false;
-  
-   
+
+
 }
 
 
@@ -499,7 +507,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
     size_t pos_point = ifilename.find('.');
     string name_without_extension = "";
     // Si encontramos un punto en la cadena
-    if (pos_point != std::string::npos) 
+    if (pos_point != std::string::npos)
     {
         // Extraer la subcadena desde el inicio hasta el punto
         name_without_extension = ifilename.substr(0, pos_point);
@@ -637,7 +645,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
       // just replace this
 
-      char* user_input; 
+      char* user_input;
 
       string my_folder;
 
@@ -669,7 +677,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
 
 
       // just replace this
-      
+
       cin.clear();
       Commands.push_back(command);
     }
@@ -737,7 +745,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
         if (this->keep_output_to_file)
         {
           if (this->print_output)
-          {  
+          {
             if (this->online_mode)
             {
                 this->output_filename_aux = tmp_string1;
@@ -1419,9 +1427,9 @@ bool CPrompt::ExecuteCommand(string command)
   }
   // end: prompt commands
   // STEP 2 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-  
+
   this->ExecuteOrbifoldCommand(command);
-  
+
   if (restore_old_output_type)
   {
     restore_old_output_type = false;
@@ -1448,7 +1456,7 @@ bool CPrompt::ExecuteCommand(string command)
 ######   Interprets "command" and executes it.                                       ######
 ######################################################################################## */
 bool CPrompt::ExecuteOrbifoldCommand(string command)
-{ 
+{
   string tmp_string1 = "";
   string tmp_string2 = "";
   string tmp_string3 = "";
@@ -1473,10 +1481,10 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
   // if the current directory is />
   if (this->current_folder[0] < 0)
-  { 
-        
+  {
+
     if (command.substr(0,3) == "man")
-    {    
+    {
       if (command.length() >=4)
       {
         command = rtrim(command);
@@ -1486,7 +1494,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         command.insert(4, path_doc);
         // Concatenar ".man" al final
         command += ".man";
-      
+
 
         // Redirigir la salida de error estándar a un archivo temporal
         string temp_file = "temp_error.txt";
@@ -1507,7 +1515,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         remove(temp_file.c_str());
 
         // Verificar el resultado de la ejercución y el mensaje de error
-        
+
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
                  << "Options are:\n* cd\n* create\n* delete\n* load\n* rename\n* save\n";
@@ -1555,8 +1563,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       return true;
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
-    // rename orbifold    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // rename orbifold
     if (this->FindCommandType2(command, "rename orbifold(", parameter_string1, parameter_string2))
     {
       // begin: find parameters
@@ -1598,17 +1606,17 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       this->MessageParameterNotKnown(parameter_string2);
       return true;
-    }    
-    
+    }
+
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // load orbifolds 
+    // load orbifolds
     if (this->FindCommandType2(command, "load orbifolds(", parameter_string1, parameter_string2)
-     || this->FindCommandType2(command, "load orbifold(", parameter_string1, parameter_string2))  
+     || this->FindCommandType2(command, "load orbifold(", parameter_string1, parameter_string2))
     {
       const bool inequivalent      = this->FindParameterType1(parameter_string2, "inequivalent");
       (*this->Print.out) << "\n";
-      this->LoadOrbifolds(parameter_string1, inequivalent, false);  
+      this->LoadOrbifolds(parameter_string1, inequivalent, false);
       this->MessageParameterNotKnown(parameter_string2);
       return true;
     }
@@ -1662,13 +1670,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       this->MessageParameterNotKnown(parameter_string2);
       return true;
-    } 
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // create orbifold
     // updated on 21.10.2011
     if (this->FindCommandType2(command, "create orbifold(", parameter_string1, parameter_string2))
-    {         
+    {
       // begin: find parameters
       const bool b1 = this->FindParameterType2(parameter_string2, "from(", parameter_string3);
       const bool b2 = this->FindParameterType2(parameter_string2, "with point group(", parameter_string3);
@@ -1711,7 +1719,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         this->Orbifolds[this->Orbifolds.size()-1].OrbifoldGroup.Label = parameter_string1;
 
         vector<SConfig> NewVEVConfigs = this->AllVEVConfigs[index];
-        t1 = NewVEVConfigs.size(); 
+        t1 = NewVEVConfigs.size();
         for (i = 0; i < t1; ++i)
         {
           PID &pid = NewVEVConfigs[i].pid;
@@ -1734,8 +1742,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       // case 2: "with point group(M,N)"
       vector<int> Orders;
-      
-      if (!convert_string_to_vector_of_int(parameter_string3, Orders) || ((Orders.size() != 1) && (Orders.size() != 2)) || (find(Orders.begin(), Orders.end(), 0) != Orders.end()))  
+
+      if (!convert_string_to_vector_of_int(parameter_string3, Orders) || ((Orders.size() != 1) && (Orders.size() != 2)) || (find(Orders.begin(), Orders.end(), 0) != Orders.end()))
       {
         if (this->print_output)
           (*this->Print.out) << "\n  " << this->Print.cbegin << "The point group of the orbifold is ill-defined." << this->Print.cend << "\n" << endl;
@@ -1744,25 +1752,25 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         return true;
       }
 
-       int ZM = 2;  
+       int ZM = 2;
        int ZN = 1;
        int ZK = 1;
       if (Orders.size() == 1)
        {
        ZN = Orders[0];
-       }   
+       }
       else
       {
         ZN = Orders[0];
-        ZK = Orders[1];   
+        ZK = Orders[1];
       }
-           
+
       COrbifold NewOrbifold;
       CSpaceGroup &SpaceGroup = NewOrbifold.OrbifoldGroup.AccessSpaceGroup();
       SpaceGroup.Clear();
-      SpaceGroup.SetOrder(ZM, ZN, ZK);  
-      
-      
+      SpaceGroup.SetOrder(ZM, ZN, ZK);
+
+
       NewOrbifold.OrbifoldGroup.Label = parameter_string1;
       this->Orbifolds.push_back(NewOrbifold);
 
@@ -1779,13 +1787,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
      if (this->print_output)
       {
-        (*this->Print.out) << "\n  " << this->Print.cbegin << "Orbifold with point group "; 
+        (*this->Print.out) << "\n  " << this->Print.cbegin << "Orbifold with point group ";
         if (SpaceGroup.IsZMxZN())
           (*this->Print.out) << "Z" << SpaceGroup.GetN();
         if (SpaceGroup.IsZMxZNxZK())
-          (*this->Print.out) << "xZ" << SpaceGroup.GetK();          
-          
-        (*this->Print.out) << " created and stored in directory \"" << parameter_string1 << "\"." << this->Print.cend << "\n" << endl;   
+          (*this->Print.out) << "xZ" << SpaceGroup.GetK();
+
+        (*this->Print.out) << " created and stored in directory \"" << parameter_string1 << "\"." << this->Print.cend << "\n" << endl;
         (*this->Print.out) << "  " << this->Print.cbegin << "Use the command \"cd " << parameter_string1 << "\" to change the directory to the new orbifold." << this->Print.cend << "\n" << endl;
       }
 
@@ -1793,8 +1801,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       this->MessageParameterNotKnown(parameter_string2);
       return true;
     }
-    
-  
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // create random orbifold
     // updated on 22.02.2012
@@ -1802,25 +1810,25 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     {
  // begin: find parameters
 
-      bool save_if_new = false; 
-      bool save_all    = true;  
+      bool save_if_new = false;
+      bool save_all    = true;
       bool save_SM     = false;
       bool save_PS     = false;
       bool save_SU5    = false;
 
       unsigned number_of_generations = 3;
-      bool generations_specified = false;  
+      bool generations_specified = false;
 
 
       bool Use_Filename = false;
       string Filename = "";
 
       const bool check_anomalies   = !this->FindParameterType1(parameter_string2, "do not check anomalies");
-      const bool load_when_done    =  this->FindParameterType1(parameter_string2, "load when done"); 
-      const bool print_info        =  this->FindParameterType1(parameter_string2, "print info"); 
-      
+      const bool load_when_done    =  this->FindParameterType1(parameter_string2, "load when done");
+      const bool print_info        =  this->FindParameterType1(parameter_string2, "print info");
 
-      if (this->FindParameterType2(parameter_string2, "if(", parameter_string3))  
+
+      if (this->FindParameterType2(parameter_string2, "if(", parameter_string3))
       {
         save_SM     = this->FindParameterType1(parameter_string3, "SM");
         save_PS     = this->FindParameterType1(parameter_string3, "PS");
@@ -1849,10 +1857,10 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       const bool create_Orbifold = (!save_all || save_if_new || check_anomalies || print_info);
 
-// begin: use original shifts and Wilson lines  
-      CRandomModel RandomModel(E8xE8);    
-      vector<bool> UseOrigShiftsAndWilsonLines(9, false);   
-      UseOrigShiftsAndWilsonLines[0]=true; //use Witten's shift 
+// begin: use original shifts and Wilson lines
+      CRandomModel RandomModel(E8xE8);
+      vector<bool> UseOrigShiftsAndWilsonLines(9, false);
+      UseOrigShiftsAndWilsonLines[0]=true; //use Witten's shift
 
 
       if (this->FindParameterType2(parameter_string2, "use(", parameter_string3))
@@ -1887,12 +1895,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         }
 
         for (i = 0; i < 8; ++i)
-          UseOrigShiftsAndWilsonLines[i+1] = (tmp_unsigneds[i] == 1);   
+          UseOrigShiftsAndWilsonLines[i+1] = (tmp_unsigneds[i] == 1);
       }
-// end: use original shifts and Wilson lines   
+// end: use original shifts and Wilson lines
 
 
-      unsigned max_models = 1;  
+      unsigned max_models = 1;
 
       if (this->FindParameterType2(parameter_string2, "#models(", parameter_string3))
       {
@@ -1909,14 +1917,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           max_models = (unsigned)atoi(parameter_string3.c_str());
         }
       }
-   
+
       // end: find parameters
 
       unsigned OriginalOrbifoldIndex = 0;
       vector<unsigned> OrbifoldIndices;
 
       bool random_origin = false;
-      
+
       if (parameter_string1 == "*")
       {
         random_origin = true;
@@ -1957,10 +1965,10 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         if (this->print_output)
           (*this->Print.out) << "\n  " << this->Print.cbegin << "Models neither saved nor displayed. Parameter \"load when done\" turned on." << this->Print.cend << flush;
         command += " load when done";
-      } 
+      }
 
-      vector<SUSYMultiplet> Multiplets(2);		
-	  Multiplets[0]=Scalar;							
+      vector<SUSYMultiplet> Multiplets(2);
+	  Multiplets[0]=Scalar;
 	  Multiplets[1]=LeftFermi;
 
       int newPID = -1;
@@ -1983,13 +1991,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           Filename += osID.str();
           Filename += ".txt";
         }
-        
+
         const double Rmax = RAND_MAX+0.000001;
 
         std::ofstream tmp_out(Filename.data());
 
 
-        CInequivalentModels InequivModels; 
+        CInequivalentModels InequivModels;
 
         COrbifoldGroup NewOrbifoldGroup;
         vector<CVector> UnbrokenRoots;
@@ -2013,7 +2021,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
             CoreSpectrum.clear();
             COrbifoldCore OrbifoldCore(NewOrbifoldGroup, CoreSpectrum);
-            CoreSpectra.push_back(CoreSpectrum);  
+            CoreSpectra.push_back(CoreSpectrum);
           }
         }
         else
@@ -2030,21 +2038,21 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
           SpecialIndex = 0;
         }
-       
+
         vector<SConfig> AllVEVConfigs;
 
         CSpectrum PrintSpectrum;
 
         bool save_current_model = false;
         string model_string = "";
-        
-        bool model_with_problem = false; 
+
+        bool model_with_problem = false;
 
         unsigned problem_counter = 0;
 
         i = 1;
         while (i <= max_models)
-        { 
+        {
           if (random_origin)
           {
             OriginalOrbifoldIndex = (unsigned)(rand() * (double)o1/Rmax);
@@ -2061,8 +2069,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           }
           // create random shifts and Wilson lines
           if (NewOrbifoldGroup.CreateRandom(RandomModels[SpecialIndex], false))
-          { 
-            
+          {
+
             model_with_problem = false;
             save_current_model = true;
             model_string = "Random";
@@ -2074,8 +2082,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               model_string += "_ProblemModInv";
             }
 
-          if (create_Orbifold && !model_with_problem) 
-            {  
+          if (create_Orbifold && !model_with_problem)
+            {
               COrbifold NewOrbifold(NewOrbifoldGroup, CoreSpectra[SpecialIndex]);
 
               if (NewOrbifold.GetCheckStatus() != CheckedAndGood)
@@ -2086,7 +2094,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               }
 
 
-             if (NewOrbifold.TachyonicStandardConfig.Fields.size() == 0)	 
+             if (NewOrbifold.TachyonicStandardConfig.Fields.size() == 0)
              {
               if (!save_all && !model_with_problem)
               {
@@ -2111,41 +2119,41 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
              else
              {
 			  save_current_model = false;
-			 }    
-             
-              if (save_current_model && (save_if_new || print_info) && !model_with_problem)                     
-              {      
+			 }
+
+              if (save_current_model && (save_if_new || print_info) && !model_with_problem)
+              {
                 CSpectrum Spectrum(NewOrbifold.StandardConfig, Multiplets);
 
-                if (save_if_new) 
+                if (save_if_new)
                 {
                   save_current_model = InequivModels.IsSpectrumUnknown(Spectrum, true);
                 }
-                 if (save_current_model && print_info) 
+                 if (save_current_model && print_info)
                  PrintSpectrum = Spectrum;
               }
-              
-              if (check_anomalies && !model_with_problem && (!save_if_new || (save_if_new && save_current_model))) 
-              {   
-                if ((!NewOrbifold.CheckAnomaly(NewOrbifold.StandardConfig, this->GaugeIndices, this->Print, false) ))                  
-                {         
+
+              if (check_anomalies && !model_with_problem && (!save_if_new || (save_if_new && save_current_model)))
+              {
+                if ((!NewOrbifold.CheckAnomaly(NewOrbifold.StandardConfig, this->GaugeIndices, this->Print, false) ))
+                {
                   //(*this->Print.out) << "\n  " << this->Print.cbegin << "Warning: problems with discrete and/or gauge anomalies." << this->Print.cend << endl;
                   //model_with_problem = true;
                   //model_string += "_ProblemAnomaly";
                   save_current_model = false;
                 }
-              }      
-            } 
+              }
+            }
 
             // begin: save the current model
-            if (save_current_model || model_with_problem)  
+            if (save_current_model || model_with_problem)
             {
               std::ostringstream os;
               os << i;
               NewOrbifoldGroup.Label = model_string + os.str();
               NewOrbifoldGroup.PrintToFile(tmp_out);
               ++i;
-              
+
               if (!model_with_problem && print_info)
               {
                 (*this->Print.out) << "\n  " << this->Print.cbegin;
@@ -2158,18 +2166,18 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
                 this->Print.PrintSpectrum(PrintSpectrum);
                 (*this->Print.out) << flush;
-              }  
+              }
             }
-            
+
             if (model_with_problem)
             {
               (*this->Print.out) << "  " << this->Print.cbegin << "Orbifold label: " << NewOrbifoldGroup.Label << this->Print.cend << endl;
               ++problem_counter;
-            }           
+            }
             // end: save the current model
-          } 
-        } 
-    
+          }
+        }
+
        tmp_out.close();
 
         if (problem_counter == 0)
@@ -2184,7 +2192,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         // terminate child process
         std::exit(0);
-      } 
+      }
       /* parent process */
       usleep(100);
 
@@ -2199,7 +2207,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       (*this->Print.out) << "\n  " << this->Print.cbegin << "New child process \"PID " << newPID << "\" from command \"" << command << "\"." << this->Print.cend << "\n" << endl;
 
-       if (print_info)  
+       if (print_info)
        (*this->Print.out) << "  " << this->Print.cbegin << "Note that details of newly created orbifold models can only be seen after process \"PID " << newPID << "\" has finished." << this->Print.cend << "\n" << endl;
 
 // save info about the process to the orbifold that id the origin of the random models
@@ -2217,7 +2225,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // delete orbifold  
+    // delete orbifold
     if (this->FindCommandType1(command, "delete orbifold", parameter_string1))
     {
       bool process_running = false;
@@ -2227,7 +2235,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         if (!this->MessageOrbifoldNotKnown(tmp_string1, index))
         {
           const vector<SConfig> &VEVConfigs = this->AllVEVConfigs[index];
-          t1 = VEVConfigs.size(); 
+          t1 = VEVConfigs.size();
           for (i = 0; !process_running && (i < t1); ++i)
           {
             const vector<bool> &PID_Done = VEVConfigs[i].pid.PID_Done;
@@ -2266,7 +2274,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         for (int i = t1-1; i >= 0; --i)
         {
           const vector<SConfig> &VEVConfigs = this->AllVEVConfigs[i];
-          t2 = VEVConfigs.size(); 
+          t2 = VEVConfigs.size();
 
           process_running = false;
           for (j = 0; !process_running && (j < t2); ++j)
@@ -2288,9 +2296,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             this->AllVEVConfigsIndex.erase(this->AllVEVConfigsIndex.begin() + i);
           }
         }
-        
+
         this->OrbifoldIndex = -1;
-        
+
         if (this->print_output)
         {
           if (t1 == counter)
@@ -2310,15 +2318,15 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       this->MessageParameterNotKnown(parameter_string1);
       return true;
     }
-    
+
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // show directories  
+    // show directories
     if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
     {
-      if (this->FindParameterType1(parameter_string1, "processes"))  
-       this->PrintCommandsProcesses(); 
-      else 
+      if (this->FindParameterType1(parameter_string1, "processes"))
+       this->PrintCommandsProcesses();
+      else
       if (this->FindParameterType1(parameter_string1, "create random"))
       {
         (*this->Print.out) << "\n  create random orbifold from(OrbifoldLabel)\n";
@@ -2351,7 +2359,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           (*this->Print.out) << "    @begin print to file(Filename)\n";
           (*this->Print.out) << "    @end print to file\n";
         //}
-        (*this->Print.out) << "    @typesetting(Type)                       \"Type\" can be \"mathematica\", \"latex\" or \"standard\" \n\n" << flush;       
+        (*this->Print.out) << "    @typesetting(Type)                       \"Type\" can be \"mathematica\", \"latex\" or \"standard\" \n\n" << flush;
       }
       else
       {
@@ -2383,7 +2391,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         (*this->Print.out) << "  general commands:\n";
         (*this->Print.out) << "    dir                                       show commands; optional: \"no subdirectories\"\n";
-        (*this->Print.out) << "    help                                      optional: \"create random\", \"system commands\", \"processes\"\n"; 
+        (*this->Print.out) << "    help                                      optional: \"create random\", \"system commands\", \"processes\"\n";
         if (!this->online_mode)
           (*this->Print.out) << "    exit                                      exit program\n";
         (*this->Print.out) << "\n" << flush;;
@@ -2391,10 +2399,10 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       this->MessageParameterNotKnown(parameter_string1);
       return true;
-    }        
-  } 
+    }
+  }
   else
-  {  
+  {
     // STEP 4 //////////////////////////////////////////////////////////////////////////////////////////////////////////
     // begin: commands available in all orbifold directories
     COrbifold          &Orbifold       = this->Orbifolds[this->OrbifoldIndex];
@@ -2497,11 +2505,11 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       this->current_folder[2] = 1;
       return true;
     }
-  
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // create set or monomial
     // updated on 26.01.2011
-    if ((case1 = this->FindCommandType1(command, "create set", parameter_string1)))  
+    if ((case1 = this->FindCommandType1(command, "create set", parameter_string1)))
     {
       unsigned index = 0;
 
@@ -2518,7 +2526,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         // create an empty set or create a set from a monomial
         // updated on 19.04.2011
         if (case1)
-        { 
+        {
           if (this->MessageXAlreadyExists(NamesOfSetsOfFields, "Set", tmp_string1))
             return true;
 
@@ -2545,13 +2553,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
           NamesOfSetsOfFields.push_back(tmp_string1);
           SetsOfFields.push_back(tmp_SetOfFields);
-        } 
-      } 
+        }
+      }
       this->MessageParameterNotKnown(parameter_string1);
       return true;
-    } 
+    }
 
- 
+
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // delete set or monomial
@@ -2601,9 +2609,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     if ((case1 = this->FindCommandType2(command, "insert(", parameter_string1, parameter_string2))
      || (case2 = this->FindCommandType2(command, "remove(", parameter_string1, parameter_string2)))
     {
-      unsigned index = 0;     
+      unsigned index = 0;
       // begin: set
-      if (this->FindParameterType2(parameter_string2, "set(", tmp_string1) && 
+      if (this->FindParameterType2(parameter_string2, "set(", tmp_string1) &&
           ((case1 && this->FindParameterType1(parameter_string2, "into")) || (case2 && this->FindParameterType1(parameter_string2, "from"))))
       {
         vector<string>            &NamesOfSetsOfFields = VEVConfig.NamesOfSetsOfFields;
@@ -2614,12 +2622,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         vector<unsigned> &CurrentSet = SetsOfFields[index];
 
-        vector<SUSYMultiplet> Multiplets(2);     
-        Multiplets[0]=Scalar;				   
-	    Multiplets[1]=LeftFermi;  
+        vector<SUSYMultiplet> Multiplets(2);
+        Multiplets[0]=Scalar;
+	    Multiplets[1]=LeftFermi;
 
         vector<string> FieldLabels;
-        ExtractLabels(Multiplets, parameter_string1, FieldLabels); 
+        ExtractLabels(Multiplets, parameter_string1, FieldLabels);
         vector<unsigned> FieldIndices = GetIndices(FieldLabels);
 
         // find conditions and apply them
@@ -2680,7 +2688,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // print set or monomial
     // updated on 11.05.2011
-    if ((case1 = this->FindCommandType1(command, "print set", parameter_string1))) 
+    if ((case1 = this->FindCommandType1(command, "print set", parameter_string1)))
     {
       string           empty_string = "";
       unsigned         max_length   = 0;
@@ -2689,7 +2697,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
       // print a set or all sets
       if (case1)
-      { 
+      {
         vector<string>            &NamesOfSetsOfFields = VEVConfig.NamesOfSetsOfFields;
         vector<vector<unsigned> > &SetsOfFields        = VEVConfig.SetsOfFields;
 
@@ -2770,7 +2778,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           }
           (*this->Print.out) << "}" << this->Print.endofset << "\n" << endl;
         }
-      } 
+      }
       this->MessageParameterNotKnown(parameter_string1);
       return true;
     }
@@ -2778,7 +2786,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // count the number of fields in a set
     // updated on 19.05.2011
-    if (this->FindCommandType2(command, "#fields in set(", parameter_string1, parameter_string2))  
+    if (this->FindCommandType2(command, "#fields in set(", parameter_string1, parameter_string2))
     {
       vector<string>            &NamesOfSetsOfFields = VEVConfig.NamesOfSetsOfFields;
       vector<vector<unsigned> > &SetsOfFields        = VEVConfig.SetsOfFields;
@@ -2792,7 +2800,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       this->MessageParameterNotKnown(parameter_string2);
       return true;
     }
-    
+
     // end: commands available in all orbifold directories
     // STEP 4 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2801,17 +2809,17 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     // STEP 5 //////////////////////////////////////////////////////////////////////////////////////////////////////////
     // begin: commands available in sub folders
     switch (this->current_folder[1])
-    { // 
+    { //
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // ..
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 0:
-      { // 
+      { //
 
         if (command.substr(0,3) == "man")
-        { 
-        command = rtrim(command);       
-        if (command.length() >= 4) 
+        {
+        command = rtrim(command);
+        if (command.length() >= 4)
         {
 
         string path_doc = " ./doc/orbidir/";
@@ -2819,7 +2827,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         command.insert(4, path_doc);
         // Concatenar ".man" al final
         command += ".man";
-          
+
 
         // Redirigir la salida de error estándar a un archivo temporal
         string temp_file = "temp_error.txt";
@@ -2839,7 +2847,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         remove(temp_file.c_str());
 
         // Verificar el resultado de la ejercución y el mensaje de error
-        
+
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
                  << "Options are:\n* cd\n";
@@ -2912,12 +2920,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // updated on 09.09.2011  
+        // updated on 09.09.2011
         if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
-        { 
-          if (this->FindParameterType1(parameter_string1, "processes"))     
-          this->PrintCommandsProcesses();                                   
-          else                                                                             
+        {
+          if (this->FindParameterType1(parameter_string1, "processes"))
+          this->PrintCommandsProcesses();
+          else
           if (this->FindParameterType1(parameter_string1, "short cuts"))
           {
             (*this->Print.out) << "\n  short cuts:\n";
@@ -2928,11 +2936,11 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
           }
           else
-          if (this->FindParameterType1(parameter_string1, "conditions"))   
-            this->PrintCommandsConditions();  
+          if (this->FindParameterType1(parameter_string1, "conditions"))
+            this->PrintCommandsConditions();
           else
-          if (this->FindParameterType1(parameter_string1, "sets"))  
-            this->PrintCommandsSets();  
+          if (this->FindParameterType1(parameter_string1, "sets"))
+            this->PrintCommandsSets();
           else
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
@@ -2943,27 +2951,27 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    cd vev-config                             change directory to /vev-config>\n";
             (*this->Print.out) << "    cd vev-config/labels                      change directory to /labels>\n\n";
             (*this->Print.out) << "  general commands:\n";
-            (*this->Print.out) << "    dir                                       show commands\n";            
-            (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n"; 
+            (*this->Print.out) << "    dir                                       show commands\n";
+            (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n";
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
             (*this->Print.out) << "\n" << flush;;
-          }          
+          }
           this->MessageParameterNotKnown(parameter_string1);
           return true;
-        }  
+        }
         break;
-      }  
+      }
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // model
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 1:
-      { 
+      {
         if (command.substr(0,3) == "man")
-        { 
-        command = rtrim(command);       
-        if (command.length() >= 4) 
+        {
+        command = rtrim(command);
+        if (command.length() >= 4)
         {
 
         string path_doc = " ./doc/model/";
@@ -2971,7 +2979,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         command.insert(4, path_doc);
         // Concatenar ".man" al final
         command += ".man";
-          
+
 
 
         // Redirigir la salida de error estándar a un archivo temporal
@@ -2992,7 +3000,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         remove(temp_file.c_str());
 
         // Verificar el resultado de la ejercución y el mensaje de error
-        
+
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
                  << "Options are:\n* cd\n* print\n* set\n* use\n";
@@ -3044,7 +3052,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           return true;
         }
 
-        // print available space groups   
+        // print available space groups
         // updated on 16.09.2011
         if (this->FindCommandType1(command, "print available space groups", parameter_string1))
         {
@@ -3149,7 +3157,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           const COrbifoldGroup &OrbifoldGroup = Orbifold.OrbifoldGroup;
           const CSpaceGroup    &SpaceGroup    = OrbifoldGroup.GetSpaceGroup();
 
-        
+
           if (this->FindParameterType1(parameter_string1, "orbifold label"))
           {
             (*this->Print.out) << "\n  " << this->Print.cbegin << "Orbifold \"" << OrbifoldGroup.Label << "\"." << this->Print.cend << "\n" << endl;
@@ -3349,19 +3357,19 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           {
             (*this->Print.out) << "  " << this->Print.cbegin << "T^6 from root-lattice of " << NewSpaceGroup.lattice_label << " and ";
             if (NewSpaceGroup.IsZMxZN())
-            {  
-              (*this->Print.out) << this->Print.cend << "\n  " << this->Print.cbegin << "twist vector" << this->Print.cend << " v1 = ";  
+            {
+              (*this->Print.out) << this->Print.cend << "\n  " << this->Print.cbegin << "twist vector" << this->Print.cend << " v1 = ";
               this->Print.PrintRational(NewSpaceGroup.GetTwist(1), SO8);
               (*this->Print.out) << this->Print.endofset;
-            }  
-            else 
+            }
+            else
             if (NewSpaceGroup.IsZMxZNxZK())
             {
-             
-              (*this->Print.out) << this->Print.cend << "\n  " << this->Print.cbegin << "twist vector" << this->Print.cend << " v1 = ";  
+
+              (*this->Print.out) << this->Print.cend << "\n  " << this->Print.cbegin << "twist vector" << this->Print.cend << " v1 = ";
               this->Print.PrintRational(NewSpaceGroup.GetTwist(1), SO8);
               (*this->Print.out) << this->Print.endofset;
-              (*this->Print.out) << this->Print.cend << "\n  " << this->Print.cbegin << "twist vector" << this->Print.cend << " v2 = ";   
+              (*this->Print.out) << this->Print.cend << "\n  " << this->Print.cbegin << "twist vector" << this->Print.cend << " v2 = ";
               this->Print.PrintRational(NewSpaceGroup.GetTwist(2), SO8);
               (*this->Print.out) << this->Print.endofset;
             }
@@ -3387,14 +3395,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         // set shift
         // updated on 20.09.2011
         if (this->FindCommandType1(command, "set shift", parameter_string1))
-        { 
+        {
           COrbifoldGroup     NewOrbifoldGroup = Orbifold.OrbifoldGroup;
           const CSpaceGroup &SpaceGroup       = NewOrbifoldGroup.GetSpaceGroup();
 
           const SelfDualLattice Lattice = NewOrbifoldGroup.GetLattice();
-          const bool            ZMxZN   = SpaceGroup.IsZMxZN(); 
-          const bool            ZMxZNxZK   = SpaceGroup.IsZMxZNxZK(); 
-          
+          const bool            ZMxZN   = SpaceGroup.IsZMxZN();
+          const bool            ZMxZNxZK   = SpaceGroup.IsZMxZNxZK();
+
           if (SpaceGroup.GetNumberOfSectors() == 0)
           {
             if (this->print_output)
@@ -3442,7 +3450,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             newShift[13] = 0;
             newShift[14] = 0;
             newShift[15] = 0;
-            
+
             NewOrbifoldGroup.AccessShift(0) = newShift;
 
            const CTwistVector &ZN_Twist = SpaceGroup.GetTwist(1);
@@ -3455,7 +3463,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               NewOrbifoldGroup.AccessShift(1) = newShift;
 
              if (ZMxZNxZK)
-            {                 
+            {
               const CTwistVector &ZK_Twist = SpaceGroup.GetTwist(2);
               newShift[0] = ZK_Twist[1];
               newShift[1] = ZK_Twist[2];
@@ -3470,7 +3478,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           // set shift to non-standard embedding
           if (b2)
           {
-            CShiftVector newShift(Lattice); 
+            CShiftVector newShift(Lattice);
             newShift[0] = 0;
             newShift[1] = 0;
             newShift[2] = 0;
@@ -3487,9 +3495,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             newShift[13] = 0;
             newShift[14] = 0;
             newShift[15] = 0;
-            
+
             NewOrbifoldGroup.AccessShift(0) = newShift;
-           
+
             int shift_number = -1;
 
             if (ZMxZNxZK)
@@ -3734,14 +3742,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
           return true;
         }
- 
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // updated on 23.09.2011  
+        // updated on 23.09.2011
         if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
-        { 
-          if (this->FindParameterType1(parameter_string1, "processes"))  
-          this->PrintCommandsProcesses();  
-          else      
+        {
+          if (this->FindParameterType1(parameter_string1, "processes"))
+          this->PrintCommandsProcesses();
+          else
           if (this->FindParameterType1(parameter_string1, "print"))
           {
             (*this->Print.out) << "\n  print commands:\n";
@@ -3763,23 +3771,23 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    s   change directory to /spectrum>\n";
             (*this->Print.out) << "    v   change directory to /vev-config>\n";
             (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
-          } 
+          }
           else
-          if (this->FindParameterType1(parameter_string1, "conditions")) 
-            this->PrintCommandsConditions(); 
-          else 
-          if (this->FindParameterType1(parameter_string1, "sets")) 
-            this->PrintCommandsSets(); 
-          else  
-          {       
+          if (this->FindParameterType1(parameter_string1, "conditions"))
+            this->PrintCommandsConditions();
+          else
+          if (this->FindParameterType1(parameter_string1, "sets"))
+            this->PrintCommandsSets();
+          else
+          {
             const CSpaceGroup &SpaceGroup = Orbifold.OrbifoldGroup.GetSpaceGroup();
-            const bool         ZMxZNxZK      = SpaceGroup.IsZMxZNxZK();  
+            const bool         ZMxZNxZK      = SpaceGroup.IsZMxZNxZK();
 
             (*this->Print.out) << "\n  special commands of this directory:\n";
             (*this->Print.out) << "    print ...                                 various parameters, see \"help print\"\n\n";
             (*this->Print.out) << "    use space group(i)                        ";
-           
-            this->FindSpaceGroupsInDirectory(SpaceGroup.GetN(), SpaceGroup.GetK(), "Geometry/");  
+
+            this->FindSpaceGroupsInDirectory(SpaceGroup.GetN(), SpaceGroup.GetK(), "Geometry/");
             if (this->PV.AvailableLatticesFilenames.size() == 1)
             {
               (*this->Print.out) << "with i = 1 for " << this->PV.AvailableLatticesLabels[0];
@@ -3791,7 +3799,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               this->PrintFor(this->PV.AvailableLatticesFilenames.size(), "space group", "i");
             (*this->Print.out) << "\n";
 
-              if (ZMxZNxZK) 
+              if (ZMxZNxZK)
               (*this->Print.out) << "    set shift V(i) = <16D vector>             for i = 1,2\n";
             else
               (*this->Print.out) << "    set shift V = <16D vector>\n";
@@ -3799,10 +3807,10 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    set shift standard embedding\n";
             (*this->Print.out) << "    set WL W(i) = <16D vector>                for i = 1,..," << LatticeDim << "\n\n";
 
-            
+
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir                                       show commands\n";
-            (*this->Print.out) << "    help                                      optional: \"conditions\", \"sets\", \"print\", \"short cuts\"\n"; 
+            (*this->Print.out) << "    help                                      optional: \"conditions\", \"sets\", \"print\", \"short cuts\"\n";
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -3810,18 +3818,18 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           }
           this->MessageParameterNotKnown(parameter_string1);
           return true;
-        } 
+        }
         break;
-      }  
+      }
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // gauge group
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 2:
-      { 
+      {
 
         if (command.substr(0,3) == "man")
-        { 
+        {
         command = rtrim(command);
 
         if(command.length()>= 4)
@@ -3853,7 +3861,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         remove(temp_file.c_str());
 
         // Verificar el resultado de la ejercución y el mensaje de error
-        
+
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
                  << "Options are:\n* cd\n* print\n* set\n";
@@ -3895,7 +3903,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "\n";
             this->Print.PrintGaugeGroup(VEVConfig, true);
           }
-          else         
+          else
           if (this->FindParameterType1(parameter_string1, "beta coefficients"))
           {
             (*this->Print.out) << "\n  " << this->Print.cbegin << "Beta function coefficients in vev-configuration \"" << VEVConfig.ConfigLabel << VEVConfig.ConfigNumber << "\" (N = " << VEVConfig.InvariantSupercharges.size() << " SUSY):" << this->Print.cend << "\n";
@@ -3911,7 +3919,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             }
             (*this->Print.out) << endl;
           }
-          else 
+          else
           if (this->FindParameterType1(parameter_string1, "simple roots"))
           {
             (*this->Print.out) << "\n";
@@ -3960,14 +3968,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             else
               (*this->Print.out) << this->Print.cbegin << "No anomalous U(1)." << this->Print.cend << "\n" << endl;
           }
-          else            
+          else
           if (this->FindParameterType1(parameter_string1, "anomaly info"))
           {
             if (this->Print.GetOutputType() == Tmathematica)
             (*this->Print.out) << "(* bash info: option \"for mathematica\" not possible for this command. *)" << endl;
             Orbifold.CheckAnomaly(VEVConfig, this->GaugeIndices, this->Print, true);
           }
-          else                
+          else
           if (this->FindParameterType1(parameter_string1, "B-L generator"))
           {
             const CVector Null(16);
@@ -4007,7 +4015,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           this->MessageParameterNotKnown(parameter_string1);
           return true;
         }
-         
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // set generator of some U(1) of or U(1)_B-L and compute new charges
         if ((case1 = this->FindCommandType2(command, "set U1(", parameter_string1, parameter_string2)) || (case2 = this->FindCommandType1(command, "set B-L", parameter_string2)))
@@ -4119,9 +4127,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           for (unsigned i = 0; i < VEVConfig.SymmetryGroup.GaugeGroup.factor.size(); ++i)
             s2 += VEVConfig.SymmetryGroup.GaugeGroup.factor[i].simpleroots.size();
 
-          if (this->FindParameterType1(parameter_string1, "processes"))  
-            this->PrintCommandsProcesses();  
-          else         
+          if (this->FindParameterType1(parameter_string1, "processes"))
+            this->PrintCommandsProcesses();
+          else
           if (this->FindParameterType1(parameter_string1, "print"))
           {
             (*this->Print.out) << "\n  print commands:\n";
@@ -4155,12 +4163,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    v   change directory to /vev-config>\n";
             (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
           }
-          else    
-          if (this->FindParameterType1(parameter_string1, "conditions")) 
-            this->PrintCommandsConditions();  
           else
-           if (this->FindParameterType1(parameter_string1, "sets")) 
-            this->PrintCommandsSets(); 
+          if (this->FindParameterType1(parameter_string1, "conditions"))
+            this->PrintCommandsConditions();
+          else
+           if (this->FindParameterType1(parameter_string1, "sets"))
+            this->PrintCommandsSets();
           else
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
@@ -4177,9 +4185,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               }
             }
             (*this->Print.out) << "  general commands:\n";
-            (*this->Print.out) << "    dir                                       show commands\n";           
-            (*this->Print.out) << "    help                                      optional: \"conditions\", \"print\", \"processes\", \n"; 
-            (*this->Print.out) << "                                                        \"sets\", \"short cuts\"\n"; 
+            (*this->Print.out) << "    dir                                       show commands\n";
+            (*this->Print.out) << "    help                                      optional: \"conditions\", \"print\", \"processes\", \n";
+            (*this->Print.out) << "                                                        \"sets\", \"short cuts\"\n";
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -4189,19 +4197,19 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           return true;
         }
         break;
-      } 
-      
+      }
+
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // spectrum
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 3:
-      { 
+      {
 
 
 
         if (command.substr(0,3) == "man")
-        { 
-        command = rtrim(command);   
+        {
+        command = rtrim(command);
         if (command.length()>=4)
         {
         string path_doc = " ./doc/spectrum/";
@@ -4230,21 +4238,21 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         remove(temp_file.c_str());
 
         // Verificar el resultado de la ejercución y el mensaje de error
-        
+
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* cd\n* print\n* textable\n* if\n* sets\n"; 
+                 << "Options are:\n* cd\n* print\n* textable\n* if\n* sets\n";
             return false;
         }
 
 
         return true;
         }
-        
+
         else
         {
             cout << "Error: A command name is expected after the instruction man.\n"
-                 << "Options are:\n* cd\n* print\n* textable\n* if\n* sets\n"; 
+                 << "Options are:\n* cd\n* print\n* textable\n* if\n* sets\n";
             return false;
         }
 
@@ -4269,12 +4277,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         if (this->FindCommandType2(command, "print(", parameter_string1, parameter_string2))
         {
 
-          vector<SUSYMultiplet> Multiplets(2); //Particle types to be printed    
-          Multiplets[0]=Scalar;				//and to be given for equivalence check   
-	      Multiplets[1]=LeftFermi;      
-	      
+          vector<SUSYMultiplet> Multiplets(2); //Particle types to be printed
+          Multiplets[0]=Scalar;				//and to be given for equivalence check
+	      Multiplets[1]=LeftFermi;
+
           vector<string> FieldLabels;
-          ExtractLabels(Multiplets, parameter_string1, FieldLabels);    
+          ExtractLabels(Multiplets, parameter_string1, FieldLabels);
           vector<unsigned> FieldIndices = GetIndices(FieldLabels);
 
           // find conditions and apply them
@@ -4294,7 +4302,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           const bool PrintInternalInformation = this->FindParameterType1(parameter_string2, "with internal information");
 
           this->Print.PrintStates(Orbifold, VEVConfig, FieldIndices, PrintInternalInformation);
- 
+
           this->MessageParameterNotKnown(parameter_string2);
           return true;
         }
@@ -4315,13 +4323,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           if (print_NoU1Charges)
             VEVConfig.SymmetryGroup.observable_sector_U1s.clear();
 
-         if (this->FindParameterType1(parameter_string1, " of sectors"))         
+         if (this->FindParameterType1(parameter_string1, " of sectors"))
           {
             (*this->Print.out) << "\n";
             this->Print.PrintSummaryOfSectors(Orbifold, VEVConfig, Multiplets, print_labels);
           }
           else
-          if (this->FindParameterType1(parameter_string1, " of fixed points"))   
+          if (this->FindParameterType1(parameter_string1, " of fixed points"))
           {
             (*this->Print.out) << "\n";
             this->Print.PrintSummaryOfFixedBranes(Orbifold, VEVConfig, Multiplets, print_labels);
@@ -4343,11 +4351,11 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 const CSector &current_Sector = Orbifold.GetSector(i);
                 if ((current_Sector.Get_m() == unsigned_Sector[0]) && (current_Sector.Get_n() == unsigned_Sector[1]) && (current_Sector.Get_k() == unsigned_Sector[2]))
                 {
-                  for (int j=0; j<2; j++) 
-                  { 
+                  for (int j=0; j<2; j++)
+                  {
                   this->Print.PrintSummary(current_Sector, VEVConfig, Multiplets[j], print_labels);
                   (*this->Print.out) << endl;
-			      } 
+			      }
                   return true;
                 }
               }
@@ -4363,16 +4371,16 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
             (*this->Print.out) << "\n";
             if (FixedBraneFound)
-              for (int j=0; j<2; j++) 
-              {  
+              for (int j=0; j<2; j++)
+              {
               this->Print.PrintSummary(FixedBrane, Orbifold.OrbifoldGroup, VEVConfig, Multiplets[j], print_labels);
-		      } 
+		      }
             else
               (*this->Print.out) << "  " << this->Print.cbegin << "Fixed point \"" << tmp_string1 << "\" not known." << this->Print.cend << "\n";
             (*this->Print.out) << endl;
-		      
+
           }
-          else                           
+          else
           {
             (*this->Print.out) << "\n";
             this->Print.PrintSummaryOfVEVConfig(VEVConfig, Multiplets, print_labels);
@@ -4380,7 +4388,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           }
           if (print_NoU1Charges)
             VEVConfig.SymmetryGroup.observable_sector_U1s = Orig_observable_sector_U1s;
-            
+
           this->MessageParameterNotKnown(parameter_string1);
           return true;
         }
@@ -4388,7 +4396,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // print all states   //sept23
         // updated on 11.05.2011
-        if (this->FindCommandType1(command, "print all states", parameter_string1)) 
+        if (this->FindCommandType1(command, "print all states", parameter_string1))
         {
           this->Print.PrintStates(Orbifold, VEVConfig);
 
@@ -4401,10 +4409,10 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         // updated on 21.09.2011
         if (this->FindCommandType2(command, "tex table(", parameter_string1, parameter_string2))
         {
-			
-          vector<SUSYMultiplet> Multiplets(2);  
-          Multiplets[0]=Scalar;				
-	      Multiplets[1]=LeftFermi;      
+
+          vector<SUSYMultiplet> Multiplets(2);
+          Multiplets[0]=Scalar;
+	      Multiplets[1]=LeftFermi;
 
           vector<string> FieldLabels;
           ExtractLabels(Multiplets, parameter_string1, FieldLabels);
@@ -4461,17 +4469,17 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // print list of charges  
+        // print list of charges
         // updated on 21.06.2011
         if (this->FindCommandType2(command, "print list of charges(", parameter_string1, parameter_string2))
         {
-          
-          vector<SUSYMultiplet> Multiplets(2);   
-          Multiplets[0]=Scalar;				
-	      Multiplets[1]=LeftFermi;      
-          
+
+          vector<SUSYMultiplet> Multiplets(2);
+          Multiplets[0]=Scalar;
+	      Multiplets[1]=LeftFermi;
+
           vector<string> FieldLabels;
-          ExtractLabels(Multiplets, parameter_string1, FieldLabels);  
+          ExtractLabels(Multiplets, parameter_string1, FieldLabels);
           vector<unsigned> FieldIndices = GetIndices(FieldLabels);
 
           // find conditions and apply them
@@ -4496,15 +4504,15 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
           this->MessageParameterNotKnown(parameter_string2);
           return true;
-        }       
-           
+        }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // updated on 16.09.2011
         if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
-        { 
-          if (this->FindParameterType1(parameter_string1, "processes"))  
-            this->PrintCommandsProcesses();  
-          else  
+        {
+          if (this->FindParameterType1(parameter_string1, "processes"))
+            this->PrintCommandsProcesses();
+          else
           if (this->FindParameterType1(parameter_string1, "print summary"))
           {
             (*this->Print.out) << "\n  print summary\n";
@@ -4512,9 +4520,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "  parameters:\n";
             (*this->Print.out) << "    \"of sectors\"                              group table by sectors\n";
             (*this->Print.out) << "    \"of fixed points\"                         group table by fixed points\n";
-            (*this->Print.out)  << "    \"of sector T(k,m,n)\"                      print sector T(k,m,n) only\n";  
-            (*this->Print.out)  << "    \"of fixed point(label)\"                   print fixed point \"label\" only\n";  
-            (*this->Print.out) << "    \"of fixed point(k,m,n,n1,n2,n3,n4,n5,n6)\" print specified fixed point only\n";   
+            (*this->Print.out)  << "    \"of sector T(k,m,n)\"                      print sector T(k,m,n) only\n";
+            (*this->Print.out)  << "    \"of fixed point(label)\"                   print fixed point \"label\" only\n";
+            (*this->Print.out) << "    \"of fixed point(k,m,n,n1,n2,n3,n4,n5,n6)\" print specified fixed point only\n";
             (*this->Print.out) << "    \"no U1s\"                                  omit the U(1) charges\n";
             (*this->Print.out) << "    \"with labels\"                             print the field labels\n\n" << flush;
           }
@@ -4527,25 +4535,25 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             (*this->Print.out) << "    v   change directory to /vev-config>\n";
             (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
           }
-          else 
-          if (this->FindParameterType1(parameter_string1, "conditions"))  
-            this->PrintCommandsConditions();  
           else
-          if (this->FindParameterType1(parameter_string1, "sets")) 
-            this->PrintCommandsSets(); 
-          else 
+          if (this->FindParameterType1(parameter_string1, "conditions"))
+            this->PrintCommandsConditions();
+          else
+          if (this->FindParameterType1(parameter_string1, "sets"))
+            this->PrintCommandsSets();
+          else
           {
             (*this->Print.out) << "\n  special commands of this directory:\n";
             (*this->Print.out) << "    print(fields)                             optional: \"with internal information\"\n";
             (*this->Print.out) << "    print all states\n";
             (*this->Print.out) << "    print summary                             various parameters, see \"help print summary\"\n";
-            (*this->Print.out) << "    print list of charges(fields)             optional: \"label of list(Label)\"\n"; 
-            (*this->Print.out) << "    tex table(fields)                         optional: print labels(i,j,..)\n\n";  
-            (*this->Print.out) << "  optional for many commands of this directory:\n";   
-            (*this->Print.out) << "    if(condition)                             only if \"condition\" is fulfiled \n"; 
+            (*this->Print.out) << "    print list of charges(fields)             optional: \"label of list(Label)\"\n";
+            (*this->Print.out) << "    tex table(fields)                         optional: print labels(i,j,..)\n\n";
+            (*this->Print.out) << "  optional for many commands of this directory:\n";
+            (*this->Print.out) << "    if(condition)                             only if \"condition\" is fulfiled \n";
             (*this->Print.out) << "  general commands:\n";
             (*this->Print.out) << "    dir (or help)                             show commands\n";
-            (*this->Print.out) << "                                              optional: \"conditions\", \"sets\", \"short cuts\" , \"print summary\"\n";                                                                                                            
+            (*this->Print.out) << "                                              optional: \"conditions\", \"sets\", \"short cuts\" , \"print summary\"\n";
             (*this->Print.out) << "    cd ..                                     leave this directory\n";
             if (!this->online_mode)
               (*this->Print.out) << "    exit                                      exit program\n";
@@ -4553,17 +4561,17 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
           }
           this->MessageParameterNotKnown(parameter_string1);
           return true;
-        } 
+        }
         break;
-      } 
-        
+      }
+
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       // vev-config
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
       case 5:
-      { 
+      {
         switch (this->current_folder[2])
-        { 
+        {
           ////////////////////////////////////////////////////////////////////////////////////////////////////////////
           // ..
           ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4575,11 +4583,11 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
 
             if (command.substr(0,3) == "man")
-            { 
+            {
             command = rtrim(command);
 
             if (command.length()>=4)
-            {   
+            {
             string path_doc = " ./doc/vev-config/";
             // Insertar path_doc en la posición 4
             command.insert(4, path_doc);
@@ -4606,7 +4614,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             remove(temp_file.c_str());
 
             // Verificar el resultado de la ejercución y el mensaje de error
-            
+
             if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
                  << "Options are:\n* cd\n* analyze\n* create\n* delete\n* print\n* rename\n* select\n* use\n";
@@ -4663,7 +4671,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             {
               int max_length = 0;
               int length     = 0;
-              
+
               t1 = VEVConfigs.size();
               if (t1 > 0)
               {
@@ -4672,14 +4680,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 tmp_string1 = os.str();
                 max_length = VEVConfigs[0].ConfigLabel.size() + tmp_string1.size();
               }
-              
+
               for (i = 1; i < t1; ++i)
               {
                 std::ostringstream os;
                 os << VEVConfigs[i].ConfigNumber;
                 tmp_string1 = os.str();
                 length = VEVConfigs[i].ConfigLabel.size() + tmp_string1.size();
-                
+
                 if (length > max_length)
                   max_length = length;
               }
@@ -4688,9 +4696,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               (*this->Print.out) << "  " << this->Print.cbegin << "   label ";
               for (i = 3; i < max_length; ++i)
                 (*this->Print.out) << " ";
-              (*this->Print.out) << "| field label # |" << this->Print.cend << "\n"; 
-              (*this->Print.out) << "  " << this->Print.cbegin << "  -------------------------------------- " << this->Print.cend << "\n"; 
-             
+              (*this->Print.out) << "| field label # |" << this->Print.cend << "\n";
+              (*this->Print.out) << "  " << this->Print.cbegin << "  -------------------------------------- " << this->Print.cend << "\n";
+
               unsigned counter_printed_VEVs = 0;
               for (i = 0; i < t1; ++i)
               {
@@ -4708,12 +4716,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 length = VEVConfig.ConfigLabel.size() + tmp_string1.size();
                 for (j = length; j < max_length; ++j)
                   (*this->Print.out) << " ";
-                
+
                 const size_t f1 = VEVConfig.Fields.size();
                 if (f1 == 0)
                 {
                   cout << "Warning in bool CPrompt::ExecuteCommand(...): \"Fields\" is empty. Return true." << endl;
-                  return true;  
+                  return true;
                 }
                 const unsigned number_of_labels = VEVConfig.Fields[0].Labels.size();
                 (*this->Print.out) << " |      " << setw(3) << VEVConfig.use_Labels + 1 << " /" << setw(3) << number_of_labels << " | ";
@@ -4728,7 +4736,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 return true;
               }
             }
-                   
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 26.08.2011
             if (this->FindCommandType2(command, "use config(", parameter_string1, parameter_string2))
@@ -4898,7 +4906,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 this->MessageParameterNotKnown(parameter_string2);
                 return true;
               }
-              
+
               const vector<bool> &PID_Done = VEVConfigs[index].pid.PID_Done;
               if (find(PID_Done.begin(), PID_Done.end(), false) != PID_Done.end())
               {
@@ -4921,7 +4929,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               return true;
             }
 
-           
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 15.07.2011
             if (this->FindCommandType1(command, "print gauge group", parameter_string1))
@@ -5052,20 +5060,20 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
                 vector<int> u1s;
                 t2 = 0;
-                
+
                 ok = true;
                 if ((parameter_string2 != "") && (parameter_string2.find_first_not_of(",0123456789") == string::npos))
                 {
                   convert_string_to_vector_of_int(parameter_string2, u1s);
                   t2 = u1s.size();
-                  
+
                   for (i = 0; ok && (i < t2); ++i)
                   {
                     if ((u1s[i] <= 0) || (u1s[i] > t1))
                       ok = false;
                   }
                 }
-                              
+
                 if (ok)
                 {
                   for (i = 0; i < t2; ++i)
@@ -5149,7 +5157,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 21.09.2011
-            if (print_help)    
+            if (print_help)
             {
               if (this->FindParameterType1(parameter_string1, "short cuts"))
               {
@@ -5159,13 +5167,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "    s   change directory to /spectrum>\n";
                 (*this->Print.out) << "    l   change directory to /vev-config/labels>\n\n" << flush;
               }
-              else  
-              if (this->FindParameterType1(parameter_string1, "conditions"))  
-                this->PrintCommandsConditions();  
               else
-              if (this->FindParameterType1(parameter_string1, "sets")) 
-                this->PrintCommandsSets(); 
-              else 
+              if (this->FindParameterType1(parameter_string1, "conditions"))
+                this->PrintCommandsConditions();
+              else
+              if (this->FindParameterType1(parameter_string1, "sets"))
+                this->PrintCommandsSets();
+              else
               {
                 (*this->Print.out) << "\n  special commands of this directory:\n";
                 (*this->Print.out) << "    use config(ConfigLabel)                   change to configuration \"ConfigLabel\"\n";
@@ -5216,14 +5224,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                       (*this->Print.out) << "                                                          \"no U1s\"\n";
                     }
                   }
-                  (*this->Print.out) << "\n";                 
+                  (*this->Print.out) << "\n";
                 }
                 (*this->Print.out) << "    analyze config                            optional: \"print SU(5) simple roots\"\n";
                 (*this->Print.out) << "  change directory:\n";
                 (*this->Print.out) << "    cd labels                                 change directory to /labels>\n\n";
                 (*this->Print.out) << "  general commands:\n";
                 (*this->Print.out) << "    dir                                       show commands\n";
-                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n"; 
+                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n";
                 (*this->Print.out) << "    cd ..                                     leave this directory\n";
                 if (!this->online_mode)
                   (*this->Print.out) << "    exit                                      exit program\n";
@@ -5232,27 +5240,27 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
               this->MessageParameterNotKnown(parameter_string1);
               return true;
-            } 
+            }
             break;
-          } 
-                   
+          }
+
           ////////////////////////////////////////////////////////////////////////////////////////////////////////////
           // labels
           ////////////////////////////////////////////////////////////////////////////////////////////////////////////
           case 1:
-          { 
+          {
 
             if (command.substr(0,3) == "man")
             {
-            command = rtrim(command); 
+            command = rtrim(command);
             if (command.length()>=4)
-            {   
+            {
             string path_doc = " ./doc/labels/";
             // Insertar path_doc en la posición 4
             command.insert(4, path_doc);
             // Concatenar ".man" al final
             command += ".man";
-            
+
 
             // Redirigir la salida de error estándar a un archivo temporal
             string temp_file = "temp_error.txt";
@@ -5273,7 +5281,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             remove(temp_file.c_str());
 
             // Verificar el resultado de la ejercución y el mensaje de error
-            
+
             if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
                  << "Options are:\n* cd\n* assign\n* change\n* create\n* load\n* print\n* save\n* use\n";
@@ -5302,7 +5310,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               this->MessageParameterNotKnown(parameter_string1);
               return true;
             }
-            
+
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 26.09.2011
@@ -5347,7 +5355,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               return true;
             }
 
-                       
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // change the label of a single field
             // updated on 26.09.2011
@@ -5360,9 +5368,9 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 return true;
               }
 
-             vector<SUSYMultiplet> Multiplets(2); 						
-	         Multiplets[0]=Scalar;									
-	         Multiplets[1]=LeftFermi;       
+             vector<SUSYMultiplet> Multiplets(2);
+	         Multiplets[0]=Scalar;
+	         Multiplets[1]=LeftFermi;
 
 
               if (this->print_output)
@@ -5375,7 +5383,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               else
               {
                 vector<string> FieldLabels;
-                ExtractLabels(Multiplets, parameter_string1, FieldLabels);  
+                ExtractLabels(Multiplets, parameter_string1, FieldLabels);
                 vector<unsigned> FieldIndices = GetIndicesOnlyFieldWithNumber(FieldLabels);
 
                 if (FieldIndices.size() != 1)
@@ -5455,12 +5463,12 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 if (this->print_output)
                   (*this->Print.out) << "\n  " << this->Print.cbegin << "Vev-configuration \"StandardConfig1\" cannot be changed." << this->Print.cend << "\n" << endl;
                 return true;
-              }            
+              }
 
-              vector<SUSYMultiplet> Multiplets(2); 					
-	          Multiplets[0]=Scalar;									
+              vector<SUSYMultiplet> Multiplets(2);
+	          Multiplets[0]=Scalar;
 	          Multiplets[1]=LeftFermi;
-              
+
 
               (*this->Print.out) << "\n";
 
@@ -5478,7 +5486,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               this->MessageParameterNotKnown(parameter_string1);
               return true;
             }
-      
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // assign a label to a fixed point
             // updated on 26.09.2011
@@ -5496,13 +5504,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 CSpaceGroupElement SGElement;
                 if (this->GetLocalization(tmp_string1, SGElement))
                 {
-                                   
+
                   bool FixedBraneFound = false;
                   CFixedBrane &FixedBrane = Orbifold.AccessFixedBrane(SGElement, FixedBraneFound);
 
                   if (FixedBraneFound)
                   {
-                                        
+
                     FixedBrane.AccessFixedBraneLabel() = parameter_string1;
 
                     if (this->print_output)
@@ -5517,15 +5525,15 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               this->MessageParameterNotKnown(parameter_string2);
               return true;
             }
-               
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 12.10.2011
             if (this->FindCommandType1(command, "print labels", parameter_string1))
             {
               (*this->Print.out) << "\n  " << this->Print.cbegin << "Using label #" << VEVConfig.use_Labels+1 << " of the fields." << this->Print.cend << "\n" << endl;
 
-              vector<SUSYMultiplet> Multiplets(2); 
-     	      Multiplets[0]=Scalar;								
+              vector<SUSYMultiplet> Multiplets(2);
+     	      Multiplets[0]=Scalar;
 	          Multiplets[1]=LeftFermi;
 
               this->Print.PrintSummaryOfVEVConfig(VEVConfig, Multiplets, true);
@@ -5533,8 +5541,8 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
               this->MessageParameterNotKnown(parameter_string1);
               return true;
-            }            
-            
+            }
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 26.09.2011
             if (this->FindCommandType2(command, "load labels(", parameter_string1, parameter_string2))
@@ -5545,11 +5553,11 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                   (*this->Print.out) << "\n  " << this->Print.cbegin << "Vev-configuration \"StandardConfig1\" cannot be changed." << this->Print.cend << "\n" << endl;
                 return true;
               }
-       
-              vector<SUSYMultiplet> Multiplets(2);	
-	          Multiplets[0]=Scalar;							
-	          Multiplets[1]=LeftFermi;  
-                
+
+              vector<SUSYMultiplet> Multiplets(2);
+	          Multiplets[0]=Scalar;
+	          Multiplets[1]=LeftFermi;
+
               //if (this->online_mode)
               //{
               //  if (this->print_output)
@@ -5562,7 +5570,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 if (this->print_output)
                 {
                   (*this->Print.out) << "\n  " << this->Print.cbegin << "New labels loaded. Now using label #" << VEVConfig.use_Labels+1 << " of the fields." << this->Print.cend << "\n" << endl;
-                  this->Print.PrintSummaryOfVEVConfig(VEVConfig, Multiplets, true); 
+                  this->Print.PrintSummaryOfVEVConfig(VEVConfig, Multiplets, true);
                   (*this->Print.out) << endl;
                 }
               }
@@ -5610,14 +5618,14 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               this->MessageParameterNotKnown(parameter_string2);
               return true;
             }
-          
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // updated on 26.09.2011
             if (this->FindCommandType1(command, "dir", parameter_string1) || this->FindCommandType1(command, "help", parameter_string1) || this->FindCommandType1(command, "ll", parameter_string1))
-            { 
-              if (this->FindParameterType1(parameter_string1, "processes"))  
-                this->PrintCommandsProcesses();  
-              else  
+            {
+              if (this->FindParameterType1(parameter_string1, "processes"))
+                this->PrintCommandsProcesses();
+              else
               if (this->FindParameterType1(parameter_string1, "short cuts"))
               {
                 (*this->Print.out) << "\n  short cuts:\n";
@@ -5626,13 +5634,13 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "    s   change directory to /spectrum>\n";
                 (*this->Print.out) << "    v   change directory to /vev-config>\n\n" << flush;
               }
-              else 
-              if (this->FindParameterType1(parameter_string1, "conditions")) 
-                this->PrintCommandsConditions(); 
               else
-              if (this->FindParameterType1(parameter_string1, "sets")) 
-                this->PrintCommandsSets();  
-              else  
+              if (this->FindParameterType1(parameter_string1, "conditions"))
+                this->PrintCommandsConditions();
+              else
+              if (this->FindParameterType1(parameter_string1, "sets"))
+                this->PrintCommandsSets();
+              else
               {
                 (*this->Print.out) << "\n  special commands of this directory:\n";
                 if (!UsingStandardConfig)
@@ -5650,7 +5658,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                   if (f1 == 0)
                   {
                     cout << "Warning in bool CPrompt::ExecuteCommand(...): \"Fields\" is empty. Return true." << endl;
-                    return true;  
+                    return true;
                   }
                   this->PrintFor(VEVConfig.Fields[0].Labels.size(), "labels", "i");
                   (*this->Print.out) << "\n";
@@ -5664,7 +5672,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
                 (*this->Print.out) << "\n";
                 (*this->Print.out) << "  general commands:\n";
                 (*this->Print.out) << "    dir                                       show commands\n";
-                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n"; 
+                (*this->Print.out) << "    help                                      optional: \"conditions\", \"processes\", \"sets\", \"short cuts\"\n";
                 (*this->Print.out) << "    cd ..                                     leave this directory\n";
                 if (!this->online_mode)
                   (*this->Print.out) << "    exit                                      exit program\n";
@@ -5672,21 +5680,21 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
               }
               this->MessageParameterNotKnown(parameter_string1);
               return true;
-            } 
-            
-            break;
-          } 
-        } 
-        break;
-      }    
+            }
 
-    } 
+            break;
+          }
+        }
+        break;
+      }
+
+    }
     // end: commands available in sub folders
     // STEP 5 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-  } 
+  }
   this->MessageParameterNotKnown(command);
   return true;
-} 
+}
 
 
 /* ########################################################################################
@@ -5766,29 +5774,29 @@ bool CPrompt::LoadOrbifolds(const string &Filename, bool inequivalent, unsigned 
     return false;
   }
 
-   vector<SUSYMultiplet> Multiplets(2);		
-   Multiplets[0]=Scalar;						
+   vector<SUSYMultiplet> Multiplets(2);
+   Multiplets[0]=Scalar;
    Multiplets[1]=LeftFermi;
 
-  CInequivalentModels InequivModels; 
-  vector<string> FieldLabels; 
+  CInequivalentModels InequivModels;
+  vector<string> FieldLabels;
   unsigned j = 0;
 
-  const size_t o1 = this->Orbifolds.size();    
+  const size_t o1 = this->Orbifolds.size();
   if (inequivalent)
   {
     for (unsigned i = 0; i < o1; ++i)
     {
       COrbifold &Orbifold = this->Orbifolds[i];
- 
-      CSpectrum Spectrum(Orbifold.StandardConfig, Multiplets); 
-      
-      InequivModels.IsSpectrumUnknown(Spectrum, true);       
+
+      CSpectrum Spectrum(Orbifold.StandardConfig, Multiplets);
+
+      InequivModels.IsSpectrumUnknown(Spectrum, true);
     }
   }
 
   unsigned counter = 0;
-  const unsigned MAXcounter = 2000;  
+  const unsigned MAXcounter = 2000;
   bool Orbifold_loaded = true;
 
   unsigned NewNumber = 1;
@@ -5797,24 +5805,24 @@ bool CPrompt::LoadOrbifolds(const string &Filename, bool inequivalent, unsigned 
 
   COrbifoldGroup NewOrbifoldGroup;
 
-  
+
   while ((counter < MAXcounter) && !in.eof())
   {
     if (NewOrbifoldGroup.LoadOrbifoldGroup(in, ProgramFilename))
     {
-     
+
       if (!this->MessageOrbifoldAlreadyExists(NewOrbifoldGroup.Label))
       {
         COrbifold NewOrbifold(NewOrbifoldGroup);
         NewOrbifold.CheckAnomaly(NewOrbifold.StandardConfig, this->GaugeIndices, this->Print, false);
-               
+
         Orbifold_loaded = true;
 
         if (inequivalent)
         {
-          CSpectrum Spectrum(NewOrbifold.StandardConfig, Multiplets); 
+          CSpectrum Spectrum(NewOrbifold.StandardConfig, Multiplets);
 
-          Orbifold_loaded = InequivModels.IsSpectrumUnknown(Spectrum, true);        
+          Orbifold_loaded = InequivModels.IsSpectrumUnknown(Spectrum, true);
         }
 
         if (Orbifold_loaded)
@@ -5830,7 +5838,7 @@ bool CPrompt::LoadOrbifolds(const string &Filename, bool inequivalent, unsigned 
           Configs.push_back(NewOrbifold.StandardConfig);
           Configs.push_back(TestConfig);
           this->AllVEVConfigs.push_back(Configs);
-          this->AllVEVConfigsIndex.push_back(1);          
+          this->AllVEVConfigsIndex.push_back(1);
         }
       }
     }
@@ -5859,7 +5867,7 @@ bool CPrompt::LoadOrbifolds(const string &Filename, bool inequivalent, unsigned 
     (*this->Print.out) << "\n\n";
   }
   (*this->Print.out) << flush;
-  return true; 
+  return true;
 }
 
 
@@ -6166,7 +6174,7 @@ void CPrompt::MessageHelpCreateNewOrbifold(unsigned StartWithLine) const
   (*this->Print.out) << "\n  " << this->Print.cbegin << "Heterotic string with SO(16)xSO(16) lattice is assigned. Input data for orbifold model \"" << this->Orbifolds[this->OrbifoldIndex].OrbifoldGroup.Label << "\" is needed:" << this->Print.cend << "\n";
 
   vector<string> Text;
-  
+
   Text.push_back(") print available space groups    : Print a list of possible space groups.");
   Text.push_back(") use space group(i)              : Choose the space group.");
 
@@ -6610,7 +6618,7 @@ void CPrompt::PrintCommandsProcesses() const
 ######   output:                                                                     ######
 ######   -                                                                           ######
 ######################################################################################## */
-void CPrompt::PrintCommandsSets() const        
+void CPrompt::PrintCommandsSets() const
 {
   if (!this->print_output)
     return;
@@ -6756,7 +6764,7 @@ bool CPrompt::FindSpaceGroupsInDirectory(const unsigned &N, const unsigned &K, c
       {
         unsigned tmp_M = 0;
         unsigned tmp_N = 0;
-        unsigned tmp_K = 0; 
+        unsigned tmp_K = 0;
 
         GetSaveLine(in, tmp);
         std::istringstream line1(tmp);
@@ -6766,11 +6774,11 @@ bool CPrompt::FindSpaceGroupsInDirectory(const unsigned &N, const unsigned &K, c
         std::istringstream line2(tmp);
         line2 >> tmp_N;
 
-        GetSaveLine(in, tmp);   
+        GetSaveLine(in, tmp);
         std::istringstream line3(tmp);
         line3 >> tmp_K;
 
-        PointGroupFound = true;   
+        PointGroupFound = true;
         if ((tmp_N != N) || (tmp_K != K))
           go_on = false;
       }
@@ -7120,13 +7128,13 @@ void CPrompt::ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string inpu
       if (tmp_string1 == "*")
       {
       t1 = VEVConfig.Fields.size();
-        
+
         for (i = 0; i < t1; ++i)
-        {			
+        {
 		 for (int j=0; j<Multiplet.size(); j++)
-         {  	        
+         {
           const CField &Field = VEVConfig.Fields[i];
-          
+
           if (Field.Multiplet == Multiplet[j])
           {
             tmp_string2 = Field.Labels[VEVConfig.use_Labels];
@@ -7139,7 +7147,7 @@ void CPrompt::ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string inpu
             if (find(FieldLabels.begin(), FieldLabels.end(), tmp_string2) == FieldLabels.end())
               FieldLabels.push_back(tmp_string2);
           }
-         }  
+         }
         }
         return;
       }
@@ -7156,9 +7164,9 @@ void CPrompt::ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string inpu
           for (i = 0; i < t1; ++i)
           {
             for (int j=0; j<Multiplet.size(); j++)
-            { 
+            {
              const CField &Field = VEVConfig.Fields[i];
-             
+
              if (Field.Multiplet == Multiplet[j])
              {
               tmp_string2 = Field.Labels[VEVConfig.use_Labels];
@@ -7181,7 +7189,7 @@ void CPrompt::ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string inpu
           for (i = 0; i < t1; ++i)
           {
             for (int j=0; j<Multiplet.size(); j++)
-            { 	
+            {
              const CField &Field = VEVConfig.Fields[i];
              if (Field.Multiplet == Multiplet[j])
              {
@@ -7195,7 +7203,7 @@ void CPrompt::ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string inpu
               if ((Field.Labels[VEVConfig.use_Labels] == tmp_string1) && (find(FieldLabels.begin(), FieldLabels.end(), tmp_string2) == FieldLabels.end()))
                 FieldLabels.push_back(tmp_string2);
              }
-           } 
+           }
           }
         }
       }
@@ -7207,9 +7215,9 @@ void CPrompt::ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string inpu
 
         t1 = CurrentSet.size();
         for (i = 0; i < t1; ++i)
-        {			
+        {
         for (int j=0; j<Multiplet.size(); j++)
-         { 
+         {
           const CField &Field = VEVConfig.Fields[CurrentSet[i]];
           if (Field.Multiplet == Multiplet[j])
           {
@@ -7223,7 +7231,7 @@ void CPrompt::ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string inpu
             if (find(FieldLabels.begin(), FieldLabels.end(), tmp_string2) == FieldLabels.end())
               FieldLabels.push_back(tmp_string2);
           }
-         } 
+         }
         }
       }
       // end: "tmp_string1" labels a set
@@ -7231,7 +7239,7 @@ void CPrompt::ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string inpu
   }
 }
 
-       
+
 /* ########################################################################################
 ######   FindSUSYType(string &input_string, ...) const                               ######
 ######                                                                               ######
@@ -7264,7 +7272,7 @@ bool CPrompt::FindSUSYType(string &input_string, int NumberOfSupersymmetry, SUSY
       break;
     }
   }
-  
+
   if (this->FindParameterType1(input_string, "left-chiral"))
   {
     Multiplet = LeftChiral;
@@ -7384,14 +7392,14 @@ bool CPrompt::FindConditions(string &input_string, vector<SCondition> &Condition
     cout << "Warning in bool CPrompt::FindConditions(...) const: Set of conditions is not empty. Now cleared." << endl;
     Conditions.clear();
   }
-  
+
   const COrbifold      &Orbifold   = this->Orbifolds[this->OrbifoldIndex];
   const SSymmetryGroup &GaugeGroup = Orbifold.StandardConfig.SymmetryGroup;
 
   unsigned index = 0;
   bool condition_ok = true;
   string tmp_string = "";
-  
+
   // begin: find conditions
   while (this->FindParameterType2(input_string, "if(", tmp_string))
   {
@@ -7429,7 +7437,7 @@ bool CPrompt::FindConditions(string &input_string, vector<SCondition> &Condition
         condition_ok = false;
         (*this->Print.out) << "  " << this->Print.cbegin << "i-th U(1), i = " << index << " out of range." << this->Print.cend << endl;
       }
-      
+
       NewCondition.ConditionTypeId = 3;
       NewCondition.ith_entry = index-1;
     }
@@ -8034,7 +8042,7 @@ bool CPrompt::ApplyConditions(const vector<SCondition> &Conditions, vector<unsig
           }
           case 7: // R-charge R_i
           {
-            TestObject = Field.GetRMWeight(0, Sectors)[Condition.ith_entry]; 
+            TestObject = Field.GetRMWeight(0, Sectors)[Condition.ith_entry];
             break;
           }
           case 8: // number of oscillators acting on the state
