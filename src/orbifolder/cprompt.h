@@ -76,6 +76,11 @@ public:
   bool              LoadProgram(const string &Filename, vector<string> &Commands);
   bool              LoadOrbifolds(const string &Filename, bool inequivalent = false, unsigned compare_couplings_up_to_order = 0);
 
+  string            Trim(const string &command) const;
+
+
+
+
   bool              FindCommandType0(const string &inputstring, const string &command) const;
   bool              FindCommandType1(const string &inputstring, const string &command, string &parameters) const;
   bool              FindCommandType2(const string &inputstring, const string &command, string &command_parameter, string &other_parameters) const;
@@ -93,19 +98,19 @@ public:
   bool              MessageVEVConfigNotKnown(const vector<SConfig> &VEVConfigs, const string &VEVConfigLabel, const unsigned &VEVConfigNumber, unsigned &index) const;
   bool              MessageXAlreadyExists(const vector<string> &NamesOfSetsOfX, const string &X, const string &X_Label) const;
   bool              MessageXNotKnown(const vector<string> &NamesOfSetsOfX, const string &X, const string &X_Label, unsigned &index) const;
-    
+
   bool              PrintCurrentDirectory(string &output) const;
   string            StringCurrentDirectory(string &output) const;
   void              PrintCommandsConditions() const;
   void              PrintCommandsProcesses() const;
   void              PrintCommandsSets() const;
   void              PrintFor(unsigned number_of_Type, const string &Type, const string &Var) const;
-    
+
   bool              FindSpaceGroupsInDirectory(const unsigned &M, const unsigned &N, const string &directory);
   bool              SplitVEVConfigLabel(string &VEVConfigLabel, unsigned &VEVConfigNumber) const;
-  void              ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string input, vector<string> &FieldLabels);  
+  void              ExtractLabels(const vector<SUSYMultiplet>  &Multiplet, string input, vector<string> &FieldLabels);
 
-  
+
   vector<unsigned>  GetIndicesOnlyFieldWithNumber(const vector<string> &FieldLabels) const;
   vector<unsigned>  GetIndices(const vector<string> &FieldLabels) const;
   bool              GetLocalization(const string &Localization, CSpaceGroupElement &result) const;
@@ -139,14 +144,14 @@ private:
   string                   output_filename_aux;
 
   vector<int>              current_folder;  // current_folder[0] = -1 is the main directory, else the corresponding orbifold directory
-                                            // current_folder[1] gives the subdirectory in an orbifold directory: 
+                                            // current_folder[1] gives the subdirectory in an orbifold directory:
                                             //   0 for no subdirectory
                                             //   1 for "model"
                                             //   2 for "gauge group"
                                             //   3 for "spectrum"
                                             //   4 for "couplings"
                                             //   5 for "vev-config"
-                                            // current_folder[2] gives the further subdirectory of "vev-config" 
+                                            // current_folder[2] gives the further subdirectory of "vev-config"
                                             //   0 for no subdirectory
                                             //   1 for "labels"
 

@@ -270,21 +270,20 @@ char* command_name_generator(const char* text, int state) {
 
 
 
-// Función para eliminar espacios vacíos del final de una cadena
-string rtrim(const string &s) {
-    size_t start = s.find_first_not_of(" \t\n\r\f\v");
-    size_t end = s.find_last_not_of(" \t\n\r\f\v");
+
+
+string CPrompt::Trim(const string &command) const {
+    size_t start = command.find_first_not_of(" \t\n\r\f\v");
+    size_t end = command.find_last_not_of(" \t\n\r\f\v");
     if (start == string::npos) {
         return "";
     }
-
-    // Recortar espacios al inicio y al final
-    return s.substr(start, end - start + 1);
-    //return (start == string::npos || end == string::npos) ? "" : s.substr(start+5, end - start + 1);
-    //return (end == string::npos) ? "" : s.substr(0, end + 1);
+    return command.substr(start, end - start + 1);
 }
 
-// Función para verificar si el mensaje de error contiene palabras clave de error
+
+
+
 bool containsErrorKeywords(const string &error_message, const vector<string> &keywords) {
     for (const auto &keyword : keywords) {
         if (error_message.find(keyword) != string::npos) {
@@ -297,7 +296,6 @@ bool containsErrorKeywords(const string &error_message, const vector<string> &ke
 
 
 
-// Palabras clave de error en diferentes idiomas
 vector<string> error_keywords = {
     "No existe el archivo o el directorio",  // Español
     "Ninguna entrada del manual para",       // Español
@@ -679,7 +677,7 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
       // just replace this
 
       cin.clear();
-      Commands.push_back(command);
+      Commands.push_back(Trim(command));
     }
 
     command = Commands[exec_command];
@@ -1487,7 +1485,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
     {
       if (command.length() >=4)
       {
-        command = rtrim(command);
 
         string path_doc = " ./doc/main/";
         // Insertar path_doc en la posición 4
@@ -2818,7 +2815,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         if (command.substr(0,3) == "man")
         {
-        command = rtrim(command);
+
         if (command.length() >= 4)
         {
 
@@ -2970,7 +2967,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       {
         if (command.substr(0,3) == "man")
         {
-        command = rtrim(command);
+
         if (command.length() >= 4)
         {
 
@@ -3830,7 +3827,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         if (command.substr(0,3) == "man")
         {
-        command = rtrim(command);
 
         if(command.length()>= 4)
         {
@@ -4209,7 +4205,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
         if (command.substr(0,3) == "man")
         {
-        command = rtrim(command);
+
         if (command.length()>=4)
         {
         string path_doc = " ./doc/spectrum/";
@@ -4584,7 +4580,6 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
             if (command.substr(0,3) == "man")
             {
-            command = rtrim(command);
 
             if (command.length()>=4)
             {
@@ -5252,7 +5247,7 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
 
             if (command.substr(0,3) == "man")
             {
-            command = rtrim(command);
+
             if (command.length()>=4)
             {
             string path_doc = " ./doc/labels/";
