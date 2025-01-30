@@ -501,13 +501,10 @@ bool CPrompt::StartPrompt(string ifilename, bool stop_when_file_done, bool onlin
   if (this->online_mode)
   {
     //ifilename = "program.txt";
-    // Encontrar la posición del punto
     size_t pos_point = ifilename.find('.');
     string name_without_extension = "";
-    // Si encontramos un punto en la cadena
     if (pos_point != std::string::npos)
     {
-        // Extraer la subcadena desde el inicio hasta el punto
         name_without_extension = ifilename.substr(0, pos_point);
     }
 
@@ -1487,31 +1484,30 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
       {
 
         string path_doc = " ./doc/main/";
-        // Insertar path_doc en la posición 4
+        // Insert path_doc en la position 4
         command.insert(4, path_doc);
-        // Concatenar ".man" al final
+        // Add ".man" to end
         command += ".man";
 
 
-        // Redirigir la salida de error estándar a un archivo temporal
+        // Redirect error output to a temporary file
         string temp_file = "temp_error.txt";
         string full_command = command + " 2>" + temp_file;
 
-        // Ejecutar el comando utilizando system
+        // Execute the command
         int result = system(full_command.c_str());
 
 
-        // Leer el archivo temporal para verificar el mensaje de error
         ifstream error_file(temp_file);
         stringstream error_stream;
         error_stream << error_file.rdbuf();
         string error_message = error_stream.str();
 
-        // Eliminar el archivo temporal
+        // Delete temporary file
         error_file.close();
         remove(temp_file.c_str());
 
-        // Verificar el resultado de la ejercución y el mensaje de error
+        // Verifity the result
 
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
@@ -2820,30 +2816,22 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         {
 
         string path_doc = " ./doc/orbidir/";
-        // Insertar path_doc en la posición 4
         command.insert(4, path_doc);
-        // Concatenar ".man" al final
         command += ".man";
 
 
-        // Redirigir la salida de error estándar a un archivo temporal
         string temp_file = "temp_error.txt";
         string full_command = command + " 2>" + temp_file;
 
-        // Ejecutar el comando utilizando system
         int result = system(full_command.c_str());
 
-        // Leer el archivo temporal para verificar el mensaje de error
         ifstream error_file(temp_file);
         stringstream error_stream;
         error_stream << error_file.rdbuf();
         string error_message = error_stream.str();
 
-        // Eliminar el archivo temporal
         error_file.close();
         remove(temp_file.c_str());
-
-        // Verificar el resultado de la ejercución y el mensaje de error
 
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
@@ -2972,31 +2960,24 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         {
 
         string path_doc = " ./doc/model/";
-        // Insertar path_doc en la posición 4
         command.insert(4, path_doc);
-        // Concatenar ".man" al final
         command += ".man";
 
 
 
-        // Redirigir la salida de error estándar a un archivo temporal
         string temp_file = "temp_error.txt";
         string full_command = command + " 2>" + temp_file;
 
-        // Ejecutar el comando utilizando system
         int result = system(full_command.c_str());
 
-        // Leer el archivo temporal para verificar el mensaje de error
         ifstream error_file(temp_file);
         stringstream error_stream;
         error_stream << error_file.rdbuf();
         string error_message = error_stream.str();
 
-        // Eliminar el archivo temporal
         error_file.close();
         remove(temp_file.c_str());
 
-        // Verificar el resultado de la ejercución y el mensaje de error
 
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
@@ -4209,31 +4190,24 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
         if (command.length()>=4)
         {
         string path_doc = " ./doc/spectrum/";
-        // Insertar path_doc en la posición 4
         command.insert(4, path_doc);
-        // Concatenar ".man" al final
         command += ".man";
 
 
-        // Redirigir la salida de error estándar a un archivo temporal
         string temp_file = "temp_error.txt";
         string full_command = command + " 2>" + temp_file;
 
-        // Ejecutar el comando utilizando system
         int result = system(full_command.c_str());
 
 
-        // Leer el archivo temporal para verificar el mensaje de error
         ifstream error_file(temp_file);
         stringstream error_stream;
         error_stream << error_file.rdbuf();
         string error_message = error_stream.str();
 
-        // Eliminar el archivo temporal
         error_file.close();
         remove(temp_file.c_str());
 
-        // Verificar el resultado de la ejercución y el mensaje de error
 
         if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
@@ -4584,31 +4558,24 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             if (command.length()>=4)
             {
             string path_doc = " ./doc/vev-config/";
-            // Insertar path_doc en la posición 4
             command.insert(4, path_doc);
-            // Concatenar ".man" al final
             command += ".man";
 
 
-            // Redirigir la salida de error estándar a un archivo temporal
             string temp_file = "temp_error.txt";
             string full_command = command + " 2>" + temp_file;
 
-            // Ejecutar el comando utilizando system
             int result = system(full_command.c_str());
 
 
-            // Leer el archivo temporal para verificar el mensaje de error
             ifstream error_file(temp_file);
             stringstream error_stream;
             error_stream << error_file.rdbuf();
             string error_message = error_stream.str();
 
-            // Eliminar el archivo temporal
             error_file.close();
             remove(temp_file.c_str());
 
-            // Verificar el resultado de la ejercución y el mensaje de error
 
             if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
@@ -5251,31 +5218,24 @@ bool CPrompt::ExecuteOrbifoldCommand(string command)
             if (command.length()>=4)
             {
             string path_doc = " ./doc/labels/";
-            // Insertar path_doc en la posición 4
             command.insert(4, path_doc);
-            // Concatenar ".man" al final
             command += ".man";
 
 
-            // Redirigir la salida de error estándar a un archivo temporal
             string temp_file = "temp_error.txt";
             string full_command = command + " 2>" + temp_file;
 
-            // Ejecutar el comando utilizando system
             int result = system(full_command.c_str());
 
 
-            // Leer el archivo temporal para verificar el mensaje de error
             ifstream error_file(temp_file);
             stringstream error_stream;
             error_stream << error_file.rdbuf();
             string error_message = error_stream.str();
 
-            // Eliminar el archivo temporal
             error_file.close();
             remove(temp_file.c_str());
 
-            // Verificar el resultado de la ejercución y el mensaje de error
 
             if (result !=0|| containsErrorKeywords(error_message,error_keywords)){
             cout << "Error: A command name is expected after the instruction man.\n"
