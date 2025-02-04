@@ -31,13 +31,13 @@ It loads and executes a list of commands from a file named Filename.
 
 .SH EXAMPLES
 
-\(bu The following command loads the orbifold model defined in the file modelZ3_1.txt
+\(bu The following command loads the orbifold model defined in the file modelZ3_1_1.txt
 
-.B load orbifolds(modelZ3_1.txt)
+.B load orbifolds(modelZ3_1_1.txt)
 
 The output reads
 
-  Load orbifolds from file "modelZ3_1.txt".
+  Load orbifolds from file "modelZ3_1_1.txt".
   Orbifold "Z3_1_1" loaded.
 
 Where Z3_1_1 is the orbifold label. It is also the name of the corresponding orbifold directory.
@@ -75,7 +75,7 @@ Recall that the orbifold labels are the names of the orbifold directories.
 
 As an example, suppose the file commands.txt contains the following list of commands
 
-  load orbifolds(modelZ3_1.txt)
+  load orbifolds(modelZ3_1_1.txt)
   cd Z3_1_1
   cd spectrum
   print summary

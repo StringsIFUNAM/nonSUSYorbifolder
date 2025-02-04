@@ -28,7 +28,7 @@ It prints the gauge group for the selected choice of observable and hidden secto
 
 .B print configs
 
-- An explicit example is the following. Consider the Z3 orbifol model named Z3_1_1. The use of this command in the prompt and the output reads, for example,
+- An explicit example is the following. Consider the Z3 orbifold model named Z3_1_1. The use of this command in the prompt and the output reads, for example,
 
   /Z3_1_1/vev-config/> print configs
 
