@@ -1,4 +1,4 @@
-#include "canalysemodel.h" 
+#include "canalysemodel.h"
 #include "corbifold.h"
 #include "clinalg.h"
 #include "globalfunctions.h"
@@ -210,7 +210,7 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 	rational<int> beta = 0;
 	rational<int> Factor = 0;
     rational<int> Factors = 0;
-	
+
 	unsigned k = 0;
 	const size_t number_of_factors = VEVConfig.SymmetryGroup.GaugeGroup.factor.size();
 	if (factor >= number_of_factors)
@@ -218,11 +218,11 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 		cout << "\n  Warning in bool CAnalyseModel::ComputeBetaFunctionCoefficient(...) : \"factor\" out of range. Return 0." << endl;
 		return 0;
 	}
-	
+
     rational<int> adj_factor(11,3);
     rational<int> facf(2,3);
     rational<int> facs(1,3);
-    	
+
     vector<SUSYMultiplet> Multiplets(2);				    //Particle types to be printed
 	Multiplets[0]=Scalar;									//and to be given for equivalence check
 	Multiplets[1]=LeftFermi;
@@ -258,10 +258,10 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 				}
 				Factor = Factor*rational<int>(1,2);
 				beta = beta + facf*Factor;
-			}	
+			}
 			// end: compute the charges under the modular symmetries
 		}
-		
+
 		// left-chiral multiplet
 		if (it_field->Multiplet == Multiplets[0])
 		{
@@ -282,15 +282,15 @@ rational<int> CAnalyseModel::ComputeBetaFunctionCoefficient(const CGaugeIndices 
 				}
 				Factors = Factors*rational<int>(1,2);
 				beta = beta + facs*Factors;
-			}	
+			}
 			// end: compute the charges under the modular symmetries
 		}
-						
-	} 
+
+	}
 	// end: run through all left-chiral fields
 
-  
-    return beta;  
+
+    return beta;
 
 }
 
@@ -548,27 +548,27 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("bT");
-		Scheme.Multiplets.push_back(LeftFermi); 
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension = -5;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("F");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
-		Scheme.Labels.push_back("H"); 
-		Scheme.Multiplets.push_back(Scalar);  
+		Scheme.Labels.push_back("H");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension = 5;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("bF");
-		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.Multiplets.push_back(LeftFermi);
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("bH");
-		Scheme.Multiplets.push_back(Scalar);  
+		Scheme.Multiplets.push_back(Scalar);
 
 
 		return true;
@@ -589,13 +589,13 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("N");
-		Scheme.Multiplets.push_back(Scalar); 
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension = 16;
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(NoU1Charges);
 		Scheme.Labels.push_back("F");
-		Scheme.Multiplets.push_back(LeftFermi); 
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension = -16;
 		Scheme.SetOfDimensions.push_back(Dimensions);
@@ -633,11 +633,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("q");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("sq");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("sq");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension = -3;
 		Dimensions[1].Dimension =  2;
@@ -645,11 +645,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("bq");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("bsq");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("bsq");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension = -3;
 		Dimensions[1].Dimension =  1;
@@ -657,11 +657,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("bu");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("bsu");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("bsu");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension =  3;
 		Dimensions[1].Dimension =  1;
@@ -669,11 +669,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("u");
-		Scheme.Multiplets.push_back(LeftFermi);  
+		Scheme.Multiplets.push_back(LeftFermi);
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
-		Scheme.Labels.push_back("su");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Labels.push_back("su");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension = -3;
 		Dimensions[1].Dimension =  1;
@@ -681,11 +681,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("bd");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("bsd");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("bsd");
+		Scheme.Multiplets.push_back(Scalar);
 
 
 		Dimensions[0].Dimension =  3;
@@ -694,11 +694,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("d");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("sd");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("sd");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -706,11 +706,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("l");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("h");            
-		Scheme.Multiplets.push_back(Scalar);     
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("h");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -718,11 +718,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("bl");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("bh");      
-		Scheme.Multiplets.push_back(Scalar);  
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("bh");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -730,11 +730,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("be");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("bse");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("bse");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -742,11 +742,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("e");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("se");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("se");
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -754,11 +754,11 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(YCharges);
 		Scheme.Labels.push_back("n");
-		Scheme.Multiplets.push_back(LeftFermi);  
-		Scheme.SetOfDimensions.push_back(Dimensions); 
-		Scheme.SetOfU1Charges.push_back(YCharges); 
-		Scheme.Labels.push_back("sn");            
-		Scheme.Multiplets.push_back(Scalar);      
+		Scheme.Multiplets.push_back(LeftFermi);
+		Scheme.SetOfDimensions.push_back(Dimensions);
+		Scheme.SetOfU1Charges.push_back(YCharges);
+		Scheme.Labels.push_back("sn");
+		Scheme.Multiplets.push_back(Scalar);
 
 		return true;
 	}
@@ -792,7 +792,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("bf");
-		Scheme.Multiplets.push_back(LeftFermi); 
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension = -4;
 		Dimensions[1].Dimension =  1;
@@ -816,7 +816,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("q");
-		Scheme.Multiplets.push_back(LeftFermi); 
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension = -4;
 		Dimensions[1].Dimension =  1;
@@ -832,7 +832,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("c");
-		Scheme.Multiplets.push_back(LeftFermi); 
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -840,7 +840,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("h");
-		Scheme.Multiplets.push_back(Scalar); 
+		Scheme.Multiplets.push_back(Scalar);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  2;
@@ -848,7 +848,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("dl");
-		Scheme.Multiplets.push_back(LeftFermi); 
+		Scheme.Multiplets.push_back(LeftFermi);
 
 		Dimensions[0].Dimension =  1;
 		Dimensions[1].Dimension =  1;
@@ -864,7 +864,7 @@ bool CAnalyseModel::CreatePhenoScheme(const string &SchemeLabel, PhenoScheme &Sc
 		Scheme.SetOfDimensions.push_back(Dimensions);
 		Scheme.SetOfU1Charges.push_back(Charges);
 		Scheme.Labels.push_back("s");
-		Scheme.Multiplets.push_back(Scalar); 
+		Scheme.Multiplets.push_back(Scalar);
 
 		return true;
 	}
@@ -1200,7 +1200,7 @@ bool CAnalyseModel::AnalyseModel(const COrbifold &Orbifold, const SConfig &Origi
 							{
 
 								SConfig NewSMVEVConfig = SMVEVConfig;
-								this->AutoCreateLabels(SMScheme, NewSMVEVConfig);		
+								this->AutoCreateLabels(SMScheme, NewSMVEVConfig);
 
 								NewSMVEVConfig.ConfigLabel  = "SMConfig";
 								NewSMVEVConfig.ConfigNumber = SMcounter;
@@ -1811,9 +1811,9 @@ bool CAnalyseModel::AutoCreateLabels(const PhenoScheme &Scheme, SConfig &VEVConf
 							Xcounter = 0;
 							++XcounterAdd;
 						}
-						if (Field.Multiplet == Scalar || Field.Multiplet == bScalar) 
-						label = "s" + XLabels[Xcounter] + labelAdd;   
-						else                                          
+						if (Field.Multiplet == Scalar || Field.Multiplet == bScalar)
+						label = "s" + XLabels[Xcounter] + labelAdd;
+						else
 						label = XLabels[Xcounter] + labelAdd;
 						++Xcounter;
 
@@ -4781,7 +4781,7 @@ bool CAnalyseModel::SU5_CheckVectorlikeness(const COrbifold &Orbifold, SConfig &
 ######   "VEVConfig" from the input "in".                                            ######
 ######################################################################################## */
 bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print, const vector<SUSYMultiplet>  &Multiplet, bool info) const
-{ 
+{
 	if(!in.good())
 	{
 		(*Print.out) << "Warning! Could not find the input for creating the labels." << endl;
@@ -4804,45 +4804,45 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 	vector<RepVector>         Spec_Dimensions;
 	vector<CVector>           Spec_U1Charges;
 	vector<vector<unsigned> > Spec_FieldIndices;
-	
+
 	size_t s1 = 0;
     size_t s2 = 0;
-	
-	vector<unsigned>          Specp_Multiplicities; 
-	vector<RepVector>         Specp_Dimensions; 
-	vector<CVector>           Specp_U1Charges; 
-	vector<vector<unsigned> > Specp_FieldIndices; 
-	
-	size_t s1p = 0; 
-	size_t s2p = 0; 
- 	
+
+	vector<unsigned>          Specp_Multiplicities;
+	vector<RepVector>         Specp_Dimensions;
+	vector<CVector>           Specp_U1Charges;
+	vector<vector<unsigned> > Specp_FieldIndices;
+
+	size_t s1p = 0;
+	size_t s2p = 0;
+
 	bool field_not_known = true;
 
-          vector<SUSYMultiplet> Multiplets(2);						
-	      Multiplets[0]=Scalar;									
+          vector<SUSYMultiplet> Multiplets(2);
+	      Multiplets[0]=Scalar;
 	      Multiplets[1]=LeftFermi;
 
 	for (i = 0; i < f1; ++i)
-	{ 
+	{
 	   const CField &Field = NewFields[i];
 
-       if ( Field.Multiplet == Multiplet[0] )     
+       if ( Field.Multiplet == Multiplet[0] )
 
-		{ 
+		{
 			field_not_known = true;
 			s1 = Spec_Multiplicities.size();
 			for (j = 0; field_not_known && (j < s1); ++j)
-			{ 
+			{
 				if (AreRepVectorsEqual(SymmetryGroup, Spec_Dimensions[j], Field.Dimensions) && AreU1ChargesEqual(SymmetryGroup, Spec_U1Charges[j], Field.U1Charges))
-				{ 
+				{
 					++Spec_Multiplicities[j];
 					Spec_FieldIndices[j].push_back(i);
 
 					field_not_known = false;
-				} 
-			} 
+				}
+			}
 			if (field_not_known)
-			{ 
+			{
 				Spec_Multiplicities.push_back(1);
 				Spec_Dimensions.push_back(Field.Dimensions);
 				Spec_U1Charges.push_back(Field.U1Charges);
@@ -4850,25 +4850,25 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 				tmp_FieldIndices.clear();
 				tmp_FieldIndices.push_back(i);
 				Spec_FieldIndices.push_back(tmp_FieldIndices);
-			} 
-		}           
-	} 
+			}
+		}
+	}
 
 	s1 = Spec_Multiplicities.size();
 
 	if (info)
-	{ 
+	{
 		(*Print.out) << "  Massless scalar spectrum:\n\n";
 		for (i = 0; i < s1; ++i)
-		{ 
+		{
 			(*Print.out) << setw(3) << Spec_Multiplicities[i] << " ";
 			Print.PrintRep(Spec_Dimensions[i], SymmetryGroup);
 			(*Print.out) << "  ";
 			Print.PrintU1Charges(Spec_U1Charges[i], SymmetryGroup);
 			(*Print.out) << "\n";
-		} 
-		(*Print.out) << "\n  Please create the labels for the scalar spectrum:" << endl;
-	} 
+		}
+		(*Print.out) << "\n  Please create the labels for the scalar spectrum (press enter to cancel):" << endl;
+	}
 
 	// begin: read the input
 	string tmp_string = "";
@@ -4877,15 +4877,15 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 	size_t NewNumberOfLabels = 0;
 
 	for (i = 0; i < s1; ++i)
-	{ 
+	{
 		if (info)
-		{ 
+		{
 			(*Print.out) << setw(3) << Spec_Multiplicities[i] << " ";
 			Print.PrintRep(Spec_Dimensions[i], SymmetryGroup);
 			(*Print.out) << "  ";
 			Print.PrintU1Charges(Spec_U1Charges[i], SymmetryGroup);
 			(*Print.out) << " = ";
-		} 
+		}
 
 		// read the label
 		if (!getline(in, tmp_string))
@@ -4893,10 +4893,10 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 
 		// the new label shall not contain any of the forbidden characters
 		if ((tmp_string.size() == 0) || (tmp_string.find_first_not_of(AllowedCharacters) != string::npos))
-		{ 
+		{
 			(*Print.out) << "  " << Print.cbegin << "Label Error: The label is only allowed to contain characters and numbers." << Print.cend << endl;
 			return false;
-		} 
+		}
 
 		// the new label shall not be in use already for a different representation
 		if (find(corresponding_Labels.begin(), corresponding_Labels.end(), tmp_string) != corresponding_Labels.end())
@@ -4907,37 +4907,37 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 		const vector<unsigned> FieldIndices = Spec_FieldIndices[i];
 		s2 = FieldIndices.size();
 		for (j = 0; j < s2; ++j)
-		{ 
+		{
 			CField &Field = NewFields[FieldIndices[j]];
 			Field.Labels.push_back(tmp_string);
 			Field.Numbers.push_back(j+1);
 
 			NewNumberOfLabels = Field.Labels.size();
-		} 
-	} 
+		}
+	}
 	// end: read the input
-   
+
     for (i = 0; i < f1; ++i)
-	{ 
+	{
 	   const CField &Field = NewFields[i];
 
-       if ( Field.Multiplet == Multiplet[1] )     
+       if ( Field.Multiplet == Multiplet[1] )
 
-		{ 
+		{
 			field_not_known = true;
 			s1p = Specp_Multiplicities.size();
 			for (j = 0; field_not_known && (j < s1p); ++j)
-			{ 
+			{
 				if (AreRepVectorsEqual(SymmetryGroup, Specp_Dimensions[j], Field.Dimensions) && AreU1ChargesEqual(SymmetryGroup, Specp_U1Charges[j], Field.U1Charges))
-				{ 
+				{
 					++Specp_Multiplicities[j];
 					Specp_FieldIndices[j].push_back(i);
 
 					field_not_known = false;
-				} 
-			} 
+				}
+			}
 			if (field_not_known)
-			{ 
+			{
 				Specp_Multiplicities.push_back(1);
 				Specp_Dimensions.push_back(Field.Dimensions);
 				Specp_U1Charges.push_back(Field.U1Charges);
@@ -4945,28 +4945,28 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 				tmp_FieldIndices.clear();
 				tmp_FieldIndices.push_back(i);
 				Specp_FieldIndices.push_back(tmp_FieldIndices);
-			} 
-		}         
-	} 
+			}
+		}
+	}
 
 	s1p = Specp_Multiplicities.size();
 
     cout << "" << endl;
-    
+
     if (info)
-	{ 
+	{
 		(*Print.out) << "  Massless fermion spectrum:\n\n";
 		for (i = 0; i < s1p; ++i)
-		{ 
+		{
 			(*Print.out) << setw(3) << Specp_Multiplicities[i] << " ";
 			Print.PrintRep(Specp_Dimensions[i], SymmetryGroup);
 			(*Print.out) << "  ";
 			Print.PrintU1Charges(Specp_U1Charges[i], SymmetryGroup);
 			(*Print.out) << "\n";
-		} 
-		(*Print.out) << "\n  Please create the labels for the fermion spectrum:" << endl;
-	} 
-  
+		}
+		(*Print.out) << "\n  Please create the labels for the fermion spectrum (press enter to cancel):" << endl;
+	}
+
     // begin: read the input
     string tmp_stringp = "";
 	const string AllowedCharactersp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -4974,15 +4974,15 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 	size_t NewNumberOfLabelsp = 0;
 
 	for (i = 0; i < s1p; ++i)
-	{ 
+	{
 		if (info)
-		{ 
+		{
 			(*Print.out) << setw(3) << Specp_Multiplicities[i] << " ";
 			Print.PrintRep(Specp_Dimensions[i], SymmetryGroup);
 			(*Print.out) << "  ";
 			Print.PrintU1Charges(Specp_U1Charges[i], SymmetryGroup);
 			(*Print.out) << " = ";
-		} 
+		}
 
 		// read the label
 		if (!getline(in, tmp_stringp))
@@ -4990,10 +4990,10 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 
 		// the new label shall not contain any of the forbidden characters
 		if ((tmp_stringp.size() == 0) || (tmp_stringp.find_first_not_of(AllowedCharactersp) != string::npos))
-		{ 
+		{
 			(*Print.out) << "  " << Print.cbegin << "Label Error: The label is only allowed to contain characters and numbers." << Print.cend << endl;
 			return false;
-		} 
+		}
 
 		// the new label shall not be in use already for a different representation
 		if (find(correspondingp_Labels.begin(), correspondingp_Labels.end(), tmp_stringp) != correspondingp_Labels.end())
@@ -5004,45 +5004,45 @@ bool CAnalyseModel::Labels_Create(istream &in, SConfig &VEVConfig, CPrint &Print
 		const vector<unsigned> FieldIndices = Specp_FieldIndices[i];
 		s2p = FieldIndices.size();
 		for (j = 0; j < s2p; ++j)
-		{ 
+		{
 			CField &Field = NewFields[FieldIndices[j]];
 			Field.Labels.push_back(tmp_stringp);
 			Field.Numbers.push_back(j+1);
 
 			NewNumberOfLabelsp = Field.Labels.size();
-		} 
-	} 
+		}
+	}
 	// end: read the input
 
    unsigned counter = 1;
 	for (j = 0; j < f1; ++j)
-	{ 
+	{
 		CField &Field = NewFields[j];
 		if (Field.Labels.size() != NewNumberOfLabels)
-		{ 
+		{
 			Field.Labels.push_back("X");
 			Field.Numbers.push_back(counter);
 			++counter;
-		} 
-	} 
+		}
+	}
 	VEVConfig.Fields = NewFields;
 
    unsigned counterp = 1;
 	for (j = 0; j < f1; ++j)
-	{ 
+	{
 		CField &Field = NewFields[j];
 		if (Field.Labels.size() != NewNumberOfLabelsp)
-		{ 
+		{
 			Field.Labels.push_back("X");
 			Field.Numbers.push_back(counterp);
 			++counterp;
-		} 
-	} 
+		}
+	}
 	VEVConfig.Fields = NewFields;
-	
-	 
+
+
 	return true;
-} 
+}
 
 
 /* ########################################################################################
@@ -6012,4 +6012,3 @@ bool CAnalyseModel::FindInvariantConfig(const COrbifold &Orbifold, const CVector
 
 	return true;
 }
-
