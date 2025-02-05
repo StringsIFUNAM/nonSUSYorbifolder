@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
       {
         const CVector &Root = Roots10D.Weights[i];
         invariant = true;
-      
+
         if (invariant)
         {
           CVector tmp = OrbifoldGroup.GetShift(0) + OrbifoldGroup.GetShift(1);
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
             tmp = OrbifoldGroup.GetShift(0) + OrbifoldGroup.GetWilsonLines().GetWilsonLine(5);
           if (FP == 4)
             tmp = OrbifoldGroup.GetShift(0) + OrbifoldGroup.GetWilsonLines().GetWilsonLine(4) + OrbifoldGroup.GetWilsonLines().GetWilsonLine(5);
-          
+
           if (!is_integer(tmp * Root))
             invariant = false;
         }
@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
       }
 
       CGaugeGroup GaugeGroup = determineAlgebra(Roots);
-    
+
       const vector<gaugeGroupFactor<double> > copy_factors = GaugeGroup.factor;
       vector<vector<double> > SimpleRoots;
       const double prec = 0.0001;
@@ -229,9 +229,9 @@ int main(int argc, char *argv[])
     }
 }*/
   cout << "\n  ########################################################################################\n";
-  cout << "  #  Non-Supersymmetric Orbifolder                                                       #\n";
+  cout << "  #  Non-SUSY Orbifolder                                                                 #\n";
   cout << "  #  Version: 1.0                                                                        #\n";
-  cout << "  #  by E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange #\n";
+  cout << "  #  by E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange x|#\n";
   cout << "  ########################################################################################\n" << endl;
 
 
@@ -258,6 +258,6 @@ int main(int argc, char *argv[])
       CPrompt Prompt;
       Prompt.StartPrompt(CommandFilename, true, true);
     }
-  }      
+  }
   return EXIT_SUCCESS;
 }
