@@ -231,7 +231,7 @@ int main(int argc, char *argv[])
   cout << "\n  ########################################################################################\n";
   cout << "  #  Non-SUSY Orbifolder                                                                 #\n";
   cout << "  #  Version: 1.0                                                                        #\n";
-  cout << "  #  by E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange x|#\n";
+  cout << "  #  by E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange #\n";
   cout << "  ########################################################################################\n" << endl;
 
 
