@@ -1,4 +1,4 @@
-.TH "use" 1 "February 1, 2024" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
+.TH "use" 1 "February 1, 2025" "Escalante-Notario, Perez-Martinez, Ramos-Sanchez and Vaudrevange"
 
 .SH NAME
 use
@@ -62,7 +62,7 @@ E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
 Related here article, additional documentation.
 
 .SH REPORTING BUGS
-Reporting bugs and problems, in this link https://github.com/enriqueescalante/Orbifolder_N-0/issues/new
+Reporting bugs and problems, in this link https://github.com/StringsIFUNAM/nonSUSYorbifolder/issues/new
 
 .SH VERSION
 1.0
