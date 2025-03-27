@@ -32,3 +32,28 @@ compile_commands.json
 Makefile
 Makefile.in
 CMakeLists.txt.user
+
+# Archivos generados por autotools
+*.in
+configure
+aclocal.m4
+autom4te.cache/
+libtool
+ltmain.sh
+Makefile
+Makefile.in
+Config/*
+!Config/README
+m4/*
+!m4/README
+
+# Binarios generados por make
+*.o
+*.lo
+*.a
+*.la
+src/orbifolder/nonSUSYorbifolder
+src/orbifolder/orbifolder
+
+# Temporales
+*~

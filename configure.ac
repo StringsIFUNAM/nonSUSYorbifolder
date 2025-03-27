@@ -1,4 +1,4 @@
-AC_INIT([Orbifolder],[1.0],[enriquescalante@gmail.com],[orbifolder],[https://github.com/StringsIFUNAM/nonSUSYorbifolder])
+AC_INIT([nonSUSYorbifolder],[1.0],[stringifunam.com],[nonSUSYorbifolder],[https://github.com/StringsIFUNAM/nonSUSYorbifolder])
 
 m4_include([m4/m4_ax_boost_base.m4])
 
@@ -15,9 +15,9 @@ AC_SUBST([foo2dir], ['$(PWD)/../..'])
 
 AC_PROG_CXX
 LT_INIT
-
-AX_PATH_GSL(1.9, [], [AC_MSG_ERROR(GSL - version >= 1.9 not found!)])
-AX_BOOST_BASE([1.0], [], [AC_MSG_ERROR(BOOST - version >= 1.0 not found!)])
+AM_PROG_AR
+AX_PATH_GSL(2.4, [], [AC_MSG_ERROR(GSL - version >= 2.4 not found!)])
+AX_BOOST_BASE([1.60], [], [AC_MSG_ERROR(BOOST - version >= 1.60 not found!)])
 
 # Check for readline library
 AC_CHECK_LIB([readline], [readline], [], [AC_MSG_ERROR([readline library not found!])])

@@ -14,3 +14,6 @@ src_orbifolder_LDADD = -lreadline
 
 # Here include compilation rules
 AM_CXXFLAGS = $(CXXFLAGS)
+
+all-local:
+	cp src/orbifolder/nonSUSYorbifolder .
