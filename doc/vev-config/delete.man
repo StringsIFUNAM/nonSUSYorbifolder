@@ -114,7 +114,7 @@ Recall that these two vev-configurations are the standard ones for each orbifold
     3 ( -3,  1)_f  U(1) : ( -1/3)  bv2_1 - bv2_3 
    15 (  1,  2)_f  U(1) : (  1/6)  bw2_1 - bw2_15 
 
-where ... indicate that other fields are part of the spectrum. Note that the orbifolder assigns new and appropiate labels to the fields for this orbifold model in the SMConfig1. Next, with the command 'print configs' one sees,
+where ... indicate that other fields are part of the spectrum. Note that the non-SUSY orbifolder assigns new and appropiate labels to the fields for this orbifold model in the SMConfig1. Next, with the command 'print configs' one sees,
 
   /Model_SM3/vev-config/> print configs
 

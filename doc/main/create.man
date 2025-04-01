@@ -64,7 +64,7 @@ It speeds up the search and creation of the orbifold models with the specified p
 After entering the orbifold directory called model1, additional details of the model like the shifts and Wilson lines need to be specified. 
 
 \(bu The following command creates ten random orbifolds from the Z3_1_1 orbifold model. They are required to be SM-like and inequivalent. The models
-are saved in the file tenmodels.txt. The shift and the six Wilson lines are created randomly. After the process is complete these ten models are loaded into the orbifolder in directories named Model_SM1,...,Model_SM10.
+are saved in the file tenmodels.txt. The shift and the six Wilson lines are created randomly. After the process is complete these ten models are loaded into the non-SUSY orbifolder in directories named Model_SM1,...,Model_SM10.
 
 .B create random orbifold from(Z3_1_1) if(inequivalent SM) save to(tenmodels.txt) use(0,0,0,0,0,0,0,0) load when done #models(10)
 

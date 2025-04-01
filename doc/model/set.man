@@ -58,7 +58,7 @@ For instance, in a Z3 orbifold model the shift vector in the standard embedding 
 
 since the twist vector is v = (0, 1/3, 1/3, -2/3).
 
-\(bu NOTE. After setting the shifts and/or Wilson lines the orbifolder checks their consistency conditions and computes the new spectrum when
+\(bu NOTE. After setting the shifts and/or Wilson lines the non-SUSY orbifolder checks their consistency conditions and computes the new spectrum when
 the input data is complete and correct.  
 
 .SH AUTHOR

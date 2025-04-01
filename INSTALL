@@ -12,9 +12,9 @@ located in the subdirectories "src/io", "src/linalg",
 "src/groupTheory", "src/orbifolder".
 
 4. Finally, typing "make install" copies the executable named
-"orbifolder" to the current directory.
+"nonSUSYorbifolder" to the current directory.
 
-5. To run the executable, type "./orbifolder".
+5. To run the executable, type "./nonSUSYorbifolder".
 
 For more details on installing and running the program, you may also
 refer to "Section 3: Donwload & Installation" of hep-th/1110.xxxx.

@@ -141,7 +141,7 @@ To see the current vev-configuration and the number of label currently used from
     -> "TestConfig1"     |        2 /  2 |
 
 
-The arrow indicates that TestConfig1 is the currently used vev-configuration and the fraction 2 / 2 = i / n indicates that the currently used labels correspond to i = 2 of a total of n = 2 labels. The first labels, those with i = 1, are the standard labels assigned by the orbifolder for orbifold models in TesConfig1 or StandardConfig1. This was shown in the first output of this example, that is, where scalar fields have the labels s1, s2, ... and fermion fields the labels f_1, f_2, ... Recall that the vev-configuration StandardConfig1 cannot be changed.
+The arrow indicates that TestConfig1 is the currently used vev-configuration and the fraction 2 / 2 = i / n indicates that the currently used labels correspond to i = 2 of a total of n = 2 labels. The first labels, those with i = 1, are the standard labels assigned by the non-SUSY orbifolder for orbifold models in TesConfig1 or StandardConfig1. This was shown in the first output of this example, that is, where scalar fields have the labels s1, s2, ... and fermion fields the labels f_1, f_2, ... Recall that the vev-configuration StandardConfig1 cannot be changed.
 
 \(bu Other examples for the command 'create labels' follow a similar treatment as the example shown above.
 

@@ -6,7 +6,7 @@ use
 .SH SYNOPSIS
 .B use [OPTIONS] 
 .SH DESCRIPTION
-This command loads the space group from the i-th geometry file. The list of the geometry files that are compatible with the orbifold point group appear with the command 'print available space groups'. After picking up a different i-th geometry than the current one, the orbifolder asks for input data such as the shifts and Wilson lines in order to complete the orbifold model. 
+This command loads the space group from the i-th geometry file. The list of the geometry files that are compatible with the orbifold point group appear with the command 'print available space groups'. After picking up a different i-th geometry than the current one, the non-SUSY orbifolder asks for input data such as the shifts and Wilson lines in order to complete the orbifold model. 
 
 .SH OPTIONS
 .TP
@@ -34,7 +34,7 @@ To select the space group associated with the third geometry file type
 
 /Z4_1_1/model/> use space group(3)
 
-Then, the orbifolder asks for the shift and Wilson lines to complete the creation of the orbifold model.
+Then, the non-SUSY orbifolder asks for the shift and Wilson lines to complete the creation of the orbifold model.
 
 
 \(bu NOTE. The notation Z4_1_1, Z4_2_1, Z4_3_1 is based in the general notation ZN (i,j) (ZN_i_j) where ZN is the point group and the pair (i,j) indicates the i-th lattice and j-th rototranslation element. When i=1 and j=1 the lattice is factorizable and there are no rototranslations elements.
