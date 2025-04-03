@@ -35,7 +35,7 @@ NOTES. The masless spectrum with the corresponding labels for the fields can be 
      "StandardConfig1" |        1 /  1 | 
   -> "TestConfig1"     |        3 /  3 | 
 
-This indicates that the current vev-configuration is TestConfig1 and that the current used labels correspond to i = 3, also that there are n = 3 labels currently available indicated by the fraction 3 / 3 = i / n, where i = 1, 2, 3.  Note that the labels for i = 1 are those automatically assigned by the orbifolder, and the labels for i = 2,3 correspond to the labels manually assigned by the user with the command 'create labels' used twice.
+This indicates that the current vev-configuration is TestConfig1 and that the current used labels correspond to i = 3, also that there are n = 3 labels currently available indicated by the fraction 3 / 3 = i / n, where i = 1, 2, 3.  Note that the labels for i = 1 are those automatically assigned by the non-SUSY orbifolder, and the labels for i = 2,3 correspond to the labels manually assigned by the user with the command 'create labels' used twice.
 
 Next, in the labels directory the use of the command
 

@@ -69,7 +69,7 @@ The command print(fields) can be used with the following parameter
 
 .B \(bu with internal information
 
-In this case additional details for the fields such as the gamma phases, internalIndex and field number are also printed. They represent internal information about how the fields' data can be accessed in the C++ source code of the orbifolder.
+In this case additional details for the fields such as the gamma phases, internalIndex and field number are also printed. They represent internal information about how the fields' data can be accessed in the C++ source code of the non-SUSY orbifolder.
 
 .TP
 .B all states
