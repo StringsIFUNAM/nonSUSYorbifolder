@@ -30,21 +30,21 @@ compile_commands.json
 
 # Ignorar archivos de salida de compilación y enlazado
 Makefile
-Makefile.in
+#Makefile.in
 CMakeLists.txt.user
 
 # Archivos generados por autotools
 *.in
-configure
-aclocal.m4
+#configure
+#aclocal.m4
 autom4te.cache/
-libtool
+#libtool
 ltmain.sh
 Makefile
-Makefile.in
-Config/*
+#Makefile.in
+#Config/*
 !Config/README
-m4/*
+#m4/*
 !m4/README
 
 # Binarios generados por make
