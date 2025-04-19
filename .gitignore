@@ -34,7 +34,7 @@ Makefile
 CMakeLists.txt.user
 
 # Archivos generados por autotools
-*.in
+#*.in
 #configure
 #aclocal.m4
 autom4te.cache/
