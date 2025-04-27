@@ -214,7 +214,6 @@ bool CRandomModel::Initiate(const COrbifoldGroup &OrbifoldGroup, const vector<bo
 	int a3 = 0;
 	int a4 = 0;
 
-	// Old routines
 	// create vectors
 	ListOfPossibilities.clear();
 	  for (a1 = -4; a1 <= 4; ++a1)
@@ -240,21 +239,25 @@ bool CRandomModel::Initiate(const COrbifoldGroup &OrbifoldGroup, const vector<bo
 	  s1 = ListOfPossibilities.size();
 
 
-	/*ListOfPossibilities.clear();
-	for (a1 = -6; a1 <= 12; ++a1) // original upper bound: 4
+    //Alternative creation of shift vectors and Wilson lines in a larger parameter space
+	//Use only for large point group, such as Z_12 or Z_6xZ_6
+
+	/*
+	ListOfPossibilities.clear();
+	for (a1 = -6; a1 <= 12; ++a1)
 	{
 		Possibility[0] = a1;
-		for (a2 = -5; a2 <= 11; ++a2) // original upper bound: 3
+		for (a2 = -5; a2 <= 11; ++a2)
 		{
 			Possibility[1] = a2;
 
-			for (int a22 = -4; a22 <= 10; ++a22) // originally did not exist
-			{                                    // originally did not exist
-				Possibility[2] = a22;                // originally did not exist
+			for (int a22 = -4; a22 <= 10; ++a22)
+			{
+				Possibility[2] = a22;
 
-				for (int a23 = -3; a23 <= 10; ++a23) // originally did not exist
-				{                                    // originally did not exist
-					Possibility[3] = a23;                // originally did not exist
+				for (int a23 = -3; a23 <= 10; ++a23)
+				{
+					Possibility[3] = a23;
 
 					int start_a4 = 4;
 					if (a22 == 0)
@@ -270,7 +273,7 @@ bool CRandomModel::Initiate(const COrbifoldGroup &OrbifoldGroup, const vector<bo
 						bin.clear();
 						binary(a3, bin);
 						s1 = bin.size();
-						for (a4 = start_a4; a4 < max_length-s1; ++a4)  // originally start from 2
+						for (a4 = start_a4; a4 < max_length-s1; ++a4)
 							Possibility[a4] = 0;
 						for (a4 = 0; a4 < s1; ++a4)
 							Possibility[max_length_minus_one-a4] = bin[s1-a4-1];
@@ -281,7 +284,8 @@ bool CRandomModel::Initiate(const COrbifoldGroup &OrbifoldGroup, const vector<bo
 			}
 		}
 	}
-	s1 = ListOfPossibilities.size();*/
+	s1 = ListOfPossibilities.size();
+	*/
 
 	vector<double> PossibleOrders;
 	PossibleOrders.push_back(-1.0);
