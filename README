@@ -2,7 +2,7 @@ Basic installation instructions are enclosed in the INSTALL file in the
 same directory.
 
 For quoting the non-SUSY orbifolder in your publications, please refer to the
-preprint arXiv:24xx.xxxxx [hep-th].
+preprint arXiv:2504.20137 [hep-th].
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ File structure of the source code in the directory "/src":
 directory "examples/"
 
   file:    "samplemain01.cpp"
-  content: the example main-file given in arXiv:24xx.xxxxx [hep-th].
+  content: the example main-file given in arXiv:2504.20137 [hep-th].
 
   ========================================
 

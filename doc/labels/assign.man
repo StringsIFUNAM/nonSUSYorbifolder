@@ -77,7 +77,7 @@ NOTE. An explanation for the notation (k,m,n,n1,n2,n3,n4,n5,n6) is provided in t
 E. Escalante-Notario, R. Perez-Martinez, S. Ramos-Sanchez and P.K.S. Vaudrevange
 
 .SH SEE ALSO
-Related here article, additional documentation.
+Further details and related developments can be found in arXiv:2504.20137 [hep-th].
 
 .SH REPORTING BUGS
 Reporting bugs and problems, in this link https://github.com/StringsIFUNAM/nonSUSYorbifolder/issues/new
