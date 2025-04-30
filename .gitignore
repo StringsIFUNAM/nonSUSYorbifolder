@@ -57,3 +57,7 @@ src/orbifolder/orbifolder
 
 # Temporales
 *~
+
+
+# Ignorar la carpeta de visual code
+**/.vscode/
